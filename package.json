@@ -2,7 +2,7 @@
   "name": "adriems-workshop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,9 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.6"
+  },
+  "dependencies": {
+    "express": "^4.13.1",
+    "morgan": "^1.6.1"
   }
 }
