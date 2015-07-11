@@ -12,26 +12,26 @@ var gulp    = require("gulp"),
     open    = require("gulp-open");
 
 /* Default gulp task */
-gulp.task("default", ["build:dev"], function(){})
+gulp.task("default", ["build"], function(){});
 
 /* IMG TASKS */
-gulp.task("move:img", function(){
-    return gulp.src("./public/src/img/*")
-        .pipe(gulp.dest("./public/dist/img"))
-});
+//gulp.task("move:img", function(){
+//    return gulp.src("./public/src/img/*")
+//        .pipe(gulp.dest("./public/dist/img"))
+//});
 
 /* JSON TASKS */
-gulp.task("move:json", function(){
-    return gulp.src("./public/src/**/*.json")
-        .pipe(gulp.dest("./public/dist/"))
-});
+//gulp.task("move:json", function(){
+//    return gulp.src("./public/src/**/*.json")
+//        .pipe(gulp.dest("./public/dist/"))
+//});
 
 /* CSS TASKS */
-gulp.task('clean:css', function (cb) {
-    del(['./public/dist/**/*.css'], cb);
+gulp.task('clean-css', function (cb) {
+    del(["./public/dist/**/*.css"], cb);
 });
 
-gulp.task("css", ["clean:css"], function(){
+gulp.task("css", ["clean-css"], function(){
     return gulp.src("./public/src/**/*.css")
         .pipe(cssmin())
         .pipe(rename({
@@ -41,11 +41,11 @@ gulp.task("css", ["clean:css"], function(){
 });
 
 /* COFFEESCRIPT TASKS */
-gulp.task('clean:js', function (cb) {
+gulp.task('clean-js', function (cb) {
     del(['./public/dist/**/*.js'], cb);
 });
 
-gulp.task("coffee:dev", ["clean:js"], function() {
+gulp.task("coffee:dev", ["clean-js"], function() {
     return gulp.src("./public/src/**/*.coffee")
         .pipe(maps.init())
         .pipe(coffee({bare: true}).on('error', util.log))
@@ -53,7 +53,7 @@ gulp.task("coffee:dev", ["clean:js"], function() {
         .pipe(gulp.dest("./public/dist/"))
 });
 
-gulp.task("coffee:dist", ["clean:js"], function() {
+gulp.task("coffee", ["clean-js"], function() {
     return gulp.src("./public/src/**/*.coffee")
         .pipe(maps.init())
         .pipe(coffee({bare: true}).on('error', util.log))
@@ -66,24 +66,24 @@ gulp.task("coffee:dist", ["clean:js"], function() {
 });
 
 /* HTML TASKS */
-gulp.task("clean:html", function(cb) {
+gulp.task("clean-html", function(cb) {
     del(['./public/dist/**/*.html'], cb);
 });
 
-gulp.task("move:html", ["clean:html"], function(){
+gulp.task("move-html", ["clean-html"], function(){
     return gulp.src("./public/src/**/*.html")
         .pipe(gulp.dest("./public/dist/"))
 });
 
 /* BUILD TASKS */
-gulp.task("build:dev", ["move:html", "move:img", "move:json", "css", "coffee:dev"], function(){
+gulp.task("build:dev", ["move-html", /*"move-img", "move:json", */ "css", "coffee:dev"], function(){
     var sources = gulp.src(['./public/dist/**/*.js', './public/dist/**/*.css'], {read: false});
     gulp.src("./public/dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest("./public/dist"))
 });
 
-gulp.task("build", ["move:html", "move:img", "move:json", "css", "coffee:dist"], function(){
+gulp.task("build", ["move-html", /*"move:img", "move:json",*/ "css", "coffee"], function(){
     var sources = gulp.src(['./public/dist/**/*.js', './public/dist/**/*.css'], {read: false});
     gulp.src("./public/dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
