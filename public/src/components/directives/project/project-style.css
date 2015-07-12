@@ -1,0 +1,40 @@
+.project {
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+@media(min-width:768px) {
+    .project .img-responsive {
+        max-height: 128px;
+        float: right;
+        border: 1px solid #ddd;
+    }
+
+    .project .pic {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding:0;
+    }
+}
+@media(max-width:767px) {
+    .project .img-responsive {
+        /*max-height: 128px;*/
+        /*float: center;*/
+        border: 1px solid #ddd;
+    }
+
+    .project .pic {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding:0;
+    }
+}
+
+.project .normal-text {
+    line-height: 1.1;
+    margin: 10px 0 15px;
+}
+
+.project.bottom-separator {
+    border-bottom: 1px solid #eee;
+}

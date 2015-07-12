@@ -1,49 +1,27 @@
-<!--<div class="col-sm-8 col-sm-offset-2 text-left">-->
+<div class="col-xs-12 text-left project" ng-class="{ 'bottom-separator' : $last }">
 
-    <!--<div class="col-sm-4 col-sm-offset-1" style="margin-top: 15px; margin-bottom: 10px; padding:0">-->
-        <!--<a ng-href="{{project.url}}">-->
-            <!--<img ng-src="{{project.pic}}" class="img-responsive"-->
-                 <!--alt="Project miniature" style="max-height:128px; float:right; border:1px solid #ddd; ">-->
-        <!--</a>-->
-    <!--</div>-->
+    <h4 class="visible-xs text-center">
+        <a ng-href="{{project.url}}" target="_blank">{{project.name}}</a>
+    </h4>
 
-    <!--<div class="col-sm-5">-->
-
-        <!--<h4><a ng-href="{{project.url}}">{{project.name}}</a></h4>-->
-
-        <!--<p class="normal-text" style="margin:0; line-height: 1.1;">-->
-            <!--{{project.description}}</p>-->
-
-        <!--<h6>Code: <a ng-href="{{project.code}}">{{project.code}}</a></h6>-->
-
-        <!--<h6>-->
-            <!--Tags:-->
-            <!--<span class="label label-default" ng-repeat="tag in project.tags">-->
-                <!--{{tag}}-->
-            <!--</span>-->
-        <!--</h6>-->
-
-
-    <!--</div>-->
-<!--</div>-->
-
-<div class="col-xs-12 text-left">
-
-    <div class="col-sm-5" style="margin-top: 15px; margin-bottom: 10px; padding:0">
-        <a ng-href="{{project.url}}">
+    <div class="pic col-sm-4 col-xs-10 col-xs-offset-1">
+        <a ng-href="{{project.url}}" target="_blank">
             <img ng-src="{{project.pic}}" class="img-responsive"
-                 alt="Project miniature" style="max-height:128px; float:right; border:1px solid #ddd; ">
+                 alt="Project miniature">
         </a>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-5 hidden-xs">
 
-        <h4><a ng-href="{{project.url}}">{{project.name}}</a></h4>
+        <h4><a ng-href="{{project.url}}" target="_blank">
+            {{project.name}}
+        </a></h4>
 
-        <p class="normal-text" style="margin:0; line-height: 1.1;">
-            {{project.description}}</p>
+        <p class="normal-text" style="">{{project.description}}</p>
 
-        <h6>Code: <a ng-href="{{project.code}}">{{project.code}}</a></h6>
+        <h6>Code: <a ng-href="{{project.code}}" target="_blank">
+            {{project.code}}
+        </a></h6>
 
         <h6>
             Tags:
@@ -52,6 +30,23 @@
             </span>
         </h6>
 
+    </div>
+
+    <div class="col-xs-12 visible-xs text-center">
+
+        <p class="normal-text" style="">{{project.description}}</p>
+
+        <h6>Code: <a ng-href="{{project.code}}" target="_blank">
+            {{project.code}}
+        </a></h6>
+
+        <h6>
+            Tags:
+            <span class="label label-default" ng-repeat="tag in project.tags">
+                {{tag}}
+            </span>
+        </h6>
 
     </div>
+
 </div>

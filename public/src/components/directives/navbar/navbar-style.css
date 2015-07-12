@@ -11,10 +11,21 @@
 @media(max-width:767px) {
     #header-mobile {
         margin-top: 10px;
+        /*margin-left: 30px;*/
         /*padding: 25px;*/
         /*color: #fff;*/
         /*background-color: #aabbd0;*/
         /*border-bottom: none;*/
+    }
+    #header-mobile h4 {
+        /*margin: 10px auto 0;*/
+        /*margin-left: 50px !important;*/
+        margin-top: -5px !important;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    #header-mobile .lead {
+        margin-bottom: 0;
     }
 }
 #header * {
@@ -61,8 +72,9 @@
 .smooth-anim.ng-hide-add.ng-hide-add-active,
 .smooth-anim.ng-hide-remove {
     opacity:0;
-    margin-top: -70px;
-    /*font-size: 10pt;*/
+    /*margin-top: -25px;*/
+    line-height: 0;
+    font-size: 0 !important;
 }
 .smooth-anim.ng-hide-add,
 .smooth-anim.ng-hide-remove.ng-hide-remove-active {
@@ -94,8 +106,9 @@
 
 @media(max-width:767px) {
     .small-main {
-        /*font-size: 21pt;*/
-        /*margin-top: 0;*/
+        /*margin-bottom: 0;*/
+        /*margin-top: -5px !important;*/
+        /*margin-left: 50px !important;*/
     }
     .small-sub {
         opacity:0;
