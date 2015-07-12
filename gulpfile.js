@@ -15,10 +15,10 @@ var gulp    = require("gulp"),
 gulp.task("default", ["build"], function(){});
 
 /* IMG TASKS */
-//gulp.task("move:img", function(){
-//    return gulp.src("./public/src/img/*")
-//        .pipe(gulp.dest("./public/dist/img"))
-//});
+gulp.task("move-img", function(){
+    return gulp.src("./public/src/img/*")
+        .pipe(gulp.dest("./public/dist/img"))
+});
 
 /* JSON TASKS */
 //gulp.task("move:json", function(){
@@ -76,14 +76,14 @@ gulp.task("move-html", ["clean-html"], function(){
 });
 
 /* BUILD TASKS */
-gulp.task("build:dev", ["move-html", /*"move-img", "move:json", */ "css", "coffee:dev"], function(){
+gulp.task("build:dev", ["move-html", "move-img", /*"move:json", */ "css", "coffee:dev"], function(){
     var sources = gulp.src(['./public/dist/**/*.js', './public/dist/**/*.css'], {read: false});
     gulp.src("./public/dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest("./public/dist"))
 });
 
-gulp.task("build", ["move-html", /*"move:img", "move:json",*/ "css", "coffee"], function(){
+gulp.task("build", ["move-html", "move-img", /*"move:json",*/ "css", "coffee"], function(){
     var sources = gulp.src(['./public/dist/**/*.js', './public/dist/**/*.css'], {read: false});
     gulp.src("./public/dist/**/*.html")
         .pipe(inject(sources, {relative: true}))

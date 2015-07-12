@@ -1,4 +1,4 @@
-module = angular.module("AdriemsWorkshop", ['ui.router'])
+module = angular.module("AdriemsWorkshop", ['ui.router', 'ngAnimate'])
 
 module.config ($stateProvider, $urlRouterProvider) ->
 
@@ -37,9 +37,14 @@ module.config ($stateProvider, $urlRouterProvider) ->
 #        onEnter: ['SessionManager', '$state', checkLoggedIn]
       })
 
-    .state('works', {
-        url: '/works'
-        templateUrl: 'components/views/works/works.html'
+    .state('projects', {
+        url: '/projects'
+        templateUrl: 'components/views/projects/projects.html'
       })
 
   $urlRouterProvider.otherwise('home')
+
+module.controller "globalCtrl", ($scope, $location, $state) ->
+  $scope.toggleSidebar = false;
+  $scope.isActiveSection = (path) -> $location.path() == path
+#  $scope.toggleNavbar = () -> $scope.toggleSidebar = not $scope.toggleSidebar;
