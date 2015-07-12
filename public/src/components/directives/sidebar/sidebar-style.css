@@ -1,3 +1,8 @@
+.social-media {
+    line-height: 2;
+    /*margin-left: 15px;*/
+}
+
 
 .btn-social {
     width: 48px;
@@ -25,18 +30,18 @@
     background-color: #4b96d0;
 }
 
-.btn-github {
-    color: #FFF;
-    background-color: #4183c4;
-}
-.btn-github:hover {
-    color: #FFF;
-    background-color: #5ab7fd;
-}
-.btn-github:active, .btn-github:focus {
-    color: #FFF;
-    background-color: #4b96d0;
-}
+/*.btn-github {*/
+    /*color: #FFF;*/
+    /*background-color: #4183c4;*/
+/*}*/
+/*.btn-github:hover {*/
+    /*color: #FFF;*/
+    /*background-color: #5ab7fd;*/
+/*}*/
+/*.btn-github:active, .btn-github:focus {*/
+    /*color: #FFF;*/
+    /*background-color: #4b96d0;*/
+/*}*/
 
 .btn-linkedin {
     color: #FFF;
@@ -84,4 +89,16 @@
         border: 3px solid #5e72ab;
     }
 
+}
+
+
+#developer-section .lead {
+    font-size: 13pt;
+}
+#developer-section .lead a {
+    color: #5e72ab;
+    /*font-weight: bold;*/
+}
+#developer-section h5 {
+    color: #666;
 }
