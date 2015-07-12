@@ -1,0 +1,57 @@
+<!--<div class="col-sm-8 col-sm-offset-2 text-left">-->
+
+    <!--<div class="col-sm-4 col-sm-offset-1" style="margin-top: 15px; margin-bottom: 10px; padding:0">-->
+        <!--<a ng-href="{{project.url}}">-->
+            <!--<img ng-src="{{project.pic}}" class="img-responsive"-->
+                 <!--alt="Project miniature" style="max-height:128px; float:right; border:1px solid #ddd; ">-->
+        <!--</a>-->
+    <!--</div>-->
+
+    <!--<div class="col-sm-5">-->
+
+        <!--<h4><a ng-href="{{project.url}}">{{project.name}}</a></h4>-->
+
+        <!--<p class="normal-text" style="margin:0; line-height: 1.1;">-->
+            <!--{{project.description}}</p>-->
+
+        <!--<h6>Code: <a ng-href="{{project.code}}">{{project.code}}</a></h6>-->
+
+        <!--<h6>-->
+            <!--Tags:-->
+            <!--<span class="label label-default" ng-repeat="tag in project.tags">-->
+                <!--{{tag}}-->
+            <!--</span>-->
+        <!--</h6>-->
+
+
+    <!--</div>-->
+<!--</div>-->
+
+<div class="col-xs-12 text-left">
+
+    <div class="col-sm-5" style="margin-top: 15px; margin-bottom: 10px; padding:0">
+        <a ng-href="{{project.url}}">
+            <img ng-src="{{project.pic}}" class="img-responsive"
+                 alt="Project miniature" style="max-height:128px; float:right; border:1px solid #ddd; ">
+        </a>
+    </div>
+
+    <div class="col-sm-6">
+
+        <h4><a ng-href="{{project.url}}">{{project.name}}</a></h4>
+
+        <p class="normal-text" style="margin:0; line-height: 1.1;">
+            {{project.description}}</p>
+
+        <h6>Code: <a ng-href="{{project.code}}">{{project.code}}</a></h6>
+
+        <h6>
+            Tags:
+            <span class="label label-default" ng-repeat="tag in project.tags">
+                {{tag}}
+            </span>
+        </h6>
+
+
+    </div>
+</div>

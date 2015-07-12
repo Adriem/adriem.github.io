@@ -40,11 +40,15 @@ module.config ($stateProvider, $urlRouterProvider) ->
     .state('projects', {
         url: '/projects'
         templateUrl: 'components/views/projects/projects.html'
+        controller: 'projectCtrl'
       })
 
   $urlRouterProvider.otherwise('home')
 
 module.controller "globalCtrl", ($scope, $location, $state) ->
   $scope.toggleSidebar = false;
-  $scope.isActiveSection = (path) -> $location.path() == path
+#  $scope.isActiveSection = (path) -> $location.path() == path
 #  $scope.toggleNavbar = () -> $scope.toggleSidebar = not $scope.toggleSidebar;
+
+module.controller "projectCtrl", ($scope, Projects) ->
+  $scope.projects = Projects

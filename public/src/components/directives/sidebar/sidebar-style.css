@@ -1,0 +1,87 @@
+
+.btn-social {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    margin: 5px;
+    line-height: 1;
+    padding: 14px 5px;
+    font-size: 16px;
+}
+.btn-social * {
+    line-height: 1;
+}
+
+.btn-twitter {
+    color: #FFF;
+    background-color: #55acee;
+}
+.btn-twitter:hover {
+    color: #FFF;
+    background-color: #5ab7fd;
+}
+.btn-twitter:active, .btn-twitter:focus {
+    color: #FFF;
+    background-color: #4b96d0;
+}
+
+.btn-github {
+    color: #FFF;
+    background-color: #4183c4;
+}
+.btn-github:hover {
+    color: #FFF;
+    background-color: #5ab7fd;
+}
+.btn-github:active, .btn-github:focus {
+    color: #FFF;
+    background-color: #4b96d0;
+}
+
+.btn-linkedin {
+    color: #FFF;
+    background-color: #0077b5;
+}
+.btn-linkedin:hover {
+    color: #FFF;
+    background-color: #008dd6;
+}
+.btn-linkedin:active, .btn-linkedin:focus {
+    color: #FFF;
+    background-color: #006194;
+}
+
+@media(min-width: 768px){
+    /*#sidebar-wrapper {*/
+    /*/!*border-left: 1px solid #ddd;*!/*/
+    /*/!*padding: 40px;*!/*/
+    /*/!*color: #fff;*!/*/
+    /*background-color: #aabbd0;*/
+    /*}*/
+    #developer-section {
+        margin-top: 8px;
+    }
+    #developer-section img {
+        margin: 20px auto;
+        max-width: 150px;
+        border: 3px solid #5e72ab;
+    }
+    #main-section {
+        padding: 40px;
+    }
+}
+@media(max-width: 767px){
+    #developer-section {
+        margin-top: 8px;
+        /*border-top: 1px solid #ddd;*/
+        /*margin-top: 40px;*/
+        /*padding-top: 20px;*/
+        /*padding-bottom: 40px;*/
+    }
+    #developer-section img {
+        margin: 20px auto;
+        max-width: 150px;
+        border: 3px solid #5e72ab;
+    }
+
+}
