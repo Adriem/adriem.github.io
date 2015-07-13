@@ -1,0 +1,55 @@
+<div class="text-center col-xs-12 col-lg-8 col-lg-offset-2" style="margin-top: 23px;">
+    <p class="lead">
+        These are some of the projects I have worked on. All the projects shown
+        here are functional, although some of them may not be finished.
+    </p>
+
+    <p class="normal-text" id="label-cloud">
+        Select a category <br>
+
+        <button class="label label-primary label-select"
+                ng-click="filter.selectedLabel = ''">
+            <span class="glyphicon glyphicon-ok selected-label-icon"
+                  ng-show="filter.selectedLabel === ''"></span>
+            All
+        </button>
+
+        <button class="label label-success label-select"
+                ng-click="filter.selectedLabel = 'finished'">
+            <span class="glyphicon glyphicon-ok selected-label-icon"
+                  ng-show="filter.selectedLabel === 'finished'"></span>
+            Finished
+        </button>
+
+        <button class="label label-warning label-select"
+                ng-click="filter.selectedLabel = 'in development'">
+            <span class="glyphicon glyphicon-ok selected-label-icon"
+                  ng-show="filter.selectedLabel === 'in development'"></span>
+            In development
+        </button>
+
+        <span ng-repeat="label in filter.labels track by $index" class="smooth-anim">
+            <button class="label label-default label-select"
+                    ng-click="filter.selectedLabel = filter.labels[$index]"
+                    ng-show="filter.labels.length <= 5 || $index < 3 || showAll">
+            <span class="glyphicon glyphicon-ok selected-label-icon"
+                  ng-show="filter.selectedLabel === filter.labels[$index]"></span>
+                {{label}}
+            </button>
+        </span>
+        <br>
+
+        <span ng-show="filter.labels.length > 5">
+            <a id="show-more-tags" ng-click="showAll = !showAll">
+                SHOW {{showAll? "LESS" : "MORE"}} TAGS
+            </a>
+            <br class="visible-xs">
+        </span>
+
+    </p>
+</div>
+
+<div class="col-lg-10 col-lg-offset-1 col-xs-12">
+    <project ng-repeat="project in projects | filter:filterFunction"
+             project="project"></project>
+</div>

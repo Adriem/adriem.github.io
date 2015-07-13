@@ -1,17 +1,17 @@
-<div class="col-xs-12 text-left project" ng-class="{ 'bottom-separator' : $last }">
+<div class="col-xs-12 text-left project">
 
-    <h4 class="visible-xs text-center">
+    <h4 class="visible-xs visible-sm text-center">
         <a ng-href="{{project.url}}" target="_blank">{{project.name}}</a>
     </h4>
 
-    <div class="pic col-sm-4 col-xs-10 col-xs-offset-1">
+    <div class="pic col-md-4 col-sm-10 col-sm-offset-1">
         <a ng-href="{{project.url}}" target="_blank">
-            <img ng-src="{{project.pic}}" class="img-responsive"
+            <img ng-src="{{project.pic}}"
                  alt="Project miniature">
         </a>
     </div>
 
-    <div class="col-md-5 col-sm-6 hidden-xs">
+    <div class="col-lg-5 col-md-6 hidden-xs hidden-sm">
 
         <h4><a ng-href="{{project.url}}" target="_blank">
             {{project.name}}
@@ -19,31 +19,43 @@
 
         <p class="normal-text" style="">{{project.description}}</p>
 
+        <h6>Status: <span class="label" ng-class="{
+            'label-success': project.state === 'finished',
+            'label-warning': project.state === 'in development'
+        }">
+            {{project.state}}
+        </span></h6>
+
         <h6>Code: <a ng-href="{{project.code}}" target="_blank">
             {{project.code}}
         </a></h6>
 
-        <h6>
-            Tags:
-            <span class="label label-default" ng-repeat="tag in project.tags">
-                {{tag}}
+        <h6 style="line-height: 1.5">Tags:
+            <span ng-repeat="tag in project.tags">
+                <span class="label label-default">{{tag}}</span>
             </span>
         </h6>
 
     </div>
 
-    <div class="col-xs-12 visible-xs text-center">
+    <div class="col-xs-12 visible-xs visible-sm text-center">
 
         <p class="normal-text" style="">{{project.description}}</p>
+
+        <h6>Status: <span class="label" ng-class="{
+            'label-success': project.state === 'finished',
+            'label-warning': project.state === 'in development'
+        }">
+            {{project.state}}
+        </span></h6>
 
         <h6>Code: <a ng-href="{{project.code}}" target="_blank">
             {{project.code}}
         </a></h6>
 
-        <h6>
-            Tags:
-            <span class="label label-default" ng-repeat="tag in project.tags">
-                {{tag}}
+        <h6 style="line-height: 1.5">Tags:
+            <span ng-repeat="tag in project.tags">
+                <span class="label label-default">{{tag}}</span>
             </span>
         </h6>
 

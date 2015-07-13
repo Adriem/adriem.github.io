@@ -1,13 +1,8 @@
-
-
-/*#main-content {*/
-    /*position: absolute;*/
-    /*top: 0px;*/
-    /*bottom: 0px;*/
-    /*padding: 0px;*/
-    /*/!*width:100%;*!/*/
-    /*/!*margin-top: 70px;*!/*/
-/*}*/
+@media(min-width:768px) {
+    html {
+        overflow-y:scroll /*Mostramos siempre el scrollbar para evitar que la navbar se vuelva loca*/
+    }
+}
 
 .normal-text {
     font-size: 12pt;
@@ -39,8 +34,37 @@
 .navbar-toggle * {
     background-color: #444;
 }
-
 .label {
-    margin-left: 2px;
-    margin-right: 2px;
+    padding: .2em .6em;
+    margin: .2em;
+    text-transform: uppercase;
+    -webkit-transition:all ease 0.15s;
+    -moz-transition:all ease 0.15s;
+    -o-transition:all ease 0.15s;
+    transition:all ease 0.15s;
+}
+.label.ng-hide-add.ng-hide-add-active,
+.label.ng-hide-remove {
+    opacity:0;
+}
+.label.ng-hide-add,
+.label.ng-hide-remove.ng-hide-remove-active {
+    opacity:1;
+}
+.label-select {
+    border: none;
+    padding: .4em 1em;
+}
+.label-primary {
+    background-color: #7d92bf;
+}
+.label-success {
+    background-color: #5ad3a4;
+}
+.label-warning {
+    background-color: #f4b272;
+}
+.selected-label-icon {
+    margin-right: .4em;
+    font-size: 75%;
 }

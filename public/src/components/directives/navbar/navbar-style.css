@@ -1,25 +1,14 @@
 @media(min-width:768px) {
     #header {
         margin-top: 0;
-        /*padding: 25px;*/
-        /*color: #fff;*/
-        /*background-color: #aabbd0;*/
-        /*border-bottom: none;*/
     }
 }
 
 @media(max-width:767px) {
     #header-mobile {
         margin-top: 10px;
-        /*margin-left: 30px;*/
-        /*padding: 25px;*/
-        /*color: #fff;*/
-        /*background-color: #aabbd0;*/
-        /*border-bottom: none;*/
     }
     #header-mobile h4 {
-        /*margin: 10px auto 0;*/
-        /*margin-left: 50px !important;*/
         margin-top: -5px !important;
         padding-left: 40px !important;
         padding-right: 40px !important;
@@ -44,35 +33,15 @@
     font-size: 12pt;
 }
 
-/*.nav-tabs > li.active > a, .nav-pills > li.active > a,*/
-/*.nav-tabs > li.active > a:hover, .nav-pills > li.active > a:hover,*/
-/*.nav-tabs > li.active > a:focus, .nav-pills > li.active > a:focus,*/
-/*.nav-tabs > li.active > a:active, .nav-pills > li.active > a:active,*/
-/*.nav-tabs > li > a:hover, .nav-pills > li > a:hover, .nav-tabs > li > a:focus,*/
-/*.nav-pills > li > a:focus,.nav-tabs > li > a:active, .nav-pills > li > a:active {*/
-/*color: #C00;*/
-/*-webkit-box-shadow: inset 0 -3px 0 #C00;*/
-/*-moz-box-shadow: inset 0 -3px 0 #C00;*/
-/*box-shadow: inset 0 -3px 0 #C00;*/
-/*}*/
-
 .nav-tabs, .nav-pills {
     text-align:center;
     border-bottom: 1px solid #ddd;
 }
 
 /* ANIMATION */
-/*.smooth-anim.ng-hide-add, .smooth-anim.ng-hide-remove {*/
-    /*-webkit-transition:all ease 0.35s;*/
-    /*-moz-transition:all ease 0.35s;*/
-    /*-o-transition:all ease 0.35s;*/
-    /*transition:all ease 0.35s;*/
-    /*display:block!important;*/
-/*}*/
 .smooth-anim.ng-hide-add.ng-hide-add-active,
 .smooth-anim.ng-hide-remove {
     opacity:0;
-    /*margin-top: -25px;*/
     line-height: 0;
     font-size: 0 !important;
 }
@@ -80,7 +49,6 @@
 .smooth-anim.ng-hide-remove.ng-hide-remove-active {
     opacity:1;
     margin-top: 0;
-    /*font-size: 19.5px;*/
 }
 
 .smooth-anim {
@@ -88,33 +56,22 @@
     -moz-transition:all ease 0.25s;
     -o-transition:all ease 0.25s;
     transition:all ease 0.25s;
-    /*display:block!important;*/
 }
 
 @media(min-width:768px) {
     .small-main {
-        /*font-size: 21pt;*/
         margin-top: 0;
         margin-bottom: 0;
     }
     .small-sub {
-        /*opacity:0;*/
-        /*margin-top: -100px;*/
         font-size: 10pt !important;
         margin-bottom: 5px;
     }
 }
 
 @media(max-width:767px) {
-    .small-main {
-        /*margin-bottom: 0;*/
-        /*margin-top: -5px !important;*/
-        /*margin-left: 50px !important;*/
-    }
     .small-sub {
         opacity:0;
         margin-top: -100px;
-        /*font-size: 11pt !important;*/
-        /*margin-bottom: 5px;*/
     }
 }

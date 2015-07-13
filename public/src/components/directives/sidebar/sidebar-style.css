@@ -1,8 +1,6 @@
 .social-media {
     line-height: 2;
-    /*margin-left: 15px;*/
 }
-
 
 .btn-social {
     width: 48px;
@@ -57,12 +55,6 @@
 }
 
 @media(min-width: 768px){
-    /*#sidebar-wrapper {*/
-    /*/!*border-left: 1px solid #ddd;*!/*/
-    /*/!*padding: 40px;*!/*/
-    /*/!*color: #fff;*!/*/
-    /*background-color: #aabbd0;*/
-    /*}*/
     #developer-section {
         margin-top: 8px;
     }
@@ -78,10 +70,6 @@
 @media(max-width: 767px){
     #developer-section {
         margin-top: 8px;
-        /*border-top: 1px solid #ddd;*/
-        /*margin-top: 40px;*/
-        /*padding-top: 20px;*/
-        /*padding-bottom: 40px;*/
     }
     #developer-section img {
         margin: 20px auto;
@@ -97,7 +85,6 @@
 }
 #developer-section .lead a {
     color: #5e72ab;
-    /*font-weight: bold;*/
 }
 #developer-section h5 {
     color: #666;

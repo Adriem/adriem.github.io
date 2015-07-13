@@ -1,3 +1,6 @@
 module.directive 'project', () ->
+
   templateUrl: 'components/directives/project/project.html'
-  scope: false
+  restrict: 'E'
+  scope: project: '='
+  replace: true;
