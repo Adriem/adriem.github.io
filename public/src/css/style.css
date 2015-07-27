@@ -68,3 +68,7 @@
     margin-right: .4em;
     font-size: 75%;
 }
+
+#show-more-tags {
+  cursor: pointer;
+}
