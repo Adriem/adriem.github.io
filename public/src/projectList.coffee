@@ -20,5 +20,16 @@ module.constant 'Projects', [
     description: """
       A calculator for ogame resources written in Coffeescript with AngularJS.
     """
+  },
+  {
+    name: "Gentleman Colorscheme"
+    pic: "img/gentleman-colorscheme-preview.jpg"
+    url: "https://adriem.github.io/gentleman-colorscheme"
+    code: "https://github.com/Adriem/gentleman-colorscheme"
+    state: 'finished'
+    tags: ["color scheme", "vim"]
+    description: """
+      A dark, low contrast and terminal-friendly VIM colorscheme.
+    """
   }
 ]
