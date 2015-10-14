@@ -48,4 +48,4 @@ adriems-workshop.iml
 
 #NodeJS files
 node_modules
-public/dist
+dist
