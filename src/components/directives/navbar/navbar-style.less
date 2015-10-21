@@ -1,0 +1,94 @@
+@headerBgColor: #960000; /*#4C1B1B; /*#443A31; /* #16563D; /* #666633; /* #53493E; */
+@headerFgColor: rgba(255, 255, 255, 0.45);
+@selectedTabColor: rgba(255, 255, 255, 0.65);
+@headerAccentColor: #FFFFFF;
+
+#header {
+    background-color: @headerBgColor;
+    background-image: url("../../../img/texture6.png");
+
+    .container {
+        @media(min-width:768px) {
+            padding: 15px 5px 61px;
+        }
+
+        @media(max-width:767px) {
+            padding: 10px 5px 61px;
+        }
+    }
+
+    * {
+      color: @headerFgColor;
+      font-family: aleo, enriqueta, goudy_bookletter_1911;
+    }
+
+    h2 {
+      font-family: aleo;
+      font-size: 300%;
+      text-transform: capitalize;
+      color: @headerAccentColor;
+      @media(min-width:768px) {
+        margin-top: 25px;
+      }
+      @media(max-width:767px) {
+        margin-top: 20px;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+}
+
+.nav-tabs, .nav-pills {
+
+  text-align:center;
+  border-bottom: 0;
+
+  li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    zoom:1; /* hasLayout ie7 trigger */
+    @media(min-width:768px) { font-size: 14pt; }
+    @media(max-width:767px) { font-size: 12pt; }
+    text-transform: lowercase;
+  }
+
+  li > a {
+      box-shadow: none ! important;
+      /* font-weight: bold; /* Not suported by font-family in use */
+      font-style: italic; /* Not suported by font-family in use */
+      background: none;
+      border: none;
+      @media(max-width:767px) {
+        padding-top: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      &:hover, {
+        color: lighten(@headerFgColor, 15%);
+        background: none !important;
+        border: none !important;
+      }
+  }
+
+  .active > a {
+    color: @selectedTabColor ! important;
+    background: none !important;
+    border: none !important;
+  }
+
+  .right-align {
+    @media(min-width:768px) {
+        float:right ! important;
+    }
+  }
+
+  .left-align {
+    @media(min-width:768px) {
+        float:left ! important;
+    }
+  }
+}

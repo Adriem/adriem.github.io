@@ -20,7 +20,7 @@ module.config ($stateProvider, $urlRouterProvider) ->
         controller: 'projectCtrl'
       })
 
-  $urlRouterProvider.otherwise('home')
+  $urlRouterProvider.otherwise('projects')
 
 module.controller "globalCtrl", ($scope, $location, $state) ->
   $scope.toggleSidebar = false

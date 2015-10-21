@@ -1,29 +1,28 @@
-<!-- DESKTOP HEADER -->
-<div id="header" class="row text-center hidden-xs">
-    <h3 class="smooth-anim hidden-xs"
-        ng-class="{ 'small-main': !isActiveSection('/home') }">
+<div id="header"><div class="container">
+
+  <div class="row">
+    <ul class="nav nav-tabs">
+        <li class="left-align" ng-class="{'active': isActiveSection('/projects')}">
+          <a ui-sref="projects">Projects</a></li>
+        <li class="left-align" ng-class="{'active': isActiveSection('/about')}">
+          <a ui-sref="about">About me</a></li>
+        <li class="right-align" ng-class="{'active': isActiveSection('/home')}">
+          <a ui-sref="home">Español</a></li>
+    </ul>
+  </div>
+
+  <div class="row text-center">
+    <h2>
         Adriem's workshop
-    </h3>
-    <p class="lead col-sm-8 col-sm-offset-2 smooth-anim"
+        <!--<img src="img/logo5.png"></img>-->
+    </h2>
+    <p class="col-sm-8 col-sm-offset-2 lead">
+    <!--<img src="img/sub-text5.png"></img>-->
+      Software development and coding stuff
+    </p>
+    <!--<p class="lead col-sm-8 col-sm-offset-2 smooth-anim"
        ng-class="{ 'small-sub': !isActiveSection('/home') }">
         Full-stack web development and software-related stuff
-    </p>
-</div>
-
-<!-- MOBILE HEADER -->
-<div id="header-mobile" class="row text-center visible-xs">
-    <h4 class="smooth-anim text-center"
-        ng-class="{ 'small-main': !isActiveSection('/home') }">Adriem's workshop</h4>
-    <p class="lead col-sm-8 col-sm-offset-2 smooth-anim"
-       ng-show="isActiveSection('/home')">
-        Full-stack web development and software-related stuff
-    </p>
-</div>
-
-<div class="row">
-    <ul class="nav nav-tabs">
-        <li ng-class="{'active': isActiveSection('/home')}"><a ui-sref="home">Home</a></li>
-        <li ng-class="{'active': isActiveSection('/projects')}"><a ui-sref="projects">Projects</a></li>
-        <li ng-class="{'active': isActiveSection('/about')}"><a ui-sref="about">About</a></li>
-    </ul>
-</div>
+    </p>-->
+  </div>
+</div></div>

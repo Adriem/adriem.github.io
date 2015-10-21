@@ -1,22 +1,23 @@
+#header {
+    background: #aabbd0;
+    background: #DC701F;
+    background: #E2832C;
+    background: #875019;
+    background: #5B643C;
+}
+
 @media(min-width:768px) {
-    #header {
-        margin-top: 0;
+    #header > .container {
+        padding: 15px 5px 20px;
     }
 }
 
 @media(max-width:767px) {
-    #header-mobile {
-        margin-top: 10px;
-    }
-    #header-mobile h4 {
-        margin-top: -5px !important;
-        padding-left: 40px !important;
-        padding-right: 40px !important;
-    }
-    #header-mobile .lead {
-        margin-bottom: 0;
+    #header > .container {
+        padding: 10px 5px 15px;
     }
 }
+
 #header * {
     /*color: #fff;*/
 }
@@ -33,9 +34,23 @@
     font-size: 12pt;
 }
 
+@media(min-width:768px) {
+  .nav-tabs > .right-align, .nav-pills > .right-align {
+      float:right ! important;
+  }
+  .nav-tabs > .left-align, .nav-pills > .left-align {
+      float:left ! important;
+  }
+}
+
 .nav-tabs, .nav-pills {
     text-align:center;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
+    border-bottom: 0;
+}
+.nav-tabs > li > a, .nav-pills > li > a {
+    box-shadow: none ! important;
+    font-weight: bold;
 }
 
 /* ANIMATION */

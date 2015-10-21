@@ -1,6 +1,7 @@
 /* GULP DEPENDENCIES */
 var gulp    = require("gulp"),
     del     = require("del"),
+    path    = require("path"),
     coffee  = require("gulp-coffee"),
     uglify  = require("gulp-uglify"),
     cssmin  = require("gulp-minify-css"),
@@ -9,6 +10,7 @@ var gulp    = require("gulp"),
     inject  = require("gulp-inject"),
     maps    = require("gulp-sourcemaps"),
     rename  = require("gulp-rename");
+    less    = require("gulp-less");
     open    = require("gulp-open");
 
 /* Default gulp task */
@@ -18,6 +20,12 @@ gulp.task("default", ["build"], function(){});
 gulp.task("move-img", function(){
     return gulp.src("./src/img/*")
         .pipe(gulp.dest("./dist/img"))
+});
+
+/* FONT TASKS */
+gulp.task("move-fonts", function(){
+    return gulp.src(["./src/fonts/**/*", "!./src/fonts/**/*.css"])
+        .pipe(gulp.dest("./dist/fonts"))
 });
 
 /* JSON TASKS */
@@ -31,7 +39,16 @@ gulp.task('clean-css', function (cb) {
     del(["./dist/**/*.css"], cb);
 });
 
-gulp.task("css", ["clean-css"], function(){
+gulp.task("less", ["clean-css"], function() {
+    return gulp.src("./src/**/*.less")
+        .pipe(less({
+            paths: [ path.join(__dirname, 'src') ]
+         }))
+        .pipe(gulp.dest("./dist/"));
+
+});
+
+gulp.task("css", ["less"], function(){
     return gulp.src("./src/**/*.css")
         .pipe(cssmin())
         .pipe(rename({
@@ -76,14 +93,14 @@ gulp.task("move-html", ["clean-html"], function(){
 });
 
 /* BUILD TASKS */
-gulp.task("build:dev", ["move-html", "move-img", /*"move:json", */ "css", "coffee:dev"], function(){
+gulp.task("build:dev", ["move-html", "move-img", "move-fonts", "css", "coffee:dev"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
     gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest("./dist"))
 });
 
-gulp.task("build", ["move-html", "move-img", /*"move:json",*/ "css", "coffee"], function(){
+gulp.task("build", ["move-html", "move-img", "move-fonts", "css", "coffee"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
     gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))

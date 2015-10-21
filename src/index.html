@@ -4,6 +4,7 @@
 
     <meta charset="UTF-8">
     <title>Adriem's Workshop</title>
+    <link rel="icon" href="img/favicon.png">
 
     <!-- FIX VIEWPORT FOR MOBILE DEVICES -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,7 +15,7 @@
     <!-- LIBRARY STYLES -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/paper/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/paper/bootstrap.min.css">-->
 
     <!-- OWN STYLES -->
     <!-- inject:css -->
@@ -29,105 +30,22 @@
 </head>
 <body ng-app="AdriemsWorkshop" ng-controller="globalCtrl">
 
-    <!--<button class="btn-sidebar" ng-click="toggleSidebar = !toggleSidebar">-->
-        <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
-    <!--</button>-->
-
-    <button type="button" class="navbar-toggle btn-sidebar" ng-click="toggleSidebar = !toggleSidebar">
+    <!--<button type="button" class="navbar-toggle btn-sidebar" ng-click="toggleSidebar = !toggleSidebar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-    </button>
+    </button>-->
 
-    <div id="wrapper" ng-class="{ toggled: toggleSidebar }">
+    <!-- NAVBAR -->
+    <navbar></navbar>
 
-        <!-- SIDEBAR -->
-        <div id="sidebar-wrapper"><div class="sidebar-nav">
-            <sidebar></sidebar>
-        </div></div>
-
-        <!-- CONTENT -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-
-                <!-- NAVBAR -->
-                <navbar></navbar>
-
-                <!-- CONTENT -->
-                <ui-view></ui-view>
-
-            </div>
-        </div>
-
-
-
-
-    <!-- OLD -->
-    <!--<div id="header" class="text-center">-->
-        <!--<div class="container">-->
-            <!--<h3>Welcome to Adriem's workshop</h3>-->
-            <!--&lt;!&ndash;<br>&ndash;&gt;-->
-            <!--<p class="lead col-sm-8 col-sm-offset-2">-->
-                <!--Web development and more software-related stuff.<br>-->
-                <!--This is my personal web page and home of some of my little web-->
-                <!--projects.-->
-                <!--&lt;!&ndash;<br><br>&ndash;&gt;-->
-                <!--&lt;!&ndash;<a ui-sref="/projects">Check out my projects!</a>&ndash;&gt;-->
-            <!--</p>-->
-
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div id="main-content" class="container">-->
-
-        <!--<div class="col-sm-3 text-center" id="developer-section">-->
-            <!--<h3 class="visible-xs">About the developer</h3>-->
-            <!--<div class="col-xs-10 col-xs-offset-1">-->
-                <!--<img src="img/avatar.jpg" class="img-circle img-responsive">-->
-            <!--</div>-->
-            <!--<h4>Adrián Moreno</h4>-->
-            <!--<p class="normal-text">-->
-                <!--Software engineering student at Universidad de Zaragoza.<br>-->
-                <!--Technology, videogames, heavy metal, nature and beer lover :)-->
-            <!--</p>-->
-            <!--<a href="https://twitter.com/ClockworkAdriem" target="_blank"-->
-               <!--class="btn btn-primary btn-social btn-twitter">-->
-                <!--<span class="fa fa-twitter fa-lg"></span>-->
-            <!--</a>-->
-            <!--<a href="https://github.com/Adriem" target="_blank"-->
-               <!--class="btn btn-default btn-social btn-github">-->
-                <!--<span class="fa fa-github fa-lg"></span>-->
-            <!--</a>-->
-            <!--<a href="https://github.com/Adriem" target="_blank"-->
-               <!--class="btn btn-default btn-social btn-linkedin">-->
-                <!--<span class="fa fa-linkedin fa-lg"></span>-->
-            <!--</a>-->
-        <!--</div>-->
-
-        <!--<div class="col-sm-9" id="main-section">-->
-            <!--<div id="header" class="text-center">-->
-            <!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
-            <!--<h3>Welcome to Adriem's workshop</h3>-->
-            <!--&lt;!&ndash;<br>&ndash;&gt;-->
-            <!--<p class="lead col-sm-8 col-sm-offset-2">-->
-            <!--Web development and more software-related stuff.<br>-->
-            <!--This is my personal web page and home of some of my little web-->
-            <!--projects.-->
-            <!--&lt;!&ndash;<br><br>&ndash;&gt;-->
-            <!--&lt;!&ndash;<a ui-sref="/projects">Check out my projects!</a>&ndash;&gt;-->
-            <!--</p>-->
-
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-
-    <!--</div>-->
+    <!-- CONTENT -->
+    <div class="container">
+        <ui-view></ui-view>
+    </div>
 
     <!-- OWN SCRIPTS -->
     <!-- inject:js -->
     <!-- endinject -->
-    </div>
 </body>
 </html>
