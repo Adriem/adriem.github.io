@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 col-xs-12 project">
+<div class="col-md-4 col-sm-6 col-xs-12 project" ng-class="project.color">
 
     <h4 class="text-center project-title">
         <a ng-href="{{project.url}}" target="_blank">{{project.name}}</a>
@@ -6,18 +6,18 @@
 
     <a ng-href="{{project.url}}" target="_blank">
         <img class="img-responsive center-block" ng-src="{{project.pic}}" alt="Project miniature">
-    </a>
 
-    <p class="status-container" ng-if="project.notice !== ''">
-          <p class="status" ng-if="project.notice !== ''">
-            {{project.notice}}
+        <p class="status-container" ng-if="project.notice !== ''">
+              <p class="status" ng-if="project.notice !== ''">
+                {{project.notice}}
+            </p>
         </p>
-    </p>
 
-    <p class="description"> {{project.description}} </p>
+        <p class="description"> {{project.description}} </p>
 
-    <p> <p class="tags">{{project.tag}}</p> </p>
+        <p> <p class="tags">{{project.tag}}</p> </p>
 
+    </a>
     <!--<p class="code-button"><a ng-href="{{project.code}}" target="_blank">CODE</a></p>-->
 
 </div>

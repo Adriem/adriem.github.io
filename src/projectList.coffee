@@ -3,6 +3,7 @@ module.constant 'Projects', [
     name: "Random map generator"
     pic: "img/random-map-preview.jpg"
     url: "https://adriem.github.io/random-map-generator"
+    color: "brown"
     notice: 'in development'
     tag: "webapp"
     tags: ["web", "coffeescript", "pgc"]
@@ -14,6 +15,8 @@ module.constant 'Projects', [
     name: "OGame resource calculator"
     pic: "img/ogame-calculator-preview.jpg"
     url: "https://adriem.github.io/ogame-calculator"
+    color: "blue"
+    notice: 'in development'
     notice: ''
     tag: "webapp"
     tags: ["web", "coffeescript", "angularjs"]
@@ -22,9 +25,22 @@ module.constant 'Projects', [
     """
   },
   {
+    name: "Shell Utilities"
+    pic: "img/shell-utilities-preview.jpg"
+    url: "https://github.com/adriem/shell-utilities"
+    color: "black"
+    notice: 'periodically updated'
+    tag: "tools and snippets"
+    tags: ["web", "coffeescript", "pgc"]
+    description: """
+      A bunch of scripts and snippets to make my life a little easier :D
+    """
+  },
+  {
     name: "Gentleman Colorscheme"
     pic: "img/gentleman-colorscheme-preview.jpg"
     url: "https://adriem.github.io/gentleman-colorscheme"
+    color: "black"
     notice: ''
     tag: "VIM colorscheme"
     tags: ["color scheme", "vim"]
