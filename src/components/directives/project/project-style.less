@@ -1,0 +1,97 @@
+@headerLight: #957E6A;
+@headerDark: #8E7763;
+@finishedColor: #5ad3a4;
+@wipColor: #f4b272;
+@tagsColor: #52453A;
+
+.project {
+
+    @media(min-width:768px) {
+        padding: 10px 5px;
+    }
+    @media(max-width:767px) {
+        padding: 10px 0;
+    }
+
+    h4 {
+        font-family: aleo;
+        font-size: 16pt;
+        font-style: italic;
+        font-weight: bold;
+        a { color: @headerDark !important; }
+    }
+
+    p { margin: 0; }
+
+    img {
+        border: 1px solid @headerLight;
+        border-bottom: 0;
+        z-index: -1;
+    }
+
+    .description {
+        /*color: @headerLight !important;*/
+        background-color: @headerLight !important;
+        font-family: aleo;
+        font-size: 12pt;
+        font-style: italic;
+        padding: 5px;
+        min-height: 44px;
+    }
+
+    .status-container {
+        margin-bottom: -21px;
+    }
+    .status {
+        position: relative;
+        border-left: 1px solid @headerLight;
+        border-right: 1px solid @headerLight;
+        font-family: aleo;
+        font-size: 8pt;
+        font-style: italic;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 3px;
+        background-color: @wipColor;
+        z-index: 10;
+    }
+
+    .tags {
+        border-left: 1px solid @tagsColor;
+        border-right: 1px solid @tagsColor;
+        font-family: aleo;
+        font-size: 8pt;
+        font-style: italic;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 3px;
+        color: #FFFFFF;
+        background-color: @tagsColor;
+    }
+}
+
+/* ANIMATION ================================================================ */
+
+/*.project.ng-move,
+.project.ng-enter,
+.project.ng-leave {
+    -webkit-transition:all ease 0.35s;
+    -moz-transition:all ease 0.35s;
+    -o-transition:all ease 0.35s;
+    transition:all ease 0.35s;
+    position: relative
+}
+.project.ng-leave.ng-leave-active,
+.project.ng-move,
+.project.ng-enter {
+    opacity:0;
+    right: -100px;
+    /*top: -100px;*/
+/*}
+.project.ng-leave,
+.project.ng-move.ng-move-active,
+.project.ng-enter.ng-enter-active {
+    opacity:1;
+    right: 0;
+    /*top: 0;*/
+/*}*/

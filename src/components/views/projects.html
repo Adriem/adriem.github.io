@@ -1,10 +1,21 @@
-<div class="text-center col-xs-12 col-lg-8 col-lg-offset-2" style="margin-top: 23px;">
-    <p class="lead">
-        These are some of the projects I have worked on. All the projects shown
-        here are functional, although some of them may not be finished.
-    </p>
+<div class="text-center col-xs-12" style="margin-top: 23px;">
+    <div class="jumbotron"><div class="row">
+      <div class="col-lg-8">
+        <p class="lead">
+            Software Engineering student at Universidad de Zaragoza.
+            <!--Hi there! I'm Adrián, a Software Engineering student at Universidad de
+            Zaragoza who loves technology, videogames, music, and coffee :).-->
+        </p>
+        <p class="normal-text">
+            I am always trying to learn new things, experimenting on them and
+            developing little prototypes.
+            Here you can take a look at some of the little projects I do in my
+            spare time. Hope you find them interesting!
+        </p>
+      </div> </div>
+    </div>
 
-    <p class="normal-text" id="label-cloud">
+    <!--<p class="normal-text" id="label-cloud">
         Select a category <br>
 
         <button class="label label-primary label-select"
@@ -47,9 +58,9 @@
         </span>
 
     </p>
-</div>
+</div>-->
 
-<div class="col-lg-10 col-lg-offset-1 col-xs-12">
+    <!--<div class="col-xs-12">-->
     <project ng-repeat="project in projects | filter:filterFunction"
              project="project"></project>
-</div>
+           <!--</div>-->
