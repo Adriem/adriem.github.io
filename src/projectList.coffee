@@ -5,7 +5,7 @@ module.constant 'Projects', [
     url: "https://adriem.github.io/random-map-generator"
     color: "brown"
     notice: 'in development'
-    tag: "webapp"
+    type: "web application"
     tags: ["web", "coffeescript", "pgc"]
     description: """
       A little random map generator written in Coffeescript.
@@ -18,7 +18,7 @@ module.constant 'Projects', [
     color: "blue"
     notice: 'in development'
     notice: ''
-    tag: "webapp"
+    type: "web application"
     tags: ["web", "coffeescript", "angularjs"]
     description: """
       A calculator for ogame resources written in Coffeescript with AngularJS.
@@ -30,7 +30,7 @@ module.constant 'Projects', [
     url: "https://github.com/adriem/shell-utilities"
     color: "black"
     notice: 'periodically updated'
-    tag: "tools and snippets"
+    type: "tools and snippets"
     tags: ["web", "coffeescript", "pgc"]
     description: """
       A bunch of scripts and snippets to make my life a little easier :D
@@ -42,7 +42,7 @@ module.constant 'Projects', [
     url: "https://adriem.github.io/gentleman-colorscheme"
     color: "black"
     notice: ''
-    tag: "VIM colorscheme"
+    type: "VIM colorscheme"
     tags: ["color scheme", "vim"]
     description: """
       A dark, low contrast and terminal-friendly VIM colorscheme.

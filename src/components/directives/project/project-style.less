@@ -1,8 +1,18 @@
-@headerLight: #957E6A;
-@headerDark: #8E7763;
-@finishedColor: #5ad3a4;
-@wipColor: #f4b272;
-@tagsColor: #52453A;
+@brownLight: #957E6A;
+@brownDark: #52453A;
+@blueLight: #8897B9;
+@blueDark: #41475A;
+@blackLight: #888888;
+@blackDark: #444444;
+@redLight: #CC7373;
+@redDark: #6D3030;
+@greenLight: #598C70;
+@greenDark: #365645;
+@titleColor: #8E7763;
+@noticeBgColor: #f4b272;
+@noticeFgColor: @brownDark;
+
+/* PROJECT ================================================================== */
 
 .project {
 
@@ -13,19 +23,23 @@
         padding: 10px 0;
     }
 
-    * { text-decoration: none !important; }
-    p { margin: 0; }
+    .project-body { text-decoration: none !important; }
+
+    p {
+        margin: 0 auto;
+        max-width: 372px;
+    }
 
     h4 {
         font-family: aleo;
         font-size: 16pt;
         font-style: italic;
         font-weight: bold;
-        a { color: @headerDark !important; }
+        a { color: @titleColor !important; }
     }
 
     img {
-        border: 1px solid @headerLight;
+        border: 1px solid @brownLight;
         border-bottom: 0;
         z-index: -1;
     }
@@ -33,8 +47,7 @@
     .description {
         border-width: 0 1px;
         border-style: solid;
-        /*color: @headerLight !important;*/
-        background-color: @headerLight; /* !important;*/
+        background-color: @brownLight;
         font-family: aleo;
         font-size: 12pt;
         font-style: italic;
@@ -42,27 +55,25 @@
         min-height: 44px;
     }
 
-    .status-container {
+    .notice-container {
         margin-bottom: -21px;
     }
-    .status {
+    .notice {
         position: relative;
         border-width: 0 1px;
         border-style: solid;
-        /*border-left: 1px solid @headerLight;
-        border-right: 1px solid @headerLight;*/
         font-family: aleo;
         font-size: 8pt;
         font-style: italic;
         font-weight: bold;
         text-transform: uppercase;
         padding: 3px;
-        background-color: @wipColor;
-        color: @tagsColor !important;
+        background-color: @noticeBgColor;
+        color: @noticeFgColor !important;
         z-index: 10;
     }
 
-    .tags {
+    .type {
         font-family: aleo;
         font-size: 8pt;
         font-style: italic;
@@ -70,56 +81,58 @@
         text-transform: uppercase;
         padding: 3px;
         color: #FFFFFF;
-        background-color: @tagsColor;
+        background-color: @brownDark;
     }
 }
 
-/* ANIMATION ================================================================ */
+/* COLORS =================================================================== */
 
 .blue {
-  * { border-color: #41475A !important; }
-  .tags { background-color: #41475A !important; }
+  * { border-color: @blueDark !important; }
+  .type { background-color: @blueDark !important; }
   .description {
-      background-color: #8897B9;
-      color: #41475A !important;
+      background-color: @blueLight;
+      color: @blueDark !important;
   }
 }
 
 .brown {
-  * { border-color: @tagsColor !important; }
-  .tags { background-color: @tagsColor; }
+  * { border-color: @brownDark !important; }
+  .type { background-color: @brownDark; }
   .description {
-      background-color: @headerLight;
-      color: @tagsColor !important;
+      background-color: @brownLight;
+      color: @brownDark !important;
   }
 }
 
 .black {
-  * { border-color: #444444 !important; }
-  .tags { background-color: #444444; }
+  * { border-color: @blackDark !important; }
+  .type { background-color: @blackDark; }
   .description {
-      background-color: #888888;
-      color: #444444 !important;
+      background-color: @blackLight;
+      color: @blackDark !important;
   }
 }
 
 .red {
-  * { border-color: #6D3030 !important; }
-  .tags { background-color: #6D3030; }
+  * { border-color: @redDark !important; }
+  .type { background-color: @redDark; }
   .description {
-      background-color: #CC7373;
-      color: #6D3030 !important;
+      background-color: @redLight;
+      color: @redDark !important;
   }
 }
 
 .green {
-  * { border-color: #365645 !important; }
-  .tags { background-color: #365645; }
+  * { border-color: @greenDark !important; }
+  .type { background-color: @greenDark; }
   .description {
-      background-color: #598C70;/*#699C80;*/
-      color: #365645 !important;
+      background-color: @greenLight;
+      color: @greenDark !important;
   }
 }
+
+/* ANIMATION ================================================================ */
 
 /*.project.ng-move,
 .project.ng-enter,
