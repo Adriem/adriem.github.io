@@ -61,8 +61,8 @@
         padding-right: 8px;
       }
 
-      &:hover, {
-        color: lighten(@headerFgColor, 15%);
+      &:hover, &:focus, .open {
+        color: @selectedTabColor ! important;
         background: none !important;
         border: none !important;
       }
@@ -83,6 +83,19 @@
   .left-align {
     @media(min-width:768px) {
         float:left ! important;
+    }
+  }
+
+  &.contact {
+    margin-top:10px;
+    li {
+      border-top: 1px solid @headerFgColor;
+      margin-right: -2px;
+      margin-left: -1px;
+      a {
+        font-style: normal;
+        padding-top: 10px;
+      }
     }
   }
 }

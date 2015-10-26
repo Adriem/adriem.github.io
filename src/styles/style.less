@@ -1,31 +1,73 @@
-html {
-    @media(min-width:768px) {
-        overflow-y:scroll /*Mostramos siempre el scrollbar para evitar que la navbar se vuelva loca*/
-    }
+@sectionHeaderColor: #735242;
+@contentBgColor: #f8f8f8;
+
+.img-responsive { margin: 0 auto; }
+
+.section {
+  padding-top: 25px;
+  @media(min-width:768px) {
+    padding-bottom: 60px;
+  }
+  @media(max-width:767px) {
+    padding-bottom: 20px;
+  }
 }
 
 .jumbotron {
 
-    font-family: aleo;
-    font-style: italic;
-    text-align: left;
-    background-color: #eee;
-    @media(min-width:992px) {
-        background-image: url("../../../img/avatar.png");
-        background-repeat: no-repeat;
-        background-position: right;
-        background-size: contain;
-    }
-    .normal-text {
-        margin-bottom: 0;
-    }
+  font-family: aleo;
+  font-style: italic;
+  text-align: left;
+  background-color: #eee;
+  .normal-text {
+    margin-bottom: 0;
+    text-shadow: 0 0 5px #eee;
+  }
 
-    .lead {
-        font-weight: bold;
-        @media(min-width:768px) { font-size: 17pt; }
-        @media(max-width:767px) { font-size: 17pt; }
+  .lead {
+    font-weight: bold;
+    @media(min-width:768px) { font-size: 17pt; }
+    @media(max-width:767px) { font-size: 17pt; }
+  }
+  .cloud-paragraph {
+    margin-top: 15px !important;
+  }
+  &.project-header {
+    @media(min-width:992px) {
+      background-image: url("../../../img/avatar.png");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-size: contain;
     }
+  }
 }
+
+.section-header {
+  font-family: aleo;
+  font-size: 300%;
+  text-transform: capitalize;
+  color: @sectionHeaderColor;
+  border-bottom: 1px solid #eee;
+  @media(min-width:768px) {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+  @media(max-width:767px) {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.fact {
+  font-family: aleo;
+  font-size: 14pt;
+  /*strong { color: @sectionHeaderColor; }*/
+}
+
 
 .label {
     padding: .2em .6em;
@@ -64,4 +106,18 @@ html {
 
 #show-more-tags {
   cursor: pointer;
+}
+
+
+.btn-social {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    margin: 5px;
+    line-height: 1;
+    padding: 14px 5px;
+    font-size: 16px;
+}
+.btn-social * {
+    line-height: 1;
 }

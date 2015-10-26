@@ -1,19 +1,20 @@
-<div class="text-center col-xs-12" style="margin-top: 23px;">
-    <div class="jumbotron"><div class="row">
-      <div class="col-lg-8">
+<div class="text-center col-xs-12 section">
+    <div class="jumbotron project-header"><div class="row">
+      <div class="col-lg-8 col-md-10 col-xs-12">
         <p class="lead">
             Software Engineering student at Universidad de Zaragoza.
-            <!--Hi there! I'm Adrián, a Software Engineering student at Universidad de
-            Zaragoza who loves technology, videogames, music, and coffee :).-->
         </p>
         <p class="normal-text">
             I am always trying to learn new things, experimenting on them and
-            developing little prototypes.
+            developing prototypes.
             Here you can take a look at some of the little projects I do in my
             spare time. Hope you find them interesting!
         </p>
-      </div> </div>
+
     </div>
+    </div></div>
+
+    <h2 class="section-header"> My Projects </h2>
 
     <!--<p class="normal-text" id="label-cloud">
         Select a category <br>
@@ -60,7 +61,5 @@
     </p>
 </div>-->
 
-    <!--<div class="col-xs-12">-->
-    <project ng-repeat="project in projects | filter:filterFunction"
-             project="project"></project>
-           <!--</div>-->
+<project ng-repeat="project in projects | filter:filterFunction"
+         project="project"></project>
