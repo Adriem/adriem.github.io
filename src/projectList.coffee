@@ -37,15 +37,39 @@ module.constant 'Projects', [
     """
   },
   {
+    name: "My .vimrc"
+    pic: "img/dot-vim-preview.jpg"
+    url: "https://github.com/Adriem/my-vimrc"
+    color: "green"
+    notice: ''
+    type: "Configuration file"
+    tags: [""]
+    description: """
+      My .vimrc file, hope you find it interesting!
+    """
+  },
+  {
+    name: "Nixium Colorscheme"
+    pic: "img/nixium-colorscheme-preview.jpg"
+    url: "https://github.com/Adriem/nixium-colorscheme"
+    color: "brown"
+    notice: ''
+    type: "vim colorscheme"
+    tags: ["color scheme", "vim"]
+    description: """
+      A vim colorscheme compatible with gVim and 256-color term
+    """
+  },
+  {
     name: "Gentleman Colorscheme"
     pic: "img/gentleman-colorscheme-preview.jpg"
     url: "https://adriem.github.io/gentleman-colorscheme"
     color: "black"
     notice: ''
-    type: "VIM colorscheme"
+    type: "vim colorscheme"
     tags: ["color scheme", "vim"]
     description: """
-      A dark, low contrast and terminal-friendly VIM colorscheme.
+      A dark, low contrast and terminal-friendly vim colorscheme.
     """
   }
 ]

@@ -1,29 +1,21 @@
-module = angular.module("AdriemsWorkshop", ['ui.router', 'ngAnimate'])
+module = angular.module("AdriemsWorkshop", ['ui.router'])
 
 module.config ($stateProvider, $urlRouterProvider) ->
 
   $stateProvider
 
-    .state('home', {
-        url: '/home'
-        templateUrl: 'components/views/home.html'
-      })
-
     .state('about', {
-        url: '/about'
-        templateUrl: 'components/views/about.html'
-      })
+      url: '/about'
+      templateUrl: 'components/views/about.html'
+    })
 
     .state('projects', {
-        url: '/projects'
-        templateUrl: 'components/views/projects.html'
-        controller: 'projectCtrl'
-      })
+      url: '/projects'
+      templateUrl: 'components/views/projects.html'
+      controller: 'projectCtrl'
+    })
 
   $urlRouterProvider.otherwise('projects')
-
-module.controller "globalCtrl", ($scope, $location, $state) ->
-  $scope.toggleSidebar = false
 
 module.controller "projectCtrl", ($scope, Projects) ->
   $scope.projects = Projects

@@ -1,11 +1,12 @@
-@headerBgColor: #562800; /*#373C48; /*#174E00; /*#4c1b1b; /*#B1FFE0; /*#960000; /*#4C1B1B; /*#443A31; /* #16563D; /* #666633; /* #53493E; */
+@headerBgColor: #8f7864; /*#562800; /*#373C48; /*#174E00; /*#4c1b1b; /*#B1FFE0; /*#960000; /*#4C1B1B; /*#443A31; /* #16563D; /* #666633; /* #53493E; */
 @headerFgColor: rgba(255, 255, 255, 0.45);
+@headerFgColor2: rgba(255, 255, 255, 0.15);
 @selectedTabColor: rgba(255, 255, 255, 0.75);
 @headerAccentColor: #FFFFFF;
 
 #header {
     background-color: @headerBgColor;
-    background-image: url("../../../img/texture9.png");
+    background-image: url("../../../img/texture.jpg");
 
     .container {
         padding: 15px 15px 61px;
@@ -13,7 +14,7 @@
 
     * {
       color: @headerFgColor;
-      font-family: aleo, enriqueta, goudy_bookletter_1911;
+      font-family: aleo;
     }
 
     h2 {
@@ -89,7 +90,7 @@
   &.contact {
     margin-top:10px;
     li {
-      border-top: 1px solid @headerFgColor;
+      border-top: 1px solid @headerFgColor2;
       margin-right: -2px;
       margin-left: -1px;
       a {

@@ -1,0 +1,71 @@
+module = angular.module("AdriemsWorkshop")
+module.constant 'Facts', [
+  #{
+    #title: "I hace always a lot of projects in my head, "
+    #body: "
+      #from software projects to DIY stuff, so I have to use tools to keep them
+      #organized and be able to accomplish them (well, at least some of them).
+    #"
+  #},
+  {
+    title: "I prefer working during the night. "
+    body: "
+      I can perfectly stay awake all night long coding and then sleep in the
+      morning, but I have to force myself to follow regular human hours.
+    "
+  },
+  {
+    title: "I don't usually work in complete silence. "
+    body: "
+      I like to work while listening to music, but sometimes I just want some
+      noise around me. It helps me to get focused on what I'm doing.
+    "
+  },
+  {
+    title: "I was interested in game development even before I knew how to
+      code. "
+    body: "
+      I used to invent tabletop and card games with my friends
+      in high school. I tend to start a lot of projects, but I finish few of
+      them.
+    "
+  },
+  {
+    title: "I love walking in nature, "
+    body: "
+      especially in quiet places where I can be all alone. When I'm exhausted
+      I like to go to a little forest in a park near college.
+    "
+  },
+  {
+    title: "I'd rather live in a small town in the mountains "
+    body: "
+      near nature than in a big city (if I could choose), but it should be a
+      town with a decent internet connection! :P
+    "
+  },
+  {
+    title: "I also play the guitar, "
+    body: "
+      but I'm always so busy that I can't practice as much as I should. I have
+      been in some music groups with my friends. I play mainly rock and metal
+      music \\m/.
+    "
+  },
+  {
+    title: "I love to work wity my Raspberry PI"
+    body: "
+      Since my laptop died some time ago, I do a lot of programming directly on
+      my Raspberry PI from an android tablet over SSH. It can be tough sometimes,
+      but I find it pretty interesting (and even funny).
+    "
+  },
+  #{
+    #title: "I love to work wity my Raspberry PI"
+    #body: "
+      #Since my laptop died some time ago, I do a lot of programming directly on
+      #my Raspberry PI from an android tablet over SSH. It can be tough sometimes,
+      #but I find it pretty interesting (and even funny).
+    #"
+  #}
+]
