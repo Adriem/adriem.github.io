@@ -6,7 +6,7 @@ module.config ($stateProvider, $urlRouterProvider) ->
 
     .state('about', {
       url: '/about'
-      templateUrl: 'components/views/about.html'
+      templateurl: 'components/views/about.html'
     })
 
     .state('projects', {
