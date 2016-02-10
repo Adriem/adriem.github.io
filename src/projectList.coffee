@@ -4,6 +4,8 @@ module.constant 'Projects', [
     pic: "img/random-map-preview.jpg"
     url: "https://adriem.github.io/random-map-generator"
     color: "brown"
+    color: "red"
+    color: "neutral"
     notice: 'in development'
     type: "web application"
     tags: ["web", "coffeescript", "pgc"]
@@ -15,7 +17,8 @@ module.constant 'Projects', [
     pic: "img/ogame-calculator-preview.jpg"
     url: "https://adriem.github.io/ogame-calculator"
     color: "blue"
-    notice: 'in development'
+    color: "green"
+    color: "neutral"
     notice: ''
     type: "web application"
     tags: ["web", "coffeescript", "angularjs"]
@@ -23,10 +26,26 @@ module.constant 'Projects', [
       A calculator for ogame resources written in Coffeescript with AngularJS.
     """
   }, {
+    name: "Chatsockets"
+    pic: "img/chatsockets-preview.jpg"
+    url: "http://adriem.noip.me/chatsockets"
+    color: "brown"
+    color: "black"
+    color: "green"
+    color: "neutral"
+    notice: ''
+    type: "web application"
+    tags: ["web", "websockets", "coffeescript", "angularjs"]
+    description: """
+      Websockets demonstration project over the MEAN stack with socket.io
+    """
+  }, {
     name: "Shell Utilities"
     pic: "img/shell-utilities-preview.jpg"
     url: "https://github.com/adriem/shell-utilities"
-    color: "black"
+    color: "brown"
+    color: "green"
+    color: "neutral"
     notice: 'periodically updated'
     type: "tools and snippets"
     tags: ["web", "coffeescript", "pgc"]
@@ -38,6 +57,9 @@ module.constant 'Projects', [
     pic: "img/dot-vim-preview.jpg"
     url: "https://github.com/Adriem/my-vimrc"
     color: "green"
+    color: "brown"
+    color: "green"
+    color: "neutral"
     notice: ''
     type: "Configuration file"
     tags: [""]
@@ -49,6 +71,8 @@ module.constant 'Projects', [
     pic: "img/nixium-colorscheme-preview.jpg"
     url: "https://github.com/Adriem/vim-colorscheme"
     color: "brown"
+    color: "green"
+    color: "neutral"
     notice: ''
     type: "vim colorscheme"
     tags: ["color scheme", "vim"]
@@ -59,7 +83,10 @@ module.constant 'Projects', [
     name: "Gentleman Colorscheme"
     pic: "img/gentleman-colorscheme-preview.jpg"
     url: "https://adriem.github.io/gentleman-colorscheme"
+    color: "brown"
     color: "black"
+    color: "green"
+    color: "neutral"
     notice: ''
     type: "vim colorscheme"
     tags: ["color scheme", "vim"]

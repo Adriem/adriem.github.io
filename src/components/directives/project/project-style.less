@@ -1,5 +1,7 @@
 @brownLight: #957E6A;
 @brownDark: #52453A;
+@neutralLight: #9a918d;
+@neutralDark: #48433d;
 @blueLight: #8897B9;
 @blueDark: #41475A;
 @blackLight: #888888;
@@ -102,6 +104,15 @@
   .description {
       background-color: @brownLight;
       color: @brownDark !important;
+  }
+}
+
+.neutral {
+  * { border-color: @neutralDark !important; }
+  .type { background-color: @neutralDark; }
+  .description {
+      background-color: @neutralLight;
+      color: @neutralDark !important;
   }
 }
 

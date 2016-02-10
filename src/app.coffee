@@ -1,5 +1,6 @@
 module = angular.module("AdriemsWorkshop", ['ui.router'])
 
+
 module.config ($stateProvider, $urlRouterProvider) ->
 
   $stateProvider
