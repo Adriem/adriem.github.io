@@ -6,7 +6,7 @@ module.constant 'Projects', [
     color: "brown"
     color: "red"
     color: "neutral"
-    notice: 'in development'
+    notice: ''
     type: "web application"
     tags: ["web", "coffeescript", "pgc"]
     description: """
