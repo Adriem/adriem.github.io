@@ -46,7 +46,7 @@ module.constant 'Projects', [
   }, {
     name: "Vim Colorschemes"
     pic: "img/nixium-colorscheme-preview.jpg"
-    url: "https://github.com/Adriem/vim-colorscheme"
+    url: "https://github.com/Adriem/vim-colorschemes"
     color: "brown"
     notice: ''
     type: "vim colorscheme"
