@@ -2,10 +2,10 @@
 
   <div class="row">
     <ul class="nav nav-tabs">
-        <li class="left-align" ng-class="{'active': isActiveSection('/projects')}">
-          <a ui-sref="projects">Projects</a></li>
-        <li class="left-align" ng-class="{'active': isActiveSection('/about')}">
-          <a ui-sref="about">About me</a></li>
+        <li class="left-align {% if page.url == '/' %} active {% endif %}">
+          <a class="page-link" href="{{ "/" | prepend: site.baseurl }}">Projects</a>
+        <li class="left-align {% if page.url == '/about/' %} active {% endif %}">
+          <a class="page-link" href="{{ "/about" | prepend: site.baseurl }}">About Me</a>
         <!--<li class="right-align" ng-class="{'active': isActiveSection('/home')}">-->
           <!--<a ui-sref="home">Español</a></li>-->
       </ul>

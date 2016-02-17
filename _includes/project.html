@@ -1,0 +1,25 @@
+<!-- PROJECT TEMPLATE -->
+
+<div class="col-md-4 col-sm-6 col-xs-12 project {{include.project.color}}">
+
+    <h4 class="text-center project-title">
+        <a href="{{ include.project.url }}" target="_blank">{{ include.project.name }}</a>
+    </h4>
+
+    <a class="project-body" href="{{include.project.url}}" target="_blank">
+        <img class="img-responsive center-block" alt="Project thumbnail"
+             src="{{ include.project.pic | prepend: "/img/" | prepend: site.baseurl }}">
+
+        {% if include.project.notice %}
+        <p class="notice-container"><p class="notice">
+            {{ include.project.notice }}
+        </p></p>
+        {% endif %}
+
+        <p class="description"> {{ include.project.description }} </p>
+
+        <p> <p class="type">{{ include.project.type }}</p> </p>
+
+    </a>
+
+</div>

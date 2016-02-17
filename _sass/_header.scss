@@ -1,38 +1,33 @@
-@headerBgColor: #8f7864; /*#562800; /*#373C48; /*#174E00; /*#4c1b1b; /*#B1FFE0; /*#960000; /*#4C1B1B; /*#443A31; /* #16563D; /* #666633; /* #53493E; */
-@headerFgColor: rgba(255, 255, 255, 0.45);
-@headerFgColor2: rgba(255, 255, 255, 0.15);
-@selectedTabColor: rgba(255, 255, 255, 0.75);
-@headerAccentColor: #FFFFFF;
+$headerBgColor: #8f7864; /*#562800; /*#373C48; /*#174E00; /*#4c1b1b; /*#B1FFE0; /*#960000; /*#4C1B1B; /*#443A31; /* #16563D; /* #666633; /* #53493E; */
+$headerFgColor: rgba(255, 255, 255, 0.45);
+$headerFgColor2: rgba(255, 255, 255, 0.15);
+$selectedTabColor: rgba(255, 255, 255, 0.75);
+$headerAccentColor: #FFFFFF;
+
+$font-family: aleo, Georgia, Serif;
 
 #header {
-    background-color: @headerBgColor;
+
+    background-color: $headerBgColor;
     background-image: url("../../../img/texture.jpg");
 
-    .container {
-        padding: 15px 15px 61px;
-    }
+    .container { padding: 15px 15px 61px; }
 
     * {
-      color: @headerFgColor;
-      font-family: aleo;
+      color: $headerFgColor;
+      font-family: $font-family;
     }
 
     h2 {
-      font-family: aleo;
-      font-size: 300%;
       text-transform: capitalize;
-      color: @headerAccentColor;
-      @media(min-width:768px) {
-        padding-top: 15px;
-      }
-      @media(max-width:767px) {
-        padding-top: 20px;
-      }
+      color: $headerAccentColor;
+      font-family: $font-family;
+      font-size: 300%;
+      @media(min-width:768px) { padding-top: 15px; }
+      @media(max-width:767px) { padding-top: 20px; }
     }
 
-    p {
-      margin-bottom: 0;
-    }
+    p { margin-bottom: 0; }
 }
 
 .nav-tabs, .nav-pills {
@@ -63,14 +58,14 @@
       }
 
       &:hover, &:focus, .open {
-        color: @selectedTabColor ! important;
+        color: $selectedTabColor ! important;
         background: none !important;
         border: none !important;
       }
   }
 
   .active > a {
-    color: @selectedTabColor ! important;
+    color: $selectedTabColor ! important;
     background: none !important;
     border: none !important;
   }
@@ -90,7 +85,7 @@
   &.contact {
     margin-top:10px;
     li {
-      border-top: 1px solid @headerFgColor2;
+      border-top: 1px solid $headerFgColor2;
       margin-right: -2px;
       margin-left: -1px;
       a {

@@ -1,18 +1,18 @@
-@brownLight: #957E6A;
-@brownDark: #52453A;
-@neutralLight: #9a918d;
-@neutralDark: #48433d;
-@blueLight: #8897B9;
-@blueDark: #41475A;
-@blackLight: #888888;
-@blackDark: #444444;
-@redLight: #A25452;
-@redDark: #692A29;
-@greenLight: #598C70;
-@greenDark: #304E3E;
-@titleColor: #8E7763;
-@noticeBgColor: #f4b272;
-@noticeFgColor: @brownDark;
+$brownLight: #957E6A;
+$brownDark: #52453A;
+$neutralLight: #9a918d;
+$neutralDark: #48433d;
+$blueLight: #8897B9;
+$blueDark: #41475A;
+$blackLight: #888888;
+$blackDark: #444444;
+$redLight: #A25452;
+$redDark: #692A29;
+$greenLight: #598C70;
+$greenDark: #304E3E;
+$titleColor: #8E7763;
+$noticeBgColor: #f4b272;
+$noticeFgColor: $brownDark;
 
 /* PROJECT ================================================================== */
 
@@ -37,11 +37,11 @@
         font-size: 16pt;
         font-style: italic;
         font-weight: bold;
-        a { color: @titleColor !important; }
+        a { color: $titleColor !important; }
     }
 
     img {
-        border: 1px solid @brownLight;
+        border: 1px solid $brownLight;
         border-bottom: 0;
         z-index: -1;
     }
@@ -49,7 +49,7 @@
     .description {
         border-width: 0 1px;
         border-style: solid;
-        background-color: @brownLight;
+        background-color: $brownLight;
         font-family: aleo;
         font-size: 12pt;
         font-style: italic;
@@ -70,8 +70,8 @@
         font-weight: bold;
         text-transform: uppercase;
         padding: 3px;
-        background-color: @noticeBgColor;
-        color: @noticeFgColor !important;
+        background-color: $noticeBgColor;
+        color: $noticeFgColor !important;
         z-index: 10;
     }
 
@@ -83,63 +83,63 @@
         text-transform: uppercase;
         padding: 3px;
         color: #FFFFFF;
-        background-color: @brownDark;
+        background-color: $brownDark;
     }
 }
 
 /* COLORS =================================================================== */
 
 .blue {
-  * { border-color: @blueDark !important; }
-  .type { background-color: @blueDark !important; }
+  * { border-color: $blueDark !important; }
+  .type { background-color: $blueDark !important; }
   .description {
-      background-color: @blueLight;
-      color: @blueDark !important;
+      background-color: $blueLight;
+      color: $blueDark !important;
   }
 }
 
 .brown {
-  * { border-color: @brownDark !important; }
-  .type { background-color: @brownDark; }
+  * { border-color: $brownDark !important; }
+  .type { background-color: $brownDark; }
   .description {
-      background-color: @brownLight;
-      color: @brownDark !important;
+      background-color: $brownLight;
+      color: $brownDark !important;
   }
 }
 
 .neutral {
-  * { border-color: @neutralDark !important; }
-  .type { background-color: @neutralDark; }
+  * { border-color: $neutralDark !important; }
+  .type { background-color: $neutralDark; }
   .description {
-      background-color: @neutralLight;
-      color: @neutralDark !important;
+      background-color: $neutralLight;
+      color: $neutralDark !important;
   }
 }
 
 .black {
-  * { border-color: @blackDark !important; }
-  .type { background-color: @blackDark; }
+  * { border-color: $blackDark !important; }
+  .type { background-color: $blackDark; }
   .description {
-      background-color: @blackLight;
-      color: @blackDark !important;
+      background-color: $blackLight;
+      color: $blackDark !important;
   }
 }
 
 .red {
-  * { border-color: @redDark !important; }
-  .type { background-color: @redDark; }
+  * { border-color: $redDark !important; }
+  .type { background-color: $redDark; }
   .description {
-      background-color: @redLight;
-      color: @redDark !important;
+      background-color: $redLight;
+      color: $redDark !important;
   }
 }
 
 .green {
-  * { border-color: @greenDark !important; }
-  .type { background-color: @greenDark; }
+  * { border-color: $greenDark !important; }
+  .type { background-color: $greenDark; }
   .description {
-      background-color: @greenLight;
-      color: @greenDark !important;
+      background-color: $greenLight;
+      color: $greenDark !important;
   }
 }
 

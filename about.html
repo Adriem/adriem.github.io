@@ -1,0 +1,78 @@
+---
+layout: default
+permalink: /about/
+---
+<div class="col-xs-12 section">
+
+    <div class="jumbotron">
+
+      <div class="row hidden-lg"><div class="col-xs-12">
+          <p class="lead">
+              Software, technology, videogames, DIY stuff, music and beer :)
+          </p>
+      </div></div>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-7 col-xs-12">
+          <p class="lead visible-lg">
+              Software, technology, videogames, DIY stuff, music and beer :)
+          </p>
+          <p class="normal-text">
+              Hi there! My name is Adrián Moreno and I am a Software Engineering
+              from Zaragoza, a city from North-East Spain.
+          </p>
+          <p class="normal-text cloud-paragraph hidden-xs hidden-sm">
+              In my spare time I like to develop little projects and mess with
+              DIY stuff. I am very intrested in software development and
+              software architecture, as well as web technologies, programming
+              languages and game development.
+          </p>
+        </div>
+
+        <div class="tag-cloud col-lg-4 col-md-5 col-xs-12">
+          <img class="img-responsive" src="../../img/cloud.gif"></img>
+        </div>
+
+        <div class="col-xs-12 hidden-lg hidden-md">
+          <p class="normal-text cloud-paragraph">
+              In my spare time I like to develop little projects and mess with
+              DIY stuff. I am very intrested in software development and
+              software architecture, as well as web technologies, programming
+              languages and game development.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <h2 class="section-header text-center"> Some facts about me</h2>
+
+      {% for fact in site.data.facts %}
+      <div class="col-md-4 col-xs-12 col-sm-6 fact">{{ fact | markdownify }}</div>
+      {% endfor %}
+
+    </div>
+
+    <!-- <div class="row"> -->
+      <!-- <h2 class="section-header text-center"> Why this site? </h2> -->
+      <!-- <p class="fact"> -->
+          <!-- When I started developing web applications, I thought it could be great -->
+          <!-- being able to host them, so people could play around with them. I -->
+          <!-- started using GitHub pages, but since they don't give you access to a -->
+          <!-- backend, I decided to buy a Raspberry PI 2 and host my backends there. -->
+          <!-- After a bunch of hours in front of the command line interpreter, I -->
+          <!-- managed to set up a web server in this little beast. Then I thought I -->
+          <!-- needed a home page where I could track all my projects, so I built this -->
+          <!-- site :D. -->
+          <!-- [><br><] -->
+          <!-- [>From then on, I've been working more and more with this little beast<] -->
+          <!-- [>as a web server, a git server and, since my laptop died, as a<] -->
+          <!-- [>remote development machine (via ssh with my tablet). <] -->
+          <!-- [>and it allows me to mess with virtual machines or linux installations on my<] -->
+          <!-- [>desktop. It can be though sometimes, but I find it quite interesting<] -->
+          <!-- [>and funny :).<] -->
+      <!-- </p> -->
+    <!-- </div> -->
+</div>

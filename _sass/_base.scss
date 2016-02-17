@@ -1,5 +1,5 @@
-@sectionHeaderColor: #735242;
-@contentBgColor: #f8f8f8;
+$sectionHeaderColor: #735242;
+$contentBgColor: #f8f8f8;
 
 .img-responsive { margin: 0 auto; }
 
@@ -52,7 +52,7 @@
   font-family: aleo;
   font-size: 300%;
   text-transform: capitalize;
-  color: @sectionHeaderColor;
+  color: $sectionHeaderColor;
   border-bottom: 1px solid #eee;
   @media(min-width:768px) {
     padding-top: 15px;
@@ -71,7 +71,7 @@
 .fact {
   font-family: aleo;
   font-size: 14pt;
-  /*strong { color: @sectionHeaderColor; }*/
+  /*strong { color: $sectionHeaderColor; }*/
 }
 
 
