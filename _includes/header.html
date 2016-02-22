@@ -5,12 +5,12 @@
             {% if page.url == '/' %}
             <li class="left-align active"><a href="#projects">Projects</a>
             {% else %}
-            <li class="left-align"><a href="{{ "/" | prepend: site.baseurl }}">Projects</a>
+            <li class="left-align"><a href="{{ "/" | prepend: site.github.url }}">Projects</a>
             {% endif %}
             {% if page.url == '/about/' %}
             <li class="active left-align"><a href="#who-am-i">About Me</a>
             {% else %}
-            <li class="left-align"><a href="{{ "/about" | prepend: site.baseurl }}">About Me</a>
+            <li class="left-align"><a href="{{ "/about" | prepend: site.github.url }}">About Me</a>
             {% endif %}
             <li class="right-align">
                 <a href="#contact">Contact</a></li>

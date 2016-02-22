@@ -12,9 +12,6 @@ $jumbotron-bg-color: #eee;
 $jumbotron-fg-color: #555;
 $jumbotron-fg-accent-color: #333;
 
-
-
-
 html {
     font: $default-font;
         background-color: #000;
@@ -48,8 +45,10 @@ html {
         font: $default-font;
         line-height: 1.25;
         font-size: 13pt;
-        text-align: left;
+        /* text-align: left; */
         /* color: #666; */
+        @media(max-width:767px) { text-align: center; }
+        @media(min-width:768px) { text-align: left; }
     }
 
 

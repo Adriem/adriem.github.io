@@ -2,10 +2,7 @@
 
     <div class="row">
         <ul class="nav nav-tabs">
-            <!-- <li class=""><a class="page-link" -->
-                <!-- href="{{ "#header" | prepend: site.baseurl }}">back to top</a> -->
             <li class=""><a class="page-link" href="#header">back to top</a></li>
-            <!-- </li> -->
         </ul>
     </div>
 
@@ -15,13 +12,11 @@
             {% if page.url == '/' %}
             <li class="active"><a href="#projects">Projects</a></li>
             {% else %}
-            <!-- <li><a href="{{ "/" | prepend: site.baseurl }}">Projects</a> -->
             <li><a href="{{ "/" | prepend: site.github.url }}">Projects</a></li>
             {% endif %}
             {% if page.url == '/about/' %}
             <li class="active"><a href="#who-am-i">About Me</a></li>
             {% else %}
-            <!-- <li><a href="{{ "/about" | prepend: site.baseurl }}">About Me</a> -->
             <li><a href="{{ "/about" | prepend: site.github.url }}">About Me</a></li>
             {% endif %}
         </ul>
