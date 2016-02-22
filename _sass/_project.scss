@@ -1,170 +1,106 @@
-$brownLight: #957E6A;
-$brownDark: #52453A;
-$neutralLight: #9a918d;
-$neutralDark: #48433d;
-$blueLight: #8897B9;
-$blueDark: #41475A;
-$blackLight: #888888;
-$blackDark: #444444;
-$redLight: #A25452;
-$redDark: #692A29;
-$greenLight: #598C70;
-$greenDark: #304E3E;
-$titleColor: #8E7763;
-$noticeBgColor: #f4b272;
-$noticeFgColor: $brownDark;
+/* FONTS */
+$title-font: 700 15pt Questrial, Josefin Sans, sans-serif;
+$description-font: 14pt Questrial, Josefin Sans, sans-serif;
+$type-font: 10pt Questrial, Josefin Sans, sans-serif;
+$notice-font: 600 9pt Questrial, Josefin Sans, sans-serif;
 
-/* PROJECT ================================================================== */
+/* COLORS */
+$project-light: #9a918d;
+$project-dark: #48433d;
+$notice-foreground: $project-dark;
+$notice-background: #f4b272;
 
 .project {
 
-    @media(min-width:768px) {
-        padding: 10px 5px;
-    }
-    @media(max-width:767px) {
-        padding: 10px 0;
-    }
+    @media(min-width:768px) { padding: 10px 5px; }
+    @media(max-width:767px) { padding: 10px 0; }
 
-    .project-body { text-decoration: none !important; }
+    .project-content {
 
-    p {
-        margin: 0 auto;
-        max-width: 372px;
-    }
+        text-decoration: none !important;
 
-    h4 {
-        font-family: aleo;
-        font-size: 16pt;
-        font-style: italic;
-        font-weight: bold;
-        a { color: $titleColor !important; }
-    }
+        img {
+            border: 1px solid $project-dark;
+            border-bottom: 0;
+            z-index: -1;
+        }
 
-    img {
-        border: 1px solid $brownLight;
-        border-bottom: 0;
-        z-index: -1;
-    }
+        div {
+            border: { width: 0 1px; style: solid; color: $project-dark; }
+            margin: 0 auto;
+            max-width: 372px;
+        }
 
-    .description {
-        border-width: 0 1px;
-        border-style: solid;
-        background-color: $brownLight;
-        font-family: aleo;
-        font-size: 12pt;
-        font-style: italic;
-        padding: 5px;
-        min-height: 54px;
-    }
+        .project-body {
+            &.bordered-top { border-width: 1px 1px 0 !important; }
+            min-height: 119px;
+            @media (max-width: 1199px) and (min-width: 992px) { min-height: 144px; }
+            padding: 15px;
+            color: $project-dark;
+            background-color: $project-light;
 
-    .notice-container {
-        margin-bottom: -21px;
-    }
-    .notice {
-        position: relative;
-        border-width: 0 1px;
-        border-style: solid;
-        font-family: aleo;
-        font-size: 8pt;
-        font-style: italic;
-        font-weight: bold;
-        text-transform: uppercase;
-        padding: 3px;
-        background-color: $noticeBgColor;
-        color: $noticeFgColor !important;
-        z-index: 10;
-    }
+            .project-title {
+                font: $title-font;
+                margin: 5px 0;
+            }
 
-    .type {
-        font-family: aleo;
-        font-size: 8pt;
-        font-style: italic;
-        font-weight: bold;
-        text-transform: uppercase;
-        padding: 3px;
-        color: #FFFFFF;
-        background-color: $brownDark;
+            .project-separator {
+                margin: 10px 70px;
+                border: {
+                    width: 1px 0 0;
+                    style: solid;
+                    color: darken($project-light, 15%);
+                }
+            }
+
+            .project-description {
+                font: $description-font;
+                margin: 5px 0;
+            }
+            
+        }
+
+        .project-type {
+            font: $type-font;
+            text-transform: lowercase;
+            padding: 3px;
+            color: #FFFFFF;
+            background-color: $project-dark;
+        }
+
+        .notice-container {
+            margin-top: -21px !important;
+        }
+        .notice {
+            margin: 0;
+            position: relative;
+            font: $notice-font;
+            text-transform: uppercase;
+            padding: 4px;
+            color: $notice-foreground;
+            background-color: $notice-background;
+            z-index: 10;
+        }
+
     }
 }
 
-/* COLORS =================================================================== */
+/* $brownLight: #957E6A; */
+/* $brownDark: #52453A; */
+/* $neutralLight: #9a918d; */
+/* $neutralDark: #48433d; */
+/* $blueLight: #8897B9; */
+/* $blueDark: #41475A; */
+/* $blackLight: #888888; */
+/* $blackDark: #444444; */
+/* $redLight: #A25452; */
+/* $redDark: #692A29; */
+/* $greenLight: #598C70; */
+/* $greenDark: #304E3E; */
+/* [> $titleColor: #8E7763; <] */
+/* $noticeBgColor: #f4b272; */
+/* $noticeFgColor: $brownDark; */
 
-.blue {
-  * { border-color: $blueDark !important; }
-  .type { background-color: $blueDark !important; }
-  .description {
-      background-color: $blueLight;
-      color: $blueDark !important;
-  }
-}
-
-.brown {
-  * { border-color: $brownDark !important; }
-  .type { background-color: $brownDark; }
-  .description {
-      background-color: $brownLight;
-      color: $brownDark !important;
-  }
-}
-
-.neutral {
-  * { border-color: $neutralDark !important; }
-  .type { background-color: $neutralDark; }
-  .description {
-      background-color: $neutralLight;
-      color: $neutralDark !important;
-  }
-}
-
-.black {
-  * { border-color: $blackDark !important; }
-  .type { background-color: $blackDark; }
-  .description {
-      background-color: $blackLight;
-      color: $blackDark !important;
-  }
-}
-
-.red {
-  * { border-color: $redDark !important; }
-  .type { background-color: $redDark; }
-  .description {
-      background-color: $redLight;
-      color: $redDark !important;
-  }
-}
-
-.green {
-  * { border-color: $greenDark !important; }
-  .type { background-color: $greenDark; }
-  .description {
-      background-color: $greenLight;
-      color: $greenDark !important;
-  }
-}
-
-/* ANIMATION ================================================================ */
-
-/*.project.ng-move,
-.project.ng-enter,
-.project.ng-leave {
-    -webkit-transition:all ease 0.35s;
-    -moz-transition:all ease 0.35s;
-    -o-transition:all ease 0.35s;
-    transition:all ease 0.35s;
-    position: relative
-}
-.project.ng-leave.ng-leave-active,
-.project.ng-move,
-.project.ng-enter {
-    opacity:0;
-    right: -100px;
-    /*top: -100px;*/
-/*}
-.project.ng-leave,
-.project.ng-move.ng-move-active,
-.project.ng-enter.ng-enter-active {
-    opacity:1;
-    right: 0;
-    /*top: 0;*/
-/*}*/
+/* $title-font: Questrial, Josefin Sans, sans-serif; */
+/* $description-font: Questrial, Josefin Sans, sans-serif; */
+/* $title-color: #877; */

@@ -1,129 +1,161 @@
-$sectionHeaderColor: #735242;
-$contentBgColor: #f8f8f8;
+$font-family: Questrial, sans-serif;
 
-.img-responsive { margin: 0 auto; }
+$default-font: 500 14pt Questrial, sans-serif;
+
+$section-header-color: #655;
+$section-header-weight: 500;
+$section-header-font: Questrial, Poiret One, Josefin Slab, Josefin Sans;
+$content-bg-color: #f8f8f8;
+
+$jumbotron-font-family: Questrial, sans-serif;
+$jumbotron-bg-color: #eee;
+$jumbotron-fg-color: #555;
+$jumbotron-fg-accent-color: #333;
+
+
+
+
+html {
+    font: $default-font;
+        background-color: #000;
+}
+
+#main-section {
+    background-color: $content-bg-color;
+    color: #777;
+    #main-container {
+        @media(min-width:768px) { padding: 25px 0 60px; }
+        @media(max-width:767px) { padding: 25px 20px 20px; }
+    }
+}
 
 .section {
-  padding-top: 25px;
-  @media(min-width:768px) {
-    padding-bottom: 60px;
-  }
-  @media(max-width:767px) {
-    padding-bottom: 20px;
-  }
+    &.delim-enabled { border-bottom: 1px solid #ddd; }
+    padding: 0;
+    font: $default-font;
+    line-height: 1.25;
+    @media(max-width: 767px) { font-size: 13pt; }
+
+    .main-paragraph {
+        margin-bottom: 30px;
+    }
+
+    .normal-text {
+        line-height: 1.5;
+    }
+
+    .fact {
+        font: $default-font;
+        line-height: 1.25;
+        font-size: 13pt;
+        text-align: left;
+        /* color: #666; */
+    }
+
+
+    .section-header {
+        color: $section-header-color;
+        font-family: $section-header-font;
+        font-weight: $section-header-weight;
+        @media(min-width:768px) {
+            font-size: 28pt;
+            padding-top: 15px;
+            padding-bottom: 5px;
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+        @media(max-width:767px) {
+            font-size: 22pt;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
 }
 
 .jumbotron {
 
-  font-family: aleo;
-  font-style: italic;
-  text-align: left;
-  background-color: #eee;
-  .normal-text {
-    margin-bottom: 0;
-    text-shadow: 0 0 5px #eee;
-  }
-
-  .lead {
-    font-weight: bold;
-    @media(min-width:768px) { font-size: 17pt; }
-    @media(max-width:767px) { font-size: 17pt; }
-  }
-  .cloud-paragraph {
-    margin-top: 15px !important;
-  }
-  .text-right {
-      @media (max-width: 991px) { text-align: left; }
-  }
-  .tag-cloud {
-      @media(max-width:991px) { margin-top: 20px; }
-  }
-  &.project-header {
-    @media(min-width:992px) {
-      background-image: url("../../../img/avatar-new3.jpg");
-      background-repeat: no-repeat;
-      background-position: left;
-      background-size: contain;
+    // Font settings
+    &, p {
+        @media (min-width: 768px) { font-size: 15pt; }
+        @media (max-width: 767px) { font-size: 13pt; }
     }
-  }
-}
+    text-align: center;
+    font-family: $jumbotron-font-family;
+    font-weight: 500;
 
-.section-header {
-  font-family: aleo;
-  font-size: 300%;
-  text-transform: capitalize;
-  color: $sectionHeaderColor;
-  border-bottom: 1px solid #eee;
-  @media(min-width:768px) {
-    padding-top: 15px;
-    padding-bottom: 5px;
-    margin-left: 60px;
-    margin-right: 60px;
-  }
-  @media(max-width:767px) {
-    padding-top: 20px;
-    padding-bottom: 5px;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
+    // Appearance
+    border-radius: 0 !important;
+    color: $jumbotron-fg-color;
+    background-color: $jumbotron-bg-color;
+    text-shadow: 0 0 7px $jumbotron-bg-color;
+    @media (max-width: 767px) {
+        background-color: $content-bg-color;
+        border-bottom: 1px solid #ddd;
+        margin: 0 0 15px;
+    }
+    @media (min-width: 768px) {
+        margin: 0 0 20px;
+        padding: 30px 50px 20px;
+    }
+    @media (min-width: 992px) {
+        margin: 0 30px 10px;
+        min-height: 225px;
+    }
+    @media (min-width: 1200px) { margin: 0 60px 10px; }
 
-.fact {
-  font-family: aleo;
-  font-size: 14pt;
-  /*strong { color: $sectionHeaderColor; }*/
-}
+    .lead {
+        color: #333;
+        @media (min-width: 768px) { font-size: 18pt; }
+        @media (max-width: 767px) { font-size: 16pt; }
+    }
 
-
-.label {
-    padding: .2em .6em;
-    margin: .2em;
-    text-transform: uppercase;
-    -webkit-transition:all ease 0.15s;
-    -moz-transition:all ease 0.15s;
-    -o-transition:all ease 0.15s;
-    transition:all ease 0.15s;
-}
-.label.ng-hide-add.ng-hide-add-active,
-.label.ng-hide-remove {
-    opacity:0;
-}
-.label.ng-hide-add,
-.label.ng-hide-remove.ng-hide-remove-active {
-    opacity:1;
-}
-.label-select {
-    border: none;
-    padding: .4em 1em;
-}
-.label-primary {
-    background-color: #7d92bf;
-}
-.label-success {
-    background-color: #5ad3a4;
-}
-.label-warning {
-    background-color: #f4b272;
-}
-.selected-label-icon {
-    margin-right: .4em;
-    font-size: 75%;
-}
-
-#show-more-tags {
-  cursor: pointer;
-}
-
-
-.btn-social {
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
-    margin: 5px;
-    line-height: 1;
-    padding: 14px 5px;
-    font-size: 16px;
-}
-.btn-social * {
-    line-height: 1;
+    &.project-jumbo {
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: contain;
+        @media (max-width: 767px) {
+            background-image: none;
+            text-align: center;
+        }
+        @media(min-width: 768px) {
+            background-image: url("/img/avatar-right2.jpg");
+            text-align: left;
+        }
+        @media(min-width: 992px) {
+            background-image: url("/img/avatar-right1.jpg");
+            text-align: left;
+        }
+        .avatar {
+            margin: 0 auto 15px;
+            max-width: 180px;
+        }
+    }
+    &.about-jumbo {
+        background-repeat: no-repeat;
+        background-position: left;
+        background-size: contain;
+        @media (max-width: 767px) {
+            background-image: none;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            background-image: url("/img/avatar-left3.jpg");
+            text-align: right;
+        }
+        @media (min-width: 992px) {
+            background-image: url("/img/avatar-left2.jpg");
+            text-align: right;
+        }
+        @media(min-width: 1200px) {
+            background-image: url("/img/avatar-left1.jpg");
+            text-align: right;
+        }
+        .avatar {
+            margin: 0 auto 15px;
+            border: 1px solid #888;
+            max-width: 230px;
+        }
+    }
 }

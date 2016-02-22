@@ -1,0 +1,31 @@
+<div id="footer"><div class="container">
+
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li class=""><a class="page-link"
+                href="{{ "#header" | prepend: site.baseurl }}">back to top</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row footer-main">
+        <h2>Adriem's workshop</h2>
+        <ul class="nav nav-tabs">
+            {% if page.url == '/' %}
+            <li class="active"><a href="#projects">Projects</a>
+            {% else %}
+            <li><a href="{{ "/" | prepend: site.baseurl }}">Projects</a>
+            {% endif %}
+            {% if page.url == '/about/' %}
+            <li class="active"><a href="#who-am-i">About Me</a>
+            {% else %}
+            <li><a href="{{ "/about" | prepend: site.baseurl }}">About Me</a>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="row text-center" id="copy-notice">
+        <p> Adriem's Workshop | &copy; 2016 Adrián Moreno </p>
+    </div>
+
+</div></div>

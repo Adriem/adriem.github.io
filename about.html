@@ -3,58 +3,73 @@ layout: default
 permalink: /about/
 ---
 <div class="col-xs-12 section">
+  <div class="jumbotron about-jumbo"><div class="row">
+    <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-4 col-lg-9 col-md-9 col-sm-8 col-xs-12">
 
-    <div class="jumbotron">
+        <p class="lead">
+            Software, videogames, music and beer :)
+        </p>
 
-      <div class="row hidden-lg"><div class="col-xs-12">
-          <p class="lead">
-              Software, technology, videogames, DIY stuff, music and beer :)
-          </p>
-      </div></div>
-
-      <div class="row">
-        <div class="col-lg-8 col-md-7 col-xs-12">
-          <p class="lead visible-lg">
-              Software, technology, videogames, DIY stuff, music and beer :)
-          </p>
-          <p class="normal-text">
-              Hi there! My name is Adrián Moreno and I am a Software Engineering
-              from Zaragoza, a city from North-East Spain.
-          </p>
-          <p class="normal-text cloud-paragraph hidden-xs hidden-sm">
-              In my spare time I like to develop little projects and mess with
-              DIY stuff. I am very intrested in software development and
-              software architecture, as well as web technologies, programming
-              languages and game development.
-          </p>
+        <div class="visible-xs-block">
+            <img class="img-responsive avatar" src="/img/avatar-wall.jpg"></img>
         </div>
 
-        <div class="tag-cloud col-lg-4 col-md-5 col-xs-12">
-          <img class="img-responsive" src="../../img/cloud.gif"></img>
-        </div>
-
-        <div class="col-xs-12 hidden-lg hidden-md">
-          <p class="normal-text cloud-paragraph">
-              In my spare time I like to develop little projects and mess with
-              DIY stuff. I am very intrested in software development and
-              software architecture, as well as web technologies, programming
-              languages and game development.
-          </p>
-        </div>
-      </div>
+        <p>
+            I love developing software, but I have other passions too!
+            When I'm not coding, I play my guitar, play videogames or read.
+            I also love riding my bike and walking in nature if the weather
+            is good. Always with lots of projects in my head, from software
+            projects to DIY stuff. I don't like to stay in my comfort zone
+            for too long. I like things simple: less is more.
+        </p>
 
     </div>
+  </div></div>
+</div>
 
+<div class="text-center col-xs-12 section" id="who-am-i">
 
-    <div class="row">
-      <h2 class="section-header text-center"> Some facts about me</h2>
+    <h2 class="section-header text-center"> Who am I? </h2>
 
-      {% for fact in site.data.facts %}
-      <div class="col-md-4 col-xs-12 col-sm-6 fact">{{ fact | markdownify }}</div>
-      {% endfor %}
+    <p class="col-sm-10 col-sm-offset-1 normal-text">
+        My name is Adrián Moreno and I am a Software Engineering student from
+        Zaragoza, a city from North-East Spain. I hope I'm finishing my studies
+        this year, so I can start working on one of my passions: software
+        development. I am mainly interested in <strong>web technologies and
+        software architecture</strong>, but I am also interested in game
+        development and IT administration.
+    </p>
 
-    </div>
+    <p class="col-sm-10 col-sm-offset-1 normal-text">
+        My favourite programming languages are <strong>Coffeescript and
+        Javascript</strong>, but I'm always trying to learn new languages and
+        experimenting on them. I really enjoy developing <strong>HTML5</strong>
+        apps and I'm in love with <strong>node.js and AngularJS</strong> (on
+        its version 1.x), since they allow me to use my favourite languages for
+        building rich applications, either in the frontend and the backend.
+    </p>
 
+    <p class="col-sm-10 col-sm-offset-1 normal-text">
+        <strong>I have worked many years with Java</strong> and, although it's
+        not my preferred language, I have built lots of applications with it.
+        I have also worked with several languages like C, Python, Erlang,
+        Haskell and even ARM Assembly. I'm a big fan of responsive design and
+        mobile-first philosophies, and I find agile metodologies really
+        interesting and useful.
+    </p>
+
+</div>
+
+<div class="text-center col-xs-12 section">
+    <h2 class="section-header">Some facts about me</h2>
+
+    {% for fact in site.data.facts %}
+    <div class="col-md-4 col-xs-12 col-sm-6 fact">{{ fact | markdownify }}</div>
+    {% endfor %}
+
+</div>
+
+    {% comment %}
     <!-- <div class="row"> -->
       <!-- <h2 class="section-header text-center"> Why this site? </h2> -->
       <!-- <p class="fact"> -->
@@ -75,4 +90,4 @@ permalink: /about/
           <!-- [>and funny :).<] -->
       <!-- </p> -->
     <!-- </div> -->
-</div>
+    {% endcomment %}

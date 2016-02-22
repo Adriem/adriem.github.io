@@ -2,9 +2,7 @@
 title: Adriem's workshop
 email: admoreno@outlook.com
 description: >
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+    Software development and coding stuff.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://adriem.github.io" # the base hostname & protocol for your site
 twitter_username: ClockworkAdriem
@@ -12,3 +10,7 @@ github_username:  adriem
 
 # Build settings
 markdown: kramdown
+sass:
+  style: compressed
+gems:
+  - jekyll-coffeescript

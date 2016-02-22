@@ -1,0 +1,83 @@
+projects:
+  - name: Random map generator
+    pic: random-map-preview.jpg
+    url: https://adriem.github.io/random-map-generator
+    # color: red
+    color: neutral
+    # notice: 'IN DEVELOPMENT'
+    notice:
+    type: web application
+    tags:
+      - web
+      - coffeescript
+      - pgc
+    description: A little random map generator written in Coffeescript.
+
+  - name: OGame resource calculator
+    pic: ogame-calculator-preview.jpg
+    url: https://adriem.github.io/ogame-calculator
+    # color: blue
+    color: neutral
+    notice:
+    type: web application
+    tags:
+      - web
+      - coffeescript
+      - angularjs
+    description: A calculator for ogame resources written in Coffeescript with AngularJS.
+
+  - name: Chatsockets
+    pic: chatsockets-preview.jpg
+    url: http://adriem.noip.me/chatsockets
+    # color: green
+    color: neutral
+    notice:
+    type: web application
+    tags:
+      - web
+      - websockets
+      - coffeescript
+      - angularjs
+    description: Websockets demonstration project over the MEAN stack with socket.io
+
+repositories:
+  - name: My .vimrc
+    url: https://github.com/Adriem/my-vimrc
+    type: Configuration file
+    tags:
+      - configuration
+    description: Just my .vimrc file, hope you find it interesting!
+
+  - name: Vim Colorschemes
+    url: https://github.com/Adriem/vim-colorschemes
+    type: vim colorscheme
+    tags:
+      - colorscheme
+      - vim
+    description: My collection of custom vim colorschemes
+
+  - name: Gentleman Colorscheme
+    url: https://adriem.github.io/gentleman-colorscheme
+    type: vim colorscheme
+    tags:
+      - colorscheme
+      - vim
+    description: A dark and terminal-friendly vim colorscheme, available in 5*2 flavours.
+
+  - name: My homepage
+    url: https://github.com/adriem/adriem.github.io
+    type: jekyll website
+    tags:
+      - web page
+      - jekyll
+    description: The source code of this website, which is built with Jekyll on gh-pages.
+
+  - name: Shell Utilities
+    url: https://github.com/adriem/shell-utilities
+    type: tools and snippets
+    tags:
+      - shell
+      - unix
+      - script
+    description: A bunch of scripts and snippets to make my life a little easier :D
+

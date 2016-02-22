@@ -1,28 +1,60 @@
 ---
 layout: default
 ---
-<!-- permalink: /home/ -->
 
 <div class="text-center col-xs-12 section">
-    <div class="jumbotron project-header"><div class="row">
-      <div class="col-lg-offset-4 col-lg-8 col-md-offset-2 col-md-10 col-xs-12">
-        <p class="lead text-right">
+
+    <div class="jumbotron project-jumbo"><div class="row">
+      <div class="col-lg-9 col-md-10 col-sm-9 col-xs-12">
+
+        <p class="lead">
             Software Engineering student at Universidad de Zaragoza.
         </p>
-        <p class="normal-text text-right">
-            I am always trying to learn new things, experimenting on them and
-            developing prototypes.
-            Here you can take a look at some of the little projects I do in my
-            spare time. Hope you find them interesting!
+
+        <div class="visible-xs-block">
+            <img class="img-responsive img-circle avatar" src="/img/avatar-squared.jpg"></img>
+        </div>
+
+        <p>
+            I love developing software and working with web technologies, as
+            well as learning new programming languages.
+            Some of my hobbies are writing cool code, reading good books,
+            pressing buttons on a gamepad and pulling the strings of a guitar.
         </p>
 
     </div>
     </div></div>
+</div>
 
-    <h2 class="section-header"> My Projects </h2>
+<div class="text-center col-xs-12 section" id="projects">
 
-    {% for item in site.data.projects %}
+    <h2 class="section-header"> Featured projects </h2>
+
+    <p class="col-sm-8 col-sm-offset-2 main-paragraph">
+        I am always trying to learn new things, experimenting on them and
+        developing prototypes.
+        Here you can take a look at some of the little projects I do in my
+        spare time. Hope you find them interesting!
+    </p>
+
+    {% for item in site.data.portfolio.projects %}
         {% include project.html project=item %}
+    {% endfor %}
+
+</div>
+
+<div class="text-center col-xs-12 section">
+
+    <h2 class="section-header"> Interesting repositories </h2>
+
+    <p class="col-sm-8 col-sm-offset-2 main-paragraph">
+        I think it's really interesting sharing code with other people. Also,
+        I find really helpful to keep important code under version
+        control. Take a look at some of my repositories!
+    </p>
+
+    {% for item in site.data.portfolio.repositories %}
+        {% include repository.html project=item %}
     {% endfor %}
 
 </div>

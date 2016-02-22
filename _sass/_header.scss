@@ -1,97 +1,232 @@
-$headerBgColor: #8f7864; /*#562800; /*#373C48; /*#174E00; /*#4c1b1b; /*#B1FFE0; /*#960000; /*#4C1B1B; /*#443A31; /* #16563D; /* #666633; /* #53493E; */
-$headerFgColor: rgba(255, 255, 255, 0.45);
-$headerFgColor2: rgba(255, 255, 255, 0.15);
-$selectedTabColor: rgba(255, 255, 255, 0.75);
-$headerAccentColor: #FFFFFF;
+// ENABLE TEXTURES
+$enable-textures: true !default;
 
-$font-family: aleo, Georgia, Serif;
+// BRAND FONT
+$brand-font: Poiret One, Palatino Linotype, Georgia, serif;
+$brand-font-weight: 900;
 
+// DESCRIPTION FONT
+$description-font: Questrial, sans-serif;
+$description-font-weight: 500;
+
+//GENERAL COLORS
+$_accent-color: rgba(255, 255, 255, 0.95);
+$_fg-color: rgba(255, 255, 255, 0.45);
+
+// HEADER APPEARANCE
+$header-bg-color                 : #4B423D;
+$header-texture                  : "/img/texture12.jpg";
+$header-fg-color                 : $_fg-color;
+$header-font                     : Josefin Sans, Palatino Linotype, serif;
+$header-brand-color              : $_accent-color;
+$header-brand-size-desktop       : 300%;
+$header-brand-size-mobile        : 22pt;
+$header-description-color        : $header-fg-color;
+$header-description-size-desktop : 17pt;
+$header-description-size-mobile  : 14pt;
+
+ // FOOTER COLORS
+$footer-bg-color           : #2A2626;
+$footer-texture            : "/img/texture13.jpg";
+$footer-fg-color           : $header-fg-color;
+$footer-font               : $header-font;
+$footer-brand-color        : $header-brand-color;
+$footer-brand-size-desktop : 22pt;
+$footer-brand-size-mobile  : 22pt;
+$footer-copyright-color    : darken($footer-fg-color, 35%);
+$footer-copyright-font     : Questrial, sans-serif;
+$footer-copyright-size     : 12pt;
+
+// CONTACT APPEARANCE
+$contact-bg-color            : #4A4646;
+$contact-texture             : "/img/texture9.jpg";
+$contact-fg-color            : $_fg-color;
+$contact-font                : Josefin Sans, Palatino Linotype, Georgia, serif;
+$contact-font-size-desktop   : 15pt;
+$contact-font-size-mobile    : 15pt;
+$contact-header-color        : darken($_accent-color, 10%);
+$contact-header-font         : $contact-font;
+$contact-header-size-desktop : 28pt;
+$contact-header-size-mobile  : 23pt;
+$contact-link-color          : darken($_accent-color, 10%);
+$contact-hover-link-color    : $_accent-color;
+
+// TABS APPEARANCE
+$hover-tab-color  : $_accent-color;
+$active-tab-color : rgba(255, 255, 255, 0.75);
+$tab-color        : $_fg-color;
+$tab-font         : Josefin Sans, sans-serif;
+$tab-size-desktop : 16pt;
+$tab-size-mobile  : 15pt;
+
+
+// HEADER ----------------------------------------------------------------------
 #header {
 
-    background-color: $headerBgColor;
-    background-image: url("../../../img/texture.jpg");
-
-    .container { padding: 15px 15px 61px; }
+    background-color: $header-bg-color;
+    @if $enable-textures and variable-exists(header-texture) {
+        background-image: url($header-texture);
+    }
 
     * {
-      color: $headerFgColor;
-      font-family: $font-family;
+      color: $header-fg-color;
+      font-family: $header-font;
+    }
+
+    .container {
+      @media(min-width:768px) { padding: 15px 15px 100px; }
+      @media(max-width:767px) { padding: 15px 30px 61px; }
+    }
+
+    .brand-container {
+        @media(min-width:768px) { padding: 40px 0 20px; }
+        @media(max-width:767px) { padding: 30px 20px 25px; }
     }
 
     h2 {
-      text-transform: capitalize;
-      color: $headerAccentColor;
-      font-family: $font-family;
-      font-size: 300%;
-      @media(min-width:768px) { padding-top: 15px; }
-      @media(max-width:767px) { padding-top: 20px; }
+        text-transform: capitalize;
+        text-align: center;
+        color: $header-brand-color;
+        font-family: $brand-font;
+        font-weight: $brand-font-weight;
+        @media(min-width:768px) {
+            font-size: $header-brand-size-desktop;
+            margin: 25px 0 10px;
+        }
+        @media(max-width:767px) {
+            font-size: $header-brand-size-mobile;
+            line-height: 1.2;
+            margin: 25px 0px 10px;
+        }
     }
 
-    p { margin-bottom: 0; }
+    p {
+        margin: 0;
+        text-align: center;
+        color: $header-description-color;
+        font-family: $description-font;
+        font-weight: $description-font-weight;
+        @media(min-width:768px) { font-size: $header-description-size-desktop; }
+        @media(max-width:767px) { font-size: $header-description-size-mobile; }
+    }
 }
 
+// CONTACT ---------------------------------------------------------------------
+#contact {
+    background-color: $contact-bg-color;
+    @if $enable-textures and variable-exists(contact-texture) {
+        background-image: url($contact-texture);
+    }
+    @media (max-width: 767px) { padding: 15px 0 30px; }
+    @media (min-width: 768px) { padding: 15px 0 35px; }
+    * {
+      color: $contact-fg-color;
+      font-family: $contact-font;
+    }
+    #contact-header {
+        color: $contact-header-color;
+        font-family: $contact-header-font;
+        @media (min-width: 768px) { font-size: $contact-header-size-desktop; }
+        @media (max-width: 767px) { font-size: $contact-header-size-mobile; }
+    }
+    #contact-paragraph {
+        @media (min-width: 768px) { font-size: $contact-font-size-desktop; }
+        @media (max-width: 767px) { font-size: $contact-font-size-mobile; }
+        a {
+            color: $contact-link-color;
+            &:hover {
+                text-decoration: underline;
+                color: $contact-hover-link-color;
+            }
+        }
+    }
+}
+
+
+// FOOTER ----------------------------------------------------------------------
+html {
+    background-color: $footer-bg-color;
+    @if $enable-textures and variable-exists(footer-texture) {
+        background-image: url($footer-texture);
+    }
+}
+#footer {
+
+    background-color: $footer-bg-color;
+    @if $enable-textures and variable-exists(footer-texture) {
+        background-image: url($footer-texture);
+    }
+
+    * {
+      color: $footer-fg-color;
+      font-family: $footer-font;
+    }
+
+    #copy-notice {
+        p {
+            font-size: $footer-copyright-size;
+            font-family: $footer-copyright-font;
+            color: $footer-copyright-color;
+        }
+    }
+
+    .footer-main {
+        @media(min-width:768px) { padding: 20px 0 40px; }
+        @media(max-width:767px) { padding: 15px 0 35px; }
+    }
+
+    .container {
+        @media(min-width:768px) { padding: 10px 15px 15px; }
+        @media(max-width:767px) { padding: 15px 30px 10px; }
+    }
+
+
+    h2 {
+        text-transform: capitalize;
+        text-align: center;
+        color: $footer-brand-color;
+        font-family: $brand-font;
+        font-weight: $brand-font-weight;
+        @media(min-width:768px) {
+            margin: 25px 0 10px;
+            font-size: $footer-brand-size-desktop;
+        }
+        @media(max-width:767px) {
+            margin: 25px 10px 10px;
+            line-height: 1.2;
+            font-size: $footer-brand-size-mobile;
+        }
+    }
+}
+
+// NAV-TABS --------------------------------------------------------------------
 .nav-tabs, .nav-pills {
+    text-align:center;
+    border: none;
 
-  text-align:center;
-  border-bottom: 0;
-
-  li {
-    float:none;
-    display:inline-block;
-    *display:inline; /* ie7 fix */
-    zoom:1; /* hasLayout ie7 trigger */
-    @media(min-width:768px) { font-size: 14pt; }
-    @media(max-width:767px) { font-size: 12pt; }
-    text-transform: lowercase;
-  }
-
-  li > a {
-      box-shadow: none ! important;
-      /* font-weight: bold; /* Not suported by font-family in use */
-      font-style: italic; /* Not suported by font-family in use */
-      background: none;
-      border: none;
-      @media(max-width:767px) {
-        padding-top: 0;
-        padding-left: 8px;
-        padding-right: 8px;
-      }
-
-      &:hover, &:focus, .open {
-        color: $selectedTabColor ! important;
-        background: none !important;
-        border: none !important;
-      }
-  }
-
-  .active > a {
-    color: $selectedTabColor ! important;
-    background: none !important;
-    border: none !important;
-  }
-
-  .right-align {
-    @media(min-width:768px) {
-        float:right ! important;
-    }
-  }
-
-  .left-align {
-    @media(min-width:768px) {
-        float:left ! important;
-    }
-  }
-
-  &.contact {
-    margin-top:10px;
     li {
-      border-top: 1px solid $headerFgColor2;
-      margin-right: -2px;
-      margin-left: -1px;
-      a {
-        font-style: normal;
-        padding-top: 10px;
-      }
+        // Position
+        float: none;
+        display: inline-block;
+        *display: inline; /* ie7 fix */
+        zoom: 1; /* hasLayout ie7 trigger */
+
+        //Appearance
+        text-transform: lowercase;
+        font-family: $tab-font;
+        @media(min-width:768px) { font-size: $tab-size-desktop; }
+        @media(max-width:767px) { font-size: $tab-size-mobile; }
+        * {
+            box-shadow: none ! important;
+            background: none ! important;
+            border: none ! important;
+            @media(max-width:767px) { padding: 0 8px 10px !important; }
+            &:hover, &:focus, .open { color: $hover-tab-color ! important; }
+        }
+        &.active * { color: $active-tab-color ! important; }
     }
-  }
+
+    // Alignment
+    .right-align { @media(min-width:768px) { float: right ! important; } }
+    .left-align  { @media(min-width:768px) { float: left  ! important; } }
 }
