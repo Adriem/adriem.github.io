@@ -1,6 +1,6 @@
 # Jekyll
 _site
-# _img
+_img
 .sass-cache
 .jekyll-metadata
 
