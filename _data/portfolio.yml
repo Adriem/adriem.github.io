@@ -28,7 +28,7 @@ projects:
 
   - name: Chatsockets
     pic: chatsockets-preview.jpg
-    url: http://adriem.noip.me/chatsockets
+    url: http://adriemsworkshop.noip.me:8081/chatsockets
     # color: green
     color: neutral
     notice:
