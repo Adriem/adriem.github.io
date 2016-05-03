@@ -15,7 +15,7 @@ projects:
 
   - name: OGame resource calculator
     pic: ogame-calculator-preview.jpg
-    url: https://adriem.me/ogame-calculator
+    url: http://adriem.me/ogame-calculator
     # color: blue
     color: neutral
     notice:
