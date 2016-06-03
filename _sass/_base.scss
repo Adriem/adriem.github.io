@@ -14,7 +14,7 @@ $jumbotron-fg-accent-color: #333;
 
 html {
     font: $default-font;
-        background-color: #000;
+    background-color: #000;
 }
 
 #main-section {
@@ -45,10 +45,11 @@ html {
         font: $default-font;
         line-height: 1.25;
         font-size: 13pt;
+        padding: 15px;
         /* text-align: left; */
         /* color: #666; */
-        @media(max-width:767px) { text-align: center; }
-        @media(min-width:768px) { text-align: left; }
+        @media(max-width:767px) { p { text-align: center; }}
+        @media(min-width:768px) { p { text-align: justify; }}
     }
 
 

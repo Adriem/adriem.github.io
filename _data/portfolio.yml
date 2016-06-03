@@ -2,8 +2,6 @@ projects:
   - name: Random map generator
     pic: random-map-preview.jpg
     url: http://adriem.me/random-map-generator
-    # color: red
-    color: neutral
     # notice: 'IN DEVELOPMENT'
     notice:
     type: web application
@@ -11,26 +9,22 @@ projects:
       - web
       - coffeescript
       - pgc
-    description: A little random map generator written in Coffeescript.
+    description: Little random map generator written in Coffeescript.
 
   - name: OGame resource calculator
     pic: ogame-calculator-preview.jpg
     url: http://adriem.me/ogame-calculator
-    # color: blue
-    color: neutral
     notice:
     type: web application
     tags:
       - web
       - coffeescript
       - angularjs
-    description: A calculator for ogame resources written in Coffeescript with AngularJS.
+    description: OGame resources calculator written in Coffeescript with AngularJS.
 
   - name: Chatsockets
     pic: chatsockets-preview.jpg
     url: http://chat.adriem.me
-    # color: green
-    color: neutral
     notice:
     type: web application
     tags:
@@ -39,6 +33,40 @@ projects:
       - coffeescript
       - angularjs
     description: Websockets demonstration project over the MEAN stack with socket.io
+
+  - name: POIs "R" Us
+    pic: pois-preview.jpg
+    url: http://pois.adriem.me
+    # notice: IN DEVELOPEMENT
+    type: web application
+    tags:
+      - web
+      - google maps
+      - AngularJS
+      - MEAN
+    description: POI management tool built over the MEAN stack for a classroom project.
+
+  - name: Project Barataria
+    pic: barataria-preview.jpg
+    url: http://barataria.recuen.co
+    notice: With my friends from Pistacho Soft
+    type: web application
+    tags:
+      - web
+      - leaflet
+      - AngularJS
+    description: Project for the NASA's International Space Apps Challenge 2016.
+
+  - name: Agnostic Bookmarks
+    pic: agnostic-bookmarks-preview.jpg
+    url: http://bookmarks.adriem.me
+    type: web application
+    tags:
+      - web
+      - leaflet
+      - AngularJS
+    description: Platform-agnostic bookmark manager built for a classroom project over MEAN.
+
 
 repositories:
   - name: My .vimrc
@@ -74,7 +102,7 @@ repositories:
 
   - name: Shell Utilities
     url: https://github.com/adriem/shell-utilities
-    type: tools and snippets
+    type: scripts and code snippets
     tags:
       - shell
       - unix
