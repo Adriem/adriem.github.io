@@ -10,7 +10,7 @@ $description-font: Questrial, sans-serif;
 $description-font-weight: 500;
 
 //GENERAL COLORS
-$_accent-color: rgba(255, 255, 255, 0.95);
+$_accent-color: rgba(255, 255, 255, 0.90);
 $_fg-color: rgba(255, 255, 255, 0.45);
 
 // HEADER APPEARANCE
@@ -19,8 +19,8 @@ $header-texture                  : "/img/texture12.jpg";
 $header-fg-color                 : $_fg-color;
 $header-font                     : Josefin Sans, Palatino Linotype, serif;
 $header-brand-color              : $_accent-color;
-$header-brand-size-desktop       : 300%;
-$header-brand-size-mobile        : 22pt;
+$header-brand-size-desktop       : 40pt; //350%;
+$header-brand-size-mobile        : 23pt;
 $header-description-color        : $header-fg-color;
 $header-description-size-desktop : 17pt;
 $header-description-size-mobile  : 14pt;
@@ -31,8 +31,8 @@ $footer-texture            : "/img/texture13.jpg";
 $footer-fg-color           : $header-fg-color;
 $footer-font               : $header-font;
 $footer-brand-color        : $header-brand-color;
-$footer-brand-size-desktop : 22pt;
-$footer-brand-size-mobile  : 22pt;
+$footer-brand-size-desktop : 26pt;
+$footer-brand-size-mobile  : 23pt;
 $footer-copyright-color    : darken($footer-fg-color, 35%);
 $footer-copyright-font     : Questrial, sans-serif;
 $footer-copyright-size     : 12pt;

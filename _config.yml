@@ -1,10 +1,10 @@
 # Site settings
-title: Adriem's workshop
-email: admoreno@outlook.com
+title: Adrián Moreno
+email: adrn.moreno@gmail.com
 description: >
     Software development and coding stuff.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://adriem.github.io" # the base hostname & protocol for your site
+url: "http://adriem.me" # the base hostname & protocol for your site
 twitter_username: ClockworkAdriem
 github_username:  adriem
 
