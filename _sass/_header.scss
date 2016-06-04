@@ -2,15 +2,16 @@
 $enable-textures: true !default;
 
 // BRAND FONT
-$brand-font: Poiret One, Palatino Linotype, Georgia, serif;
-$brand-font-weight: 900;
+$brand-font: Poiret One, Georgia, serif;
+$brand-font-weight: normal;
 
 // DESCRIPTION FONT
-$description-font: Questrial, sans-serif;
-$description-font-weight: 500;
+$description-font: Raleway, sans-serif;
+$description-font-weight: 300;
 
 //GENERAL COLORS
-$_accent-color: rgba(255, 255, 255, 0.90);
+/* $_accent-color: rgba(255, 255, 255, 0.90); */
+$_accent-color: #fff;
 $_fg-color: rgba(255, 255, 255, 0.45);
 
 // HEADER APPEARANCE
@@ -19,11 +20,11 @@ $header-texture                  : "/img/texture12.jpg";
 $header-fg-color                 : $_fg-color;
 $header-font                     : Josefin Sans, Palatino Linotype, serif;
 $header-brand-color              : $_accent-color;
-$header-brand-size-desktop       : 40pt; //350%;
-$header-brand-size-mobile        : 23pt;
+$header-brand-size-desktop       : 48pt; //350%;
+$header-brand-size-mobile        : 25pt;
 $header-description-color        : $header-fg-color;
-$header-description-size-desktop : 17pt;
-$header-description-size-mobile  : 14pt;
+$header-description-size-desktop : 19pt; //17pt;
+$header-description-size-mobile  : 16pt; //14pt;
 
  // FOOTER COLORS
 $footer-bg-color           : #2A2626;

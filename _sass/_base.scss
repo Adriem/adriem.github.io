@@ -1,9 +1,9 @@
 $font-family: Questrial, sans-serif;
 
-$default-font: 500 14pt Questrial, sans-serif;
+$default-font: 14pt Questrial, sans-serif;
 
 $section-header-color: #655;
-$section-header-weight: 500;
+$section-header-weight: normal;
 $section-header-font: Questrial, Poiret One, Josefin Slab, Josefin Sans;
 $content-bg-color: #f8f8f8;
 
@@ -83,7 +83,7 @@ html {
     }
     text-align: center;
     font-family: $jumbotron-font-family;
-    font-weight: 500;
+    /* font-weight: 500; */
 
     // Appearance
     border-radius: 0 !important;
