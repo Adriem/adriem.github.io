@@ -2,7 +2,6 @@ projects:
   - name: Random map generator
     pic: random-map-preview.jpg
     url: http://adriem.me/random-map-generator
-    # notice: 'IN DEVELOPMENT'
     notice:
     type: web application
     tags:
@@ -25,7 +24,7 @@ projects:
   - name: Chatsockets
     pic: chatsockets-preview.jpg
     url: http://chat.adriem.me
-    notice:
+    notice: Temporarily down :(
     type: web application
     tags:
       - web
@@ -37,7 +36,7 @@ projects:
   - name: POIs "R" Us
     pic: pois-preview.jpg
     url: http://pois.adriem.me
-    # notice: IN DEVELOPEMENT
+    notice: Temporarily down :(
     type: web application
     tags:
       - web
@@ -60,6 +59,7 @@ projects:
   - name: Agnostic Bookmarks
     pic: agnostic-bookmarks-preview.jpg
     url: http://bookmarks.adriem.me
+    notice: Temporarily down :(
     type: web application
     tags:
       - web
