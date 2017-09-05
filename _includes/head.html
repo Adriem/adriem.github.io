@@ -2,30 +2,62 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <link rel="shortcut icon" href="{{ "/img/favicon.png?ver2" | prepend: site.github.url }}">
   <meta name="theme-color" content="#9a918d"> <!-- Chrome bar color -->
 
-  <!-- LIBRARY CSS -->
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,600,700|Poiret+One|Questrial|Raleway:300' rel='stylesheet' type='text/css'>
-  <!-- <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,300italic,400italic,600,600italic,700,700italic|Poiret+One|Questrial' rel='stylesheet' type='text/css'> -->
+  <title>
+    {% if page.meta_title %}
+      {{ page.meta_title | escape }}
+    {% else %}
+      {{ site.meta_title | escape }}
+    {% endif %}
+  </title>
 
-  <!-- CUSTOM CSS -->
-  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.github.url }}">
+  <meta name="description"
+        content="{% if page.excerpt %}
+                   {{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}
+                 {% else %}
+                   {{ site.description }}
+                 {% endif %}">
+
+  <link rel="shortcut icon"
+        href="{{ "/img/favicon.png?ver2" | prepend: site.github.url }}">
+
+
+  <!-- STYLES -->
+
+  <link rel="stylesheet"
+        href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet"
+        href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <link rel='stylesheet'
+        href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,600,700|Poiret+One|Questrial|Raleway:300'
+        type='text/css'>
+
+
+  <link rel="stylesheet"
+        href="{{ "/assets/styles.css" | prepend: site.github.url }}">
+
   <!-- Add all css files in static_files -->
-  {% for file in site.static_files %}{% if file.path contains '.css' %}
-  <link rel="stylesheet" href="{{ file.path | prepend: site.github.url }}">
-  {%endif%}{%endfor%}
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.github.url }}">
+  <!-- {% for file in site.static_files %}
+    {% if file.path contains '.css' %}
+      <link rel="stylesheet"
+            href="{{ file.path | prepend: site.github.url }}">
+    {%endif%}
+  {%endfor%} -->
+
+  <link rel="canonical"
+        href="{{ page.url | replace:'index.html','' | prepend: site.github.url }}">
+
 
   <!-- RSS XML -->
+
   <!-- <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.github.url }}"> -->
 
+
   <!-- SCRIPTS -->
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="/js/script.js"></script>
+  <script src="/assets/script.js"></script>
 </head>

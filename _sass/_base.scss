@@ -120,11 +120,11 @@ html {
             text-align: center;
         }
         @media(min-width: 768px) {
-            background-image: url("/img/avatar-right2.jpg");
+            background-image: url("/assets/img/avatar-right2.jpg");
             text-align: left;
         }
         @media(min-width: 992px) {
-            background-image: url("/img/avatar-right1.jpg");
+            background-image: url("/assets/img/avatar-right1.jpg");
             text-align: left;
         }
         .avatar {
@@ -141,15 +141,15 @@ html {
             text-align: center;
         }
         @media (min-width: 768px) {
-            background-image: url("/img/avatar-left3.jpg");
+            background-image: url("/assets/img/avatar-left3.jpg");
             text-align: right;
         }
         @media (min-width: 992px) {
-            background-image: url("/img/avatar-left2.jpg");
+            background-image: url("/assets/img/avatar-left2.jpg");
             text-align: right;
         }
         @media(min-width: 1200px) {
-            background-image: url("/img/avatar-left1.jpg");
+            background-image: url("/assets/img/avatar-left1.jpg");
             text-align: right;
         }
         .avatar {

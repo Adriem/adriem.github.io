@@ -1,16 +1,22 @@
-# Site settings
 title: Adrián Moreno
-email: adrn.moreno@gmail.com
-description: >
-    Software development and coding stuff.
-baseurl: "" # the subpath of your site, e.g. /blog
+sub_title: Software development and coding stuff
+meta_title: Adrian Moreno | Homepage
+description: Software development and coding stuff
+baseurl: ""             # the subpath of your site, e.g. /blog
 url: "http://adriem.me" # the base hostname & protocol for your site
-twitter_username: ClockworkAdriem
-github_username:  adriem
+copyright: '&copy; 2016-2017 Adrián Moreno'
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      language: en
 
 # Build settings
 markdown: kramdown
 sass:
   style: compressed
-gems:
+plugins:
   - jekyll-coffeescript
+  - jekyll-redirect-from
