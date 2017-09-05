@@ -16,7 +16,7 @@ $_fg-color: rgba(255, 255, 255, 0.45);
 
 // HEADER APPEARANCE
 $header-bg-color                 : #4B423D;
-$header-texture                  : "/img/texture12.jpg";
+$header-texture                  : "/assets/img/texture12.jpg";
 $header-fg-color                 : $_fg-color;
 $header-font                     : Josefin Sans, Palatino Linotype, serif;
 $header-brand-color              : $_accent-color;
@@ -28,7 +28,7 @@ $header-description-size-mobile  : 16pt; //14pt;
 
  // FOOTER COLORS
 $footer-bg-color           : #2A2626;
-$footer-texture            : "/img/texture13.jpg";
+$footer-texture            : "/assets/img/texture13.jpg";
 $footer-fg-color           : $header-fg-color;
 $footer-font               : $header-font;
 $footer-brand-color        : $header-brand-color;
@@ -40,7 +40,7 @@ $footer-copyright-size     : 12pt;
 
 // CONTACT APPEARANCE
 $contact-bg-color            : #4A4646;
-$contact-texture             : "/img/texture9.jpg";
+$contact-texture             : "/assets/img/texture9.jpg";
 $contact-fg-color            : $_fg-color;
 $contact-font                : Josefin Sans, Palatino Linotype, Georgia, serif;
 $contact-font-size-desktop   : 15pt;
