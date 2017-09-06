@@ -127,11 +127,17 @@ $tab-size-mobile  : 15pt;
     #contact-header {
         color: $contact-header-color;
         font-family: $contact-header-font;
-        @media (min-width: 768px) { font-size: $contact-header-size-desktop; }
+        @media (min-width: 768px) {
+            font-size: $contact-header-size-desktop;
+            font-weight: 300;
+        }
         @media (max-width: 767px) { font-size: $contact-header-size-mobile; }
     }
     #contact-paragraph {
-        @media (min-width: 768px) { font-size: $contact-font-size-desktop; }
+        @media (min-width: 768px) {
+          font-size: $contact-font-size-desktop;
+          font-weight: 300;
+        }
         @media (max-width: 767px) { font-size: $contact-font-size-mobile; }
         a {
             color: $contact-link-color;
@@ -215,7 +221,10 @@ html {
         //Appearance
         text-transform: lowercase;
         font-family: $tab-font;
-        @media(min-width:768px) { font-size: $tab-size-desktop; }
+        @media(min-width:768px) {
+            font-size: $tab-size-desktop;
+            font-weight: 300;
+        }
         @media(max-width:767px) { font-size: $tab-size-mobile; }
         * {
             box-shadow: none ! important;

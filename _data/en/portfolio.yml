@@ -10,17 +10,6 @@ projects:
       - pgc
     description: Little random map generator written in Coffeescript.
 
-  - name: OGame resource calculator
-    pic: ogame-calculator-preview.jpg
-    url: http://adriem.me/ogame-calculator
-    notice:
-    type: web application
-    tags:
-      - web
-      - coffeescript
-      - angularjs
-    description: OGame resources calculator written in Coffeescript with AngularJS.
-
   - name: Chatsockets
     pic: chatsockets-preview.jpg
     url: http://chat.adriem.me
@@ -33,17 +22,16 @@ projects:
       - angularjs
     description: Websockets demonstration project over the MEAN stack with socket.io
 
-  - name: POIs "R" Us
-    pic: pois-preview.jpg
-    url: http://pois.adriem.me
-    notice: Temporarily down :(
+  - name: OGame resource calculator
+    pic: ogame-calculator-preview.jpg
+    url: http://adriem.me/ogame-calculator
+    notice:
     type: web application
     tags:
       - web
-      - google maps
-      - AngularJS
-      - MEAN
-    description: POI management tool built over the MEAN stack for a classroom project.
+      - coffeescript
+      - angularjs
+    description: OGame resources calculator written in Coffeescript with AngularJS.
 
   - name: Project Barataria
     pic: barataria-preview.jpg
@@ -55,6 +43,18 @@ projects:
       - leaflet
       - AngularJS
     description: Project for the NASA's International Space Apps Challenge 2016.
+
+  - name: POIs "R" Us
+    pic: pois-preview.jpg
+    url: http://pois.adriem.me
+    notice: Temporarily down :(
+    type: web application
+    tags:
+      - web
+      - google maps
+      - AngularJS
+      - MEAN
+    description: POI management tool built over the MEAN stack for a classroom project.
 
   - name: Agnostic Bookmarks
     pic: agnostic-bookmarks-preview.jpg

@@ -14,7 +14,7 @@ layout: default
             <img class="img-responsive img-circle avatar"
                  src="/assets/img/avatar-squared.jpg"></img>
         </div>
-        <p>{{ page.contents.jumbo.body }}</p>
+        {{ page.contents.jumbo.body | markdownify }}
 
       </div>
     </div>
