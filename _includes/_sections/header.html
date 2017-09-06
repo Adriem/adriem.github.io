@@ -1,47 +1,43 @@
 {% assign sections = site.data[page.language].navigation %}
 
-<div id="header">
+<div class="header" id="header">
   <div class="container">
-    <div class="row">
-        <ul class="nav nav-tabs">
-          {% for section in sections %}
-            {% if section[1].header %}
+    <nav class="navbar-tabs">
+      {% for section in sections %}
+        {% if section[1].header %}
 
-              <!-- calculate element class -->
-              {% assign elem_class = section[1].align | append: '-align' %}
-              {% if section[1].url and page.url == section[1].url %}
-                {% assign elem_class = elem_class | append: ' active ' %}
-              {% endif %}
+          <!-- calculate element class -->
+          {% assign elem_class = section[1].align | append: '-align'%}
+          {% if section[1].url and page.url == section[1].url %}
+            {% assign elem_class = elem_class | append: ' active ' %}
+          {% endif %}
 
-              <!-- calculate element url -->
-              {% if section[1].url and page.url != section[1].url %}
-                {% assign elem_url = section[1].url | prepend: site.github.url %}
-              {% else %}
-                {% assign elem_url = section[1].anchor %}
-              {% endif %}
+          <!-- calculate element url -->
+          {% if section[1].url and page.url != section[1].url %}
+            {% assign elem_url = section[1].url | prepend: site.github.url %}
+          {% else %}
+            {% assign elem_url = section[1].anchor %}
+          {% endif %}
 
-              <li class="{{ elem_class }}">
-                <a href="{{ elem_url }}">
-                  {{ section[1].label }}
-                </a>
-              </li>
+          <a class="tab {{ elem_class }}" href="{{ elem_url }}">
+            {{ section[1].label }}
+          </a>
 
-              {% assign elem_class = nil %}
-              {% assign elem_url = nil %}
-            {% endif %}
-          {% endfor %}
-        </ul>
-    </div>
+          {% assign elem_class = nil %}
+          {% assign elem_url = nil %}
+        {% endif %}
+      {% endfor %}
+    </nav>
 
-    <div class="row brand-container">
-        <h2>
+    <div class="brand">
+        <h2 class="brand-title">
           {% if page.title %}
             {{ page.title }}
           {% else %}
             {{ site.title }}
           {% endif %}
         </h2>
-        <p class="lead">
+        <p class="brand-subtitle">
           {% if page.sub_title %}
             {{ page.sub_title }}
           {% else %}

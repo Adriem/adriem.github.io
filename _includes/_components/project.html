@@ -1,22 +1,23 @@
-<div class="col-md-4 col-sm-6 col-xs-12 project {{include.project.color}}">
-    <a class="project-content" href="{{include.project.url}}" target="_blank">
+<a class="project"
+   href="{{include.project.url}}"
+   target="_blank">
 
-        <img class="img-responsive center-block" alt="Project thumbnail"
-             src="{{ include.project.pic | prepend: "/assets/img/" | prepend: site.baseurl }}">
+  <img class="project-thumbnail"
+       alt="Project thumbnail"
+       src="{{ include.project.pic | prepend: "/assets/img/" | prepend: site.baseurl }}">
 
-        {% if include.project.notice %}
-        <div class="notice-container">
-            <p class="notice">{{ include.project.notice }}</p>
-        </div>
-        {% endif %}
+    {% if include.project.notice %}
+    <div class="notice-container">
+        <p class="notice">{{ include.project.notice }}</p>
+    </div>
+    {% endif %}
 
-        <div class="project-body">
-            <p class="project-title">{{ include.project.name }}</p>
-            <div class="project-separator"></div>
-            <p class="project-description">{{ include.project.description }}</p>
-        </div>
+    <div class="project-body">
+        <p class="project-title">{{ include.project.name }}</p>
+        <div class="project-separator"></div>
+        <p class="project-description">{{ include.project.description }}</p>
+    </div>
 
-        <div><p class="project-type">{{ include.project.type }}</p></div>
+    <div><p class="project-type">{{ include.project.type }}</p></div>
 
-    </a>
-</div>
+</a>

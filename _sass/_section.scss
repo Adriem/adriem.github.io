@@ -1,0 +1,148 @@
+@import "./_variables.scss";
+
+$regular-section-title-font--desktop: 2.3em $main-font-family;
+$regular-section-title-font--mobile:  1.8em $main-font-family;
+$regular-section-title-color: $color-brown-accent;
+$regular-section-subtitle-font--desktop: 0.5em $main-font-family;
+$regular-section-subtitle-font--mobile:  0.5em $main-font-family;
+$regular-section-subtitle-color: $color-black;
+$regular-section-text-font--desktop: 1.2em/1.5 $main-font-family;
+$regular-section-text-font--mobile:  1.2em/1.5 $main-font-family;
+$regular-section-text-color: $color-black;
+$regular-section-bg-color: $color-white;
+
+$accent-section-title-font--desktop: 2.0em $main-font-family;
+$accent-section-title-font--mobile:  1.8em $main-font-family;
+$accent-section-title-color: $color-black-accent;
+$accent-section-subtitle-font--desktop: 0.5em $main-font-family;
+$accent-section-subtitle-font--mobile:  0.5em $main-font-family;
+$accent-section-subtitle-color: $color-black;
+$accent-section-text-font--desktop: 1.2em/1.5 $main-font-family;
+$accent-section-text-font--mobile:  1.2em/1.5 $main-font-family;
+$accent-section-text-color: $color-black;
+$accent-section-bg-color: $color-light-gray;
+
+
+.section {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 30px;
+
+  .section-title {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 30px 0 50px;
+
+    &.align-center { text-align: center; }
+    &.align-left { text-align: left; }
+    &.align-right { text-align: right; }
+
+    .section-sub-title {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 15px 0 0;
+    }
+  }
+
+  &.delim-enabled { border-bottom: 1px solid #ddd; }
+
+  &.regular-section {
+    background-color: $regular-section-bg-color;
+
+    .section-title {
+      @include screen-desktop { font: $regular-section-title-font--desktop; }
+      @include screen-mobile { font: $regular-section-title-font--mobile; }
+
+      color: $regular-section-title-color;
+
+      .section-sub-title {
+        @include screen-desktop { font: $regular-section-subtitle-font--desktop; }
+        @include screen-mobile { font: $regular-section-subtitle-font--mobile; }
+
+        color: $regular-section-subtitle-color;
+      }
+    }
+    .regular-text {
+        @include screen-desktop { font: $regular-section-text-font--desktop; }
+        @include screen-mobile { font: $regular-section-text-font--mobile; }
+
+        color: $regular-section-text-color;
+    }
+  }
+
+  &.accent-section {
+    background-color: $accent-section-bg-color;
+
+    .section-title {
+      @include screen-desktop { font: $accent-section-title-font--desktop; }
+      @include screen-mobile { font: $accent-section-title-font--mobile; }
+
+      color: $accent-section-title-color;
+
+      .section-sub-title {
+        @include screen-desktop { font: $accent-section-subtitle-font--desktop; }
+        @include screen-mobile { font: $accent-section-subtitle-font--mobile; }
+
+        color: $accent-section-subtitle-color;
+      }
+    }
+    .regular-text {
+        @include screen-desktop { font: $accent-section-text-font--desktop; }
+        @include screen-mobile { font: $accent-section-text-font--mobile; }
+
+        color: $accent-section-text-color;
+    }
+  }
+}
+
+#contact {
+  $contact-fg-color: rgba(255, 255, 255, 0.45);
+  $contact-fg-accent-color: rgba(255, 255, 255, 0.75);
+  $contact-bg-color: #373332;
+  $contact-texture: "/assets/img/texture9.jpg";
+  $contact-font-family: Josefin Sans, Palatino Linotype, Georgia, serif;
+
+  $contact-title-color: $contact-fg-accent-color;
+  $contact-title-font--desktop: 300 30pt $contact-font-family;
+  $contact-title-font--mobile: 300 22pt $contact-font-family;
+
+  $contact-text-color: $contact-fg-color;
+  $contact-link-color: $contact-fg-accent-color;
+  $contact-link-hover-color: $color-white-accent;
+  $contact-text-font--desktop: 300 16pt/18pt $contact-font-family;
+  $contact-text-font--mobile: 300 15pt $contact-font-family;
+
+  background-color: $contact-bg-color;
+  background-image: $contact-texture;
+  text-align: center;
+  padding: 10px 0 50px;
+
+  .section-title {
+    @include screen-desktop { font: $contact-title-font--desktop; }
+    @include screen-mobile { font: $contact-title-font--mobile; }
+
+    color: $contact-title-color;
+    padding-bottom: 15px;
+  }
+  .regular-text {
+      @include screen-desktop { font: $contact-text-font--desktop; }
+      @include screen-mobile { font: $contact-text-font--mobile; }
+
+      color: $contact-text-color;
+      max-width: 700px;
+      margin: auto;
+
+      a {
+        color: $contact-link-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $contact-link-hover-color;
+          text-decoration: underline;
+        }
+      }
+  }
+}

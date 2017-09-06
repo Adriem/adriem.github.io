@@ -1,111 +1,120 @@
-/* FONTS */
-$title-font: 700 15pt Questrial, Josefin Sans, sans-serif;
-$description-font: 14pt Questrial, Josefin Sans, sans-serif;
-$type-font: 10pt Questrial, Josefin Sans, sans-serif;
-$notice-font: 600 9pt Questrial, Josefin Sans, sans-serif;
+$project-width: 372px;
+$project-gutter-width: 10px;
 
-/* COLORS */
-$project-light: #9a918d;
-$project-dark: #48433d;
-$notice-foreground: $project-dark;
-/* $notice-background: #f4b272; */
-/* $notice-background: #e49272; */
-/* $notice-background: #c48262; */
-/* $notice-background: #daaa8c; */
-$notice-background: #d79a7c;
-/* $notice-background: #c29e8d; */
+$project-height: 340px;
+$repo-height: 120px;
 
-.project {
+$project-title-font--desktop: 700 15pt $main-font-family;
+$project-title-font--mobile: 700 15pt $main-font-family;
 
-    @media(min-width:768px) { padding: 10px 5px; }
-    @media(max-width:767px) { padding: 10px 0; }
+$project-description-font--desktop: 14pt $main-font-family;
+$project-description-font--mobile: 14pt $main-font-family;
 
-    .project-content {
+$project-tag-font--desktop: 10pt $main-font-family;
+$project-tag-font--mobile: 10pt $main-font-family;
 
-        text-decoration: none !important;
+$project-notice-font--desktop: 600 9pt $main-font-family;
+$project-notice-font--mobile: 600 9pt $main-font-family;
 
-        img {
-            border: 1px solid $project-dark;
-            border-bottom: 0;
-            z-index: -1;
-        }
+$color-project-light: #9a918d;
+$color-project-dark: #48433d;
 
-        div {
-            border: { width: 0 1px; style: solid; color: $project-dark; }
-            margin: 0 auto;
-            max-width: 372px;
-        }
+$project-fg-color: $color-black;
+$project-bg-color: $color-project-light;
+$project-title-color: $color-black;
+$project-description-color: $color-black-soft;
+$project-notice-fg-color: $color-black;
+$project-notice-bg-color: #d79a7c;
 
-        .project-body {
-            &.bordered-top { border-width: 1px 1px 0 !important; }
-            min-height: 119px;
-            @media (max-width: 1199px) and (min-width: 992px) { min-height: 144px; }
-            padding: 15px;
-            color: $project-dark;
-            background-color: $project-light;
+$project-separator-color: lighten($project-fg-color, 0.6%);
+$project-border-color: lighten($project-fg-color, 0.6%);
 
-            .project-title {
-                font: $title-font;
-                margin: 5px 0;
-            }
 
-            .project-separator {
-                margin: 10px 70px;
-                border: {
-                    width: 1px 0 0;
-                    style: solid;
-                    color: darken($project-light, 15%);
-                }
-            }
+.project-grid, .repository-grid {
+  @include grid($project-width, $project-gutter-width);
 
-            .project-description {
-                font: $description-font;
-                margin: 5px 0;
-            }
-            
-        }
+  .project, .repository {
+    @include grid-element($project-width, $project-gutter-width);
 
-        .project-type {
-            font: $type-font;
-            text-transform: lowercase;
-            padding: 3px;
-            color: #FFFFFF;
-            background-color: $project-dark;
-        }
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+    color: $project-bg-color;
 
-        .notice-container {
-            margin-top: -21px !important;
-        }
-        .notice {
-            margin: 0;
-            position: relative;
-            font: $notice-font;
-            text-transform: uppercase;
-            padding: 4px;
-            color: $notice-foreground;
-            background-color: $notice-background;
-            z-index: 10;
-        }
-
+    .project-body, .repo-body {
+        padding: 10px;
     }
+
+    .project-title, .repo-title {
+      @include screen-desktop { font: $project-title-font--desktop }
+      @include screen-mobile { font: $project-title-font--mobile }
+
+      color: $project-title-color;
+      margin: 0;
+      padding: 10px 0 5px;
+    }
+
+    .project-description, .repo-description {
+      @include screen-mobile { font: $project-description-font--mobile }
+      @include screen-desktop { font: $project-description-font--desktop }
+
+      color: $project-description-color;
+      margin: 0;
+      padding: 10px 0 5px;
+    }
+
+    .project-type, .repo-type {
+        display: none;
+    }
+
+    .project-separator {
+        display: none;
+        margin: 10px 70px;
+        border: {
+            width: 1px 0 0;
+            style: solid;
+            color: $project-separator-color;
+        }
+    }
+
+    .notice-container {
+      margin-top: -30px !important;
+
+      .notice {
+        margin: 0 1px;
+        position: relative;
+        font: $project-notice-font--desktop;
+        text-transform: uppercase;
+        line-height: 25px;
+        color: $project-notice-fg-color;
+        background-color: $project-notice-bg-color;
+        z-index: 10;
+      }
+    }
+
+    .project-thumbnail {
+      max-width: $project-width;
+      border: 1px solid $project-border-color;
+    }
+  }
+
+  .project { min-height: $project-height }
+  .repository { min-height: $repo-height }
+  .repository {
+    // border-top: 1px solid $project-border-color;
+    // border-bottom: 1px solid $project-border-color;
+    // border-right: 1px solid linear-gradient(to bottom, $project-border-color, rgba(0,0,0,0));
+    // border-left: 1px solid linear-gradient(to bottom, $project-border-color, rgba(0,0,0,0));
+
+    .repo-separator {
+        margin: 10px 70px;
+        border: {
+            width: 1px 0 0;
+            style: solid;
+            color: $project-separator-color;
+        }
+    }
+  }
 }
 
-/* $brownLight: #957E6A; */
-/* $brownDark: #52453A; */
-/* $neutralLight: #9a918d; */
-/* $neutralDark: #48433d; */
-/* $blueLight: #8897B9; */
-/* $blueDark: #41475A; */
-/* $blackLight: #888888; */
-/* $blackDark: #444444; */
-/* $redLight: #A25452; */
-/* $redDark: #692A29; */
-/* $greenLight: #598C70; */
-/* $greenDark: #304E3E; */
-/* [> $titleColor: #8E7763; <] */
-/* $noticeBgColor: #f4b272; */
-/* $noticeFgColor: $brownDark; */
-
-/* $title-font: Questrial, Josefin Sans, sans-serif; */
-/* $description-font: Questrial, Josefin Sans, sans-serif; */
-/* $title-color: #877; */

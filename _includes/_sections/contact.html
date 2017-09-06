@@ -1,14 +1,9 @@
 {% assign contact_data = site.data[page.language].contact %}
 
-<div id="contact">
+<div class="section" id="contact">
   <div class="container">
-    <div class="text-center col-xs-12 section">
-
-      <h2 id="contact-header"> {{ contact_data.title }} </h2>
-      <p id="contact-paragraph"
-         class="col-sm-8 col-sm-offset-2"> {{ contact_data.body }} </p>
-
-    </div>
+    <h2 class="section-title align-center"> {{ contact_data.title }} </h2>
+    <p class="regular-text align-center"> {{ contact_data.body }} </p>
   </div>
 </div>
 
