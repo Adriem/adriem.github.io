@@ -1,0 +1,83 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+
+$contact-bg-color:    #222;
+$contact-fg-color:    #aaa;
+$contact-title-color: #eee;
+$contact-link-color:  #eee;
+$contact-hover-color: #fff;
+$contact-font-family: Montserrat, sans-serif;
+
+$contact-social-icon-size--desktop: 1.75rem;
+$contact-social-icon-size--mobile:  1.75rem;
+
+$contact-social-font--desktop: 300 1rem $contact-font-family;
+$contact-social-font--mobile:  300 1rem $contact-font-family;
+
+$contact-mail-font--desktop: 300 1.1rem $contact-font-family;
+$contact-mail-font--mobile:  300 1.1rem $contact-font-family;
+
+section#contact {
+  color: $contact-fg-color;
+  background-color: $contact-bg-color;
+  text-align: center;
+  padding: 1rem 0;
+
+  a {
+    color: $contact-link-color;
+    text-decoration: none;
+    transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+
+      &:hover, &:focus {
+        color: $contact-hover-color;
+        text-shadow: 0 0 5px #000;
+        border-color: $contact-hover-color;
+      }
+  }
+
+  .section-title {
+    color: $contact-title-color;
+    padding-bottom: 0;
+  }
+
+  .mail-text {
+    @include screen-desktop { font: $contact-mail-font--desktop }
+    @include screen-mobile  { font: $contact-mail-font--mobile  }
+  }
+
+  .social-grid {
+    @include grid(200px, 40px, 4);
+
+    margin: 3rem auto 4rem;
+
+    .social-link {
+      @include grid-element(200px, 40px);
+
+      color: $contact-fg-color;
+      border: none;
+      transition: color 0.25s ease-out;
+
+      &:hover, &:focus {
+        color: $contact-hover-color;
+        transition: color 0.35s ease-out;
+      }
+
+      .social-icon {
+        @include screen-desktop { font-size: $contact-social-icon-size--desktop }
+        @include screen-mobile  { font-size: $contact-social-icon-size--mobile  }
+
+        display: block;
+      }
+
+      .social-caption {
+        @include screen-desktop { font: $contact-social-font--desktop }
+        @include screen-mobile  { font: $contact-social-font--mobile  }
+
+        display: block;
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+

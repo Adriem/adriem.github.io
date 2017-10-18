@@ -1,0 +1,144 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+
+$header-bg-color        : $color-white;
+
+$header-brand-color         : $color-black-accent;
+$header-brand-font-family   : Poiret One, Georgia, serif;
+$header-brand-font--desktop : 600 56pt $header-brand-font-family;
+$header-brand-font--mobile  : 600 26pt $header-brand-font-family;
+
+$header-brand-sub-color         : $color-gray;
+$header-brand-sub-font-family   : Montserrat, serif;
+$header-brand-sub-font--desktop : 300 15pt $header-brand-sub-font-family;
+$header-brand-sub-font--mobile  : 300 15pt $header-brand-sub-font-family;
+
+$header-tab-color         : $color-gray;
+$header-tab-hover-color   : $color-black-accent;
+$header-tab-active-color  : $color-black-accent;
+
+$header-separator-width : 770px;
+$header-separator-width : 90%;
+$header-separator-color : #ddd;
+
+$header-brand-animation: header-brand-anim 1s ease-out;
+@include keyframes(header-brand-anim) {
+  0% { opacity: 0 }
+  10% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+$header-brand-sub-animation: header-brand-sub-anim 1s ease-out;
+@include keyframes(header-brand-sub-anim) {
+  0% { opacity: 0; position: relative; top: 1.5em; }
+  40% { opacity: 0; position: relative; top: 1.5em; }
+  100% { opacity: 1; position: relative; top: 0; }
+}
+
+$header-separator-animation: header-separator-anim 0.8s ease-out;
+@include keyframes(header-separator-anim) {
+  0% { opacity: 0; width: 1px }
+  35% { opacity: 1; width: 1px }
+  100% { width: 100% }
+}
+
+$header-tab-left-animation: header-tab-left-anim 1s ease-out;
+@include keyframes(header-tab-left-anim) {
+  0% { opacity: 0; position: relative; right: 1.5em; }
+  40% { opacity: 0; position: relative; right: 1.5em; }
+  100% { opacity: 1; position: relative; right: 0; }
+}
+
+$header-tab-right-animation: header-tab-right-anim 1s ease-out;
+@include keyframes(header-tab-right-anim) {
+  0% { opacity: 0; position: relative; left: 1.5em; }
+  40% { opacity: 0; position: relative; left: 1.5em; }
+  100% { opacity: 1; position: relative; left: 0; }
+}
+
+$header-tab-animation: header-tab-anim 1.3s ease-out;
+@include keyframes(header-tab-anim) {
+  0% { color: $color-white; }
+  30% { color: $color-white; }
+  100% { }
+}
+
+
+
+.header {
+
+  @include screen-desktop { padding: 2.5em 0 2.5em }
+  @include screen-mobile { padding: 30px 0 60px; } // TODO FIX THIS
+
+  background-color: $header-bg-color;
+  text-align: center;
+
+  .brand {
+     // @include screen-desktop { padding: 10em 0 11em; }
+     // @include screen-desktop { padding: 7em 0 }
+     @include screen-desktop { padding: 4em 0 6em }
+
+    .brand-title {
+      @include screen-desktop { font: $header-brand-font--desktop; }
+      @include screen-mobile { font: $header-brand-font--mobile; }
+
+      margin: 0;
+      padding: 0;
+      color: $header-brand-color;
+      animation: $header-brand-animation;
+    }
+
+    .brand-subtitle {
+      @include screen-desktop { font: $header-brand-sub-font--desktop; }
+      @include screen-mobile { font: $header-brand-sub-font--mobile; }
+
+      margin: 0;
+      padding: 0.1em 0 0;
+      color: $header-brand-sub-color;
+      animation: $header-brand-sub-animation;
+    }
+  }
+
+  .navbar-tabs {
+    .tab {
+      margin: 0 0.1em;
+      color: $header-tab-color;
+      background-color: $color-white;
+      animation: $header-tab-animation;
+      position: relative;
+      z-index: 1;
+
+      // &.right-align {
+      //   @include screen-desktop { animation: $header-tab-right-animation }
+      // }
+      // &.left-align  {
+      //   @include screen-desktop { animation: $header-tab-left-animation }
+      // }
+
+      // &:hover, &:focus { color: $header-tab-hover-color; }
+      &:hover { color: $header-tab-hover-color; }
+      &.active { color: $header-tab-active-color; }
+
+      &.active:after,
+      &:not(.active):hover:after {
+        background-color: $header-tab-active-color;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: relative;
+      top: -1.1em;
+      z-index: 0;
+      height: 1px;
+      width: 100%;
+      max-width: $header-separator-width;
+      margin: 0 auto;
+      background-color: $header-separator-color !important;
+      animation: $header-separator-animation;
+      border: none;
+    }
+  }
+}
+

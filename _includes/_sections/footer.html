@@ -1,8 +1,32 @@
 {% assign sections = site.data[page.language].navigation %}
 {% assign footer_data = site.data[page.language].footer %}
 
-<div class= "footer" id="footer">
+<section class="section" id="contact">
   <div class="container">
+
+    <h2 class="section-title align-center">
+        {{ footer_data.social.title }}
+    </h2>
+
+    <div class="social-grid">
+    {% for media_link in footer_data.social.links %}
+      <a href="{{ media_link.url }}" class="social-link">
+        <div class="social-icon">{{ media_link.label }}</div>
+        <span class="social-caption">{{ media_link.desc }}</span>
+      </a>
+    {% endfor %}
+    </div>
+
+    <p class="mail-text align-center">
+      {{ footer_data.social.mail }}
+    </p>
+
+  </div>
+</section>
+
+<section class= "footer" id="footer">
+  <div class="container">
+    {%comment%}
     <div class="navbar-tabs">
       <a class="tab" href="#header">{{ footer_data.back_to_top }}</a>
     </div>
@@ -36,15 +60,18 @@
         {% endif %}
       {% endfor %}
     </nav>
+    {%endcomment%}
 
     <div class="copyright-notice" id="copyright-notice">
       {{ footer_data.handcrafted_notice }}
+      &nbsp;|&nbsp;
+      {{ footer_data.powered_by_notice }}
       &nbsp;|&nbsp;
       {{ site.copyright }}
     </div>
 
   </div>
-</div>
+</section>
 
 {% assign sections = nil %}
 {% assign footer_data = nil %}

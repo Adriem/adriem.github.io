@@ -2,11 +2,29 @@
 
 <div class="header" id="header">
   <div class="container">
+    <div class="brand">
+        <h2 class="brand-title">
+          {% if page.title %}
+            {{ page.title }}
+          {% else %}
+            {{ site.title }}
+          {% endif %}
+        </h2>
+        <p class="brand-subtitle">
+          {% if page.sub_title %}
+            {{ page.sub_title }}
+          {% else %}
+            {{ site.sub_title }}
+          {% endif %}
+        </p>
+    </div>
     <nav class="navbar-tabs">
       {% for section in sections %}
         {% if section[1].header %}
 
           <!-- calculate element class -->
+          {% comment %}
+          {% endcomment %}
           {% assign elem_class = section[1].align | append: '-align'%}
           {% if section[1].url and page.url == section[1].url %}
             {% assign elem_class = elem_class | append: ' active ' %}
@@ -28,23 +46,6 @@
         {% endif %}
       {% endfor %}
     </nav>
-
-    <div class="brand">
-        <h2 class="brand-title">
-          {% if page.title %}
-            {{ page.title }}
-          {% else %}
-            {{ site.title }}
-          {% endif %}
-        </h2>
-        <p class="brand-subtitle">
-          {% if page.sub_title %}
-            {{ page.sub_title }}
-          {% else %}
-            {{ site.sub_title }}
-          {% endif %}
-        </p>
-    </div>
   </div>
 </div>
 

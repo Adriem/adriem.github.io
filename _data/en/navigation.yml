@@ -1,4 +1,12 @@
-home:
+# home:
+#   label: home
+#   url: /en/
+#   anchor: '#header'
+#   align: left
+#   header: true
+#   footer: true
+
+projects:
   label: projects
   url: /en/
   anchor: '#projects'
@@ -15,7 +23,7 @@ about:
   footer: true
 
 contact:
-  label: contact
+  label: social
   anchor: '#contact'
   align: right
   header: true
