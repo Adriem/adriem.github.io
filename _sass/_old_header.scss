@@ -2,26 +2,29 @@
 @import "./_mixins.scss";
 
 $header-font-family           : Josefin Sans, Palatino Linotype, serif;
-$header-brand-font-family     : Poiret One, Georgia, serif;
-$header-brand-sub-font-family : Raleway, sans-serif;
-$header-tab-font-family       : $header-font-family;
 
-$header-bg-color : #4B423D;
-$header-texture  : "/assets/img/texture12.jpg";
+$header-bg-color : $color-white;
+$header-anim-time: 1.0s;
 
-$header-brand-color            : $color-white-accent;
-$header-brand-font--desktop    : 48pt $brand-font-family;
-$header-brand-font--mobile     : 25pt $brand-font-family;
+$header-brand-color         : $color-black-accent;
+$header-brand-font-family   : Poiret One, Georgia, serif;
+$header-brand-font--desktop : 600 72pt $brand-font-family;
+$header-brand-font--mobile  : 26pt $brand-font-family;
 
-$header-brand-sub-color         : rgba(255, 255, 255, 0.45);
-$header-brand-sub-font--desktop : 19pt $brand-sub-font-family;
+$header-brand-sub-color         : $color-black-soft;
+$header-brand-sub-font-family   : Raleway, sans-serif;
+$header-brand-sub-font--desktop : 500 20pt $brand-sub-font-family;
+$header-brand-sub-font--desktop : 400 18pt Questrial;
 $header-brand-sub-font--mobile  : 16pt $brand-sub-font-family;
 
+$header-tab-color         : $color-black-soft;
+$header-tab-hover-color   : $color-black-accent;
+$header-tab-active-color  : $color-black-accent;
+$header-tab-font-family   : Josefin Sans, Palatino Linotype, serif;
 $header-tab-font--desktop : 300 17pt $tab-font-family;
 $header-tab-font--mobile  : 300 15pt $tab-font-family;
-$header-tab-color         : rgba(255, 255, 255, 0.45);
-$header-tab-active-color  : rgba(255, 255, 255, 0.75);
-$header-tab-hover-color   : $color-white-accent;
+
+$header-animation-time: 2s;
 
 $footer-bg-color : #1B1716;
 $footer-texture  : "/assets/img/texture13.jpg";
@@ -40,61 +43,39 @@ $footer-tab-color         : rgba(255, 255, 255, 0.45);
 $footer-tab-active-color  : rgba(255, 255, 255, 0.75);
 $footer-tab-hover-color   : $color-white-accent;
 
-
 .navbar-tabs {
   .tab {
+    @include fade-in-anim(tab-left-anim, left, 1em);
+    @include fade-in-anim(tab-right-anim, right, 1em);
+    @include fade-in-anim(tab-bottom-anim, bottom, 1em);
+
     text-decoration: none;
     padding: 5px 10px;
 
-    &.right-align { @include screen-desktop { float: right; } }
-    &.left-align { @include screen-desktop { float: left; } }
+    &.right-align {
+      @include screen-desktop {
+        float: right;
+        // animation: tab-left-anim $header-anim-time ease-out;
+      }
+      @include screen-mobile {
+        // animation: tab-bottom-anim $header-anim-time ease-out;
+      }
+    }
+
+    &.left-align {
+      @include screen-desktop {
+        float: left;
+        // animation: tab-right-anim $header-anim-time ease-out;
+      }
+      @include screen-mobile {
+        // animation: tab-bottom-anim $header-anim-time ease-out;
+      }
+    }
   }
 
   &::after { content: ""; clear: both; display: block; }  // Clearfix
 }
 
-.header {
-  @include screen-desktop { padding: 25px 0 120px; };
-  @include screen-mobile { padding: 30px 0 60px; }
-
-  background-color: $header-bg-color;
-  background-image: url($header-texture);
-  text-align: center;
-
-  .brand {
-     @include screen-desktop { padding-top: 40px }
-
-    .brand-title {
-      @include screen-desktop { font: $header-brand-font--desktop; }
-      @include screen-mobile { font: $header-brand-font--mobile; }
-
-      margin: 0;
-      padding: 25px 0 10px;
-      color: $header-brand-color;
-    }
-
-    .brand-subtitle {
-      @include screen-desktop { font: $header-brand-sub-font--desktop; }
-      @include screen-mobile { font: $header-brand-sub-font--mobile; }
-
-      margin: 0;
-      color: $header-brand-sub-color;
-    }
-  }
-
-  .navbar-tabs {
-    .tab {
-      @include screen-desktop { font: $header-tab-font--desktop }
-      @include screen-mobile { font: $header-tab-font--mobile }
-
-      color: $header-tab-color;
-
-      &:hover, &:focus { color: $header-tab-hover-color; }
-
-      &.active { color: $header-tab-active-color; }
-    }
-  }
-}
 
 .footer {
   @include screen-desktop { padding: 25px 0; };
@@ -140,7 +121,12 @@ $footer-tab-hover-color   : $color-white-accent;
 }
 
 body {
-  background-color: $footer-bg-color;
-  background-image: $footer-texture;
-  background-repeat: repeat;
+  background-color: $color-white;
 }
+
+
+/* LEGACY STUFF
+$header-bg-color : #4B423D;
+$header-texture  : "/assets/img/texture12.jpg";
+*/
+

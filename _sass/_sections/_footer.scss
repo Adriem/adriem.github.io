@@ -1,0 +1,27 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+
+$footer-fg-color : #eee;
+$footer-fg-title-color : #fff;
+
+$footer-copy-color         : #aaa;
+$footer-copy-bg-color      : #020202;
+$footer-copy-link-color    : #fff;
+$footer-copy-font-family   : Montserrat, sans-serif;
+$footer-copy-font--desktop : 200 0.85rem $footer-copy-font-family;
+$footer-copy-font--mobile  : 200 0.85rem $footer-copy-font-family;
+
+section#footer {
+  background-color: $footer-copy-bg-color;
+  text-align: center;
+
+  .copyright-notice {
+    @include screen-desktop { font: $footer-copy-font--desktop }
+    @include screen-mobile  { font: $footer-copy-font--mobile  }
+
+    padding: 1rem 3rem;
+    color: $footer-copy-color;
+
+    a { color: $footer-copy-link-color }
+  }
+}

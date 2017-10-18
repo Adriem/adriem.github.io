@@ -6,9 +6,14 @@
 @import "base";
 @import "section";
 @import "project";
-@import "header";
 
-        // "base",
-        /* "syntax-highlighting", */
-        // "header",
-        // "project";
+@import "_components/content-block";
+@import "_components/navbar";
+
+@import "_nav/header";
+@import "_nav/tabs";
+
+@import "_sections/contact";
+@import "_sections/footer";
+@import "_sections/about-section";
+

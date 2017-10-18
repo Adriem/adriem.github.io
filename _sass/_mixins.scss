@@ -1,56 +1,63 @@
 @import "./_variables.scss";
 
-
 // --=( RESPONSIVE )==----------------------------------------------------------
 
 @mixin screen-between($min-width, $max-width) {
   @media screen
     and (min-width: $min-width)
-    and (max-width: $max-width - 1) { @content }
+    and (max-width: $max-width) { @content };
+    // and (max-width: $max-width - 1) { @content };
 }
 
 @mixin screen-up-to($max-width) {
-  @media screen and (max-width: $max-width - 1) { @content }
+  // @media screen and (max-width: $max-width - 1) { @content };
+  @media screen and (max-width: $max-width) { @content };
 }
 
 @mixin screen-at-least($min-width) {
-  @media screen and (min-width: $min-width) { @content }
+  @media screen and (min-width: $min-width) { @content };
 }
 
+@mixin screen-xl() { @include screen-at-least($width-xl) { @content }; }
+@mixin screen-lg() { @include screen-between($width-lg, $width-xl) { @content }; }
+@mixin screen-md() { @include screen-between($width-md, $width-lg) { @content }; }
+@mixin screen-sm() { @include screen-between($width-sm, $width-md) { @content }; }
+@mixin screen-xs() { @include screen-up-to($width-sm) { @content }; }
 
-@mixin screen-xl() { @include screen-at-least($width-xl) { @content } }
-@mixin screen-lg() { @include screen-between($width-lg, $width-xl) { @content } }
-@mixin screen-md() { @include screen-between($width-md, $width-lg) { @content } }
-@mixin screen-sm() { @include screen-between($width-sm, $width-md) { @content } }
-@mixin screen-xs() { @include screen-up-to($width-xs) { @content } }
-
-
-@mixin screen-desktop() { @include screen-at-least($width-sm) { @content } }
-@mixin screen-mobile() { @include screen-up-to($width-sm) { @content } }
+@mixin screen-desktop() { @include screen-at-least($width-sm) { @content }; }
+@mixin screen-mobile() { @include screen-up-to($width-sm) { @content }; }
 
 
-// --=( GRID )==---------------------------------------------------------------
+@mixin clearfix() {
+    &:after { content: ""; clear: both; display: block; }  // Clearfix
+}
 
-@mixin grid($element-width, $gutter-width) {
+// --=( GRID )==----------------------------------------------------------------
+
+@function calculate-grid-width($max-width, $slot-width, $max-items: -1) {
+  $_max-width: if($max-items > 0,
+                  min($max-width, $slot-width * $max-items),
+                  $max-width);
+
+  @return floor($_max-width / $slot-width) * $slot-width;
+}
+
+@mixin grid($element-width, $gutter-width, $max-items: -1) {
     $slot-width: $element-width + $gutter-width;
 
+    @include clearfix;
+
     @include screen-xs { width: 100%; margin: 0; }
-    @include screen-sm { width: floor($width-sm / $slot-width) * $slot-width; }
-    @include screen-md { width: floor($width-md / $slot-width) * $slot-width; }
-    @include screen-lg { width: floor($width-lg / $slot-width) * $slot-width; }
-    @include screen-xl { width: floor($width-xl / $slot-width) * $slot-width; }
+    @include screen-sm { width: calculate-grid-width($width-sm, $slot-width, $max-items); }
+    @include screen-md { width: calculate-grid-width($width-md, $slot-width, $max-items); }
+    @include screen-lg { width: calculate-grid-width($width-lg, $slot-width, $max-items); }
+    @include screen-xl { width: calculate-grid-width($width-xl, $slot-width, $max-items); }
 
     margin: 0 auto;
-
-    &::after { content: ""; clear: both; display: block; }  // Clearfix
 }
 
-@mixin grid-element($element-width, $gutter-width) {
-    @include screen-sm { width: $element-width; }
-    @include screen-md { width: $element-width; }
-    @include screen-lg { width: $element-width; }
-    @include screen-xl { width: $element-width; }
-
+@mixin grid-element($element-width, $gutter-width, $scale: 1) {
+    width: $element-width * $scale + $gutter-width * ($scale - 1);
     margin-left: floor($gutter-width / 2);
     margin-right: floor($gutter-width / 2);
     display: block;
@@ -59,7 +66,7 @@
 }
 
 
-// --=( PARAGRAPH )==----------------------------------------------------------
+// --=( PARAGRAPH )==-----------------------------------------------------------
 
 @mixin paragraph($width, $margin-bottom) {
     max-width: $width;
@@ -69,3 +76,16 @@
     margin-right: auto;
 }
 
+
+// --=( ANIMATIONS )==----------------------------------------------------------
+
+@mixin keyframes($name) { @keyframes #{$name} { @content } }
+
+@mixin fade-in-anim($name, $direction: 'top', $offset: 0, $from: 0%, $to: 100%) {
+  @include keyframes($name) {
+    0% { opacity: 0; position: relative; #{ $direction }: $offset; }
+    #{$from} { opacity: 0; position: relative; #{ $direction }: $offset; }
+    #{$to} { opacity: 1; position: relative; #{ $direction }: 0; }
+    100% { opacity: 1; position: relative; #{ $direction }: 0; }
+  }
+}

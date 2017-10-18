@@ -3,56 +3,45 @@ layout: default
 ---
 {% assign portfolio = site.data[page.language].portfolio %}
 
-<div class="section accent-section">
+<section class="section accent-section">
   <div class="container">
-      <div class="section-text">
-        <p class="section-title">{{ page.contents.jumbo.title }}</p>
-        {{ page.contents.jumbo.body }}
-    </div>
-    <div class="section-image">
-      <img class="avatar"
-           src="/assets/img/avatar-squared.jpg"></img>
-    </div>
+    {% include _components/content-block.html
+               content=page.contents.lead_section %}
   </div>
-</div>
+</section>
 
-
-<div class="section regular-section" id="projects">
+<section class="section regular-section" id="facts">
   <div class="container">
 
-    <h2 class="section-title align-center">
-        {{ page.contents.projects.title }}
-        <small class="section-sub-title">
-          {{ page.contents.projects.sub_title }}
-        </small>
-    </h2>
+    {{ page.contents.about_section }}
+
+    <div class="fact-list">
+        <div class="fact double-width">
+            {{ page.contents.fact_list.first }}
+        </div>
+      {% for fact in page.contents.fact_list offset:1 %}
+        <div class="fact">
+            {{ fact }}
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<section class="section regular-section" id="projects">
+  <div class="container">
+
+    {{ page.contents.projects_section }}
 
     <div class="project-grid">
     {% for item in portfolio.projects %}
       {% include _components/project.html project=item %}
     {% endfor %}
     </div>
-  </div>
-</div>
-
-
-<div class="section regular-section" id="repos">
-  <div class="container">
-
-    <h2 class="section-title align-center">
-      {{ page.contents.repos.title }}
-      <small class="section-sub-title align-center">
-        {{ page.contents.repos.sub_title }}
-      </small>
-    </h2>
-
-    <div class="project-grid">
-    {% for item in portfolio.repositories %}
-      {% include _components/repository.html project=item %}
-    {% endfor %}
-    </div>
 
   </div>
-</div>
+</section>
+
 
 {% assign portfolio = nil %}

@@ -204,33 +204,3 @@ html {
 }
 
 // NAV-TABS --------------------------------------------------------------------
-.navbar-tabs {
-    text-align: center;
-    border: none;
-
-    .tab {
-        float: none;
-        display: inline-block;
-
-        *display: inline; /* ie7 fix */
-        zoom: 1; /* hasLayout ie7 trigger */
-
-        padding: 0 8px 10px;
-
-        text-transform: lowercase;
-        text-decoration: none;
-        font-family: $tab-font;
-        @include screen-md {
-            font-size: $tab-size-desktop;
-            font-weight: 300;
-        }
-        @media(max-width:767px) { font-size: $tab-size-mobile; }
-
-        &:hover, &:focus, .open { color: $hover-tab-color ! important; }
-        &.active { color: $active-tab-color ! important; }
-    }
-
-    // Alignment
-    .right-align { @media(min-width:768px) { float: right ! important; } }
-    .left-align  { @media(min-width:768px) { float: left  ! important; } }
-}

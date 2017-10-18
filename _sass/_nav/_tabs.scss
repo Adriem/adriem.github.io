@@ -1,0 +1,57 @@
+@import "mixins";
+
+$tab-font-family   : Josefin Sans, Palatino Linotype, serif;
+$tab-font--desktop : 100 16pt $tab-font-family;
+$tab-font--mobile  : 300 15pt $tab-font-family;
+
+// .navbar-tabs {
+//     text-align: right;
+//     border: none;
+
+//     .tab {
+//       @include screen-desktop { font: $tab-font--desktop }
+//       @include screen-mobile { font: $tab-font--mobile }
+
+//       text-transform: lowercase;
+//       text-decoration: none;
+//       padding: 0 0.8em;
+
+//       float: none;
+//       display: inline-block;
+//       *display: inline; /* ie7 fix */
+//       zoom: 1; /* hasLayout ie7 trigger */
+
+//       transition: color 0.25s ease-out;
+
+//       // &:not(.active):after {
+//       &:after {
+//         content: '';
+//         width: 0px;
+//         display: block;
+//         opacity: 0;
+//         margin: 0.3em auto 0;
+//         height: 1px;
+//         transition: width 0.15s ease-out,
+//                     opacity 0.10s linear 0.05s,
+//                     background-color 0.25s ease-in-out;
+//       }
+
+//       // &.active::after,
+//       // &:not(.active):hover::after {
+//       &:focus:after,
+//       &:hover:after {
+//         content: '';
+//         display: block;
+//         opacity: 1;
+//         margin: 0.3em auto 0;
+//         height: 1px;
+//         width: 100%;
+//         transition: width 0.15s ease-out,
+//                     opacity 0.1s,
+//                     background-color 0.25s ease-in-out;
+//       }
+
+//       // &.right-align { @include screen-desktop { float: right ! important; } }
+//       // &.left-align  { @include screen-desktop { float: left  ! important; } }
+//     }
+// }

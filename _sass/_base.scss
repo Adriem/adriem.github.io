@@ -1,5 +1,6 @@
 @import "./_variables.scss";
 @import "./_mixins.scss";
+@import "./section.scss";
 
 .container {
     @include screen-xs { width: 100%; margin: 0; }
@@ -14,18 +15,7 @@
 
 body { margin: 0; }
 
-
-// GRIDS
-
-.fact-list { @include grid(350px, 20px) }
-.fact {
-  @include grid-element(320px, 40px);
-
-  p { @include paragraph(350px, 20px) }
-}
-
-
-// PARAGRAPHS
+// deprecated
 
 #who-am-i {
   p { @include paragraph(700px, 20px) }

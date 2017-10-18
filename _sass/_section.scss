@@ -1,24 +1,32 @@
 @import "./_variables.scss";
 
-$regular-section-title-font--desktop: 2.3em $main-font-family;
-$regular-section-title-font--mobile:  1.8em $main-font-family;
-$regular-section-title-color: $color-brown-accent;
-$regular-section-subtitle-font--desktop: 0.5em $main-font-family;
-$regular-section-subtitle-font--mobile:  0.5em $main-font-family;
+$title-font-family: Montserrat, Questrial, sans-serif;
+
+// $text-font-family: Roboto, sans-serif;
+$text-font-family: Montserrat, Open Sans, sans-serif;
+
+$regular-section-title-font--desktop: 300 30pt $title-font-family;
+$regular-section-title-font--mobile:  1.8em $title-font-family;
+$regular-section-title-color: $color-black-accent;
+$regular-section-subtitle-font--desktop: 400 1rem $text-font-family;
+// $regular-section-subtitle-font--desktop: 400 13pt $text-font-family;
+$regular-section-subtitle-font--mobile:  0.5em $title-font-family;
 $regular-section-subtitle-color: $color-black;
-$regular-section-text-font--desktop: 1.2em/1.5 $main-font-family;
-$regular-section-text-font--mobile:  1.2em/1.5 $main-font-family;
+// $regular-section-text-font--desktop: 1.2em/1.5 $text-font-family;
+$regular-section-text-font--desktop: 300 0.9rem/1.5 $text-font-family;
+$regular-section-text-font--mobile:  1.2em/1.5 $text-font-family;
 $regular-section-text-color: $color-black;
 $regular-section-bg-color: $color-white;
 
-$accent-section-title-font--desktop: 2.0em $main-font-family;
-$accent-section-title-font--mobile:  1.8em $main-font-family;
-$accent-section-title-color: $color-black-accent;
-$accent-section-subtitle-font--desktop: 0.5em $main-font-family;
-$accent-section-subtitle-font--mobile:  0.5em $main-font-family;
-$accent-section-subtitle-color: $color-black;
-$accent-section-text-font--desktop: 1.2em/1.5 $main-font-family;
-$accent-section-text-font--mobile:  1.2em/1.5 $main-font-family;
+$accent-section-title-font--desktop: 1.8em $title-font-family;
+$accent-section-title-font--mobile:  1.8em $title-font-family;
+$accent-section-title-color: #444;
+$accent-section-subtitle-font--desktop: 0.5em $title-font-family;
+$accent-section-subtitle-font--mobile:  0.5em $title-font-family;
+$accent-section-subtitle-color: $color-light-gray;
+$accent-section-text-font--desktop: 300 0.9rem/1.4 $text-font-family;
+// $accent-section-text-font--desktop: 1.1em/1.5 $main-font-family;
+$accent-section-text-font--mobile:  1.1em/1.5 $text-font-family;
 $accent-section-text-color: $color-black;
 $accent-section-bg-color: $color-light-gray;
 
@@ -30,6 +38,9 @@ $accent-section-bg-color: $color-light-gray;
   padding-bottom: 30px;
 
   .section-title {
+    @include screen-desktop { font: $regular-section-title-font--desktop; }
+    @include screen-mobile  { font: $regular-section-title-font--mobile;  }
+
     box-sizing: border-box;
     width: 100%;
     margin: 0;
@@ -43,7 +54,7 @@ $accent-section-bg-color: $color-light-gray;
       display: block;
       width: 100%;
       margin: 0;
-      padding: 15px 0 0;
+      padding: 0.3em 0 0;
     }
   }
 
@@ -53,9 +64,6 @@ $accent-section-bg-color: $color-light-gray;
     background-color: $regular-section-bg-color;
 
     .section-title {
-      @include screen-desktop { font: $regular-section-title-font--desktop; }
-      @include screen-mobile { font: $regular-section-title-font--mobile; }
-
       color: $regular-section-title-color;
 
       .section-sub-title {
@@ -74,13 +82,47 @@ $accent-section-bg-color: $color-light-gray;
   }
 
   &.accent-section {
-    background-color: $accent-section-bg-color;
+    // background-color: $accent-section-bg-color;
+    .content {
+      @include screen-mobile { background-image: none }
+      @include screen-desktop { background-image: url('/assets/img/avatar1.jpg') }
+
+      padding: 0 190px 0 0;
+      max-width: 50em;
+      background-color: $accent-section-bg-color;
+      background-repeat: no-repeat;
+      background-position: right top;
+      background-size: auto 100%;
+      margin: 0 auto;
+
+      .section-img {
+        @include screen-desktop { display: none; }
+        @include screen-mobile { display: block; border-radius: 100%; }
+      }
+      .section-text {
+        text-align: justify;
+        padding: 2em 15% 2em 0;
+        background: linear-gradient(to right,
+                                    #FFF 75%,
+                                    #fcfcfc 80%,
+                                    #eee 90%,
+                                    rgba(238, 238, 238, 0.95) 92%,
+                                    rgba(238, 238, 238, 0.90) 93%,
+                                    rgba(238, 238, 238, 0.85) 94%,
+                                    rgba(238, 238, 238, 0.65) 96%,
+                                    rgba(238, 238, 238, 0.45),
+                                    rgba(238, 238, 238, 0.25),
+                                    rgba(238, 238, 238, 0));
+      }
+    }
 
     .section-title {
       @include screen-desktop { font: $accent-section-title-font--desktop; }
       @include screen-mobile { font: $accent-section-title-font--mobile; }
 
       color: $accent-section-title-color;
+      padding: 0;
+      margin-bottom: 0.5em;
 
       .section-sub-title {
         @include screen-desktop { font: $accent-section-subtitle-font--desktop; }
@@ -94,55 +136,58 @@ $accent-section-bg-color: $color-light-gray;
         @include screen-mobile { font: $accent-section-text-font--mobile; }
 
         color: $accent-section-text-color;
+        letter-spacing: 0.01em;
+        margin-bottom: 0.5em;
+        &:last-child { margin: 0 }
     }
   }
 }
 
-#contact {
-  $contact-fg-color: rgba(255, 255, 255, 0.45);
-  $contact-fg-accent-color: rgba(255, 255, 255, 0.75);
-  $contact-bg-color: #373332;
-  $contact-texture: "/assets/img/texture9.jpg";
-  $contact-font-family: Josefin Sans, Palatino Linotype, Georgia, serif;
-
-  $contact-title-color: $contact-fg-accent-color;
-  $contact-title-font--desktop: 300 30pt $contact-font-family;
-  $contact-title-font--mobile: 300 22pt $contact-font-family;
-
-  $contact-text-color: $contact-fg-color;
-  $contact-link-color: $contact-fg-accent-color;
-  $contact-link-hover-color: $color-white-accent;
-  $contact-text-font--desktop: 300 16pt/18pt $contact-font-family;
-  $contact-text-font--mobile: 300 15pt $contact-font-family;
-
-  background-color: $contact-bg-color;
-  background-image: $contact-texture;
-  text-align: center;
-  padding: 10px 0 50px;
-
-  .section-title {
-    @include screen-desktop { font: $contact-title-font--desktop; }
-    @include screen-mobile { font: $contact-title-font--mobile; }
-
-    color: $contact-title-color;
-    padding-bottom: 15px;
-  }
-  .regular-text {
-      @include screen-desktop { font: $contact-text-font--desktop; }
-      @include screen-mobile { font: $contact-text-font--mobile; }
-
-      color: $contact-text-color;
-      max-width: 700px;
-      margin: auto;
-
-      a {
-        color: $contact-link-color;
-        text-decoration: none;
-
-        &:hover {
-          color: $contact-link-hover-color;
-          text-decoration: underline;
-        }
-      }
-  }
-}
+//  #contact {
+//    $contact-fg-color: rgba(255, 255, 255, 0.45);
+//    $contact-fg-accent-color: rgba(255, 255, 255, 0.75);
+//    $contact-bg-color: #373332;
+//    $contact-texture: "/assets/img/texture9.jpg";
+//    $contact-font-family: Josefin Sans, Palatino Linotype, Georgia, serif;
+//  
+//    $contact-title-color: $contact-fg-accent-color;
+//    $contact-title-font--desktop: 300 30pt $contact-font-family;
+//    $contact-title-font--mobile: 300 22pt $contact-font-family;
+//  
+//    $contact-text-color: $contact-fg-color;
+//    $contact-link-color: $contact-fg-accent-color;
+//    $contact-link-hover-color: $color-white-accent;
+//    $contact-text-font--desktop: 300 16pt/18pt $contact-font-family;
+//    $contact-text-font--mobile: 300 15pt $contact-font-family;
+//  
+//    background-color: $contact-bg-color;
+//    background-image: $contact-texture;
+//    text-align: center;
+//    padding: 10px 0 50px;
+//  
+//    .section-title {
+//      @include screen-desktop { font: $contact-title-font--desktop; }
+//      @include screen-mobile { font: $contact-title-font--mobile; }
+//  
+//      color: $contact-title-color;
+//      padding-bottom: 15px;
+//    }
+//    .regular-text {
+//        @include screen-desktop { font: $contact-text-font--desktop; }
+//        @include screen-mobile { font: $contact-text-font--mobile; }
+//  
+//        color: $contact-text-color;
+//        max-width: 700px;
+//        margin: auto;
+//  
+//        a {
+//          color: $contact-link-color;
+//          text-decoration: none;
+//  
+//          &:hover {
+//            color: $contact-link-hover-color;
+//            text-decoration: underline;
+//          }
+//        }
+//    }
+//  }

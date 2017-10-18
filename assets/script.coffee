@@ -23,3 +23,19 @@ $ ->
       if target.length
         $('html, body').animate(scrollTop: target.offset().top, 500)
         return false
+
+  # Scroll spy
+  navbarExpanded = true
+  $navbar = $('.navbar')
+  window.onscroll = ->
+    scrollPosition = document.documentElement.scrollTop or document.body.scrollTop
+    if navbarExpanded and scrollPosition > 0
+      navbarExpanded = false
+      $navbar.removeClass('navbar--expanded')
+      $navbar.addClass('navbar--collapsed')
+    else if not navbarExpanded and scrollPosition is 0
+      navbarExpanded = true
+      $navbar.removeClass('navbar--collapsed')
+      $navbar.addClass('navbar--expanded')
+
+

@@ -4,11 +4,11 @@ $project-gutter-width: 10px;
 $project-height: 340px;
 $repo-height: 120px;
 
-$project-title-font--desktop: 700 15pt $main-font-family;
-$project-title-font--mobile: 700 15pt $main-font-family;
+$project-title-font--desktop: 400 1.5rem $main-font-family;
+$project-title-font--mobile: 400 1.5rem $main-font-family;
 
-$project-description-font--desktop: 14pt $main-font-family;
-$project-description-font--mobile: 14pt $main-font-family;
+$project-description-font--desktop: 300 1rem $main-font-family;
+$project-description-font--mobile: 300 1rem $main-font-family;
 
 $project-tag-font--desktop: 10pt $main-font-family;
 $project-tag-font--mobile: 10pt $main-font-family;
@@ -61,7 +61,7 @@ $project-border-color: lighten($project-fg-color, 0.6%);
 
       color: $project-description-color;
       margin: 0;
-      padding: 10px 0 5px;
+      padding: 5px 0;
     }
 
     .project-type, .repo-type {

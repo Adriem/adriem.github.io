@@ -1,8 +1,10 @@
 {% assign sections = site.data[page.language].navigation %}
+{% assign navContent = site.data[page.language].header %}
 
-<div class="header" id="header">
+<div class="navbar navbar--expanded" id="navbar">
   <div class="container">
-    <nav class="navbar-tabs">
+
+    <nav class="navbar__links navbar__tabs">
       {% for section in sections %}
         {% if section[1].header %}
 
@@ -19,7 +21,7 @@
             {% assign elem_url = section[1].anchor %}
           {% endif %}
 
-          <a class="tab {{ elem_class }}" href="{{ elem_url }}">
+          <a class="navbar__link {{ elem_class }}" href="{{ elem_url }}">
             {{ section[1].label }}
           </a>
 
@@ -29,23 +31,20 @@
       {% endfor %}
     </nav>
 
-    <div class="brand">
-        <h2 class="brand-title">
-          {% if page.title %}
-            {{ page.title }}
-          {% else %}
-            {{ site.title }}
-          {% endif %}
-        </h2>
-        <p class="brand-subtitle">
-          {% if page.sub_title %}
-            {{ page.sub_title }}
-          {% else %}
-            {{ site.sub_title }}
-          {% endif %}
-        </p>
+    <div class="navbar__brand">
+        <h2 class="navbar__title">{{ navContent.title }}</h2>
+        <!-- <img class="brand__image" -->
+             <!-- src="{{ navContent.avatar | prepend: '/assets/img/' }}"> -->
+        <div class="navbar__links navbar__social navbar--expanded-only">
+          <a class="navbar__link">github</a>
+          <a class="navbar__link">twitter</a>
+          <a class="navbar__link">linked in</a>
+          <a class="navbar__link">instagram</a>
+        </div>
     </div>
+
   </div>
 </div>
 
 {% assign sections = nil %}
+{% assign navContent = nil %}
