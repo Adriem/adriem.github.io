@@ -1,4 +1,5 @@
 {% assign sections = site.data[page.language].navigation %}
+{% assign social = site.data[page.language].social %}
 {% assign navContent = site.data[page.language].header %}
 
 <div class="navbar navbar--expanded" id="navbar">
@@ -31,20 +32,26 @@
       {% endfor %}
     </nav>
 
-    <div class="navbar__brand">
-        <h2 class="navbar__title">{{ navContent.title }}</h2>
-        <!-- <img class="brand__image" -->
-             <!-- src="{{ navContent.avatar | prepend: '/assets/img/' }}"> -->
+    <div class="navbar__brand"
+         style="background-image:url('{{ navContent.avatar | prepend: '/assets/img/' | prepend: site.baseUrl }}')">
+        <h2 class="navbar__title">
+          {{ navContent.title }}
+        </h2>
         <div class="navbar__links navbar__social navbar--expanded-only">
-          <a class="navbar__link">github</a>
-          <a class="navbar__link">twitter</a>
-          <a class="navbar__link">linked in</a>
-          <a class="navbar__link">instagram</a>
+          {% for link in social.links %}
+            <a class="navbar__link" href="{{ link.url }}">{{ link.text }}</a>
+            <!-- <a class="navbar__link" href="{{ link.url }}">{{ link.icon }}</a> -->
+            <!-- <a class="navbar__link" href="{{ link.url }}">{{ link.icon }}&nbsp;{{ link.text }}</a> -->
+          {% endfor %}
         </div>
     </div>
 
+    <a class="navbar__scroll-arrow navbar--expanded-only">
+      <i class="fa fa-lg fa-angle-down"></i>
+    </a>
   </div>
 </div>
 
 {% assign sections = nil %}
+{% assign social = nil %}
 {% assign navContent = nil %}

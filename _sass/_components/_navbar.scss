@@ -1,0 +1,220 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+
+$navbar__collapse-time: 0.25s;
+
+.navbar {
+  $navbar__bg-color            : $color-white;
+  $navbar-brand__color         : $color-black-accent;
+  $navbar-brand__font-family   : Montserrat, helvetica;
+  $navbar-brand__font-expanded--desktop  : 300 4.5rem $navbar-brand__font-family;
+  $navbar-brand__font-collapsed--desktop : 400 1.5rem $navbar-brand__font-family;
+  $navbar-brand__font-expanded--mobile  : 200 26pt $navbar-brand__font-family;
+  $navbar-brand__font-collapsed--mobile  : 200 26pt $navbar-brand__font-family;
+
+  $navbar-tab__color         : $color-gray;
+  $navbar-tab__hover-color   : $color-black-accent;
+  $navbar-tab__active-color  : $color-black-accent;
+  $navbar-tab__font-family   : Josefin Sans, Palatino Linotype, serif;
+  $navbar-tab__font--desktop : 100 1.3rem $navbar-tab__font-family;
+  $navbar-tab__font--mobile  : 300 15pt $navbar-tab__font-family;
+
+  @include clearfix;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: $navbar__bg-color;
+
+  transition: height $navbar__collapse-time ease-in-out;
+
+  &--expanded {
+    height: 100vh;
+
+    & + #page-content {
+      margin-top: 100vh !important;
+    }
+
+    .navbar__brand {
+      float: none;
+      width: 100%;
+      padding-top: 40vh;
+      padding-bottom: 7.5vh;
+
+      .navbar__title {
+        @include screen-desktop { font: $navbar-brand__font-expanded--desktop; }
+        @include screen-mobile { font: $navbar-brand__font-expanded--mobile; }
+
+        padding: 0;
+      }
+    }
+    .navbar__tabs {
+      float: none;
+      width: 100%;
+      padding: 2.5rem 0;
+    }
+    .navbar--collapsed-only { display:none; }
+  }
+
+  &--collapsed {
+    & + #page-content {
+      margin-top: 12rem !important;
+    }
+
+    .navbar__brand {
+      float: left;
+      width: auto;
+      background: none !important;
+
+      .navbar__title {
+        @include screen-desktop { font: $navbar-brand__font-collapsed--desktop; }
+        @include screen-mobile { font: $navbar-brand__font-collapsed--mobile; }
+
+        padding: 1.3rem 0 1.1rem;
+      }
+    }
+    .navbar__tabs {
+      width: auto;
+      float: right;
+      padding: 1.5em 0 1em;
+    }
+    .navbar--expanded-only { display: none; }
+
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      margin: 0;
+      background: rgba($navbar-tab__color, 0.8);
+      // animation: $header-separator-animation;
+      border: none;
+    }
+  }
+
+  .container { height: 100% }
+  .navbar__brand {
+    text-align: left;
+    transition: position $navbar__collapse-time ease-in-out;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
+
+    .navbar__title {
+      margin: 0;
+      color: $navbar-brand__color;
+      text-shadow: 0 0 10px $navbar__bg-color;
+      letter-spacing: -0.05em;
+      vertical-align: middle;
+      transition: font-size $navbar__collapse-time ease-in-out,
+                  font-weight $navbar__collapse-time ease-in-out;
+    }
+  }
+
+  .navbar__links {
+    .navbar__link {
+      @include screen-desktop { font: $navbar-tab__font--desktop }
+      @include screen-mobile { font: $navbar-tab__font--mobile }
+      margin: 0 0.1em;
+      color: $navbar-tab__color;
+      background-color: $navbar__bg-color;
+      text-shadow: 0 0 10px $navbar__bg-color;
+
+      text-transform: lowercase;
+      text-decoration: none;
+      padding: 0 0.5em;
+      display: inline-block;
+
+      position: relative;
+      z-index: 1;
+
+      &:after {
+        content: '';
+        width: 0px;
+        display: block;
+        opacity: 0;
+        margin: 0.3em auto 0;
+        height: 1px;
+        transition: width 0.15s ease-out,
+                    opacity 0.10s linear 0.05s,
+                    background-color 0.25s ease-in-out;
+      }
+
+      &:hover { color: $navbar-tab__hover-color; }
+      &.active { color: $navbar-tab__active-color; }
+
+      &.active:after,
+      &:not(.active):hover:after {
+        background-color: $navbar-tab__active-color;
+      }
+      &:focus:after,
+      &:hover:after {
+        content: '';
+        display: block;
+        opacity: 1;
+        margin: 0.3em auto 0;
+        height: 1px;
+        width: 100%;
+        transition: width 0.15s ease-out,
+                    opacity 0.1s,
+                    background-color 0.25s ease-in-out;
+      }
+    }
+  }
+
+  .navbar__tabs {
+    text-align: right;
+    box-sizing: border-box;
+    transition: padding $navbar__collapse-time ease-in-out;
+  }
+
+  .navbar__social {
+    margin: 1.5rem 0;
+    padding: .25rem 0 .5rem;
+    font-size: 1.5rem;
+    background: linear-gradient(to right, #f2f2f2, rgba(#f2f2f2, 0) 95%);
+    background: linear-gradient(to right, rgba(#faf2f2, .6), rgba(#eeeefa, 0.4) 95%);
+
+    .navbar__link {
+      margin-left: 0.1rem;
+      margin-right: 0.1rem;
+      padding: none;
+      background: none;
+      color: darken($navbar-tab__color, 10%);
+
+      &:first-child { margin-left: 0.5rem }
+
+      &:after, &:hover:after, &:active:after {
+        content: none !important;
+      }
+    }
+
+    // &:after {
+    //   content: '';
+    //   display: block;
+    //   position: relative;
+    //   top: -1.1rem;
+    //   z-index: 0;
+    //   height: 1px;
+    //   width: 100%;
+    //   max-width: 50%;
+    //   margin: 0;
+    //   background: linear-gradient(to right,
+    //                               rgba($navbar-tab__color, 0.8) 40%,
+    //                               rgba($navbar-tab__color, 0));
+    //   // animation: $header-separator-animation;
+    //   border: none;
+    // }
+  }
+
+  .navbar__scroll-arrow {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+  }
+}
+
+#page-content {
+  transition: margin $navbar__collapse-time linear;
+}

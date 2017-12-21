@@ -1,0 +1,28 @@
+links:
+  - url: https://github.com/Adriem
+    text: github
+    icon: <i class="fab fa-github"></i>
+    desc: ...where I share my code with the world
+
+  - url: https://twitter.com/ClockworkAdriem
+    text: twitter
+    icon: <i class="fab fa-twitter"></i>
+    desc: ...where I post <s>140</s><br>280-characters-long stuff
+
+  - url: https://github.com/ClockworkAdriem
+    text: instagram
+    icon: <i class="fab fa-instagram"></i>
+    desc: ...where I upload pics with fancy filters
+
+  - url: https://es.linkedin.com/in/adrn-moreno
+    text: linkedin
+    icon: <i class="fab fa-linkedin"></i>
+    desc: ...where I tell companies how wonderful I am
+
+  # - url: mailto:adrn.moreno@gmail.com
+    # text: email
+    # icon: <i class="fa fa-envelope-square"></i>
+
+mail: >
+  Also, you can always drop me an email at
+  <a href="mailto:adrn.moreno@gmail.com">adrn.moreno@gmail.com</a>
