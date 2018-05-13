@@ -2,13 +2,23 @@
 <html>
   {% include head.html %}
   <body>
-    {% include _sections/header.html %}
+    {% include _sections/navbar.html %}
 
     <div id="page-content">
       {{ content }}
     </div>
 
     {%comment%}{% include _sections/contact.html %}{%endcomment%}
+
+
+    {% assign contact_section = site.data[page.language].sections.contact %}
+    {% include section.html
+              id = 'contact'
+              class = 'section--contact section--border-top section--reduce-padding'
+              layout = contact_section %}
+    {% assign contact_section = nil %}
+
+
     {% include _sections/footer.html %}
   </body>
 </html>

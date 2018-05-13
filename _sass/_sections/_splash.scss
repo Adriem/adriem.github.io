@@ -1,0 +1,136 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+@include keyframes('splash__image') {
+  0% { transform: translateX(1vw); opacity: 0 }
+  50% { transform: translateX(1vw); opacity: 0 }
+  80% { transform: translateX(0); }
+  100% {  opacity: 1 }
+}
+
+@include keyframes('splash__social') {
+  0% { opacity: 0 }
+  50% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+@include keyframes('splash__social-links') {
+  0% { transform: translateX(15vw); opacity: 0 }
+  50% { transform: translateX(15vw); opacity: 0 }
+  100% { transform: translateX(0); opacity: 1 }
+}
+
+@include keyframes('splash__text') {
+  0% { transform: translateY(15vh); opacity: 0; }
+  10% { transform: translateY(15vh); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@include keyframes('splash__arrow-container') {
+  0% { transform: translateY(1em); opacity: 0 }
+  90% { transform: translateY(1em); opacity: 0 }
+  100% { transform: translateX(0); opacity: 1 }
+}
+
+@include keyframes('splash__arrow') {
+  0% { transform: translateY(0); }
+  80% { transform: translateY(0); }
+  85% { transform: translateY(0.5rem); }
+  90% { transform: translateY(0); }
+  95% { transform: translateY(0.5rem); }
+  100% { transform: translateY(0); }
+}
+
+.splash {
+  $splash-social__fg-color : $color__white--accent;
+  $splash-social__bg-color : $color__red;
+  $splash-social__font     : 400 .95rem Montserrat;
+
+  $splash-text__color         : $color-black-accent;
+  $splash-text__font-family   : Montserrat, helvetica;
+  $splash-text__font--desktop : 300 4.5rem $splash-text__font-family;
+  $splash-text__font--mobile  : 200 26pt $splash-text__font-family;
+
+  $splash-text__anim-speed   : 1000ms;
+  $splash-social__anim-speed : 1500ms;
+  $splash-image__anim-speed  : 2500ms;
+
+  height: 100vh;
+
+  .splash__image {
+    height: 100%;
+    float: right;
+    z-index: 0;
+    animation: splash__image $splash-image__anim-speed ease-in-out;
+  }
+
+  .splash__scroll-arrow {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    width: 3em;
+    text-align: center;
+    margin-left: -1.5em;
+    border-radius: 50%;
+    animation: splash__arrow-container 2500ms ease-in-out;
+
+
+    .fa-lg {
+      animation: 3s splash__arrow 1s infinite;
+      color: black;
+      background-color: white;
+      border-radius: 100%;
+      padding: .15em .3em .1em;
+      box-shadow: 0 0 85px #002;
+    }
+  }
+
+  .splash__content {
+    position: absolute;
+    bottom: 20vh;
+    left: 0;
+    right: 0;
+
+    .splash__text {
+      @include screen-desktop { font: $splash-text__font--desktop; }
+      @include screen-mobile { font: $splash-text__font--mobile; }
+
+      color: $splash-text__color;
+      padding: 0;
+      margin: 0;
+      letter-spacing: -0.05em;
+      text-shadow: 0px 0px 5px white;
+      animation: splash__text $splash-text__anim-speed ease-in-out;
+    }
+
+    .splash__social {
+      margin: .75rem 0;
+      padding: .25rem 0 .5rem;
+      font-size: 1.5rem;
+      background: linear-gradient(to right,
+                                  $splash-social__bg-color 10%,
+                                  rgba($splash-social__bg-color, 0.15) 95%);
+      background-color: #00f2;
+      animation: splash__social $splash-social__anim-speed ease-in-out;
+
+      .splash__social-link {
+        @include navbarLink;
+        font: $splash-social__font !important;
+        padding: none;
+        color: $splash-social__fg-color;
+        animation: splash__social-links $splash-social__anim-speed ease-in-out;
+
+        &:first-child { margin-left: none }
+
+        .icon {
+            border-radius: 100%;
+            width: 1.2rem;
+            height: 1.2rem;
+            padding: .3em .5em;
+            background-color: white;
+            color: $color__red;
+        }
+      }
+    }
+  }
+}

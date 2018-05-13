@@ -1,0 +1,28 @@
+@import "_variables";
+@import "_mixins";
+
+.text-block {
+  $text-block-title__font-family: $font-family__text;
+  $text-block-title__font--desktop: 400 1.8rem $text-block-title__font-family;
+  $text-block-title__font--mobile:  400 1.8rem $text-block-title__font-family;
+
+  width: 100%;
+  margin: 0 auto;
+
+  .text-block__title {
+    @include screen-desktop { font: $text-block-title__font--desktop }
+    @include screen-mobile  { font: $text-block-title__font--mobile  }
+
+    padding: 0;
+    margin: 0 0 0.5em 0;
+    text-align: center;
+  }
+
+  .text-block__paragraph {
+    @include paragraph(50rem, 0rem);
+
+    margin-bottom: 0.5em;
+
+    &:last-child { margin-top: 0; margin-bottom: 0; }
+  }
+}

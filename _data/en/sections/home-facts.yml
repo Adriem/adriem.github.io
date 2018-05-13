@@ -1,0 +1,37 @@
+section-title:
+  title: Get to know me
+  surtitle: Passionate front-end development
+
+paragraph-grid:
+  - title: code.
+    expanded: true
+    body: >
+      I write code for a living. I likez cln code cuz cln code is graet
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+  - title: learn.
+    body: >
+      I write code for a living. I likez cln code cuz cln code is graet
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+  - title: play.
+    body: >
+      I write code for a living. I likez cln code cuz cln code is graet
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+
+text-block:
+  pargraphs:
+  - >
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.
+      I am one with the code, the code is with me.

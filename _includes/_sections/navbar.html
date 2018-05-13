@@ -1,0 +1,68 @@
+{% assign nav_sections = site.data[page.language].navigation %}
+{% assign nav_social = site.data[page.language].social %}
+{% assign nav_content = site.data[page.language].common.navbar %}
+
+<div class="navbar navbar--expanded" id="navbar">
+  <div class="container">
+
+    <!-- <img
+      src="{{ 'avatar_sketch_squared.png' | prepend: '/assets/img/' | prepend: site.baseUrl }}"
+      style="height: 250px; border-radius: 100%; margin: 1rem 0"> -->
+
+    <nav class="navbar__links navbar__tabs">
+      {% for section in nav_sections %}
+
+        <!-- calculate element class -->
+        {% if section[1].url and page.url == section[1].url %}
+          {% assign elem_class = elem_class | append: ' active ' %}
+        {% endif %}
+
+        <!-- calculate element url -->
+        {% if section[1].url and page.url != section[1].url %}
+          {% assign elem_url = section[1].url | prepend: site.github.url %}
+        {% else %}
+          {% assign elem_url = section[1].anchor %}
+        {% endif %}
+
+        <a class="navbar__tab {{ elem_class }}" href="{{ elem_url }}">
+          {{ section[1].label }}
+        </a>
+
+        {% assign elem_class = nil %}
+        {% assign elem_url = nil %}
+      {% endfor %}
+    </nav>
+
+    <div class="navbar__brand">
+        <h2 class="navbar__title">
+          <span class="navbar--collapsed-only">{{ nav_content.title }}</span>
+        </h2>
+    </div>
+  </div>
+</div>
+
+{% comment %}
+<!-- <section class="splash parallax" id="splash">
+  <img class="splash__image parallax__bg" src="{{ nav_content.splash | prepend: '/assets/img/' | prepend: site.baseUrl }}">
+  <div class="splash__content">
+    <div class="container">
+      <h2 class="splash__greeting">{{ nav_content.greeting }}</h2>
+    </div>
+
+    <div class="splash__social">
+      <div class="container">
+        {% for link in nav_social.links %}
+          <a class="splash__social-link" href="{{ link.url }}">{{ link.text }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <a class="splash__scroll-arrow">
+    <i class="fa fa-lg fa-angle-down"></i>
+  </a>
+</section> -->
+{% endcomment %}
+
+{% assign nav_sections = nil %}
+{% assign nav_social = nil %}
+{% assign nav_content = nil %}

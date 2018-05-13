@@ -1,0 +1,11 @@
+navbar:
+  title: Adrián&nbsp;Moreno
+
+splash:
+  image: avatar_gradient.jpg
+  text: Hello there!<br>I'm&nbsp;Adrian.&nbsp;Developer.
+
+footer:
+  copyright_notice: '&copy; 2016-2018 Adrián Moreno'
+  handcrafted_notice: Handcrafted in Zaragoza, Spain
+  powered_by_notice: Powered by <a href="http://jekyllrb.com">Jekyll</a> and hosted on <a href="http://pages.github.com">GitHub Pages</a>

@@ -7,13 +7,14 @@
 @import "section";
 @import "project";
 
-@import "_components/content-block";
 @import "_components/navbar";
+@import "_components/paragraph-grid";
+@import "_components/text-block";
+@import "_components/social-grid";
 
 @import "_nav/header";
 @import "_nav/tabs";
 
+@import "_sections/splash";
 @import "_sections/contact";
 @import "_sections/footer";
-@import "_sections/about-section";
-

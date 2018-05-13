@@ -1,0 +1,32 @@
+@import "variables";
+@import "mixins";
+
+.paragraph-grid {
+  $fact-width: 350px;
+  $fact-height: 200px;
+  $fact-gutter: 40px;
+
+  @include fixed-width-grid($fact-width, $fact-height, $fact-gutter, $fact-gutter);
+}
+
+.paragraph {
+  $paragraph__text-font-family: $text-font-family;
+  $paragraph__text-font--desktop: 300 0.95rem $paragraph__text-font-family;
+  $paragraph__text-font--mobile:  300 0.95rem $paragraph__text-font-family;
+
+  .paragraph__text {
+    @include screen-desktop { font: $paragraph__text-font--desktop; }
+    @include screen-mobile { font: $paragraph__text-font--mobile; }
+
+    width: 100%;
+    text-align: justify;
+    margin: 0;
+
+    .paragraph__title {
+      text-transform: lowercase;
+      display: block;
+      font-size: 2rem;
+      color: #000;
+    }
+  }
+}

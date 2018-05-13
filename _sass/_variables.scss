@@ -10,7 +10,7 @@ $width-xs:  575px;
 // -=( COLORS )=----------------------------------------------------------------
 
 $color-white: #fefefe;
-$color-white-accent: #fff;
+$color__white--accent: #fff;
 
 $color-light-gray: #eee;
 $color-gray: #ccc;
@@ -21,10 +21,26 @@ $color-black-accent: #333;
 
 $color-brown-accent: #655;
 
+$color__red: #ff104e;
+$color__blue: #0095ff;
+$color__orange: #ff6a00;
+$color__gray--dark: #bbb;
+
+
+// -=( Z-INDEX )=---------------------------------------------------------------
+
+$z-index__navbar: 1000;
+$z-index__project: 900;
+
 
 // --=( FONTS )==---------------------------------------------------------------
+
 $main-font-family: Montserrat, Questrial, sans-serif;
 $brand-font-family: Poiret One, Georgia, serif;
 $brand-sub-font-family: Raleway, sans-serif;
-$tab-font-family: Josefin Sans, Palatino Linotype, serif;
+$tab-font-family: Montserrat, Josefin Sans, Palatino Linotype, serif;
 
+$font-family__default: Montserrat, sans-serif;
+$font-family__text:    $font-family__default;
+$font-family__title:   $font-family__default;
+$font-family__tabs:    $font-family__default;

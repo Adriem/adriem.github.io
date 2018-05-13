@@ -1,0 +1,31 @@
+{% assign portfolio = site.data[page.language].portfolio %}
+
+<div class="project-grid">
+  {% for project in portfolio.projects %}
+  <a class="project"
+    href="{{project.url}}"
+    target="_blank">
+
+    <img class="project-thumbnail"
+        alt="Project thumbnail"
+        src="{{ project.pic | prepend: "/assets/img/" | prepend: site.baseurl }}">
+
+      {% if project.notice %}
+      <div class="notice-container">
+          <p class="notice">{{ project.notice }}</p>
+      </div>
+      {% endif %}
+
+      <div class="project-body">
+          <p class="project-title">{{ project.name }}</p>
+          <div class="project-separator"></div>
+          <p class="project-description">{{ project.description }}</p>
+      </div>
+
+      <div><p class="project-type">{{ project.type }}</p></div>
+
+  </a>
+  {% endfor %}
+</div>
+
+{% assign portfolio = nil %}

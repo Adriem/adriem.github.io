@@ -33,16 +33,16 @@ projects:
       - angularjs
     description: OGame resources calculator written in Coffeescript with AngularJS.
 
-  - name: Project Barataria
-    pic: barataria-preview.jpg
-    url: http://barataria.recuen.co
-    notice: With my friends from Pistacho Soft
-    type: web application
-    tags:
-      - web
-      - leaflet
-      - AngularJS
-    description: Project for the NASA's International Space Apps Challenge 2016.
+  # - name: Project Barataria
+  #   pic: barataria-preview.jpg
+  #   url: http://barataria.recuen.co
+  #   notice: With my friends from Pistacho Soft
+  #   type: web application
+  #   tags:
+  #     - web
+  #     - leaflet
+  #     - AngularJS
+  #   description: Project for the NASA's International Space Apps Challenge 2016.
 
     #   - name: POIs "R" Us
     #     pic: pois-preview.jpg
@@ -69,13 +69,13 @@ projects:
 
 
     # repositories:
-  - name: My .vimrc
-    url: https://github.com/Adriem/my-vimrc
-    pic: agnostic-bookmarks-preview.jpg
-    type: Configuration file
-    tags:
-      - configuration
-    description: Just my .vimrc file, hope you find it interesting!
+  # - name: My .vimrc
+  #   url: https://github.com/Adriem/my-vimrc
+  #   pic: agnostic-bookmarks-preview.jpg
+  #   type: Configuration file
+  #   tags:
+  #     - configuration
+  #   description: Just my .vimrc file, hope you find it interesting!
 
     #   - name: Vim Colorschemes
     #     url: https://github.com/Adriem/vim-colorschemes
@@ -93,14 +93,14 @@ projects:
     #       - vim
     #     description: A dark and terminal-friendly vim colorscheme, available in 5*2 flavours.
 
-  - name: My homepage
-    url: https://github.com/adriem/adriem.github.io
-    pic: agnostic-bookmarks-preview.jpg
-    type: jekyll website
-    tags:
-      - web page
-      - jekyll
-    description: The source code of this website, which is built with Jekyll on gh-pages.
+  # - name: My homepage
+  #   url: https://github.com/adriem/adriem.github.io
+  #   pic: agnostic-bookmarks-preview.jpg
+  #   type: jekyll website
+  #   tags:
+  #     - web page
+  #     - jekyll
+  #   description: The source code of this website, which is built with Jekyll on gh-pages.
 
     #   - name: Shell Utilities
     #     url: https://github.com/adriem/shell-utilities
@@ -110,4 +110,4 @@ projects:
     #       - unix
     #       - script
     #     description: A bunch of scripts and snippets to make my life a little easier :D
-    # 
+    #

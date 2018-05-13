@@ -1,0 +1,9 @@
+{% assign email = site.data[page.language].social.mail %}
+{% assign text  = include.data.text %}
+
+<p class="mail-text align-center">
+  {{ text }} <a href="{{ email | prepend: 'mailto:' }}">{{ email }}</a>
+</p>
+
+{% assign text  = nil %}
+{% assign email = nil %}

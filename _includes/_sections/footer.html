@@ -1,28 +1,5 @@
-{% assign sections = site.data[page.language].navigation %}
-{% assign footer_data = site.data[page.language].footer %}
-
-<section class="section" id="contact">
-  <div class="container">
-
-    <h2 class="section-title align-center">
-        {{ footer_data.social.title }}
-    </h2>
-
-    <div class="social-grid">
-    {% for media_link in footer_data.social.links %}
-      <a href="{{ media_link.url }}" class="social-link">
-        <div class="social-icon">{{ media_link.label }}</div>
-        <span class="social-caption">{{ media_link.desc }}</span>
-      </a>
-    {% endfor %}
-    </div>
-
-    <p class="mail-text align-center">
-      {{ footer_data.social.mail }}
-    </p>
-
-  </div>
-</section>
+{% assign sections    = site.data[page.language].navigation %}
+{% assign footer_data = site.data[page.language].common.footer %}
 
 <section class= "footer" id="footer">
   <div class="container">
@@ -67,11 +44,11 @@
       &nbsp;|&nbsp;
       {{ footer_data.powered_by_notice }}
       &nbsp;|&nbsp;
-      {{ site.copyright }}
+      {{ footer_data.copyright_notice }}
     </div>
 
   </div>
 </section>
 
-{% assign sections = nil %}
+{% assign sections    = nil %}
 {% assign footer_data = nil %}

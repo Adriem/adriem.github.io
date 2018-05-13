@@ -29,10 +29,73 @@
 
 
 @mixin clearfix() {
-    &:after { content: ""; clear: both; display: block; }  // Clearfix
+    &:after { content: ""; clear: both; display: block; }
 }
 
 // --=( GRID )==----------------------------------------------------------------
+
+@mixin _grid-wrapper($max-width, $column-width, $gutter-width, $max-columns) {
+  $slot-width: $column-width + $gutter-width;
+  $grid-max-width: if($max-columns > 0,
+                      min($max-width, $slot-width * $max-columns),
+                      $max-width);
+  $grid-width: floor($grid-max-width / $slot-width) * $slot-width;
+
+  @if $max-width >= 2 * $slot-width {
+    @include clearfix;
+    width: $grid-width;
+    margin: 0 auto;
+  } @else {
+    @include clearfix;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@mixin _grid-elem($max-width, $column-width, $row-height, $gutter-width, $gutter-height) {
+  $slot-width: $column-width + $gutter-width;
+
+  @if $max-width >= 2 * $slot-width {
+    width: $column-width + $gutter-width;
+    padding: ($gutter-height / 2) ($gutter-width / 2);
+    min-height: $row-height;
+    display: block;
+    float: left;
+    box-sizing: border-box;
+  } @else {
+    padding: ($gutter-height / 2) ($gutter-width / 2);
+    display: block;
+    float: none;
+    box-sizing: border-box;
+  }
+}
+
+@mixin fixed-width-grid(
+  $column-width,
+  $row-height,
+  $gutter-width,
+  $gutter-height,
+  $max-columns: -1) {
+    @include clearfix;
+
+    @include screen-xs { @include _grid-wrapper($width-xs, $column-width, $gutter-width, $max-columns) }
+    @include screen-sm { @include _grid-wrapper($width-sm, $column-width, $gutter-width, $max-columns) }
+    @include screen-md { @include _grid-wrapper($width-md, $column-width, $gutter-width, $max-columns) }
+    @include screen-lg { @include _grid-wrapper($width-lg, $column-width, $gutter-width, $max-columns) }
+    @include screen-xl { @include _grid-wrapper($width-xl, $column-width, $gutter-width, $max-columns) }
+
+    &__element {
+      @include screen-xs { @include _grid-elem($width-xs, $column-width, $row-height, $gutter-width, $gutter-height) }
+      @include screen-sm { @include _grid-elem($width-sm, $column-width, $row-height, $gutter-width, $gutter-height) }
+      @include screen-md { @include _grid-elem($width-md, $column-width, $row-height, $gutter-width, $gutter-height) }
+      @include screen-lg { @include _grid-elem($width-lg, $column-width, $row-height, $gutter-width, $gutter-height) }
+      @include screen-xl { @include _grid-elem($width-xl, $column-width, $row-height, $gutter-width, $gutter-height) }
+    }
+}
+
+
+
+
 
 @function calculate-grid-width($max-width, $slot-width, $max-items: -1) {
   $_max-width: if($max-items > 0,
@@ -79,7 +142,12 @@
 
 // --=( ANIMATIONS )==----------------------------------------------------------
 
-@mixin keyframes($name) { @keyframes #{$name} { @content } }
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} { @content }
+  @-moz-keyframes #{$name} { @content }
+  @-o-keyframes #{$name} { @content }
+  @keyframes #{$name} { @content }
+}
 
 @mixin fade-in-anim($name, $direction: 'top', $offset: 0, $from: 0%, $to: 100%) {
   @include keyframes($name) {

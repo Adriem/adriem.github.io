@@ -1,0 +1,22 @@
+{% assign section_id       = include.id %}
+{% assign section_class    = include.class %}
+{% assign section_layout   = include.layout %}
+
+<section id="{{ section_id }}"
+         class="{{ section_class | default: 'section--regular' | prepend: 'section ' }}">
+  <div class="container">
+    {% for component in section_layout %}
+      {% assign componentName = component[0] %}
+      {% assign componentData = component[1] %}
+
+      {% include {{ componentName | prepend: '_components/' | append: '.html' }} data=componentData %}
+
+      {% assign componentName = nil %}
+      {% assign componentData = nil %}
+    {% endfor %}
+  </div>
+</section>
+
+{% assign section_id       = nil %}
+{% assign section_classes  = nil %}
+{% assign section_layout   = nil %}

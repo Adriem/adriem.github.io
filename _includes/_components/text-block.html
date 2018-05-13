@@ -1,0 +1,15 @@
+<div class="text-block">
+
+    {% if include.data.title %}
+    <p class="text-block__title align-center color--accent">
+      {{ include.data.title }}
+    </p>
+    {% endif %}
+
+    {% for pargraph in include.data.pargraphs %}
+    <p class="text-block__paragraph color--regular">
+      {{ pargraph }}
+    </p>
+    {% endfor %}
+
+</div>

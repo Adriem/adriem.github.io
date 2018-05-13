@@ -1,0 +1,60 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+
+
+.social-grid {
+  $social-grid-icon__size--desktop: 1.75rem;
+  $social-grid-icon__size--mobile:  1.75rem;
+
+  $social-grid__font-family:  $font-family__text;
+  $social-grid__font--desktop: 300 1rem $font-family__text;
+  $social-grid__font--mobile:  300 1rem $font-family__text;
+
+  @include grid(200px, 40px, 4);
+
+  margin: 3rem auto 4rem;
+  text-align: center;
+
+  &:hover .social-grid__link:not(:hover) {
+    transition: opacity 500ms ease-out;
+    opacity: 0.4;
+  }
+
+  .social-grid__link {
+    @include grid-element(200px, 40px);
+
+    border: none;
+    transition: color 250ms ease-out, opacity 250ms ease-out;
+
+    &:hover, &:focus {
+      transition: color 350ms ease-out, opacity 500ms ease-out;
+
+      .social-grid__icon {
+        transform: scale(1.35);
+        transition: transform 150ms ease-in-out;
+      }
+      .social-grid__caption {
+        transform: translateY(.25em);
+        transition: transform 200ms ease-in-out;
+      }
+    }
+
+    .social-grid__icon {
+      @include screen-desktop { font-size: $social-grid-icon__size--desktop }
+      @include screen-mobile  { font-size: $social-grid-icon__size--mobile  }
+
+      display: block;
+      transition: transform 250ms ease-in-out;
+    }
+
+    .social-grid__caption {
+      @include screen-desktop { font: $social-grid__font--desktop }
+      @include screen-mobile  { font: $social-grid__font--mobile  }
+
+      display: block;
+      margin-top: 1rem;
+      text-decoration: none;
+      transition: transform 300ms ease-in-out;
+    }
+  }
+}

@@ -1,47 +1,13 @@
 ---
 layout: default
 ---
-{% assign portfolio = site.data[page.language].portfolio %}
+{% include _sections/splash.html %}
 
-<section class="section accent-section">
-  <div class="container">
-    {% include _components/content-block.html
-               content=page.contents.lead_section %}
-  </div>
-</section>
+{% for section in page.contents.sections %}
+  {% assign section_content = site.data[page.language].sections[section.name] %}
 
-<section class="section regular-section" id="facts">
-  <div class="container">
-
-    {{ page.contents.about_section }}
-
-    <div class="fact-list">
-        <div class="fact double-width">
-            {{ page.contents.fact_list.first }}
-        </div>
-      {% for fact in page.contents.fact_list offset:1 %}
-        <div class="fact">
-            {{ fact }}
-        </div>
-      {% endfor %}
-    </div>
-
-  </div>
-</section>
-
-<section class="section regular-section" id="projects">
-  <div class="container">
-
-    {{ page.contents.projects_section }}
-
-    <div class="project-grid">
-    {% for item in portfolio.projects %}
-      {% include _components/project.html project=item %}
-    {% endfor %}
-    </div>
-
-  </div>
-</section>
-
-
-{% assign portfolio = nil %}
+  {% include section.html
+             id = section.id
+             class = section.class
+             layout = section_content %}
+{% endfor %}

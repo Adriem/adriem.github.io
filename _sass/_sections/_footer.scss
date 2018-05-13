@@ -4,15 +4,18 @@
 $footer-fg-color : #eee;
 $footer-fg-title-color : #fff;
 
-$footer-copy-color         : #aaa;
-$footer-copy-bg-color      : #020202;
+$footer-copy-color         : #fff;
 $footer-copy-link-color    : #fff;
 $footer-copy-font-family   : Montserrat, sans-serif;
 $footer-copy-font--desktop : 200 0.85rem $footer-copy-font-family;
 $footer-copy-font--mobile  : 200 0.85rem $footer-copy-font-family;
+$footer-background__color:    rgba(#00f, .50);
+$footer-background__gradient: linear-gradient(to right, darken($color__red, 7%) 20%, rgba($color__red, 0.15) 95%);
+
 
 section#footer {
-  background-color: $footer-copy-bg-color;
+  background: $footer-background__gradient;
+  background-color: $footer-background__color;
   text-align: center;
 
   .copyright-notice {

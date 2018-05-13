@@ -2,6 +2,8 @@
 ---
 $ ->
 
+  # ---[ ANCHOR LINKS ]--- #
+
   # If url contains an anchor, smooth scroll to it
   if location.hash isnt ""
     hash = location.hash
@@ -24,18 +26,53 @@ $ ->
         $('html, body').animate(scrollTop: target.offset().top, 500)
         return false
 
-  # Scroll spy
-  navbarExpanded = true
+  $('a:not([href*="#"])').click ->
+    $('body').addClass('fading')
+    setTimeout (=> window.location.href = @href), 300
+    return false
+
+
+  # ---[ SCROLL SPY ]--- #
+
+  BRAND_OFFSET_VH = 45
+
   $navbar = $('.navbar')
-  window.onscroll = ->
-    scrollPosition = document.documentElement.scrollTop or document.body.scrollTop
-    if navbarExpanded and scrollPosition > 0
-      navbarExpanded = false
-      $navbar.removeClass('navbar--expanded')
-      $navbar.addClass('navbar--collapsed')
-    else if not navbarExpanded and scrollPosition is 0
-      navbarExpanded = true
-      $navbar.removeClass('navbar--collapsed')
-      $navbar.addClass('navbar--expanded')
 
+  navbarExpanded = true
 
+  getScrollPosition = ->
+    document.documentElement.scrollTop or document.body.scrollTop
+
+  getWindowHeight = ->
+    Math.max(document.documentElement.clientHeight, window.innerHeight or 0)
+
+  expandNavbar = ->
+    navbarExpanded = true
+    $navbar.removeClass('navbar--collapsed')
+    $navbar.addClass('navbar--expanded')
+
+  collapseNavbar = ->
+    navbarExpanded = false
+    $navbar.removeClass('navbar--expanded')
+    $navbar.addClass('navbar--collapsed')
+
+  transformNavbar = ->
+    scrollPosition = getScrollPosition()
+    windowHeight = getWindowHeight()
+
+    if navbarExpanded and scrollPosition > 100
+      collapseNavbar()
+    else if not navbarExpanded and scrollPosition <= 50
+      expandNavbar()
+
+  # ---[ PARALLAX SCROLL ]--- #
+
+  $bg = $('.parallax__bg')
+
+  updatePosition = ->
+    scrollPosition = getScrollPosition()
+    bgPosition = scrollPosition / 2
+    $bg.css('transform', "translateY(#{bgPosition}px)") if scrollPosition < $bg.height()
+
+  window.onscroll = () -> transformNavbar() ; updatePosition()
+  window.onresize = transformNavbar

@@ -1,0 +1,14 @@
+{% assign paragrap_list = include.data %}
+
+<div class="paragraph-grid">
+  {% for paragraph in paragrap_list %}
+    <div class="paragraph-grid__element paragraph">
+        <p class="paragraph__text color--regular">
+          <span class="paragraph__title color--accent">{{ paragraph.title }}</span>
+          {{ paragraph.body }}
+        </p>
+    </div>
+  {% endfor %}
+</div>
+
+{% assign paragrap_list = nil %}

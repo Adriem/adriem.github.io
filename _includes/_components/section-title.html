@@ -1,0 +1,13 @@
+{% assign title    = include.data.title %}
+{% assign surtitle = include.data.surtitle %}
+
+<h2 class="section__title section__title--center color--accent">
+  {{ title }}
+
+  {% if surtitle %}
+  <small class="section__surtitle color--dim">{{ surtitle }}</small>
+  {% endif %}
+</h2>
+
+{% assign title    = nil %}
+{% assign surtitle = nil %}

@@ -1,0 +1,12 @@
+{% assign social_data = site.data[page.language].social %}
+
+<div class="social-grid">
+  {% for media_link in social_data.links %}
+    <a href="{{ media_link.url }}" class="social-grid__link">
+      <div class="social-grid__icon">{{ media_link.icon }}</div>
+      <span class="social-grid__caption">{{ media_link.desc }}</span>
+    </a>
+  {% endfor %}
+</div>
+
+{% assign social_data = nil %}

@@ -1,0 +1,30 @@
+{% assign splash_content = site.data[page.language].common.splash %}
+{% assign splash_social  = site.data[page.language].social.links %}
+
+<section class="splash parallax" id="splash">
+
+  <img class="splash__image parallax__bg"
+       src="{{ splash_content.image | prepend: '/assets/img/' | prepend: site.baseUrl }}">
+
+  <div class="splash__content">
+    <div class="container">
+      <h2 class="splash__text">{{ splash_content.text }}</h2>
+    </div>
+    <div class="splash__social">
+      <div class="container">
+        {% for link in splash_social %}
+        <a class="splash__social-link" href="{{ link.url }}">
+            {{ link.text }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <a class="splash__scroll-arrow">
+    <i class="fa fa-lg fa-angle-down"></i>
+  </a>
+</section>
+
+{% assign splash_content = nil %}
+{% assign splash_social  = nil %}

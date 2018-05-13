@@ -1,22 +1,22 @@
-# home:
-#   label: home
-#   url: /en/
-#   anchor: '#header'
-#   align: left
-#   header: true
-#   footer: true
+home:
+  label: home
+  # url: /en/
+  anchor: '#splash'
+  align: left
+  header: true
+  footer: true
 
 about:
-  label: about me
-  url: /en/about/
-  anchor: '#who-am-i'
+  label: about
+  # url: /en/about/
+  anchor: '#about'
   align: left
   header: true
   footer: true
 
 projects:
   label: projects
-  url: /en/
+  # url: /en/
   anchor: '#projects'
   align: left
   header: true

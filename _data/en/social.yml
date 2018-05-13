@@ -23,6 +23,7 @@ links:
     # text: email
     # icon: <i class="fa fa-envelope-square"></i>
 
-mail: >
-  Also, you can always drop me an email at
-  <a href="mailto:adrn.moreno@gmail.com">adrn.moreno@gmail.com</a>
+mail: adrn.moreno@gmail.com
+# mail: >
+#   Also, you can drop me an email at
+#   <a href="mailto:adrn.moreno@gmail.com">adrn.moreno@gmail.com</a>
