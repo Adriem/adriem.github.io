@@ -80,7 +80,11 @@
       color: black;
       background-color: white;
       border-radius: 100%;
-      padding: .15em .3em .1em;
+      width: 1.5em;
+      height: 1.5em;
+      line-height: 1.5em;
+      text-align: center;
+      display: inline-block;
       box-shadow: 0 0 85px #002;
     }
   }
