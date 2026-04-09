@@ -18,5 +18,4 @@ markdown: kramdown
 sass:
   style: compressed
 plugins:
-  - jekyll-coffeescript
   - jekyll-redirect-from
