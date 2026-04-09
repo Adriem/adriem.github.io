@@ -1,29 +1,33 @@
 links:
   - url: https://github.com/Adriem
     text: github
-    icon: <i class="fab fa-github"></i>
-    desc: ...where I share my code with the world
-
-  - url: https://twitter.com/ClockworkAdriem
-    text: twitter
-    icon: <i class="fab fa-twitter"></i>
-    desc: ...where I post <s>140</s><br>280-characters-long stuff
+    icon: <i class="fa-brands fa-github"></i>
+    desc: ...where I push the code of my projects
 
   - url: https://github.com/ClockworkAdriem
     text: instagram
-    icon: <i class="fab fa-instagram"></i>
+    icon: <i class="fa-brands fa-instagram"></i>
     desc: ...where I upload pics with fancy filters
 
   - url: https://es.linkedin.com/in/adrn-moreno
     text: linkedin
-    icon: <i class="fab fa-linkedin"></i>
-    desc: ...where I tell companies how wonderful I am
+    icon: <i class="fa-brands fa-linkedin"></i>
+    desc: ...where I keep in touch with colleagues
 
-  # - url: mailto:adrn.moreno@gmail.com
-    # text: email
-    # icon: <i class="fa fa-envelope-square"></i>
+
+  - url: https://moxfield.com/users/Adriem
+    text: moxfield
+    icon: <i class="fa-brands fa-wizards-of-the-coast"></i>
+    desc: ...where I showcase my favourite hobby
+
+#   - url: https://twitter.com/ClockworkAdriem
+#     text: twitter
+#     icon: <i class="fa-brands fa-twitter"></i>
+#     desc: ...where I post <s>140</s><br>280-characters-long stuff
+
+#   - url: mailto:adrn.moreno@gmail.com
+#     text: email
+#     icon: <i class="fa fa-envelope-square"></i>
 
 mail: adrn.moreno@gmail.com
-# mail: >
-#   Also, you can drop me an email at
-#   <a href="mailto:adrn.moreno@gmail.com">adrn.moreno@gmail.com</a>
+

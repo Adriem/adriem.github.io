@@ -1,4 +1,4 @@
-# Adrian Moreno — Homepage
+# Adrián Moreno — Homepage
 
 Personal homepage built with [Jekyll](https://jekyllrb.com/).
 
