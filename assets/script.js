@@ -45,41 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---[ SCROLL SPY ]--- //
 
   const navbar = document.querySelector(".navbar");
-  let navbarExpanded = true;
+  const splash = document.querySelector(".splash");
 
-  const getScrollPosition = () =>
-    document.documentElement.scrollTop || document.body.scrollTop;
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        navbar.classList.remove("navbar--collapsed");
+        navbar.classList.add("navbar--expanded");
+      } else {
+        navbar.classList.remove("navbar--expanded");
+        navbar.classList.add("navbar--collapsed");
+      }
+    },
+    { root: document.querySelector(".parallax"), threshold: 0.15 }
+  );
 
-  const expandNavbar = () => {
-    navbarExpanded = true;
-    navbar.classList.remove("navbar--collapsed");
-    navbar.classList.add("navbar--expanded");
-  };
-
-  const collapseNavbar = () => {
-    navbarExpanded = false;
-    navbar.classList.remove("navbar--expanded");
-    navbar.classList.add("navbar--collapsed");
-  };
-
-  const transformNavbar = () => {
-    const scrollPosition = getScrollPosition();
-    if (navbarExpanded && scrollPosition > 100) collapseNavbar();
-    else if (!navbarExpanded && scrollPosition <= 50) expandNavbar();
-  };
-
-
-  // ---[ PARALLAX SCROLL ]--- //
-
-  const bg = document.querySelector(".parallax__bg");
-
-  const updatePosition = () => {
-    const scrollPosition = getScrollPosition();
-    if (scrollPosition < bg.offsetHeight) {
-      bg.style.transform = `translateY(${scrollPosition / 2}px)`;
-    }
-  };
-
-  window.addEventListener("scroll", () => { transformNavbar(); updatePosition(); });
-  window.addEventListener("resize", transformNavbar);
+  observer.observe(splash);
 });
