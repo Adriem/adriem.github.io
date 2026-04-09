@@ -1,13 +1,38 @@
 ---
-layout: default
+# Defines the structure of the landing page. Each localisation creates a page that
+# uses this layout and sets `language` to load the matching data from _data/<lang>/.
+
+layout: base
 ---
-{% include _sections/splash.html %}
+{% assign sections = site.data[page.language].sections %}
 
-{% for section in page.contents.sections %}
-  {% assign section_content = site.data[page.language].sections[section.name] %}
+{% include _sections/common-navbar.html %}
 
-  {% include section.html
-             id = section.id
-             class = section.class
-             layout = section_content %}
-{% endfor %}
+<div id="page-content">
+  {% include _sections/home-splash.html %}
+
+  {% include _sections/home-about.html
+             motto=sections.home-motto.text-block %}
+
+  {% include _sections/home-facts.html
+             title=sections.home-facts.section-title
+             facts=sections.home-facts.paragraph-grid
+             summary=sections.home-facts.text-block %}
+
+  {% include _sections/home-pics.html
+             intro=sections.home-pics.text-block %}
+
+  {% include _sections/home-projects.html
+             title=sections.home-projects.section-title %}
+</div>
+
+{% assign contact_section = site.data[page.language].sections.contact %}
+{% include section.html
+          id = 'contact'
+          class = 'section--contact section--border-top section--reduce-padding'
+          layout = contact_section %}
+{% assign contact_section = nil %}
+
+{% include _sections/common-footer.html %}
+
+{% assign sections = nil %}

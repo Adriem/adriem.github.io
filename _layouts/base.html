@@ -1,0 +1,11 @@
+---
+# Provides the HTML shell (doctype, head, body) for all pages.
+# Not intended for pages directly — other layouts should extend this.
+---
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    {{ content }}
+  </body>
+</html>
