@@ -42,6 +42,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+  // ---[ SPLASH SCROLL LOCK ]--- //
+
+  const parallax = document.querySelector(".parallax");
+  const splashImage = document.querySelector(".splash__image");
+
+  if (splashImage) {
+    splashImage.addEventListener("animationend", () => {
+      parallax.classList.add("parallax--scrollable");
+    });
+  } else {
+    parallax.classList.add("parallax--scrollable");
+  }
+
+
   // ---[ SCROLL SPY ]--- //
 
   const navbar = document.querySelector(".navbar");

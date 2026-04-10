@@ -8,29 +8,41 @@ layout: base
 
 {% include _sections/common-navbar.html %}
 
-<div id="page-content" class="parallax">
+<div class="parallax">
   {% include _sections/home-splash.html %}
 
-  {% include _sections/home-about.html
-             motto=sections.home-motto.text-block %}
+  <section id="about" class="section section--regular">
+    {% include _sections/home-about.html
+               motto=sections.home-motto.text-block %}
+  </section>
+  <section id="trajectory" class="section section--regular">
+    {% include _sections/home-trajectory.html
+               title=sections.home-trajectory.section-title %}
+  </section>
+  <section id="skills" class="section section--regular">
+    {% include _sections/home-skills.html
+               title=sections.home-skills.section-title
+               skills=sections.home-skills.skills %}
+  </section>
 
-  {% include _sections/home-facts.html
-             title=sections.home-facts.section-title
-             facts=sections.home-facts.paragraph-grid
-             summary=sections.home-facts.text-block %}
+  <section id="skills" class="section section--accent-a section--border">
+    {% include _sections/home-about.html
+               motto=sections.home-motto.text-block %}
+  </section>
 
-  {% include _sections/home-pics.html
-             intro=sections.home-pics.text-block %}
+  <section id="projects" class="section section--regular">
+    {% include _sections/home-facts.html
+               title=sections.home-facts.section-title
+               facts=sections.home-facts.paragraph-grid
+               summary=sections.home-facts.text-block %}
+    {% include _sections/home-projects.html
+               title=sections.home-projects.section-title %}
+  </section>
 
-  {% include _sections/home-projects.html
-             title=sections.home-projects.section-title %}
-
-  {% assign contact_section = site.data[page.language].sections.contact %}
   {% include section.html
-            id = 'contact'
-            class = 'section--contact section--border-top section--reduce-padding'
-            layout = contact_section %}
-  {% assign contact_section = nil %}
+            id='contact'
+            class='section--contact section--border-top section--reduce-padding'
+            layout=sections.contact %}
 
   {% include _sections/common-footer.html %}
 </div>

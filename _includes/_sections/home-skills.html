@@ -1,0 +1,9 @@
+<div class="container">
+  {% include _components/section-title.html data=include.title %}
+  <!-- TODO: Implement skills grid component -->
+  <div class="skills-grid">
+    {% for skill in include.skills %}
+      <div class="skills-grid__item">{{ skill }}</div>
+    {% endfor %}
+  </div>
+</div>

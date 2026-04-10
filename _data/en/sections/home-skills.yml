@@ -1,0 +1,13 @@
+section-title:
+  title: Skills
+  surtitle: Technologies and tools I work with
+
+skills:
+  - JavaScript
+  - TypeScript
+  - HTML & CSS
+  - React
+  - Node.js
+  - Git
+  - SQL
+  - Python
