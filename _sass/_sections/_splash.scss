@@ -117,22 +117,19 @@
       animation: splash__social $splash-social__anim-speed ease-in-out;
 
       .splash__social-link {
-        @include navbarLink;
-        font: $splash-social__font !important;
-        padding: none;
-        color: $splash-social__fg-color;
-        animation: splash__social-links $splash-social__anim-speed ease-in-out;
+        @include link;
 
+        color: $splash-social__fg-color;
+        &:hover { color: $navbar-tab__hover-color; }
+        &.active { color: $navbar-tab__active-color; }
+
+        font: $splash-social__font !important;
+        text-transform: lowercase;
+
+        padding: none;
         &:first-child { margin-left: none }
 
-        .icon {
-            border-radius: 100%;
-            width: 1.2rem;
-            height: 1.2rem;
-            padding: .3em .5em;
-            background-color: white;
-            color: $color__red;
-        }
+        animation: splash__social-links $splash-social__anim-speed ease-in-out;
       }
     }
   }

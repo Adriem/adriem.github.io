@@ -1,4 +1,4 @@
-// -=( RESPONSIVE BREAKPOINTS )=------------------------------------------------
+// --- RESPONSIVE BREAKPOINTS --------------------------------------------------
 
 $width-xl: 1200px;
 $width-lg:  992px;
@@ -7,7 +7,7 @@ $width-sm:  576px;
 $width-xs:  575px;
 
 
-// -=( COLORS )=----------------------------------------------------------------
+// --- COLORS ------------------------------------------------------------------
 
 $color-white: #fefefe;
 $color__white--accent: #fff;
@@ -27,13 +27,13 @@ $color__orange: #ff6a00;
 $color__gray--dark: #bbb;
 
 
-// -=( Z-INDEX )=---------------------------------------------------------------
+// --- Z-INDEX -----------------------------------------------------------------
 
 $z-index__navbar: 1000;
 $z-index__project: 900;
 
 
-// --=( FONTS )==---------------------------------------------------------------
+// --- FONTS -------------------------------------------------------------------
 
 $main-font-family: Montserrat, Questrial, sans-serif;
 $brand-font-family: Poiret One, Georgia, serif;
@@ -44,3 +44,6 @@ $font-family__default: Montserrat, sans-serif;
 $font-family__text:    $font-family__default;
 $font-family__title:   $font-family__default;
 $font-family__tabs:    $font-family__default;
+
+// --- TRANSITIONS -------------------------------------------------------------
+$link-transition-time: 0.25s

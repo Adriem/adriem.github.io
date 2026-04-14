@@ -1,6 +1,14 @@
 @import "./_variables.scss";
 
-// --=( RESPONSIVE )==----------------------------------------------------------
+@mixin link {
+    text-decoration: none;
+    margin: 0 0.1em;
+    padding: 0 0.5em;
+    display: inline-block;
+    transition: color $link-transition-time ease-in-out;
+}
+
+// ---- RESPONSIVE -------------------------------------------------------------
 
 @mixin screen-between($min-width, $max-width) {
   @media screen

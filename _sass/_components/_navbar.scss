@@ -22,21 +22,6 @@ $navbar__collapse-time: 0.25s;
 
 $splash-social__color: $color__red;
 
-@mixin navbarLink() {
-    @include screen-desktop { font: $navbar-tab__font--desktop }
-    @include screen-mobile { font: $navbar-tab__font--mobile }
-
-    text-transform: lowercase;
-    text-decoration: none;
-    margin: 0 0.1em;
-    padding: 0 0.5em;
-    display: inline-block;
-    transition: color $navbar__collapse-time ease-in-out;
-
-    &:hover { color: $navbar-tab__hover-color; }
-    &.active { color: $navbar-tab__active-color; }
-}
-
 .navbar {
   @include clearfix;
 
@@ -111,7 +96,19 @@ $splash-social__color: $color__red;
     transition: padding $navbar__collapse-time ease-in-out;
 
     .navbar__tab {
-      @include navbarLink;
+      @include link;
+      @include screen-desktop { font: $navbar-tab__font--desktop }
+      @include screen-mobile { font: $navbar-tab__font--mobile }
+
+      text-transform: lowercase;
+      text-decoration: none;
+      margin: 0 0.1em;
+      padding: 0 0.5em;
+      display: inline-block;
+      transition: color $link-transition-time ease-in-out;
+
+      &:hover { color: $navbar-tab__hover-color; }
+      &.active { color: $navbar-tab__active-color; }
 
       z-index: $navbar-tab__z-index;
       color: $navbar-tab__color;
