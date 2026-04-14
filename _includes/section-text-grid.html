@@ -1,0 +1,16 @@
+<div class="container">
+  {% include _components/section-title.html data=include.title %}
+
+  <div class="paragraph-grid">
+    {% for paragraph in include.facts %}
+      <div class="paragraph-grid__element paragraph">
+          <p class="paragraph__text color--regular">
+            <span class="paragraph__title color--accent">{{ paragraph.title }}</span>
+            {{ paragraph.body }}
+          </p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% include _components/text-block.html data=include.summary %}
+</div>

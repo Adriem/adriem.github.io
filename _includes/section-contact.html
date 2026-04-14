@@ -1,0 +1,22 @@
+{% assign contact = site.data[page.language].sections.contact %}
+{% assign social  = site.data[page.language].social %}
+
+<div class="container">
+  {% include _components/section-title.html data=contact.section-title %}
+
+  <div class="social-grid">
+    {% for media_link in social.links %}
+      <a href="{{ media_link.url }}" class="social-grid__link">
+        <div class="social-grid__icon">{{ media_link.icon }}</div>
+        <span class="social-grid__caption">{{ media_link.desc }}</span>
+      </a>
+    {% endfor %}
+  </div>
+
+  <p class="mail-text align-center">
+    {{ contact.email-notice.text }} <a href="{{ social.mail | prepend: 'mailto:' }}">{{ social.mail }}</a>
+  </p>
+</div>
+
+{% assign contact = nil %}
+{% assign social  = nil %}
