@@ -1,24 +1,30 @@
+section_title: Find me...
+splash_expand_label: other
+
 links:
   - url: https://github.com/Adriem
     text: github
     icon: <i class="fa-brands fa-github"></i>
     desc: ...where I push the code of my projects
+    splash: yes
 
   - url: https://github.com/ClockworkAdriem
     text: instagram
     icon: <i class="fa-brands fa-instagram"></i>
     desc: ...where I upload pics with fancy filters
+    splash: yes
 
   - url: https://es.linkedin.com/in/adrn-moreno
     text: linkedin
     icon: <i class="fa-brands fa-linkedin"></i>
     desc: ...where I keep in touch with colleagues
-
+    splash: yes
 
   - url: https://moxfield.com/users/Adriem
     text: moxfield
     icon: <i class="fa-brands fa-wizards-of-the-coast"></i>
     desc: ...where I showcase my favourite hobby
+    splash: no
 
 #   - url: https://twitter.com/ClockworkAdriem
 #     text: twitter
@@ -29,5 +35,5 @@ links:
 #     text: email
 #     icon: <i class="fa fa-envelope-square"></i>
 
-mail: adrn.moreno@gmail.com
-
+email_notice: You can also drop me a message at
+email: adrn.moreno@gmail.com

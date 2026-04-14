@@ -13,10 +13,15 @@
     <div class="splash__social">
       <div class="container">
         {% for link in splash_social %}
+        {% if link.splash %}
         <a class="splash__social-link" href="{{ link.url }}">
             {{ link.text }}
         </a>
+        {% endif %}
         {% endfor %}
+        <a class="splash__social-link" href="#contact">
+            {{ site.data[page.language].social.splash_expand_label }}
+        </a>
       </div>
     </div>
 

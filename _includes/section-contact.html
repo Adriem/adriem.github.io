@@ -1,8 +1,9 @@
-{% assign contact = site.data[page.language].sections.contact %}
-{% assign social  = site.data[page.language].social %}
+{% assign social = site.data[page.language].social %}
 
 <div class="container">
-  {% include _components/section-title.html data=contact.section-title %}
+  <h2 class="section__title section__title--center color--accent">
+    {{ social.section_title }}
+  </h2>
 
   <div class="social-grid">
     {% for media_link in social.links %}
@@ -14,9 +15,8 @@
   </div>
 
   <p class="mail-text align-center">
-    {{ contact.email-notice.text }} <a href="{{ social.mail | prepend: 'mailto:' }}">{{ social.mail }}</a>
+    {{ social.email_notice }} <a href="{{ social.email | prepend: 'mailto:' }}">{{ social.email }}</a>
   </p>
 </div>
 
-{% assign contact = nil %}
-{% assign social  = nil %}
+{% assign social = nil %}

@@ -4,8 +4,6 @@
 
 layout: base
 ---
-{% assign sections = site.data[page.language].sections %}
-
 {% include section-navbar.html %}
 
 <div class="parallax">
@@ -13,30 +11,30 @@ layout: base
 
   <section id="about" class="section section--regular">
     {% include section-text-block.html
-               motto=sections.home-motto.text-block %}
+               motto=page.about %}
   </section>
   <section id="trajectory" class="section section--regular">
     {% include section-timeline.html
-               title=sections.home-trajectory.section-title %}
+               title=page.trajectory %}
   </section>
   <section id="skills" class="section section--regular">
     {% include section-skills.html
-               title=sections.home-skills.section-title
-               skills=sections.home-skills.skills %}
+               title=page.skills
+               skills=page.skills.items %}
   </section>
 
   <section id="my-philosophy" class="section section--accent-a section--border">
     {% include section-text-block.html
-               motto=sections.my-philosophy.text-block %}
+               motto=page.my_philosophy %}
   </section>
 
   <section id="projects" class="section section--regular">
     {% include section-text-grid.html
-               title=sections.home-facts.section-title
-               facts=sections.home-facts.paragraph-grid
-               summary=sections.home-facts.text-block %}
+               title=page.facts
+               facts=page.facts.paragraphs
+               summary=page.facts.summary %}
     {% include section-card-grid.html
-               title=sections.home-projects.section-title %}
+               title=page.projects %}
   </section>
 
   <section id="contact" class="section section--contact section--border-top section--reduce-padding">
@@ -45,5 +43,3 @@ layout: base
 
   {% include section-footer.html %}
 </div>
-
-{% assign sections = nil %}
