@@ -2,38 +2,55 @@
 @import "./_mixins.scss";
 
 $navbar__collapse-time: 0.25s;
+$navbar__bg-animation-time: 0.75s;
 
-  $navbar__bg-color            : $color-white;
-  $navbar-brand__color         : $color-black-accent;
-  $navbar-brand__font-family   : Montserrat, helvetica;
-  $navbar-brand__font-expanded--desktop  : 300 4.5rem $navbar-brand__font-family;
-  $navbar-brand__font-collapsed--desktop : 400 1.5rem $navbar-brand__font-family;
-  $navbar-brand__font-expanded--mobile   : 200 26pt $navbar-brand__font-family;
-  $navbar-brand__font-collapsed--mobile  : 200 26pt $navbar-brand__font-family;
+$navbar__bg-color            : $color-white;
+$navbar-brand__color         : $color-black-accent;
+$navbar-brand__font-family   : Montserrat, helvetica;
+$navbar-brand__font-expanded--desktop  : 300 4.5rem $navbar-brand__font-family;
+$navbar-brand__font-collapsed--desktop : 400 1.5rem $navbar-brand__font-family;
+$navbar-brand__font-expanded--mobile   : 200 26pt $navbar-brand__font-family;
+$navbar-brand__font-collapsed--mobile  : 200 26pt $navbar-brand__font-family;
 
-  $navbar-tab__color         : $color__gray--dark;
-  $navbar-tab__hover-color   : $color-black-accent;
-  $navbar-tab__active-color  : $color-black-accent;
-  $navbar-tab__font-family   : Montserrat, Josefin Sans, Palatino Linotype, serif;
-  $navbar-tab__font--desktop : 100 1.3rem $navbar-tab__font-family;
-  $navbar-tab__font--desktop : 400 1rem $navbar-tab__font-family;
-  $navbar-tab__font--mobile  : 300 15pt $navbar-tab__font-family;
-  $navbar-tab__z-index: $z-index__navbar + 1;
+$navbar-tab__color         : $color-black-accent;
+$navbar-tab__dim-color     : $color__gray--dark;
+$navbar-tab__hover-color   : $color-black-accent;
+$navbar-tab__active-color  : $color-black-accent;
+$navbar-tab__font-family   : Montserrat, Josefin Sans, Palatino Linotype, serif;
+$navbar-tab__font--desktop : 100 1.3rem $navbar-tab__font-family;
+$navbar-tab__font--desktop : 400 1rem $navbar-tab__font-family;
+$navbar-tab__font--mobile  : 300 15pt $navbar-tab__font-family;
+$navbar-tab__z-index: $z-index__navbar + 1;
 
 $splash-social__color: $color__red;
 
 .navbar {
-  @include clearfix;
-
   z-index: $z-index__navbar;
   position: fixed;
   top: -3px;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, $navbar__bg-color 40%, rgba($navbar__bg-color, 0));
+  background: none;
+
   transition: height $navbar__collapse-time ease-in-out,
               background-color $navbar__collapse-time ease-in-out,
               opacity $navbar__collapse-time ease-in-out;
+
+  animation: navbar__slide-in 2500ms ease-in-out;
+
+  .navbar--collapsed-only {
+    transition: opacity $navbar__collapse-time ease-in-out;
+  }
+  .navbar--expanded-only {
+    transition: opacity $navbar__collapse-time ease-in-out;
+  }
+
+  &--expanded .navbar--collapsed-only { opacity: 0; transition-delay: 0s; }
+  &--expanded .navbar--expanded-only  { opacity: 1; transition-delay: $navbar__collapse-time; }
+
+  &--collapsed .navbar--collapsed-only { opacity: 1; transition-delay: $navbar__collapse-time; }
+  &--collapsed .navbar--expanded-only  { opacity: 0; transition-delay: 0s; }
+
 
   &::before {
     content: '';
@@ -50,6 +67,7 @@ $splash-social__color: $color__red;
                 background-color $navbar__collapse-time ease-in-out,
                 opacity $navbar__collapse-time ease-in-out;
   }
+  &--expanded::before { opacity: 0; }
 
   .navbar__brand {
     .navbar__title {
@@ -57,26 +75,53 @@ $splash-social__color: $color__red;
       @include screen-mobile { font: $navbar-brand__font-collapsed--mobile; }
 
       padding: 1.3rem 0 1.1rem;
-      // color: white !important;
-      // text-shadow: none !important;
     }
   }
-  .navbar__tabs { padding: 1.5em 0 1em; }
 
-  &--expanded {
-    .navbar--collapsed-only, &::before { opacity: 0; }
+  .navbar__tabs {
+    position: relative;
+    padding: 1.5em 0 1em;
+
+    &::before {
+      z-index: -10;
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      left: 50%;
+      transform: translate(-50%, -5%) skew(0deg, 2.5deg) scaleY(130%);
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 1.5em;
+      display: block;
+      background: $navbar__bg-color;
+      box-sizing: content-box;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+
+      transition: width $navbar__bg-animation-time ease-in-out,
+                  box-shadow $navbar__bg-animation-time,
+                  transform $navbar__collapse-time ($navbar__bg-animation-time - $navbar__collapse-time);
+    }
   }
 
-  &--collapsed {
-    background-color: rgba($navbar__bg-color, 0.95);
+  &--collapsed .navbar__tabs::before {
+    width: 200vw;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0);
+    transform: translate(-50%, 0);
 
-    .navbar--expanded-only { opacity: 1; }
+    transition: width $navbar__bg-animation-time ease-in-out,
+                box-shadow $navbar__bg-animation-time,
+                transform $navbar__collapse-time;
   }
 
-  .container { height: 100% }
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .navbar__brand {
     text-align: left;
-    float: left;
 
     .navbar__title {
       margin: 0;
@@ -90,10 +135,14 @@ $splash-social__color: $color__red;
   }
 
   .navbar__tabs {
-    float: right;
     text-align: right;
     box-sizing: border-box;
+    padding: 0;
     transition: padding $navbar__collapse-time ease-in-out;
+
+    &:hover .navbar__tab:not(:hover):not(.active) {
+      color: $navbar-tab__dim-color;
+    }
 
     .navbar__tab {
       @include link;
@@ -103,16 +152,14 @@ $splash-social__color: $color__red;
       text-transform: lowercase;
       text-decoration: none;
       margin: 0 0.1em;
-      padding: 0 0.5em;
+      padding: 1.5em 0.5em 1em;
       display: inline-block;
       transition: color $link-transition-time ease-in-out;
 
-      &:hover { color: $navbar-tab__hover-color; }
-      &.active { color: $navbar-tab__active-color; }
-
       z-index: $navbar-tab__z-index;
       color: $navbar-tab__color;
-      text-shadow: 0 0 10px $navbar__bg-color;
+
+      &.active { color: $navbar-tab__active-color; }
 
       &:after {
         content: '';

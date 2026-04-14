@@ -9,7 +9,13 @@
       src="{{ 'avatar_sketch_squared.png' | prepend: '/assets/img/' | prepend: site.baseUrl }}"
       style="height: 250px; border-radius: 100%; margin: 1rem 0"> -->
 
-    <nav class="navbar__links navbar__tabs">
+    <div class="navbar__brand">
+        <h2 class="navbar__title">
+          <span class="navbar--collapsed-only">{{ nav_content.title }}</span>
+        </h2>
+    </div>
+
+    <nav class="navbar__tabs">
       {% for section in nav_sections %}
 
         <!-- calculate element class -->
@@ -32,12 +38,6 @@
         {% assign elem_url = nil %}
       {% endfor %}
     </nav>
-
-    <div class="navbar__brand">
-        <h2 class="navbar__title">
-          <span class="navbar--collapsed-only">{{ nav_content.title }}</span>
-        </h2>
-    </div>
   </div>
 </div>
 

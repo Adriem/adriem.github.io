@@ -59,20 +59,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---[ SCROLL SPY ]--- //
 
   const navbar = document.querySelector(".navbar");
-  const splash = document.querySelector(".splash");
+  const splashSocial = document.querySelector(".splash__social");
 
   const observer = new IntersectionObserver(
     ([entry]) => {
-      if (entry.isIntersecting) {
+      if (entry.intersectionRatio >= 1.0) {
         navbar.classList.remove("navbar--collapsed");
         navbar.classList.add("navbar--expanded");
-      } else {
+      } else if (entry.intersectionRatio < 0.5) {
         navbar.classList.remove("navbar--expanded");
         navbar.classList.add("navbar--collapsed");
       }
     },
-    { root: document.querySelector(".parallax"), threshold: 0.15 }
+    { root: document.querySelector(".parallax"), threshold: [0.5, 1.0] }
   );
 
-  observer.observe(splash);
+  observer.observe(splashSocial);
 });
