@@ -1,45 +1,9 @@
-@import "./_variables.scss";
-@import "./_mixins.scss";
-
-$contact-bg-color:    #222;
-$contact-fg-color:    #aaa;
-$contact-title-color: #eee;
-$contact-link-color:  #eee;
-$contact-hover-color: #fff;
-$contact-font-family: Montserrat, sans-serif;
-
-$contact-social-icon-size--desktop: 1.75rem;
-$contact-social-icon-size--mobile:  1.75rem;
-
-$contact-social-font--desktop: 300 1rem $contact-font-family;
-$contact-social-font--mobile:  300 1rem $contact-font-family;
-
-$contact-mail-font--desktop: 300 1.1rem $contact-font-family;
-$contact-mail-font--mobile:  300 1.1rem $contact-font-family;
-
-
+@import "../_typography.scss";
 
 section#contact {
   text-align: center;
 
-  a {
-    text-decoration: none;
-
-      &:hover, &:focus {
-        // color: $contact-hover-color;
-        // text-shadow: 0 0 20px #fffa;
-        border-color: $contact-hover-color;
-      }
-  }
-
-  .section-title {
-    // color: $contact-title-color;
-    padding-bottom: 0;
-  }
-
-  .mail-text {
-    @include screen-desktop { font: $contact-mail-font--desktop }
-    @include screen-mobile  { font: $contact-mail-font--mobile  }
-  }
-
+  a { text-decoration: none; }
+  .section-title { padding-bottom: 0; }
+  .mail-text { @include typography__body-large; }
 }

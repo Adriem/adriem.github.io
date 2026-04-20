@@ -1,28 +1,17 @@
-@import "./_variables.scss";
-@import "./_mixins.scss";
+@import "../_mixins.scss";
+@import "../_typography.scss";
+@import "../_colors.scss";
 
 $navbar__collapse-time: 0.25s;
 $navbar__bg-animation-time: 0.75s;
 
-$navbar__bg-color            : $color-white;
-$navbar-brand__color         : $color-black-accent;
-$navbar-brand__font-family   : Montserrat, helvetica;
-$navbar-brand__font-expanded--desktop  : 300 4.5rem $navbar-brand__font-family;
-$navbar-brand__font-collapsed--desktop : 400 1.5rem $navbar-brand__font-family;
-$navbar-brand__font-expanded--mobile   : 200 26pt $navbar-brand__font-family;
-$navbar-brand__font-collapsed--mobile  : 200 26pt $navbar-brand__font-family;
-
-$navbar-tab__color         : $color-black-accent;
-$navbar-tab__dim-color     : $color__gray--dark;
-$navbar-tab__hover-color   : $color-black-accent;
-$navbar-tab__active-color  : $color-black-accent;
-$navbar-tab__font-family   : Montserrat, Josefin Sans, Palatino Linotype, serif;
-$navbar-tab__font--desktop : 100 1.3rem $navbar-tab__font-family;
-$navbar-tab__font--desktop : 400 1rem $navbar-tab__font-family;
-$navbar-tab__font--mobile  : 300 15pt $navbar-tab__font-family;
+$navbar__bg-color            : $neutral-white;
+$navbar-brand__color         : $neutral-black;
+$navbar-tab__color         : $neutral-black;
+$navbar-tab__dim-color     : $gray-400;
+$navbar-tab__hover-color   : $neutral-black;
+$navbar-tab__active-color  : $neutral-black;
 $navbar-tab__z-index: $z-index__navbar + 1;
-
-$splash-social__color: $color__red;
 
 .navbar {
   z-index: $z-index__navbar;
@@ -59,10 +48,7 @@ $splash-social__color: $color__red;
     top: 3px;
     height: 3px;
     display: block;
-    background: linear-gradient(to right,
-                                $color__red 10%,
-                                rgba($color__red, 0.15) 95%);
-    background-color: #00f2;
+    background: $gradient-bg__brand--splash;
     transition: height $navbar__collapse-time ease-in-out,
                 background-color $navbar__collapse-time ease-in-out,
                 opacity $navbar__collapse-time ease-in-out;
@@ -71,8 +57,7 @@ $splash-social__color: $color__red;
 
   .navbar__brand {
     .navbar__title {
-      @include screen-desktop { font: $navbar-brand__font-collapsed--desktop; }
-      @include screen-mobile { font: $navbar-brand__font-collapsed--mobile; }
+      @include typography__title-small;
 
       padding: 1.3rem 0 1.1rem;
     }
@@ -146,8 +131,7 @@ $splash-social__color: $color__red;
 
     .navbar__tab {
       @include link;
-      @include screen-desktop { font: $navbar-tab__font--desktop }
-      @include screen-mobile { font: $navbar-tab__font--mobile }
+      @include typography__navbar-link;
 
       text-transform: lowercase;
       text-decoration: none;

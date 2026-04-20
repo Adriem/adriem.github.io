@@ -1,0 +1,68 @@
+@import "_mixins";
+@import "_typography";
+
+.text-split {
+  width: 100%;
+  margin: 0 auto;
+
+  @include screen-desktop {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .text-split__title {
+    @include screen-desktop {
+      flex: 0 0 35%;
+      text-align: right;
+    }
+  }
+
+  .text-split__heading {
+    @include typography__title-medium;
+
+    padding: 0;
+    margin: 0 0 0.5em 0;
+  }
+
+  .text-split__body {
+    flex: 1;
+  }
+
+  .text-split__paragraph {
+    margin-bottom: 0.5em;
+    text-align: justify;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  // Mobile collapse behaviour
+  .text-split__cta {
+    display: none;
+  }
+
+  @include screen-mobile {
+    .text-split__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    .text-split__cta {
+      display: inline-block;
+      cursor: pointer;
+      @include typography__button-label;
+      color: $brand-red;
+      margin-top: 0.5em;
+    }
+
+    .text-split__cta-less { display: none; }
+    .text-split__cta-more { display: inline; }
+
+    .text-split__toggle:checked ~ .text-split__content {
+      max-height: 50rem;
+    }
+
+    .text-split__toggle:checked ~ .text-split__cta .text-split__cta-more { display: none; }
+    .text-split__toggle:checked ~ .text-split__cta .text-split__cta-less { display: inline; }
+  }
+}

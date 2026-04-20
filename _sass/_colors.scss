@@ -1,0 +1,48 @@
+$neutral-white: #fff;
+$gray-100: #eee;
+$gray-200: #ddd;
+$gray-300: #ccc;
+$gray-400: #bbb;
+$gray-500: #999;
+$gray-600: #555;
+$neutral-black: #333;
+
+$brand-red: #ff104e;
+$brand-blue: #00f;
+$brand-lilac: #8191ff;
+
+$semantic-warning: #ff6a00;
+
+$gradient-bg__brand--splash: linear-gradient(to right,
+                                             $brand-red 10%,
+                                             rgba($brand-red, 0.15) 95%),
+                             rgba(#00f, 0.13);
+
+$gradient-bg__brand--footer: linear-gradient(to right,
+                                             darken($brand-red, 7%) 20%,
+                                             rgba($brand-red, 0.15) 95%),
+                             rgba(#00f, 0.50);
+
+$gradient-bg__section--red-lilac: linear-gradient(to right,
+                                                  rgba($brand-red, 0.5),
+                                                  rgba($brand-lilac, 0.5)),
+                                  $neutral-white;
+
+$gradient-bg__section--brand: linear-gradient(to right,
+                                              $brand-red 20%,
+                                              rgba($brand-red, 0.15) 95%),
+                              rgba(#00f, 0.40);
+
+
+
+
+
+
+// --- LEGACY ------------------------------------------------------------------
+
+$legacy_brand-blue: #0095ff;
+$legacy_brand-brown: #655;
+$legacy_brand-slate: #557;
+$legacy_brand-taupe-light: #9a918d;
+$legacy_brand-taupe-dark: #48433d;
+$legacy_brand-salmon: #d79a7c;

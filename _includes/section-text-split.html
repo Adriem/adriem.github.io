@@ -1,0 +1,27 @@
+{% assign id   = include.id %}
+{% assign title = include.title %}
+{% assign body = include.body %}
+
+<div class="container">
+  <div class="text-split">
+    <div class="text-split__title">
+      <p class="text-split__heading color--accent">{{ title }}</p>
+    </div>
+    <div class="text-split__body">
+      <input type="checkbox" id="text-split-toggle-{{ id }}" class="text-split__toggle" hidden>
+      <div class="text-split__content">
+        {% for paragraph in body %}
+        <p class="text-split__paragraph color--regular">{{ paragraph }}</p>
+        {% endfor %}
+      </div>
+      <label for="text-split-toggle-{{ id }}" class="text-split__cta">
+        <span class="text-split__cta-more">{{ data.cta | default: "Read more" }}</span>
+        <span class="text-split__cta-less">{{ data.cta_collapse | default: "Show less" }}</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+{% assign id   = nil %}
+{% assign title = nil %}
+{% assign body = nil %}

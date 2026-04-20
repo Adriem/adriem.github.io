@@ -1,17 +1,12 @@
-@import "_variables";
 @import "_mixins";
+@import "_typography";
 
 .text-block {
-  $text-block-title__font-family: $font-family__text;
-  $text-block-title__font--desktop: 400 1.8rem $text-block-title__font-family;
-  $text-block-title__font--mobile:  400 1.8rem $text-block-title__font-family;
-
   width: 100%;
   margin: 0 auto;
 
   .text-block__title {
-    @include screen-desktop { font: $text-block-title__font--desktop }
-    @include screen-mobile  { font: $text-block-title__font--mobile  }
+    @include typography__title-medium;
 
     padding: 0;
     margin: 0 0 0.5em 0;

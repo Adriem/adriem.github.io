@@ -1,14 +1,9 @@
-@import "./_variables.scss";
 @import "./_mixins.scss";
+@import "./_typography.scss";
 
 
 .social-grid {
-  $social-grid-icon__size--desktop: 1.75rem;
-  $social-grid-icon__size--mobile:  1.75rem;
-
-  $social-grid__font-family:  $font-family__text;
-  $social-grid__font--desktop: 300 1rem $font-family__text;
-  $social-grid__font--mobile:  300 1rem $font-family__text;
+  $social-grid-icon__size: 1.75rem;
 
   @include grid(200px, 40px, 4);
 
@@ -40,16 +35,13 @@
     }
 
     .social-grid__icon {
-      @include screen-desktop { font-size: $social-grid-icon__size--desktop }
-      @include screen-mobile  { font-size: $social-grid-icon__size--mobile  }
-
+      font-size: $social-grid-icon__size;
       display: block;
       transition: transform 250ms ease-in-out;
     }
 
     .social-grid__caption {
-      @include screen-desktop { font: $social-grid__font--desktop }
-      @include screen-mobile  { font: $social-grid__font--mobile  }
+      @include typography__body-regular;
 
       display: block;
       margin-top: 1rem;

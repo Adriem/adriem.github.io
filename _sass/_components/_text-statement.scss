@@ -1,0 +1,15 @@
+@import "_mixins";
+@import "_typography";
+
+.text-statement {
+  width: 100%;
+  margin: 0 auto;
+
+  .text-statement__paragraph {
+    @include paragraph(50rem, 0rem);
+    @include typography__body-large;
+
+    line-height: 1.8;
+    text-align: center;
+  }
+}

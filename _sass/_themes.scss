@@ -1,0 +1,59 @@
+@import "./_colors";
+@import "./_animations";
+
+$themes: (
+  default: (
+    text_color--regular: rgba($neutral-black, 0.85),
+    text_color--accent: rgba($neutral-black, 0.75),
+    text_color--dim: rgba($neutral-black, 0.40),
+    link_color: $brand-red,
+    link_color--hover: lighten($brand-red, 20%),
+    background: $neutral-white,
+  ),
+  red-lilac-light: (
+          text_color--regular: rgba($neutral-black, 0.85),
+          text_color--accent: rgba($neutral-black, 0.95),
+          text_color--dim: rgba($neutral-black, 0.70),
+          link_color: $neutral-white,
+          link_color--hover: darken($neutral-white, 20%),
+          background: $gradient-bg__section--red-lilac,
+  ),
+  red-lilac-dark: (
+          text_color--regular: rgba($neutral-white, 0.85),
+          text_color--accent: rgba($neutral-white, 0.95),
+          text_color--dim: rgba($neutral-white, 0.70),
+          link_color: rgba($neutral-white, 0.65),
+          link_color--hover: $neutral-white,
+          background: $gradient-bg__section--brand,
+  ),
+);
+
+
+@each $theme-name, $theme in $themes {
+  .theme--#{$theme-name} {
+    color: map-get($theme, "text_color--regular");
+    background: map-get($theme, "background");
+
+    a {
+      color: map-get($theme, "link_color");
+      transition: color $link-transition-time ease-in-out;
+
+      &:hover, &:active {
+        color: map-get($theme, "link_color--hover");
+        transition: color $link-transition-time ease-in-out;
+      }
+    }
+
+    .color--accent {
+      color: map-get($theme, "text_color--accent");
+    }
+
+    .color--dim {
+      color: map-get($theme, "text_color--dim");
+    }
+
+    .color--regular {
+      color: map-get($theme, "text_color--regular");
+    }
+  }
+}

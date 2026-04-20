@@ -1,30 +1,19 @@
+@import "_typography";
+
 $project-width: 372px;
 $project-gutter-width: 10px;
 
 $project-height: 340px;
 $repo-height: 120px;
 
-$project-title-font--desktop: 400 1.5rem $main-font-family;
-$project-title-font--mobile: 400 1.5rem $main-font-family;
+$project-notice-font: 600 9pt Montserrat, sans-serif;
 
-$project-description-font--desktop: 300 1rem $main-font-family;
-$project-description-font--mobile: 300 1rem $main-font-family;
-
-$project-tag-font--desktop: 10pt $main-font-family;
-$project-tag-font--mobile: 10pt $main-font-family;
-
-$project-notice-font--desktop: 600 9pt $main-font-family;
-$project-notice-font--mobile: 600 9pt $main-font-family;
-
-$color-project-light: #9a918d;
-$color-project-dark: #48433d;
-
-$project-fg-color: $color-black;
-$project-bg-color: $color-project-light;
-$project-title-color: $color-black;
-$project-description-color: $color-black-soft;
-$project-notice-fg-color: $color-black;
-$project-notice-bg-color: #d79a7c;
+$project-fg-color: $gray-600;
+$project-bg-color: $legacy_brand-taupe-light;
+$project-title-color: $gray-600;
+$project-description-color: $gray-500;
+$project-notice-fg-color: $neutral-black;
+$project-notice-bg-color: $semantic-warning;
 
 $project-separator-color: lighten($project-fg-color, 0.6%);
 $project-border-color: lighten($project-fg-color, 0.6%);
@@ -47,8 +36,7 @@ $project-border-color: lighten($project-fg-color, 0.6%);
     }
 
     .project-title, .repo-title {
-      @include screen-desktop { font: $project-title-font--desktop }
-      @include screen-mobile { font: $project-title-font--mobile }
+      @include typography__title-small;
 
       color: $project-title-color;
       margin: 0;
@@ -56,8 +44,7 @@ $project-border-color: lighten($project-fg-color, 0.6%);
     }
 
     .project-description, .repo-description {
-      @include screen-mobile { font: $project-description-font--mobile }
-      @include screen-desktop { font: $project-description-font--desktop }
+      @include typography__body-regular;
 
       color: $project-description-color;
       margin: 0;
@@ -84,7 +71,7 @@ $project-border-color: lighten($project-fg-color, 0.6%);
       .notice {
         margin: 0 1px;
         position: relative;
-        font: $project-notice-font--desktop;
+        font: $project-notice-font;
         text-transform: uppercase;
         line-height: 25px;
         color: $project-notice-fg-color;

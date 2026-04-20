@@ -4,14 +4,20 @@
 @charset "utf-8";
 
 @import "reset";
+
 @import "parallax";
-@import "base";
+
+@import "colors";
+@import "typography";
+@import "themes";
+
 @import "section";
 @import "project";
 
 @import "_components/navbar";
-@import "_components/paragraph-grid";
 @import "_components/text-block";
+@import "_components/text-statement";
+@import "_components/text-split";
 @import "_components/social-grid";
 
 @import "_sections/splash";

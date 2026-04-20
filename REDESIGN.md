@@ -4,7 +4,7 @@ This document describes the current state of the `redesign` branch compared to `
 
 ## Overview
 
-The redesign replaces the old single-page layout (header + project list + contact) with a new section-based architecture. Pages are now composed from reusable, data-driven components rendered via a generic `section.html` include. A new fullscreen splash hero, a collapsing fixed navbar, and a component-based section system have been introduced.
+The redesign replaces the old single-page layout (header + project list + contact) with a new section-based architecture. Pages are composed from reusable, data-driven section includes. A fullscreen splash hero, a collapsing fixed navbar, and a component-based section system have been introduced.
 
 ## Architecture changes
 
@@ -17,87 +17,63 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 ### New (redesign)
 
-- **Generic section system**: `section.html` iterates over a section's YAML keys and dynamically includes a matching `_components/<key>.html` for each one. Sections are declared in the page front matter (`pages/home-en.html`).
-- **New splash section**: fullscreen hero with avatar image, greeting text, and social links, with parallax scrolling.
-- **Collapsing navbar**: fixed navbar that collapses on scroll (controlled via `script.coffee`).
-- **New components**: `section-title`, `text-block`, `paragraph-grid`, `social-grid`, `email-notice`, `project-grid`.
-- **Consolidated data**: `common.yml` centralises navbar, splash, and footer strings. Per-section data lives in `_data/en/sections/<section-name>.yml`.
-- **Removed**: `_layouts/about.html`, `pages/about-en.html`, `_includes/_sections/header.html`, `_includes/_components/project.html`, `_includes/_components/repository.html`.
+- **Section-based layout**: `home.html` layout composes the page from section includes (`section-*.html`). Section content is defined in the page front matter (`pages/home-en.html`), passed as parameters to sections.
+- **New splash section**: fullscreen hero with greeting text and social links, with parallax scrolling.
+- **Collapsing navbar**: fixed navbar that collapses on scroll (controlled via `IntersectionObserver` in `script.js`), with slide-in animation.
+- **Section types**: `section-text-block`, `section-text-statement`, `section-text-split`, `section-timeline`, `section-skills`, `section-card-grid`, `section-contact`.
+- **SCSS foundation files**: `_colors.scss` (palette), `_layout.scss` (breakpoints, z-index, grid, container), `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins), `_mixins.scss` (link, paragraph).
+- **Consolidated data**: `common.yml` centralises navbar, splash, and footer strings. Social/contact data lives in `_data/en/social.yml`. Section content lives in page front matter.
+- **Removed**: `_layouts/about.html`, `pages/about-en.html`, `_includes/_sections/header.html`, old component files (inlined into sections), `_variables.scss`, `_base.scss`, `_nav/` directory, `_syntax-highlighting.scss`.
 
 ## TODOs
 
-### Explicit TODO comments
-
-1. **`_sass/_section.scss:15`** — `// Fonts -- TODO: Extract`
-   Font variables are defined inline inside `.section`. They should be moved to `_variables.scss`.
-
-2. **`_sass/_nav/_header.scss:71`** — `// TODO FIX THIS`
-   Mobile padding for the old header. The entire file is commented out (155 lines) and is dead code — it can likely be deleted.
-
 ### Placeholder / dummy content
 
-3. **`_data/en/sections/home-facts.yml`** — The `paragraph-grid` entries ("code.", "learn.", "play.") contain placeholder text: *"I likez cln code cuz cln code is graet"* repeated across all three items. The `text-block` section repeats *"I am one with the code"*. All of this needs real copy.
+1. **`pages/home-en.html` — facts section** — The `paragraphs` entries ("code.", "learn.", "play.") contain placeholder text: *"I likez cln code cuz cln code is graet"* repeated across all items. The `summary` section repeats *"I am one with the code"*. All of this needs real copy.
 
-4. **`_data/en/sections/home-pics.yml`** — `text-block.pargraphs` is an empty array `[]`. The commented-out `instagram-feed` component below it was never implemented. This section currently renders with a title ("My life in pictures") but no content.
-
-5. **`_data/en/sections/home-motto.yml`** — References "currently working for Building Blocks Spain" and "finish my engineering studies" — likely outdated and needs updating.
-
-### Empty stylesheets
-
-6. **`_sass/_components/_email-notice.scss`** — 0 bytes. The `email-notice` component has no styles.
-7. **`_sass/_components/_navbar-animations.scss`** — 0 bytes. Created but never filled in. Not imported anywhere.
+2. **`pages/home-en.html` — about section** — References "currently working for Building Blocks Spain" and "finish my engineering studies" — likely outdated and needs updating.
 
 ### Commented-out code blocks
 
-8. **`_sass/_nav/_header.scss`** — The entire file (155 lines) is commented out. It contains the old header styles that were replaced by `_components/_navbar.scss`. Should be deleted.
+3. **`_includes/section-navbar.html:8-10`** — Commented-out avatar image in the navbar.
 
-9. **`_includes/_sections/navbar.html:8-10`** — Commented-out avatar image in the navbar.
+4. **`_includes/section-navbar.html:44-64`** — Old splash section HTML left inside a `{% comment %}` block.
 
-10. **`_includes/_sections/navbar.html:44-64`** — Old splash section HTML left inside a `{% comment %}` block.
+5. **`_includes/section-footer.html:6-40`** — Old footer navigation (back-to-top link, nav tabs) wrapped in `{%comment%}`.
 
-11. **`_includes/_sections/footer.html:6-40`** — Old footer navigation (back-to-top link, nav tabs) wrapped in `{%comment%}`.
+6. **`_includes/doc-head.html`** — Multiple commented-out blocks: old Font Awesome CSS links, dynamic CSS file loop, RSS XML link.
 
-12. **`_layouts/default.html:11`** — Old contact section include commented out: `{%comment%}{% include _sections/contact.html %}{%endcomment%}`.
+7. **`_data/en/portfolio.yml`** — Six portfolio projects and the entire `repositories` section are commented out.
 
-13. **`_includes/head.html`** — Multiple commented-out blocks: old Font Awesome CSS links (lines 28-40), dynamic CSS file loop (lines 51-58), RSS XML link (lines 66-71).
+8. **`_data/en/navigation.yml`** — The `url` field is commented out on all nav items. Navigation currently works via anchor links only.
 
-14. **`_data/en/portfolio.yml`** — Six portfolio projects and the entire `repositories` section are commented out.
+9. **`_data/en/social.yml`** — Commented-out Twitter and email link entries.
 
-15. **`_data/en/navigation.yml`** — The `url` field is commented out on all nav items (home, about, projects). Navigation currently works via anchor links only.
+### Unimplemented sections
 
-16. **`_data/en/social.yml:22-29`** — Commented-out email link entry and alternative email markup.
+10. **`_includes/section-timeline.html`** — Contains a TODO comment; the timeline/trajectory component is not yet implemented.
 
-### Deprecated code
-
-17. **`_sass/_base.scss:18-22`** — The `#who-am-i` rule is marked `// deprecated`. It styled the old about page which has been removed.
+11. **`_includes/section-skills.html`** — Contains a TODO comment; the skills grid component is not yet implemented.
 
 ## Bugs and issues
 
 ### Wrong social link
 
-- **`_data/en/social.yml:11-13`** — The Instagram entry points to `https://github.com/ClockworkAdriem` (a GitHub URL), not an Instagram profile.
+- **`_data/en/social.yml`** — The Instagram entry points to `https://github.com/ClockworkAdriem` (a GitHub URL), not an Instagram profile.
 
 ### Insecure resource loading
 
-- **`_includes/head.html:76`** — jQuery is loaded over `http://` instead of `https://`, which will be blocked on HTTPS pages or trigger mixed-content warnings.
+- **`_includes/doc-head.html`** — jQuery is loaded over `http://` instead of `https://`, which will be blocked on HTTPS pages or trigger mixed-content warnings.
 
 ### Outdated URLs
 
-- **`_config.yml:6`** — Site URL uses `http://adriem.me` instead of `https://`.
-- **`_data/en/common.yml:11`** — Footer "Powered by" links use `http://` for Jekyll and GitHub Pages.
-
-### Duplicate variable definition
-
-- **`_sass/_components/_navbar.scss:18-19`** — `$navbar-tab__font--desktop` is defined twice; the second value silently overrides the first.
+- **`_config.yml`** — Site URL uses `http://adriem.me` instead of `https://`.
+- **`_data/en/common.yml`** — Footer "Powered by" links use `http://` for Jekyll and GitHub Pages.
 
 ### CSS typo
 
-- **`_sass/_section.scss:147`** — `section--border-botttom` has three t's.
+- **`_sass/_section.scss`** — `section--border-botttom` has three t's.
 
 ### Copyright year
 
-- **`_data/en/common.yml:9`** — Copyright notice says `2016-2018`.
-
-### Unused old contact section
-
-- **`_includes/_sections/contact.html`** — References `site.data[page.language].contact`, but `_data/en/contact.yml` was deleted. This file is currently commented out in `default.html` but would break if re-enabled. The new contact section uses the generic section system with `_data/en/sections/contact.yml` instead.
+- **`_data/en/common.yml`** — Copyright notice says `2016-2018`.

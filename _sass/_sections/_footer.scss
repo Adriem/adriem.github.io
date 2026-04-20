@@ -1,26 +1,16 @@
-@import "./_variables.scss";
 @import "./_mixins.scss";
+@import "./_typography.scss";
 
-$footer-fg-color : #eee;
-$footer-fg-title-color : #fff;
-
-$footer-copy-color         : #fff;
-$footer-copy-link-color    : #fff;
-$footer-copy-font-family   : Montserrat, sans-serif;
-$footer-copy-font--desktop : 200 0.85rem $footer-copy-font-family;
-$footer-copy-font--mobile  : 200 0.85rem $footer-copy-font-family;
-$footer-background__color:    rgba(#00f, .50);
-$footer-background__gradient: linear-gradient(to right, darken($color__red, 7%) 20%, rgba($color__red, 0.15) 95%);
+$footer-copy-color         : $neutral-white;
+$footer-copy-link-color    : $neutral-white;
 
 
 section#footer {
-  background: $footer-background__gradient;
-  background-color: $footer-background__color;
+  background: $gradient-bg__brand--footer;
   text-align: center;
 
   .copyright-notice {
-    @include screen-desktop { font: $footer-copy-font--desktop }
-    @include screen-mobile  { font: $footer-copy-font--mobile  }
+    @include typography__caption-regular;
 
     padding: 1rem 3rem;
     color: $footer-copy-color;

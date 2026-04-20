@@ -1,4 +1,8 @@
+{% assign title = include.title %}
+
 <div class="container">
-  {% include _components/section-title.html data=include.title %}
+  {% include _components/section-title.html data=title %}
   <!-- TODO: Implement trajectory/timeline component -->
 </div>
+
+{% assign title = nil %}

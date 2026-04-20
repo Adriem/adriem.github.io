@@ -1,9 +1,15 @@
+{% assign title  = include.title %}
+{% assign skills = include.skills %}
+
 <div class="container">
-  {% include _components/section-title.html data=include.title %}
+  {% include _components/section-title.html data=title %}
   <!-- TODO: Implement skills grid component -->
   <div class="skills-grid">
-    {% for skill in include.skills %}
+    {% for skill in skills %}
       <div class="skills-grid__item">{{ skill }}</div>
     {% endfor %}
   </div>
 </div>
+
+{% assign title  = nil %}
+{% assign skills = nil %}

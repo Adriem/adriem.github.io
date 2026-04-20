@@ -1,99 +1,21 @@
-// ([ WIP ])
-
-@import "./_variables.scss";
-
-$title-font-family: Montserrat, sans-serif;
-$text-font-family: Montserrat, Open Sans, sans-serif;
-
-$color__black: #333;
-$color__white: #fff;
-$color__background: $color__white;
+@import "./_typography.scss";
 
 
 .section {
-
-  // Fonts -- TODO: Extract
-
-  $section-title__font-family: $font-family__title;
-  $section-title__font--desktop: 300 2.5rem $section-title__font-family;
-  $section-title__font--mobile:  300 2.5rem $section-title__font-family;
-
-  $section-body__font-family: $font-family__text;
-  $section-body__font--desktop: 300 1rem/1.25 $section-body__font-family;
-  $section-body__font--mobile:  300 1rem/1.25 $section-body__font-family;
-
-  // Colors
-
-  $regular-section-accent__color:      rgba($color__black, 0.90);
-  $regular-section-dim__color:         rgba($color__black, 0.40);
-  $regular-section-regular__color:     rgba($color__black, 0.75);
-  $regular-section-link__color:        $color__red;
-  $regular-section-link__color--hover: $color__red;
-  $regular-section-background__color:  $color__background;
-  $regular-section-border__color:      #ddd;
-
-  $accent-sections: (
-    accent-a: (
-      accent__color:        rgba($color__black, 0.95),
-      dim__color:           rgba($color__black, 0.70),
-      regular__color:       rgba($color__black, 0.85),
-      link__color:          rgba($color__black, 0.85),
-      link__color--hover:   rgba($color__black, 0.85),
-      background__color:    $color__background,
-      background__gradient: linear-gradient(to right, rgba($color__red, 0.5), rgba(#8191ff, 0.5)),
-      border-top__gradient: linear-gradient(to left, #557 10%, rgba(#557, 0) 85%),
-      border-bot__gradient: linear-gradient(to right, #557 10%, rgba(#557, 0) 85%)
-    ),
-    accent-b: (
-      accent__color:        rgba($color__black, 0.95),
-      dim__color:           rgba($color__black, 0.70),
-      regular__color:       rgba($color__black, 0.85),
-      link__color:          rgba($color__black, 0.85),
-      link__color--hover:   rgba($color__black, 0.85),
-      background__color:    $color__background,
-      background__gradient: linear-gradient(to right, rgba($color__orange, .4), rgba($color__red, 0.65)),
-      border-top__gradient: linear-gradient(to left, #745 10%, rgba(#745, 0) 85%),
-      border-bot__gradient: linear-gradient(to right, #745 10%, rgba(#745, 0) 85%)
-    ),
-    accent-c: (
-      accent__color:        rgba($color__black, 0.95),
-      dim__color:           rgba($color__black, 0.70),
-      regular__color:       rgba($color__black, 0.85),
-      link__color:          rgba($color__black, 0.70),
-      link__color--hover:   rgba($color__black, 1.00),
-      background__color:    $color__background,
-      background__gradient: linear-gradient(to right, rgba($color__red, 0.8), rgba(#c1ffbf, 0.95)),
-      border-top__gradient: linear-gradient(to left, #557 10%, rgba(#557, 0) 85%),
-      border-bot__gradient: linear-gradient(to right, #557 10%, rgba(#557, 0) 85%)
-    ),
-    contact: (
-      accent__color:        rgba($color__white, 0.95),
-      dim__color:           rgba($color__white, 0.70),
-      regular__color:       rgba($color__white, 0.85),
-      link__color:          rgba($color__white, 0.65),
-      link__color--hover:   rgba($color__white, 1.00),
-      background__color:    rgba(#00f, .40),
-      background__gradient: linear-gradient(to right, $color__red 20%, rgba($color__red, 0.15) 95%),
-      border-top__gradient: linear-gradient(to left, #557 10%, rgba(#557, 0) 85%),
-      border-bot__gradient: linear-gradient(to right, #557 10%, rgba(#557, 0) 85%)
-    )
-  );
-
-  // Section style
-
-  @include screen-desktop { font: $section-body__font--desktop }
-  @include screen-mobile  { font: $section-body__font--mobile  }
-
   position: relative;  // Necessary for parallax efect
-  background-color: $color__background;
+
   width: 100%;
   margin: 0;
   padding: 5em 0;
+
+  @include typography__body-regular;
   letter-spacing: 0.01em;
 
+  &.section--small-padding { padding: 2.5em 0 }
+  &.section--large-padding { padding: 7.5em 0  }
+
   .section__title {
-    @include screen-desktop { font: $section-title__font--desktop }
-    @include screen-mobile  { font: $section-title__font--mobile  }
+    @include typography__title-large;
 
     box-sizing: border-box;
     width: 100%;
@@ -105,72 +27,12 @@ $color__background: $color__white;
     &.section__title--right  { text-align: right  }
 
     .section__surtitle {
-      @include screen-desktop { font: $section-body__font--desktop }
-      @include screen-mobile  { font: $section-body__font--mobile  }
+      @include typography__body-regular;
 
       display: block;
       width: 100%;
       margin: 0;
       padding: 0.25em 0 0;
     }
-  }
-
-  &.section--regular {
-    color: $regular-section-regular__color;
-    background-color: $regular-section-background__color;
-
-    & + & { border-top: 1px solid $regular-section-border__color }
-
-    .color--accent  { color: $regular-section-accent__color  }
-    .color--dim     { color: $regular-section-dim__color     }
-    .color--regular { color: $regular-section-regular__color }
-  }
-
-  @each $section-name, $section in $accent-sections {
-    &.section--#{$section-name} {
-      color: map-get($section, regular__color);
-      background: map-get($section, background__gradient);
-      background-color: map-get($section, background__color);
-
-      &.section--border::before,
-      &.section--border-top::before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 2px;
-        position: relative;
-        top: -5em;
-        background: map-get($section, border-top__gradient);
-      }
-
-      &.section--border::after,
-      &.section--border-botttom::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 2px;
-        position: relative;
-        bottom: -5em;
-        background: map-get($section, border-bot__gradient);
-      }
-
-      a {
-        color: map-get($section, link__color);
-
-        &:hover, &:active {
-        color: map-get($section, link__color--hover);
-        }
-      }
-      .color--accent  { color: map-get($section, accent__color)  }
-      .color--dim     { color: map-get($section, dim__color)     }
-      .color--regular { color: map-get($section, regular__color) }
-    }
-  }
-
-  &.section--reduce-padding {
-    padding: 2.5em 0;
-
-    &::before { top:    -2.5em !important }
-    &::after  { bottom: -2.5em !important }
   }
 }

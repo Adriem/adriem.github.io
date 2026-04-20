@@ -1,0 +1,61 @@
+@import "_mixins";
+
+$_font-family__default: Montserrat, sans-serif;
+
+// --- PURPOSE-SPECIFIC --------------------------------------------------------
+
+@mixin typography__splash-title {
+  @include screen-desktop { font: 300 4.5rem $_font-family__default; }
+  @include screen-mobile  { font: 200 26pt  $_font-family__default; }
+}
+
+@mixin typography__splash-link {
+  font: 400 .95rem $_font-family__default;
+}
+
+@mixin typography__navbar-link {
+  @include screen-desktop { font: 400 1rem $_font-family__default; }
+  @include screen-mobile  { font: 300 15pt $_font-family__default; }
+}
+
+@mixin typography__button-label {
+  font: 400 0.9rem $_font-family__default;
+}
+
+// --- GENERAL-PURPOSE ---------------------------------------------------------
+
+@mixin typography__title-large {
+  @include screen-desktop { font: 300 2.5rem $_font-family__default; }
+  @include screen-mobile  { font: 300 2.5rem $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__title-medium {
+  @include screen-desktop { font: 400 1.8rem $_font-family__default; }
+  @include screen-mobile  { font: 400 1.8rem $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__title-small {
+  @include screen-desktop { font: 400 1.5rem $_font-family__default; }
+  @include screen-mobile  { font: 400 1.5rem $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__body-regular {
+  @include screen-desktop { font: 300 1rem/1.25 $_font-family__default; }
+  @include screen-mobile  { font: 300 1rem/1.25 $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__body-large {
+  @include screen-desktop { font: 300 1.25rem $_font-family__default; & strong { font-weight: 700; }}
+  @include screen-mobile  { font: 300 1.15rem $_font-family__default; & strong { font-weight: 700; }}
+  text-wrap: balance;
+}
+
+@mixin typography__caption-regular {
+  @include screen-desktop { font: 200 0.85rem $_font-family__default; }
+  @include screen-mobile  { font: 200 0.85rem $_font-family__default; }
+  text-wrap: balance;
+}

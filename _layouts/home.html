@@ -9,35 +9,39 @@ layout: base
 <div class="parallax">
   {% include section-home-splash.html %}
 
-  <section id="about" class="section section--regular">
-    {% include section-text-block.html
-               motto=page.about %}
+  <section id="about" class="section theme--default">
+    {% include section-text-statement.html
+               statement=page.intro %}
   </section>
-  <section id="trajectory" class="section section--regular">
+  <section id="trajectory" class="section theme--default">
     {% include section-timeline.html
                title=page.trajectory %}
   </section>
-  <section id="skills" class="section section--regular">
+  <section id="skills" class="section theme--default">
     {% include section-skills.html
                title=page.skills
                skills=page.skills.items %}
   </section>
 
-  <section id="my-philosophy" class="section section--accent-a section--border">
-    {% include section-text-block.html
-               motto=page.my_philosophy %}
+  <section id="my-philosophy" class="section section--large-padding theme--red-lilac-light">
+    {% include section-text-split.html
+               id='philosophy-body'
+               title=page.philosophy.title
+               body=page.philosophy.body %}
   </section>
 
-  <section id="projects" class="section section--regular">
-    {% include section-text-grid.html
-               title=page.facts
-               facts=page.facts.paragraphs
-               summary=page.facts.summary %}
+  <section id="projects" class="section theme--default">
     {% include section-card-grid.html
                title=page.projects %}
   </section>
 
-  <section id="contact" class="section section--contact section--border-top section--reduce-padding">
+  <section id="fun-facts" class="section theme--default">
+    {% include section-text-grid.html
+               title=page.facts
+               summary=page.facts.summary %}
+  </section>
+
+  <section id="contact" class="section section--small-padding theme--red-lilac-dark">
     {% include section-contact.html %}
   </section>
 

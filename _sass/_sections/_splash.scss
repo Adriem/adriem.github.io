@@ -1,5 +1,6 @@
-@import "../variables.scss";
 @import "../mixins.scss";
+@import "../colors.scss";
+@import "../typography.scss";
 
 @include keyframes('splash__image') {
   0% { transform: translateX(1vw); opacity: 0 }
@@ -48,14 +49,8 @@
 }
 
 .splash {
-  $splash-social__fg-color : $color__white--accent;
-  $splash-social__bg-color : $color__red;
-  $splash-social__font     : 400 .95rem Montserrat;
-
-  $splash-text__color         : $color-black-accent;
-  $splash-text__font-family   : Montserrat, helvetica;
-  $splash-text__font--desktop : 300 4.5rem $splash-text__font-family;
-  $splash-text__font--mobile  : 200 26pt $splash-text__font-family;
+  $splash-social__fg-color : $neutral-white;
+  $splash-text__color      : $neutral-black;
 
   $splash-text__anim-speed   : 1000ms;
   $splash-social__anim-speed : 1500ms;
@@ -78,15 +73,15 @@
 
     .fa-lg {
       animation: 3s splash__arrow 1s infinite;
-      color: black;
-      background-color: white;
+      color: $neutral-black;
+      background-color: $neutral-white;
       border-radius: 100%;
       width: 1.5em;
       height: 1.5em;
       line-height: 1.5em;
       text-align: center;
       display: inline-block;
-      box-shadow: 0 0 85px #002;
+      box-shadow: 0 0 85px $neutral-black;
     }
   }
 
@@ -101,27 +96,27 @@
     }
 
     .splash__text {
-      @include screen-desktop { font: $splash-text__font--desktop; }
-      @include screen-mobile { font: $splash-text__font--mobile; }
+      @include typography__splash-title;
+      letter-spacing: -0.05em;
 
-      color: $splash-text__color;
       padding: 0;
       margin: 0;
-      letter-spacing: -0.05em;
+
+      color: $splash-text__color;
       paint-order: stroke fill;
-      -webkit-text-stroke: 5px rgba(255,255,255,0.3);
-      text-shadow:  0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 20px white, 0 0 20px white;
+      -webkit-text-stroke: 5px rgba($neutral-white, 0.3);
+      text-shadow:  0 0 10px $neutral-white, 0 0 10px $neutral-white, 0 0 10px $neutral-white, 0 0 20px $neutral-white, 0 0 20px $neutral-white;
+
       animation: splash__text $splash-text__anim-speed ease-in-out;
     }
 
     .splash__social {
+      background: $gradient-bg__brand--splash;
+
       margin: .75rem 0 20vh;
       padding: .25rem 0 .5rem;
       font-size: 1.5rem;
-      background: linear-gradient(to right,
-                                  $splash-social__bg-color 10%,
-                                  rgba($splash-social__bg-color, 0.15) 95%);
-      background-color: #00f2;
+
       animation: splash__social $splash-social__anim-speed ease-in-out;
 
       .splash__social-link {
@@ -131,7 +126,7 @@
         &:hover { color: $navbar-tab__hover-color; }
         &.active { color: $navbar-tab__active-color; }
 
-        font: $splash-social__font !important;
+        @include typography__splash-link;
         text-transform: lowercase;
 
         padding: none;
