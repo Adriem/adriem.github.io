@@ -43,14 +43,14 @@ $_font-family__default: Montserrat, sans-serif;
 }
 
 @mixin typography__body-regular {
-  @include screen-desktop { font: 300 1rem/1.25 $_font-family__default; }
-  @include screen-mobile  { font: 300 1rem/1.25 $_font-family__default; }
+  @include screen-desktop { font: 300 1.25rem $_font-family__default; & strong { font-weight: 700; }}
+  @include screen-mobile  { font: 300 1.15rem $_font-family__default; & strong { font-weight: 700; }}
   text-wrap: balance;
 }
 
-@mixin typography__body-large {
-  @include screen-desktop { font: 300 1.25rem $_font-family__default; & strong { font-weight: 700; }}
-  @include screen-mobile  { font: 300 1.15rem $_font-family__default; & strong { font-weight: 700; }}
+@mixin typography__body-compact {
+  @include screen-desktop { font: 300 1rem/1.25 $_font-family__default; }
+  @include screen-mobile  { font: 300 1rem/1.25 $_font-family__default; }
   text-wrap: balance;
 }
 

@@ -44,7 +44,7 @@ $project-border-color: lighten($project-fg-color, 0.6%);
     }
 
     .project-description, .repo-description {
-      @include typography__body-regular;
+      @include typography__body-compact;
 
       color: $project-description-color;
       margin: 0;

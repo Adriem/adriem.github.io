@@ -7,7 +7,7 @@
 
   .text-statement__paragraph {
     @include paragraph(50rem, 0rem);
-    @include typography__body-large;
+    @include typography__body-regular;
 
     line-height: 1.8;
     text-align: center;

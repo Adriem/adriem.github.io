@@ -41,7 +41,7 @@
     }
 
     .social-grid__caption {
-      @include typography__body-regular;
+      @include typography__body-compact;
 
       display: block;
       margin-top: 1rem;

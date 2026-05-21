@@ -8,7 +8,7 @@
   margin: 0;
   padding: 5em 0;
 
-  @include typography__body-regular;
+  @include typography__body-compact;
   letter-spacing: 0.01em;
 
   &.section--small-padding { padding: 2.5em 0 }
@@ -27,7 +27,7 @@
     &.section__title--right  { text-align: right  }
 
     .section__surtitle {
-      @include typography__body-regular;
+      @include typography__body-compact;
 
       display: block;
       width: 100%;
