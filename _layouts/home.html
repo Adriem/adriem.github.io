@@ -13,14 +13,17 @@ layout: base
     {% include section-text-statement.html
                statement=page.intro %}
   </section>
+
   <section id="trajectory" class="section theme--default">
     {% include section-timeline.html
-               title=page.trajectory %}
+               title=page.trajectory
+               timeline=page.trajectory.timeline %}
   </section>
+
   <section id="skills" class="section theme--default">
     {% include section-skills.html
                title=page.skills
-               skills=page.skills.items %}
+               skills=page.skills.categories %}
   </section>
 
   <section id="my-philosophy" class="section section--large-padding theme--red-lilac-light">
@@ -38,7 +41,7 @@ layout: base
   <section id="fun-facts" class="section theme--default">
     {% include section-text-grid.html
                title=page.facts
-               summary=page.facts.summary %}
+               summary=page.facts.content %}
   </section>
 
   <section id="contact" class="section section--small-padding theme--red-lilac-dark">

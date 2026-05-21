@@ -5,8 +5,24 @@
   {% include _components/section-title.html data=title %}
   <!-- TODO: Implement skills grid component -->
   <div class="skills-grid">
-    {% for skill in skills %}
-      <div class="skills-grid__item">{{ skill }}</div>
+    {% for category in skills %}
+      {% assign skillCategory = category[0] %}
+      {% assign skillsInCategory = category[1] %}
+
+      <div class="skills-grid__category">
+        <h3 class="skills-grid__category-title">
+          {{ skillCategory }}
+        </h3>
+
+        <div class="skills-grid">
+          {% for skill in skillsInCategory %}
+            <div class="skills-grid__item">{{ skill }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% assign skillCategory  = nil %}
+      {% assign skillsInCategory = nil %}
     {% endfor %}
   </div>
 </div>
