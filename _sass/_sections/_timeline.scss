@@ -95,11 +95,13 @@ $timeline-gradient: linear-gradient(to bottom,
   }
 }
 
+$timeline-desktop-breakpoint : 768px;
+$timeline-desktop-max-width  : 900px;
+
 .timeline {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 600px;
 
   display: flex;
   flex-direction: column;
@@ -132,5 +134,37 @@ $timeline-gradient: linear-gradient(to bottom,
   .timeline__description {
     grid-column: 2;
     grid-row: 3;
+  }
+
+  // Desktop: zigzag layout. Central vertical timeline with entries
+  // alternating sides — odd entries on the left (text-align: right),
+  // even entries on the right (text-align: left).
+  @media (min-width: $timeline-desktop-breakpoint) {
+    max-width: $timeline-desktop-max-width;
+
+    > li {
+      grid-template-columns: 1fr $timeline-dot-size 1fr;
+
+      &::before { grid-column: 2; }
+      &::after  { left: calc(50% - #{$timeline-line-thickness * 0.5}); }
+    }
+
+    > li:nth-child(odd) {
+      .timeline__heading,
+      .timeline__title,
+      .timeline__description {
+        grid-column: 1;
+        text-align: right;
+      }
+    }
+
+    > li:nth-child(even) {
+      .timeline__heading,
+      .timeline__title,
+      .timeline__description {
+        grid-column: 3;
+        text-align: left;
+      }
+    }
   }
 }
