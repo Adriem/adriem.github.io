@@ -1,6 +1,6 @@
-{% assign title    = include.title %}
-{% assign surtitle = include.surtitle %}
-{% assign timeline = include.timeline %}
+{% assign title      = include.title %}
+{% assign surtitle   = include.surtitle %}
+{% assign experience = include.experience %}
 
 <div class="container">
   {% include _components/section-title.html
@@ -8,16 +8,20 @@
              surtitle=surtitle %}
 
   <ol class="timeline">
-    {% for timelineEntry in timeline %}
+    {% for entry in experience.timeline_highlights %}
       <li>
-        <h3 class="timeline__title">{{timelineEntry.title}} - {{timelineEntry.company}}</h3>
-        <div class="timeline__heading">{{timelineEntry.start}} - {{timelineEntry.end}}</div>
-        <div class="timeline__description">{{timelineEntry.description}}</div>
+        <h3 class="timeline__title">{{ entry.title }} - {{ entry.company }}</h3>
+        <div class="timeline__heading">{{ entry.start }} - {{ entry.end }}</div>
+        <div class="timeline__description">{{ entry.description }}</div>
       </li>
     {% endfor %}
+    <li>
+      <div class="timeline__heading">{{ experience.start_date }}</div>
+    </li>
   </ol>
 </div>
 
-{% assign title    = nil %}
-{% assign surtitle = nil %}
-{% assign timeline = nil %}
+{% assign title      = nil %}
+{% assign surtitle   = nil %}
+{% assign experience = nil %}
+</content>

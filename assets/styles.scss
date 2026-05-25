@@ -3,7 +3,7 @@
 ---
 
 // Global variables from content
-$timeline-entries: {{ site.data.en.experience | size }};
+$timeline-entries: {{ site.data.en.experience.timeline_highlights | size | plus: 1 }};
 
 @charset "utf-8";
 

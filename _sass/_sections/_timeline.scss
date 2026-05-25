@@ -82,7 +82,7 @@ $timeline-gradient: linear-gradient(to bottom,
     left: ($timeline-dot-size - $timeline-line-thickness) * 0.5;
 
     width: $timeline-line-thickness;
-    height: calc(100% + #{$timeline-gap});
+    height: calc(100% + var(--timeline-entry-spacing));
 
     background-image: $timeline-gradient;
     background-size: 100% percentage($timeline-entries - 1);
@@ -97,19 +97,33 @@ $timeline-gradient: linear-gradient(to bottom,
 
 $timeline-desktop-breakpoint : 768px;
 $timeline-desktop-max-width  : 900px;
+$timeline-desktop-overlap    : 50%;
 
 .timeline {
+  // Vertical spacing between consecutive entries (the gap between this
+  // entry's bottom and the next entry's top — signed). Read by the line
+  // segment height in the mixin; mobile uses row-gap on the OL and
+  // desktop uses transform translates, so this variable just keeps the
+  // line in sync with whichever mechanism is active.
+  --timeline-entry-spacing: #{$timeline-gap};
+
   list-style: none;
   padding: 0;
   margin: 0 auto;
 
-  display: flex;
-  flex-direction: column;
-  gap: $timeline-gap;
+  // Grid (not flex) so `grid-template-rows: 1fr` equalizes all entries
+  // to the tallest entry's intrinsic content.
+  display: grid;
+  grid-template-rows: repeat($timeline-entries, 1fr);
+  grid-template-columns: 100%;
+  row-gap: $timeline-gap;
 
   > li {
     display: grid;
     grid-template-columns: $timeline-dot-size 1fr;
+    // Description row absorbs the extra vertical space in shorter
+    // entries, so each entry fills its equalized cell cleanly.
+    grid-template-rows: auto auto 1fr;
     column-gap: $timeline-content-gap;
     align-items: start;
 
@@ -140,13 +154,57 @@ $timeline-desktop-max-width  : 900px;
   // alternating sides — odd entries on the left (text-align: right),
   // even entries on the right (text-align: left).
   @media (min-width: $timeline-desktop-breakpoint) {
-    max-width: $timeline-desktop-max-width;
+    --timeline-entry-spacing: -#{$timeline-desktop-overlap};
 
+    max-width: $timeline-desktop-max-width;
+    // 50% overlap via grid-row spans: lay out N rows of 1fr (one per
+    // overlapping entry) plus one auto row at the end for the last
+    // entry. Entries 1..N-1 each span 2 of the 1fr rows and share one
+    // row with their neighbour; the last entry sits in the auto row
+    // and sizes to its own content (the year marker) — no wasted
+    // height.
+    grid-template-rows: repeat(#{$timeline-entries}, 1fr) auto;
+    row-gap: 0;
+
+    // Default treatment for every entry. The grid-row-start reads
+    // --li-index (set by the mixin) so each entry gets a unique row
+    // start without enumerating positions. The margin-bottom provides
+    // the breathing room formerly carried by padding-bottom, and the
+    // line segment is extended by half that margin so it still reaches
+    // the next dot (margin lives outside the LI's border-box, so the
+    // line's `100%` reference doesn't grow with it).
     > li {
+      grid-column: 1;
+      grid-row-start: calc(var(--li-index) + 1);
+      grid-row-end: span 2;
+
       grid-template-columns: 1fr $timeline-dot-size 1fr;
 
+      margin-bottom: $timeline-gap;
+
       &::before { grid-column: 2; }
-      &::after  { left: calc(50% - #{$timeline-line-thickness * 0.5}); }
+      &::after {
+        left: calc(50% - #{$timeline-line-thickness * 0.5});
+        height: calc(50% + #{$timeline-gap * 0.5});
+      }
+    }
+
+    // The second-to-last entry is the last "full" entry, meaning that
+    // the next entry will not have any overlap - thus we need the
+    // timeline segment to span the whole height of the timeline item.
+    > li:nth-last-child(2) {
+      &::after { height: 100%; }
+    }
+
+    // The last entry is just the start-year marker. It sits in the
+    // auto row past the previous entry's last 1fr row (no shared row,
+    // no overlap), pulled up by $timeline-gap so it sits flush against
+    // LI N-1's content instead of below its still-equalized (T+35)
+    // cell. No bottom margin either — nothing to space from.
+    > li:last-child {
+      grid-row: #{$timeline-entries + 1} / span 1;
+      margin-top: -$timeline-gap;
+      margin-bottom: 0;
     }
 
     > li:nth-child(odd) {
