@@ -6,15 +6,15 @@
   {% include _components/section-title.html
              title=title
              surtitle=surtitle %}
-  <!-- TODO: Implement trajectory/timeline component -->
+
   <ol class="timeline">
-  {% for timelineEntry in timeline %}
-    <li>
-      <h3 class="timeline__title">{{timelineEntry.title}} - {{timelineEntry.company}}</h3>
-      <div class="timeline__heading">{{timelineEntry.start}} - {{timelineEntry.end}}</div>
-      <div class="timeline__description">{{timelineEntry.description}}</div>
-    </li>
-  {% endfor %}
+    {% for timelineEntry in timeline %}
+      <li>
+        <h3 class="timeline__title">{{timelineEntry.title}} - {{timelineEntry.company}}</h3>
+        <div class="timeline__heading">{{timelineEntry.start}} - {{timelineEntry.end}}</div>
+        <div class="timeline__description">{{timelineEntry.description}}</div>
+      </li>
+    {% endfor %}
   </ol>
 </div>
 

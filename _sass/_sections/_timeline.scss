@@ -1,0 +1,136 @@
+@import "../colors.scss";
+
+$timeline-gap            : 35px;
+$timeline-dot-size       : 14px;
+$timeline-line-thickness : 3px;
+$timeline-content-gap    : 1rem;
+
+// Number of entries in the timeline. Drives how the gradient is sliced
+// across segments and where each dot's solid colour falls along the
+// gradient. Injected from Jekyll data in assets/styles.scss; this is
+// the fallback for compiling the partial in isolation.
+$timeline-entries        : 4 !default;
+
+// Gradient definition. NOTE: Do not use transparency here, as dots overlapping
+// with the vertical line will display wrongly.
+$timeline-gradient-start      : $brand-red;
+$timeline-gradient-end        : mix($brand-red, mix(#00f, #fff, 20%), 35%);
+$timeline-gradient-stop-start : 0.10;
+$timeline-gradient-stop-end   : 0.90;
+
+$timeline-gradient: linear-gradient(to bottom,
+                                    $timeline-gradient-start percentage($timeline-gradient-stop-start),
+                                    $timeline-gradient-end   percentage($timeline-gradient-stop-end));
+
+// Colour at fraction $p (0..1) of the timeline gradient, honouring its
+// stops. Used to give each dot/heading a solid colour that exactly
+// matches the line at its anchor.
+@function timeline-color-at($p) {
+  @if $p <= $timeline-gradient-stop-start { @return $timeline-gradient-start; }
+  @if $p >= $timeline-gradient-stop-end   { @return $timeline-gradient-end; }
+  $t: ($p - $timeline-gradient-stop-start) / ($timeline-gradient-stop-end - $timeline-gradient-stop-start);
+  @return mix($timeline-gradient-start, $timeline-gradient-end, (1 - $t) * 100%);
+}
+
+// Renders the dot + connecting line segment for a timeline item. Assumes
+// the host is a grid child with column 1 reserved for the indicator and
+// is invoked once per `> li`. Sets per-item CSS variables (--li-index,
+// --entry-color) so the dot, line slice, and any sibling consumers (e.g.
+// the year heading) stay in sync.
+@mixin timeline-item-indicator {
+  position: relative;
+
+  @for $i from 1 through $timeline-entries {
+    $p: ($i - 1) / ($timeline-entries - 1);
+    &:nth-child(#{$i}) {
+      --li-index: #{$i - 1};
+      --entry-color: #{timeline-color-at($p)};
+    }
+  }
+
+  // Timeline entry dot. Solid colour computed to exactly match the line
+  // at its anchor, aligned to the center of the grid.
+  &::before {
+    content: "";
+    z-index: 1;
+
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+
+    width: $timeline-dot-size;
+    height: $timeline-dot-size;
+    border-radius: 50%;
+
+    background: var(--entry-color);
+  }
+
+  // Line segment from this dot's center to the next item's dot center.
+  // The bg-image is scaled to (N-1)× the segment height, so showing
+  // 1/(N-1) of it per segment forms a continuous line gradient.
+  // Hidden on the last item so the line stops at the final point.
+  &::after {
+    content: "";
+    z-index: 0;
+    pointer-events: none;
+
+    // Approximate vertical center of the year heading (half its line-box).
+    // The dot is centered on this row via `align-self: center`, so the same
+    // value anchors each line segment to its dot center.
+    position: absolute;
+    top: 0.75em;
+    left: ($timeline-dot-size - $timeline-line-thickness) * 0.5;
+
+    width: $timeline-line-thickness;
+    height: calc(100% + #{$timeline-gap});
+
+    background-image: $timeline-gradient;
+    background-size: 100% percentage($timeline-entries - 1);
+    background-position: 0 calc(var(--li-index) * 100% / #{$timeline-entries - 2});
+    background-repeat: no-repeat;
+  }
+
+  &:last-child::after {
+    display: none;
+  }
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+
+  display: flex;
+  flex-direction: column;
+  gap: $timeline-gap;
+
+  > li {
+    display: grid;
+    grid-template-columns: $timeline-dot-size 1fr;
+    column-gap: $timeline-content-gap;
+    align-items: start;
+
+    @include timeline-item-indicator;
+  }
+
+  // Explicit grid placement reorders year → title → description without
+  // touching the HTML source order (title, heading, description).
+  .timeline__heading {
+    grid-column: 2;
+    grid-row: 1;
+    color: var(--entry-color);
+    font-weight: 700;
+  }
+
+  .timeline__title {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+  }
+
+  .timeline__description {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}

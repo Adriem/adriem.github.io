@@ -18,6 +18,12 @@ $gradient-bg__brand--splash: linear-gradient(to right,
                                              rgba($brand-red, 0.15) 95%),
                              rgba(#00f, 0.13);
 
+// Pre-composed over white: same visual stops as --splash but with no alpha,
+// so layered elements (e.g. dot-on-line) don't accumulate transparency.
+$gradient-bg__brand--splash-solid: linear-gradient(to right,
+                                                   $brand-red 10%,
+                                                   #e3bfe4 95%);
+
 $gradient-bg__brand--footer: linear-gradient(to right,
                                              darken($brand-red, 7%) 20%,
                                              rgba($brand-red, 0.15) 95%),

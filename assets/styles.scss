@@ -1,6 +1,10 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+
+// Global variables from content
+$timeline-entries: {{ site.data.en.experience | size }};
+
 @charset "utf-8";
 
 @import "reset";
@@ -23,3 +27,4 @@
 @import "_sections/splash";
 @import "_sections/contact";
 @import "_sections/footer";
+@import "_sections/timeline";
