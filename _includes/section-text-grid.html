@@ -1,10 +1,14 @@
-{% assign title   = include.title %}
-{% assign summary = include.summary %}
+{% assign title    = include.title %}
+{% assign surtitle = include.surtitle %}
+{% assign summary  = include.summary %}
 
 <div class="container">
-  {% include _components/section-title.html data=title %}
+  {% include _components/section-title.html
+             title=title
+             surtitle=surtitle %}
   {% include _components/text-block.html data=summary %}
 </div>
 
-{% assign title   = nil %}
-{% assign summary = nil %}
+{% assign title    = nil %}
+{% assign surtitle = nil %}
+{% assign summary  = nil %}

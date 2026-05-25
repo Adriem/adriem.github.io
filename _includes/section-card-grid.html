@@ -1,8 +1,11 @@
 {% assign title     = include.title %}
+{% assign surtitle  = include.surtitle %}
 {% assign portfolio = site.data[page.language].portfolio %}
 
 <div class="container">
-  {% include _components/section-title.html data=title %}
+  {% include _components/section-title.html
+             title=title
+             surtitle=surtitle %}
 
   <div class="project-grid">
     {% for project in portfolio.projects %}
@@ -34,4 +37,5 @@
 </div>
 
 {% assign title     = nil %}
+{% assign surtitle  = nil %}
 {% assign portfolio = nil %}

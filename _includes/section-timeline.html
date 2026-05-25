@@ -1,8 +1,11 @@
-{% assign title = include.title %}
+{% assign title    = include.title %}
+{% assign surtitle = include.surtitle %}
 {% assign timeline = include.timeline %}
 
 <div class="container">
-  {% include _components/section-title.html data=title %}
+  {% include _components/section-title.html
+             title=title
+             surtitle=surtitle %}
   <!-- TODO: Implement trajectory/timeline component -->
   <ol class="timeline">
   {% for timelineEntry in timeline %}
@@ -15,4 +18,6 @@
   </ol>
 </div>
 
-{% assign title = nil %}
+{% assign title    = nil %}
+{% assign surtitle = nil %}
+{% assign timeline = nil %}

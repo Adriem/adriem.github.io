@@ -19,13 +19,15 @@ layout: base
 
   <section id="trajectory" class="section theme--default">
     {% include section-timeline.html
-               title=page.trajectory
+               title=page.trajectory.title
+               surtitle=page.trajectory.surtitle
                timeline=experience %}
   </section>
 
   <section id="skills" class="section theme--default">
     {% include section-skills.html
-               title=page.skills
+               title=page.skills.title
+               surtitle=page.skills.surtitle
                skills=skills %}
   </section>
 
@@ -38,12 +40,14 @@ layout: base
 
   <section id="projects" class="section theme--default">
     {% include section-card-grid.html
-               title=page.projects %}
+               title=page.projects.title
+               surtitle=page.projects.surtitle %}
   </section>
 
   <section id="fun-facts" class="section theme--default">
     {% include section-text-grid.html
-               title=page.facts
+               title=page.facts.title
+               surtitle=page.facts.surtitle
                summary=page.facts.content %}
   </section>
 

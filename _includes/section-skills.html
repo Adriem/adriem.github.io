@@ -1,8 +1,11 @@
-{% assign title  = include.title %}
-{% assign skills = include.skills %}
+{% assign title    = include.title %}
+{% assign surtitle = include.surtitle %}
+{% assign skills   = include.skills %}
 
 <div class="container">
-  {% include _components/section-title.html data=title %}
+  {% include _components/section-title.html
+             title=title
+             surtitle=surtitle %}
   <!-- TODO: Implement skills grid component -->
   <div class="skills-grid">
     {% for category in skills %}
@@ -27,5 +30,6 @@
   </div>
 </div>
 
-{% assign title  = nil %}
-{% assign skills = nil %}
+{% assign title    = nil %}
+{% assign surtitle = nil %}
+{% assign skills   = nil %}
