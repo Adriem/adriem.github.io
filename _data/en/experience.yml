@@ -1,50 +1,25 @@
-experience:
-  - title: "Intern software developer"
-    location: "ISYC"
-    date: "July 2016"
-    description: >
-      After a couple of years studying software engineering, I joined 
-      my first real-world job as a software developer at ISYC.
-  - title: "Junior software developer"
-    location: "Acnovate Corporation"
-    date: "November 2016"
-    description: >
-      My first full-time job as a software developer, I helped upgrading
-      legacy internal tools for a bigger company.
-  - title: "Junior front-end developer"
-    location: "Building Blocks S.L."
-    date: "July 2017"
-    description: >
-      My next stop was Building Blocks, where I had the opportunity to
-      work on public-facing, large-scale projects.
-  - title: "Software developer"
-    location: "adidas"
-    date: "February 2018"
-    description: >
-      Adidas was the first time I was able to work at a product company. 
-      I helped evolve and maintain the company's website store, an
-      extremely big and complex high-availability project involving
-      several teams and docens of colleagues.
-  - title: "Software developer"
-    location: "Lendismart S.L."
-    date: "February 2020"
-    description: >
-      After a couple of years working for big companies, I decided to
-      try with a startup-sized one. In here I supported a b2c platform
-      by building internal tools, adding new features to the front-end
-      and building backend integrations with third-party legacy systems.
-  - title: "Senior software engineer"
-    location: "Pixsy"
-    date: "April 2022"
-    description: >
-      Pixsy was also a small distributed team where I did all sort of
-      tasks: from backend development and database optimisation, to
-      frontend development and image processing.
-  - title: "Senior software engineer"
-    location: "Paired"
-    date: "November 2022"
-    description: >
-      For the last couple of years I worked in the Growth Team at Paired,
-      where I maintain and improve the company's website by managing the
-      CMS, integrating payment systems and building tools for improving
-      our paid marketing campaigns.
+- start: 2022
+  end: current
+  company: Paired
+  title: Senior Software Engineer
+  description: Full stack senior engineer in charge of maintaining, growing and integrating the company's web ecosystem, marketing technologies and backend infrastructure.
+- start: 2022
+  end: 2022
+  company: Pixsy
+  title: Senior Full-stack Engineer
+  description: Worked on improving different aspects of the existing infrastructure across the whole project's stack. Developed some experimental tools for image recognition on 3rd party websites.
+- start: 2020
+  end: 2022
+  company: Lendismart S.L.
+  title: Freelance Software Engineer
+  description: Developed and maintained an autonomous experimental system for high-complexity integrations with legacy banking systems.
+- start: 2018
+  end: 2020
+  company: adidas
+  title: Full Stack Engineer
+  description: Worked on both internal tools and delivery infrastructure for the company's website content.
+- start: 2016
+  end: 2018
+  company:
+  title: Junior Software Developer
+  description: Worked my first few years in the field as a junior developer for various companies, doing mostly front-end work on internationally distributed teams.

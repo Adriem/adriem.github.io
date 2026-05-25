@@ -14,16 +14,19 @@ layout: base
                statement=page.intro %}
   </section>
 
+  {% assign experience = site.data[page.language].experience %}
+  {% assign skills     = site.data[page.language].skills %}
+
   <section id="trajectory" class="section theme--default">
     {% include section-timeline.html
                title=page.trajectory
-               timeline=page.trajectory.timeline %}
+               timeline=experience %}
   </section>
 
   <section id="skills" class="section theme--default">
     {% include section-skills.html
                title=page.skills
-               skills=page.skills.categories %}
+               skills=skills %}
   </section>
 
   <section id="my-philosophy" class="section section--large-padding theme--red-lilac-light">
