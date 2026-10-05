@@ -3,9 +3,9 @@
 @import "../typography.scss";
 
 @include keyframes('splash__image') {
-  0% { transform: translateX(1vw); opacity: 0 }
-  50% { transform: translateX(1vw); opacity: 0 }
-  80% { transform: translateX(0); }
+  0% { translate: 1vw 0; opacity: 0 }
+  50% { translate: 1vw 0; opacity: 0 }
+  80% { translate: 0 0; }
   100% {  opacity: 1 }
 }
 
