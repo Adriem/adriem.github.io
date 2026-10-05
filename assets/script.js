@@ -56,9 +56,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // ---[ SCROLL SPY ]--- //
+  // ---[ MOBILE MENU ]--- //
 
   const navbar = document.querySelector(".navbar");
+  const menu = document.querySelector(".navbar-menu");
+  const menuPanel = document.querySelector(".navbar-menu__panel");
+  const menuToggle = document.querySelector(".navbar__toggle");
+
+  const setMenuOpen = (open) => {
+    if (open) {
+      document.documentElement.style.setProperty("--navbar-menu-height", `${menuPanel.offsetHeight}px`);
+    }
+    menu.classList.toggle("navbar-menu--open", open);
+    navbar.classList.toggle("navbar--menu-open", open);
+    menuToggle.setAttribute("aria-expanded", open);
+  };
+
+  menuToggle.addEventListener("click", () => {
+    setMenuOpen(!menu.classList.contains("navbar-menu--open"));
+  });
+
+  // Close when clicking anywhere outside the panel, or on one of its links
+  document.addEventListener("click", (e) => {
+    if (menuToggle.contains(e.target)) return;
+    if (!e.target.closest(".navbar-menu__panel") || e.target.closest(".navbar-menu__link")) {
+      setMenuOpen(false);
+    }
+  });
+
+
+  // ---[ SCROLL SPY ]--- //
+
   const splashSocial = document.querySelector(".splash__social");
 
   const observer = new IntersectionObserver(

@@ -34,12 +34,33 @@
           {{ section[1].label }}
         </a>
 
+        <!-- same link for the mobile menu, rendered after the navbar -->
+        {% capture menu_links %}{{ menu_links }}
+        <a class="navbar-menu__link {{ elem_class }}" href="{{ elem_url }}">
+          {{ section[1].label }}
+        </a>{% endcapture %}
+
         {% assign elem_class = nil %}
         {% assign elem_url = nil %}
       {% endfor %}
+
+      <!-- TODO: placeholder icon -->
+      <button class="navbar__toggle" type="button"
+              aria-label="Menu" aria-controls="navbar-menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </nav>
   </div>
 </div>
+
+<div class="navbar-menu" id="navbar-menu">
+  <div class="navbar-menu__backdrop"></div>
+  <nav class="navbar-menu__panel">
+    {{ menu_links }}
+  </nav>
+</div>
+
+{% assign menu_links = nil %}
 
 {% comment %}
 <!-- <section class="splash parallax" id="splash">

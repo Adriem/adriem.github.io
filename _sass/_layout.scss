@@ -10,6 +10,8 @@ $width-xs:  575px;
 // --- Z-INDEX -----------------------------------------------------------------
 
 $z-index__navbar: 1000;
+$z-index__navbar-backdrop: $z-index__navbar - 1;
+$z-index__navbar-menu: $z-index__navbar + 1;
 $z-index__project: 900;
 
 

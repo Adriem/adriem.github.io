@@ -4,6 +4,7 @@
 
 $navbar__collapse-time: 0.25s;
 $navbar__bg-animation-time: 0.75s;
+$navbar-menu__animation-time: 0.35s;
 
 $navbar__bg-color            : $neutral-white;
 $navbar-brand__color         : $neutral-black;
@@ -12,6 +13,8 @@ $navbar-tab__dim-color     : $gray-400;
 $navbar-tab__hover-color   : $neutral-black;
 $navbar-tab__active-color  : $neutral-black;
 $navbar-tab__z-index: $z-index__navbar + 1;
+
+$navbar-tabs__bg-padding     : 1.5em;
 
 .navbar {
   z-index: $z-index__navbar;
@@ -23,9 +26,14 @@ $navbar-tab__z-index: $z-index__navbar + 1;
 
   transition: height $navbar__collapse-time ease-in-out,
               background-color $navbar__collapse-time ease-in-out,
-              opacity $navbar__collapse-time ease-in-out;
+              opacity $navbar__collapse-time ease-in-out,
+              transform $navbar-menu__animation-time ease-in-out;
 
   animation: navbar__slide-in 2500ms ease-in-out;
+
+  // Hangs from the bottom of the open mobile menu, like a pull tab.
+  // --navbar-menu-height is set on :root from script.js when the menu opens.
+  &--menu-open { transform: translateY(var(--navbar-menu-height, 0)); }
 
   .navbar--collapsed-only {
     transition: opacity $navbar__collapse-time ease-in-out;
@@ -77,7 +85,7 @@ $navbar-tab__z-index: $z-index__navbar + 1;
       top: 0;
       bottom: 0;
       width: 100%;
-      padding: 1.5em;
+      padding: $navbar-tabs__bg-padding;
       display: block;
       background: $navbar__bg-color;
       box-sizing: content-box;
@@ -86,6 +94,12 @@ $navbar-tab__z-index: $z-index__navbar + 1;
       transition: width $navbar__bg-animation-time ease-in-out,
                   box-shadow $navbar__bg-animation-time,
                   transform $navbar__collapse-time ($navbar__bg-animation-time - $navbar__collapse-time);
+
+      // Slimmer pull tab around the hamburger
+      @include screen-mobile {
+        padding-left: $navbar-tabs__bg-padding * 0.5;
+        padding-right: $navbar-tabs__bg-padding * 0.5;
+      }
     }
   }
 
@@ -99,10 +113,17 @@ $navbar-tab__z-index: $z-index__navbar + 1;
                 transform $navbar__collapse-time;
   }
 
+  // Keep the tabs background (which overflows the container by its padding)
+  // from touching the screen edges on narrow viewports
   .container {
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
     display: flex;
     justify-content: space-between;
+
+    @include screen-mobile { max-width: 80%; }
   }
 
   .navbar__brand {
@@ -174,6 +195,121 @@ $navbar-tab__z-index: $z-index__navbar + 1;
                     opacity 0.1s,
                     background-color 0.25s ease-in-out;
       }
+    }
+
+    .navbar__toggle {
+      display: none;
+      padding: 0 0.5em;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: $navbar-tab__color;
+      font-size: 1.25rem;
+    }
+
+    // The navbar height is set by the title alone. The toggle has no vertical
+    // padding and stretches to the full height, for a bigger touch target
+    @include screen-mobile {
+      display: flex;
+
+      .navbar__tab { display: none; }
+      .navbar__toggle {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+
+// --- MOBILE MENU -------------------------------------------------------------
+
+$navbar-menu__backdrop-color: rgba($gray-600, 0.6);
+
+.navbar-menu {
+  display: none;
+
+  @include screen-mobile { display: block; }
+
+  .navbar-menu__backdrop {
+    z-index: $z-index__navbar-backdrop;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $navbar-menu__backdrop-color;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $navbar-menu__animation-time ease-in-out,
+                visibility 0s $navbar-menu__animation-time;
+  }
+
+  // Drawn above the navbar so it hides the top edge (and shadow) of the tabs
+  // background, making the navbar look like a tab of the same sheet. Its
+  // shadow is cast by .navbar-menu::after, which sits below the navbar.
+  .navbar-menu__panel {
+    z-index: $z-index__navbar-menu;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background: $navbar__bg-color;
+
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition: transform $navbar-menu__animation-time ease-in-out,
+                visibility 0s $navbar-menu__animation-time;
+  }
+
+  .navbar-menu__link {
+    @include link;
+    @include typography__navbar-link;
+
+    text-transform: lowercase;
+    padding: 0.75em 0;
+    color: $navbar-tab__color;
+  }
+
+  // Shadow of the panel, rendered below the navbar so the tab covers it
+  &::after {
+    content: '';
+    z-index: $z-index__navbar-backdrop;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-menu-height, 0);
+    background: $navbar__bg-color;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition: transform $navbar-menu__animation-time ease-in-out,
+                visibility 0s $navbar-menu__animation-time;
+  }
+
+  &--open {
+    &::after {
+      transform: translateY(0);
+      visibility: visible;
+      transition: transform $navbar-menu__animation-time ease-in-out;
+    }
+
+    .navbar-menu__backdrop {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity $navbar-menu__animation-time ease-in-out;
+    }
+
+    .navbar-menu__panel {
+      transform: translateY(0);
+      visibility: visible;
+      transition: transform $navbar-menu__animation-time ease-in-out;
     }
   }
 }
