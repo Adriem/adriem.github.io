@@ -6,6 +6,8 @@ $width-md:  768px;
 $width-sm:  576px;
 $width-xs:  575px;
 
+$height-phone-landscape: 500px;
+
 
 // --- Z-INDEX -----------------------------------------------------------------
 
@@ -17,14 +19,18 @@ $z-index__project: 900;
 
 // --- RESPONSIVE MIXINS -------------------------------------------------------
 
+// Upper bounds are exclusive (same trick as Bootstrap), so adjacent ranges
+// don't overlap: a viewport exactly at a breakpoint belongs to the upper one.
+$_breakpoint-epsilon: 0.02px;
+
 @mixin screen-between($min-width, $max-width) {
   @media screen
     and (min-width: $min-width)
-    and (max-width: $max-width) { @content };
+    and (max-width: $max-width - $_breakpoint-epsilon) { @content };
 }
 
 @mixin screen-up-to($max-width) {
-  @media screen and (max-width: $max-width) { @content };
+  @media screen and (max-width: $max-width - $_breakpoint-epsilon) { @content };
 }
 
 @mixin screen-at-least($min-width) {
@@ -39,6 +45,26 @@ $z-index__project: 900;
 
 @mixin screen-desktop() { @include screen-at-least($width-sm) { @content }; }
 @mixin screen-mobile() { @include screen-up-to($width-sm) { @content }; }
+
+@mixin screen-ratio-at-least($width, $height) {
+  @media screen and (min-aspect-ratio: #{$width}/#{$height}) { @content };
+}
+
+@mixin screen-ratio-up-to($width, $height) {
+  @media screen and (max-aspect-ratio: #{$width}/#{$height}) { @content };
+}
+
+// A 4:3 device held horizontally or vertically (or anything more elongated).
+// Not complementary: squarish viewports between 3:4 and 4:3 match neither.
+@mixin screen-ratio-landscape() { @include screen-ratio-at-least(4, 3) { @content }; }
+@mixin screen-ratio-portrait() { @include screen-ratio-up-to(3, 4) { @content }; }
+
+// Phones held horizontally: landscape viewports too short to be a tablet
+@mixin screen-phone-landscape() {
+  @media screen
+    and (orientation: landscape)
+    and (max-height: $height-phone-landscape) { @content };
+}
 
 
 // --- GRID MIXINS -------------------------------------------------------------

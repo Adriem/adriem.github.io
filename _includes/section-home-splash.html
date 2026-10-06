@@ -8,20 +8,25 @@
 
   <div class="splash__content parallax__layer parallax__layer--base">
     <div class="container">
-      <h2 class="splash__text">{{ splash_content.text }}</h2>
+      <h2 class="splash__text">
+        <span class="splash__kicker">{{ splash_content.kicker }}</span>
+        <span class="splash__headline">{{ splash_content.headline }}</span>
+      </h2>
     </div>
     <div class="splash__social">
       <div class="container">
-        {% for link in splash_social %}
-        {% if link.splash %}
-        <a class="splash__social-link" href="{{ link.url }}">
-            {{ link.text }}
-        </a>
-        {% endif %}
-        {% endfor %}
-        <a class="splash__social-link" href="#contact">
-            {{ site.data[page.language].social.splash_expand_label }}
-        </a>
+        <div class="splash__social-links">
+          {% for link in splash_social %}
+          {% if link.splash %}
+          <a class="splash__social-link" href="{{ link.url }}">
+              {{ link.text }}
+          </a>
+          {% endif %}
+          {% endfor %}
+          <a class="splash__social-link" href="#contact">
+              {{ site.data[page.language].social.splash_expand_label }}
+          </a>
+        </div>
       </div>
     </div>
 

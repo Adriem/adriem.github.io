@@ -56,13 +56,17 @@
   $splash-social__anim-speed : 1500ms;
   $splash-image__anim-speed  : 2500ms;
 
+  $splash-content__horizontal-padding: 2.5rem;
+  $splash-content__horizontal-padding--mobile: $splash-content__horizontal-padding * 0.2;
+  $splash-text__extra-padding: 0.5rem;
+
   height: 100vh;
 
   .splash__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: right center;
+    object-position: 60% center;
     animation: splash__image $splash-image__anim-speed ease-in-out;
   }
 
@@ -98,8 +102,10 @@
     .splash__text {
       @include typography__splash-title;
       letter-spacing: -0.05em;
+      text-wrap: balance;
 
-      padding: 0;
+      padding: 0 ($splash-content__horizontal-padding + $splash-text__extra-padding);
+      @include screen-mobile { padding: 0 ($splash-content__horizontal-padding--mobile + $splash-text__extra-padding); }
       margin: 0;
 
       color: $splash-text__color;
@@ -108,31 +114,76 @@
       text-shadow:  0 0 10px $neutral-white, 0 0 10px $neutral-white, 0 0 10px $neutral-white, 0 0 20px $neutral-white, 0 0 20px $neutral-white;
 
       animation: splash__text $splash-text__anim-speed ease-in-out;
+
+      .splash__kicker,
+      .splash__headline { display: block; }
+
+      @include screen-xs {
+        .splash__kicker { display: none; }
+      }
+      @include screen-sm {
+        max-width: 80%;
+        .splash__kicker { display: none; }
+      }
+      @include screen-md {
+        max-width: 80%;
+        .splash__kicker { display: none; }
+      }
+
+      // Single-line headline, clipped horizontally only to keep the glow.
+      // min-width lets the title (a flex item) shrink below its text width.
+      @include screen-phone-landscape {
+        min-width: 0;
+        max-width: none;
+
+        .splash__kicker { display: none; }
+        .splash__headline {
+          white-space: nowrap;
+          overflow-x: clip;
+        }
+      }
     }
 
     .splash__social {
       background: $gradient-bg__brand--splash;
 
-      margin: .75rem 0 20vh;
+      margin: .75rem 0 10vh;
+      @include screen-ratio-landscape { margin: .75rem 0 20vh; }
+      @include screen-phone-landscape { margin: .75rem 0 10vh; }
       padding: .25rem 0 .5rem;
       font-size: 1.5rem;
 
       animation: splash__social $splash-social__anim-speed ease-in-out;
 
-      .splash__social-link {
-        @include link;
+      // Always a single line: links that don't fit wrap into a second line,
+      // which is clipped. Only clipped vertically, so the links can slide in
+      // from outside the container.
+      .splash__social-links {
+        width: 100%;
+        height: 1lh;
+        overflow-x: visible;
+        overflow-y: clip;
+        padding: 0 $splash-content__horizontal-padding;
+        @include screen-mobile { padding: 0 $splash-content__horizontal-padding--mobile; }
 
-        color: $splash-social__fg-color;
-        &:hover { color: $navbar-tab__hover-color; }
-        &.active { color: $navbar-tab__active-color; }
+        // Keep the bar as a decorative line, just its own padding
+        @include screen-phone-landscape { display: none; }
 
-        @include typography__splash-link;
-        text-transform: lowercase;
+        .splash__social-link {
+          @include link;
 
-        padding: none;
-        &:first-child { margin-left: none }
+          color: $splash-social__fg-color;
+          &:hover { color: $navbar-tab__hover-color; }
+          &.active { color: $navbar-tab__active-color; }
 
-        animation: splash__social-links $splash-social__anim-speed ease-in-out;
+          @include typography__splash-link;
+          text-transform: lowercase;
+
+          padding: none;
+          &:first-child { margin-left: none }
+
+          animation: splash__social-links $splash-social__anim-speed ease-in-out;
+        }
       }
     }
   }

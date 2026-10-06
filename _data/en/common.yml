@@ -3,7 +3,8 @@ navbar:
 
 splash:
   image: avatar_gradient.jpg
-  text: Hello there!<br>I'm&nbsp;Adrián.&nbsp;Engineer.
+  kicker: Hello there!
+  headline: I'm&nbsp;Adrián, engineer.
 
 footer:
   copyright_notice: '&copy; 2016-2026 Adrián Moreno'

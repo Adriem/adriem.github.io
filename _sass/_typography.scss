@@ -6,7 +6,8 @@ $_font-family__default: Montserrat, sans-serif;
 
 @mixin typography__splash-title {
   @include screen-desktop { font: 300 4.5rem $_font-family__default; }
-  @include screen-mobile  { font: 200 26pt  $_font-family__default; }
+  @include screen-mobile  { font: 300 4rem  $_font-family__default; }
+  @include screen-phone-landscape { font-size: 3.5rem; }
 }
 
 @mixin typography__splash-link {
