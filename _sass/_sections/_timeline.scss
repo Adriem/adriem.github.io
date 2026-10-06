@@ -1,4 +1,5 @@
 @import "../colors.scss";
+@import "../_mixins.scss";
 
 $timeline-gap            : 35px;
 $timeline-dot-size       : 14px;
@@ -95,9 +96,8 @@ $timeline-gradient: linear-gradient(to bottom,
   }
 }
 
-$timeline-desktop-breakpoint : 768px;
-$timeline-desktop-max-width  : 900px;
-$timeline-desktop-overlap    : 50%;
+$timeline-desktop-max-width : 900px;
+$timeline-desktop-overlap   : 50%;
 
 .timeline {
   // Vertical spacing between consecutive entries (the gap between this
@@ -153,7 +153,7 @@ $timeline-desktop-overlap    : 50%;
   // Desktop: zigzag layout. Central vertical timeline with entries
   // alternating sides — odd entries on the left (text-align: right),
   // even entries on the right (text-align: left).
-  @media (min-width: $timeline-desktop-breakpoint) {
+  @include screen-at-least($width-md) {
     --timeline-entry-spacing: -#{$timeline-desktop-overlap};
 
     max-width: $timeline-desktop-max-width;
