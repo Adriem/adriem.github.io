@@ -14,6 +14,12 @@ $width-navbar-collapse: 700px;
 
 $height-phone-landscape: 500px;
 
+// Max width of narrow content blocks (timeline, skills grid): below sm,
+// from sm up to md (single column) and from md up
+$content-max-width--mobile  : 400px;
+$content-max-width--tablet  : 450px;
+$content-max-width--desktop : 900px;
+
 
 // --- Z-INDEX -----------------------------------------------------------------
 

@@ -6,7 +6,6 @@
   {% include _components/section-title.html
              title=title
              surtitle=surtitle %}
-  <!-- TODO: Implement skills grid component -->
   <div class="skills-grid">
     {% for category in skills %}
       {% assign skillCategory = category[0] %}
@@ -17,11 +16,11 @@
           {{ skillCategory }}
         </h3>
 
-        <div class="skills-grid">
+        <ul class="skills-grid__items">
           {% for skill in skillsInCategory %}
-            <div class="skills-grid__item">{{ skill }}</div>
+            <li class="skills-grid__item">{{ skill }}</li>
           {% endfor %}
-        </div>
+        </ul>
       </div>
 
       {% assign skillCategory  = nil %}

@@ -24,6 +24,11 @@ $gradient-bg__brand--splash-solid: linear-gradient(to right,
                                                    $brand-red 10%,
                                                    #e3bfe4 95%);
 
+// Endpoints of the timeline gradient: brand red to a pale red-lilac. Solid
+// colours (no blue background layer), shared with the skills titles.
+$gradient__brand-solid-start: $brand-red;
+$gradient__brand-solid-end:   mix($brand-red, mix(#00f, #fff, 20%), 35%);
+
 $gradient-bg__brand--footer: linear-gradient(to right,
                                              darken($brand-red, 7%) 20%,
                                              rgba($brand-red, 0.15) 95%),

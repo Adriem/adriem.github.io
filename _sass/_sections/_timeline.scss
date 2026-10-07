@@ -14,8 +14,8 @@ $timeline-entries        : 4 !default;
 
 // Gradient definition. NOTE: Do not use transparency here, as dots overlapping
 // with the vertical line will display wrongly.
-$timeline-gradient-start      : $brand-red;
-$timeline-gradient-end        : mix($brand-red, mix(#00f, #fff, 20%), 35%);
+$timeline-gradient-start      : $gradient__brand-solid-start;
+$timeline-gradient-end        : $gradient__brand-solid-end;
 $timeline-gradient-stop-start : 0.10;
 $timeline-gradient-stop-end   : 0.90;
 
@@ -96,9 +96,9 @@ $timeline-gradient: linear-gradient(to bottom,
   }
 }
 
-$timeline-mobile-max-width  : 400px;
-$timeline-tablet-max-width  : 450px;
-$timeline-desktop-max-width : 900px;
+$timeline-mobile-max-width  : $content-max-width--mobile;
+$timeline-tablet-max-width  : $content-max-width--tablet;
+$timeline-desktop-max-width : $content-max-width--desktop;
 $timeline-desktop-overlap   : 50%;
 
 .timeline {

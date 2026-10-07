@@ -28,3 +28,4 @@ $timeline-entries: {{ site.data.en.experience.timeline_highlights | size | plus:
 @import "_sections/contact";
 @import "_sections/footer";
 @import "_sections/timeline";
+@import "_sections/skills";

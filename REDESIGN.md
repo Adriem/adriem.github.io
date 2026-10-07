@@ -18,30 +18,40 @@ The redesign replaces the old single-page layout (header + project list + contac
 ### New (redesign)
 
 - **Section-based layout**: `home.html` layout composes the page from section includes (`section-*.html`). Section content is defined in the page front matter (`pages/home-en.html`), passed as parameters to sections.
-- **New splash section**: fullscreen hero with greeting text and social links, with parallax scrolling.
+- **New splash section**: fullscreen hero with parallax scrolling. The title is split into a kicker and a headline (`common.yml`), followed by a gradient bar with social links.
+  - The kicker is only shown from `lg` up (and not on landscape phones).
+  - The title gets a marker-style highlight: a single box around both lines while the kicker is shown, one highlight per line otherwise.
+  - Landscape phones (`screen-phone-landscape`) get a reduced splash: smaller single-line headline, and the social bar becomes a decorative line without links.
+  - Social links are kept to a single line; links that don't fit are hidden.
 - **Collapsing navbar**: fixed navbar that collapses on scroll (controlled via `IntersectionObserver` in `script.js`), with slide-in animation.
-- **Section types**: `section-text-block`, `section-text-statement`, `section-text-split`, `section-timeline`, `section-skills`, `section-card-grid`, `section-contact`.
-- **SCSS foundation files**: `_colors.scss` (palette), `_layout.scss` (breakpoints, z-index, grid, container), `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins), `_mixins.scss` (link, paragraph).
+- **Mobile menu**: below `$width-navbar-collapse` (700px) the navbar tabs collapse into a hamburger toggle. The menu slides down from the top like a sheet of paper, with the navbar hanging from it as a pull tab, over a fading gray backdrop. It closes on toggle, outside click or navigation, and when it stops being rendered (`ResizeObserver` in `script.js`, e.g. after rotating the device).
+- **Timeline section**: vertical timeline on mobile, zigzag with overlapping entries from `md` up. The line and dots share a single brand gradient.
+- **Skills section**: one card per category in a 2x2 grid (single column below `md`), with a gradient border, a slanted highlight on the category title and the skills as an inline list separated by bullets.
+- **Section types**: `section-text-statement`, `section-text-block`, `section-text-split`, `section-text-grid`, `section-timeline`, `section-skills`, `section-card-grid`, `section-contact`.
+- **SCSS foundation files**:
+  - `_colors.scss`: palette and brand gradients, including the solid gradient endpoints shared by the timeline and the skills titles.
+  - `_layout.scss`: breakpoints, z-index, grid, container, and the responsive mixins. Breakpoint ranges have exclusive upper bounds, so adjacent ranges don't overlap. Also defines the navbar collapse width, aspect-ratio mixins (`screen-ratio-*`), `screen-phone-landscape` and the shared max widths for narrow content blocks (`$content-max-width--*`).
+  - `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins), `_mixins.scss` (link, paragraph), `_themes.scss` (section color themes).
 - **Consolidated data**: `common.yml` centralises navbar, splash, and footer strings. Social/contact data lives in `_data/en/social.yml`. Section content lives in page front matter.
 - **Removed**: `_layouts/about.html`, `pages/about-en.html`, `_includes/_sections/header.html`, old component files (inlined into sections), `_variables.scss`, `_base.scss`, `_nav/` directory, `_syntax-highlighting.scss`.
 
 ## TODOs
 
-### Placeholder / dummy content
+### Placeholders
 
-1. **`pages/home-en.html` — facts section** — The `paragraphs` entries ("code.", "learn.", "play.") contain placeholder text: *"I likez cln code cuz cln code is graet"* repeated across all items. The `summary` section repeats *"I am one with the code"*. All of this needs real copy.
+1. **`_includes/section-navbar.html`** — The mobile menu toggle uses Font Awesome's `fa-bars` as a placeholder icon.
 
-2. **`pages/home-en.html` — about section** — References "currently working for Building Blocks Spain" and "finish my engineering studies" — likely outdated and needs updating.
+2. **`_includes/doc-head.html`** — Font Awesome is loaded from cdnjs; replace it with a personalised Font Awesome kit.
 
 ### Commented-out code blocks
 
 3. **`_includes/section-navbar.html:8-10`** — Commented-out avatar image in the navbar.
 
-4. **`_includes/section-navbar.html:44-64`** — Old splash section HTML left inside a `{% comment %}` block.
+4. **`_includes/section-navbar.html:65-85`** — Old splash section HTML left inside a `{% comment %}` block.
 
 5. **`_includes/section-footer.html:6-40`** — Old footer navigation (back-to-top link, nav tabs) wrapped in `{%comment%}`.
 
-6. **`_includes/doc-head.html`** — Multiple commented-out blocks: old Font Awesome CSS links, dynamic CSS file loop, RSS XML link.
+6. **`_includes/doc-head.html`** — Commented-out blocks: dynamic CSS file loop, RSS XML link.
 
 7. **`_data/en/portfolio.yml`** — Six portfolio projects and the entire `repositories` section are commented out.
 
@@ -49,34 +59,16 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 9. **`_data/en/social.yml`** — Commented-out Twitter and email link entries.
 
-### Unimplemented sections
-
-10. **`_includes/section-timeline.html`** — Contains a TODO comment; the timeline/trajectory component is not yet implemented.
-
-11. **`_includes/section-skills.html`** — Contains a TODO comment; the skills grid component is not yet implemented.
-
 ## Bugs and issues
 
 ### Wrong social link
 
 - **`_data/en/social.yml`** — The Instagram entry points to `https://github.com/ClockworkAdriem` (a GitHub URL), not an Instagram profile.
 
-### Insecure resource loading
-
-- **`_includes/doc-head.html`** — jQuery is loaded over `http://` instead of `https://`, which will be blocked on HTTPS pages or trigger mixed-content warnings.
-
 ### Outdated URLs
 
 - **`_config.yml`** — Site URL uses `http://adriem.me` instead of `https://`.
 - **`_data/en/common.yml`** — Footer "Powered by" links use `http://` for Jekyll and GitHub Pages.
-
-### CSS typo
-
-- **`_sass/_section.scss`** — `section--border-botttom` has three t's.
-
-### Copyright year
-
-- **`_data/en/common.yml`** — Copyright notice says `2016-2018`.
 
 ### Mobile viewport height
 
@@ -91,3 +83,7 @@ The redesign replaces the old single-page layout (header + project list + contac
 ### Larger default font size / browser zoom
 
 - **Global** — Font sizes, paddings and spacing are in `rem`, but breakpoints are in `px`. With a larger default font size (e.g. 20px) or 125–150% zoom, each breakpoint applies with bigger text than it was designed for. Check the splash title wrapping and the navbar tabs fitting before the 700px collapse.
+
+### Timeline width on narrow viewports
+
+- **`_sass/_sections/_timeline.scss`** — Wrapped text can't shrink its box, so the timeline may still leave some empty space at the right of the entries. `text-wrap: pretty` and the narrower max widths reduce it; measuring the widest line with JS would be the exact fix if it's still noticeable.
