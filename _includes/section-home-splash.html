@@ -7,11 +7,19 @@
        src="{{ splash_content.image | prepend: '/assets/img/' | prepend: site.baseUrl }}">
 
   <div class="splash__content parallax__layer parallax__layer--base">
-    <div class="container">
-      <h2 class="splash__text">
-        <span class="splash__kicker">{{ splash_content.kicker }}</span>
-        <span class="splash__headline">{{ splash_content.headline }}</span>
-      </h2>
+    <div class="splash__title">
+      <div class="container">
+        <h2 class="splash__text">
+          <span class="splash__highlight-group">
+            <span class="splash__kicker">
+              <span class="splash__highlight">{{ splash_content.kicker }}</span>
+            </span>
+            <span class="splash__headline">
+              <span class="splash__highlight">{{ splash_content.headline }}</span>
+            </span>
+          </span>
+        </h2>
+      </div>
     </div>
     <div class="splash__social">
       <div class="container">

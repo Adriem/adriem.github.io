@@ -6,9 +6,6 @@ $navbar__collapse-time: 0.25s;
 $navbar__bg-animation-time: 0.75s;
 $navbar-menu__animation-time: 0.35s;
 
-// Below this width the tabs collapse into the hamburger menu
-$navbar__collapse-width: 700px;
-
 $navbar__bg-color            : $neutral-white;
 $navbar-brand__color         : $neutral-black;
 $navbar-tab__color         : $neutral-black;
@@ -99,7 +96,7 @@ $navbar-tabs__bg-padding     : 1.5em;
                   transform $navbar__collapse-time ($navbar__bg-animation-time - $navbar__collapse-time);
 
       // Slimmer pull tab around the hamburger
-      @include screen-up-to($navbar__collapse-width) {
+      @include screen-up-to($width-navbar-collapse) {
         padding-left: $navbar-tabs__bg-padding * 0.5;
         padding-right: $navbar-tabs__bg-padding * 0.5;
       }
@@ -126,7 +123,7 @@ $navbar-tabs__bg-padding     : 1.5em;
     display: flex;
     justify-content: space-between;
 
-    @include screen-up-to($navbar__collapse-width) { max-width: 80%; }
+    @include screen-up-to($width-navbar-collapse) { max-width: 80%; }
   }
 
   .navbar__brand {
@@ -212,7 +209,7 @@ $navbar-tabs__bg-padding     : 1.5em;
 
     // The navbar height is set by the title alone. The toggle has no vertical
     // padding and stretches to the full height, for a bigger touch target
-    @include screen-up-to($navbar__collapse-width) {
+    @include screen-up-to($width-navbar-collapse) {
       display: flex;
 
       .navbar__tab { display: none; }
@@ -232,7 +229,7 @@ $navbar-menu__backdrop-color: rgba($gray-600, 0.6);
 .navbar-menu {
   display: none;
 
-  @include screen-up-to($navbar__collapse-width) { display: block; }
+  @include screen-up-to($width-navbar-collapse) { display: block; }
 
   .navbar-menu__backdrop {
     z-index: $z-index__navbar-backdrop;

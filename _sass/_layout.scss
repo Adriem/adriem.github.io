@@ -1,10 +1,16 @@
 // --- RESPONSIVE BREAKPOINTS --------------------------------------------------
 
+// Each value is the lower bound of its range, except xs: it has no lower bound,
+// so $width-xs is its upper bound instead (Bootstrap 4 style). Media queries
+// derive xs from $width-sm; $width-xs is only used for grid sizing.
 $width-xl: 1200px;
 $width-lg:  992px;
 $width-md:  768px;
 $width-sm:  576px;
 $width-xs:  575px;
+
+// Below this width the navbar tabs collapse into the hamburger menu
+$width-navbar-collapse: 700px;
 
 $height-phone-landscape: 500px;
 

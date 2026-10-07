@@ -51,6 +51,43 @@
 .splash {
   $splash-social__fg-color : $neutral-white;
   $splash-text__color      : $neutral-black;
+  $splash-highlight__color   : rgba($neutral-white, 0.75);
+  $splash-highlight__padding : 0.15em;
+
+  // Marker-style highlight behind the text, fading out over the last quarter
+  @mixin splash-highlight-bg {
+    background: linear-gradient(to right,
+                                $splash-highlight__color 75%,
+                                rgba($neutral-white, 0) 100%);
+    padding: 0 $splash-highlight__padding;
+  }
+
+  // One highlight per line, replacing the single one. Being inline, the
+  // background follows each line; 'clone' gives every line its own padding
+  // and its own gradient.
+  @mixin splash-highlight {
+    .splash__highlight-group {
+      display: block;
+      background: none;
+      padding: 0;
+    }
+
+    .splash__highlight {
+      @include splash-highlight-bg;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
+
+  // A single highlight for all lines. As an inline-block it shrinks to the
+  // longest line, as long as no line wraps (it would take the full width).
+  @mixin splash-highlight-group {
+    .splash__highlight-group {
+      @include splash-highlight-bg;
+      display: inline-block;
+      max-width: 100%;
+    }
+  }
 
   $splash-text__anim-speed   : 1000ms;
   $splash-social__anim-speed : 1500ms;
@@ -93,10 +130,9 @@
     display: flex;
     flex-direction: column;
 
-    > .container:first-child {
-      flex: 1;
-      display: flex;
-      align-items: flex-end;
+    .splash__title {
+      margin-top: auto;
+      padding: .75rem 0;
     }
 
     .splash__text {
@@ -110,33 +146,38 @@
 
       color: $splash-text__color;
       paint-order: stroke fill;
-      -webkit-text-stroke: 5px rgba($neutral-white, 0.3);
-      text-shadow:  0 0 10px $neutral-white, 0 0 10px $neutral-white, 0 0 10px $neutral-white, 0 0 20px $neutral-white, 0 0 20px $neutral-white;
+      -webkit-text-stroke: 2px $neutral-white;
 
       animation: splash__text $splash-text__anim-speed ease-in-out;
 
       .splash__kicker,
       .splash__headline { display: block; }
 
+      // With the kicker: a single highlight for both lines
+      @include splash-highlight-group;
+
+      // Without the kicker: one highlight per line
       @include screen-xs {
         .splash__kicker { display: none; }
+        @include splash-highlight;
       }
       @include screen-sm {
         max-width: 80%;
         .splash__kicker { display: none; }
+        @include splash-highlight;
       }
       @include screen-md {
         max-width: 80%;
         .splash__kicker { display: none; }
+        @include splash-highlight;
       }
 
-      // Single-line headline, clipped horizontally only to keep the glow.
-      // min-width lets the title (a flex item) shrink below its text width.
+      // Single-line headline, clipping whatever doesn't fit
       @include screen-phone-landscape {
-        min-width: 0;
         max-width: none;
 
         .splash__kicker { display: none; }
+        @include splash-highlight;
         .splash__headline {
           white-space: nowrap;
           overflow-x: clip;
@@ -147,9 +188,9 @@
     .splash__social {
       background: $gradient-bg__brand--splash;
 
-      margin: .75rem 0 10vh;
-      @include screen-ratio-landscape { margin: .75rem 0 20vh; }
-      @include screen-phone-landscape { margin: .75rem 0 10vh; }
+      margin-bottom: 10vh;
+      @include screen-ratio-landscape { margin-bottom: 20vh; }
+      @include screen-phone-landscape { margin-bottom: 10vh; }
       padding: .25rem 0 .5rem;
       font-size: 1.5rem;
 
