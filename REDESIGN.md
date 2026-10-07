@@ -82,10 +82,6 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 - **`_sass/_parallax.scss`, `_sass/_sections/_splash.scss`** — `.parallax`, `.parallax__group` and `.splash` use `height: 100vh`. On iOS Safari and Android Chrome, `100vh` is the viewport height with the browser toolbars hidden, but since the page scrolls inside `.parallax` (not the document) the toolbars never collapse. The splash bottom (social bar, scroll arrow) and the end of the page may end up hidden behind the toolbars. Likely fix: `100svh` / `100dvh`.
 
-### Mobile menu breaks on resize / rotation
-
-- **`assets/script.js`, `_sass/_components/_navbar.scss`** — With the mobile menu open, rotating the device or resizing the viewport leaves the menu stuck or makes it disappear. Crossing the mobile breakpoint hides `.navbar-menu` but the navbar keeps `navbar--menu-open`, so it stays shifted down. Within mobile, `--navbar-menu-height` is only measured on open, so the paper and the pull tab go out of sync when the panel height changes. Likely fix: close the menu (or re-measure) on `resize` / when the mobile media query stops matching.
-
 ## To review
 
 ### Short laptop viewports

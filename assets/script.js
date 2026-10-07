@@ -64,13 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".navbar__toggle");
 
   const setMenuOpen = (open) => {
-    if (open) {
-      document.documentElement.style.setProperty("--navbar-menu-height", `${menuPanel.offsetHeight}px`);
-    }
     menu.classList.toggle("navbar-menu--open", open);
     navbar.classList.toggle("navbar--menu-open", open);
     menuToggle.setAttribute("aria-expanded", open);
   };
+
+  // Keep the navbar offset in sync with the panel height. The panel only has
+  // no height when the menu isn't rendered (above the collapse breakpoint,
+  // e.g. after rotating the device), so close it then.
+  new ResizeObserver(() => {
+    const height = menuPanel.offsetHeight;
+    document.documentElement.style.setProperty("--navbar-menu-height", `${height}px`);
+    if (height === 0) setMenuOpen(false);
+  }).observe(menuPanel);
 
   menuToggle.addEventListener("click", () => {
     setMenuOpen(!menu.classList.contains("navbar-menu--open"));
