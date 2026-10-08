@@ -46,7 +46,7 @@ $text-block__list-indent        : 2em;
     &:last-child { margin-bottom: 0; }
 
     li + li { margin-top: $text-block__list-item-spacing; }
-    strong { font-weight: 500; }
+    strong { font-weight: $font-weight__bold; }
   }
 
   // Paragraphs after the first one collapse in the single column, like the

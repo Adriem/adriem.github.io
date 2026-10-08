@@ -8,7 +8,8 @@
 // bullet.
 @mixin bullet-list {
   @include typography__body-compact;
-  font-weight: 500;
+  font-weight: $font-weight__regular;
+  color: $neutral-black;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -20,7 +21,7 @@
     &:not(:last-child)::after {
       content: "\00a0•";
       color: rgba($neutral-black, 0.3);
-      font-weight: 700;
+      font-weight: $font-weight__bold;
     }
   }
 }
@@ -41,7 +42,7 @@ $body-paragraph-spacing: 1.5rem;
   @include screen-up-to($width-md) { text-align: left; }
 
   // The default `bolder` only takes the light body text (300) up to 400
-  strong { font-weight: 500; }
+  strong { font-weight: $font-weight__bold; }
 }
 
 // Collapsible content with a "read more / show less" button, below $breakpoint.
@@ -62,7 +63,7 @@ $body-paragraph-spacing: 1.5rem;
       display: inline-block;
       cursor: pointer;
       @include typography__button-label;
-      font-weight: 500;
+      font-weight: $font-weight__bold;
       color: $neutral-black;
       margin-top: 0;
       text-decoration: underline;

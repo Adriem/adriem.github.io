@@ -144,7 +144,7 @@ $timeline-desktop-overlap   : 50%;
     grid-column: 2;
     grid-row: 1;
     color: var(--entry-color);
-    font-weight: 700;
+    font-weight: $font-weight__bold;
   }
 
   .timeline__title {

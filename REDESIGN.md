@@ -32,11 +32,12 @@ The redesign replaces the old single-page layout (header + project list + contac
 - **AI stance section** (`#ai-stance`, front matter `ai_stance`, formerly "my philosophy"): text split with a headline and a two-paragraph body.
 - **Work ethics section** (`#work-ethics`, front matter `work_ethics`, "How I work", formerly "fun facts" / "Get to know me"): text grid whose body mixes paragraphs and a bullet list (`list:` items in the page front matter).
 - **Collapsible text**: on single-column viewports (below `md`), the text split body and everything after the first paragraph of a text block collapse behind a "read more / show less" button with an animated chevron (`collapsible` mixin, CSS only). Body paragraphs share the `body-paragraph` mixin: same spacing, pretty wrapping, justified (left-aligned below `md`).
+- **Fonts**: a single family (Montserrat) in three weights (300, 400, 700), loaded with the Google Fonts `css2` API (`display=swap`, with `preconnect`) in `doc-head.html`. Italics are synthesized by the browser.
 - **Section types**: `section-text-statement`, `section-text-block`, `section-text-split`, `section-text-grid`, `section-timeline`, `section-skills`, `section-card-grid`, `section-contact`.
 - **SCSS foundation files**:
   - `_colors.scss`: palette and brand gradients, including the solid gradient endpoints shared by the timeline and the skills titles.
   - `_layout.scss`: breakpoints, z-index, grid, container, and the responsive mixins. Breakpoint ranges have exclusive upper bounds, so adjacent ranges don't overlap. Also defines the navbar collapse width, aspect-ratio mixins (`screen-ratio-*`), `screen-phone-landscape`, the shared max widths for narrow content blocks (`$content-max-width--*`) and the width limit and padding of single-column text (`$text-*--single-col`, used by section titles and the text split).
-  - `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins), `_mixins.scss` (link, paragraph, bullet list), `_themes.scss` (section color themes).
+  - `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins, font family and the three font weights in use: `$font-weight__light` / `__regular` / `__bold`, i.e. 300 / 400 / 700), `_mixins.scss` (link, paragraph, bullet list), `_themes.scss` (section color themes).
   - `_section.scss`: base section styles. Sections have a `regular` vertical padding by default, adjustable per section with `section--padding-{y,top,bottom}-{none,regular,large,xlarge}` modifiers (used in `home.html` to keep consistent spacing between consecutive sections that share a color).
 - **Consolidated data**: `common.yml` centralises navbar, splash, and footer strings. Social/contact data lives in `_data/en/social.yml`. Section content lives in page front matter.
 - **Removed**: `_layouts/about.html`, `pages/about-en.html`, `_includes/_sections/header.html`, old component files (inlined into sections), `_variables.scss`, `_base.scss`, `_nav/` directory, `_syntax-highlighting.scss`.
@@ -72,13 +73,6 @@ The redesign replaces the old single-page layout (header + project list + contac
 11. **`_data/en/social.yml`** — The Moxfield link uses Font Awesome's Wizards of the Coast logo as its icon; replace it with Moxfield's logo.
 
 12. **Trajectory section** — Consider adding an education section.
-
-### Performance
-
-13. **`_includes/doc-head.html` — Font loading** — Optimise the Google Fonts request and consolidate similar weights:
-    - The request loads 8 families (Josefin Sans, Poiret One, Questrial, Raleway, Montserrat, Lato, Roboto, Open Sans), but only Montserrat is used. Drop the rest.
-    - Montserrat loads 100–500, 700 and 800; the styles use 200, 300, 400, 500, 700 and 800 (100 is unused). Consolidate similar weights (e.g. 200/300, 700/800) to load fewer files, and only request the ones still in use.
-    - Consider the `css2` API with `display=swap`, and a `preconnect` to `fonts.gstatic.com`.
 
 ## Bugs and issues
 

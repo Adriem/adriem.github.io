@@ -6,13 +6,12 @@ $project-gutter-width: 10px;
 $project-height: 340px;
 $repo-height: 120px;
 
-$project-notice-font: 800 9pt Montserrat, sans-serif;
+$project-notice-font: $font-weight__bold 9pt $_font-family__default;
 
 $project-fg-color: $gray-600;
 $project-bg-color: $legacy_brand-taupe-light;
 $project-title-color: $gray-600;
 $project-description-color: $gray-600;
-$project-tags-color: rgba($neutral-black, 0.85); // same as the skills list
 $project-notice-fg-color: $neutral-black;
 // Layered (top to bottom): a warning gradient fading out towards the right,
 // a brand red one fading in towards the right, and a solid white base so the
@@ -90,7 +89,6 @@ $project-body-padding: 10px;
     // Same inline bullet list as the skills section
     .project-tags {
       @include bullet-list;
-      color: $project-tags-color;
       padding: 5px 0;
     }
 
