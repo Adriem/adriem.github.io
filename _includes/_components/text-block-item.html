@@ -1,0 +1,15 @@
+{% comment %}
+  One item of a text block: a paragraph (a string), or a bullet list
+  (an object with a `list` of strings).
+{% endcomment %}
+{% if include.item.list %}
+<ul class="text-block__list color--regular">
+  {% for list_item in include.item.list %}
+  <li>{{ list_item }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="text-block__paragraph color--regular">
+  {{ include.item }}
+</p>
+{% endif %}

@@ -21,6 +21,7 @@ infrastructure:
   - GitHub
   - Stripe
   - Paddle
+  - Pub/Sub
 engineering:
   - Observability
   - A/B Experimentation
