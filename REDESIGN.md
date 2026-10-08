@@ -32,8 +32,9 @@ The redesign replaces the old single-page layout (header + project list + contac
 - **Section types**: `section-text-statement`, `section-text-block`, `section-text-split`, `section-text-grid`, `section-timeline`, `section-skills`, `section-card-grid`, `section-contact`.
 - **SCSS foundation files**:
   - `_colors.scss`: palette and brand gradients, including the solid gradient endpoints shared by the timeline and the skills titles.
-  - `_layout.scss`: breakpoints, z-index, grid, container, and the responsive mixins. Breakpoint ranges have exclusive upper bounds, so adjacent ranges don't overlap. Also defines the navbar collapse width, aspect-ratio mixins (`screen-ratio-*`), `screen-phone-landscape` and the shared max widths for narrow content blocks (`$content-max-width--*`).
-  - `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins), `_mixins.scss` (link, paragraph), `_themes.scss` (section color themes).
+  - `_layout.scss`: breakpoints, z-index, grid, container, and the responsive mixins. Breakpoint ranges have exclusive upper bounds, so adjacent ranges don't overlap. Also defines the navbar collapse width, aspect-ratio mixins (`screen-ratio-*`), `screen-phone-landscape`, the shared max widths for narrow content blocks (`$content-max-width--*`) and the width limit and padding of single-column text (`$text-*--single-col`, used by section titles and the text split).
+  - `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins), `_mixins.scss` (link, paragraph, bullet list), `_themes.scss` (section color themes).
+  - `_section.scss`: base section styles. Sections have a `regular` vertical padding by default, adjustable per section with `section--padding-{y,top,bottom}-{none,regular,large,xlarge}` modifiers (used in `home.html` to keep consistent spacing between consecutive sections that share a color).
 - **Consolidated data**: `common.yml` centralises navbar, splash, and footer strings. Social/contact data lives in `_data/en/social.yml`. Section content lives in page front matter.
 - **Removed**: `_layouts/about.html`, `pages/about-en.html`, `_includes/_sections/header.html`, old component files (inlined into sections), `_variables.scss`, `_base.scss`, `_nav/` directory, `_syntax-highlighting.scss`.
 
@@ -61,21 +62,24 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 9. **`_data/en/social.yml`** — Commented-out Twitter and email link entries.
 
-### Layout
-
-10. **Sections** — Fix the vertical padding between consecutive sections that share the same color.
-
 ### Content
 
-11. **Skills section** — See how to include SEO / GEO / marketing technologies / attribution, perhaps along with soft skills such as communication, teamwork, etc.
+10. **Skills section** — See how to include SEO / GEO / marketing technologies / attribution, perhaps along with soft skills such as communication, teamwork, etc.
 
-12. **`_data/en/social.yml`** — The Moxfield link uses Font Awesome's Wizards of the Coast logo as its icon; replace it with Moxfield's logo.
+11. **`_data/en/social.yml`** — The Moxfield link uses Font Awesome's Wizards of the Coast logo as its icon; replace it with Moxfield's logo.
 
-13. **"Get to know me" section** — Finish it, either:
+12. **"Get to know me" section** — Finish it, either:
     - A) "Get to know me" + subtitle + a 3-item text grid with personality claims, or
     - B) Another text-split component with a headline and a 2-paragraph body.
 
-14. **Trajectory section** — Consider adding an education section.
+13. **Trajectory section** — Consider adding an education section.
+
+### Performance
+
+14. **`_includes/doc-head.html` — Font loading** — Optimise the Google Fonts request and consolidate similar weights:
+    - The request loads 8 families (Josefin Sans, Poiret One, Questrial, Raleway, Montserrat, Lato, Roboto, Open Sans), but only Montserrat is used. Drop the rest.
+    - Montserrat loads 100–500, 700 and 800; the styles use 200, 300, 400, 500, 700 and 800 (100 is unused). Consolidate similar weights (e.g. 200/300, 700/800) to load fewer files, and only request the ones still in use.
+    - Consider the `css2` API with `display=swap`, and a `preconnect` to `fonts.gstatic.com`.
 
 ## Bugs and issues
 

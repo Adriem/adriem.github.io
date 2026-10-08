@@ -116,9 +116,11 @@ $timeline-desktop-overlap   : 50%;
   margin: 0 auto;
 
   // Grid (not flex) so `grid-template-rows: 1fr` equalizes all entries
-  // to the tallest entry's intrinsic content.
+  // to the tallest entry's intrinsic content. The last entry is just the
+  // start-year marker, so it gets an auto row sized to its own content
+  // (otherwise it'd take as much height as the tallest entry).
   display: grid;
-  grid-template-rows: repeat($timeline-entries, 1fr);
+  grid-template-rows: repeat(#{$timeline-entries - 1}, 1fr) auto;
   grid-template-columns: 100%;
   row-gap: $timeline-gap;
 

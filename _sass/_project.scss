@@ -6,7 +6,7 @@ $project-gutter-width: 10px;
 $project-height: 340px;
 $repo-height: 120px;
 
-$project-notice-font: 600 9pt Montserrat, sans-serif;
+$project-notice-font: 800 9pt Montserrat, sans-serif;
 
 $project-fg-color: $gray-600;
 $project-bg-color: $legacy_brand-taupe-light;
@@ -14,7 +14,16 @@ $project-title-color: $gray-600;
 $project-description-color: $gray-600;
 $project-tags-color: rgba($neutral-black, 0.85); // same as the skills list
 $project-notice-fg-color: $neutral-black;
-$project-notice-bg-color: $semantic-warning;
+// Layered (top to bottom): a warning gradient fading out towards the right,
+// a brand red one fading in towards the right, and a solid white base so the
+// thumbnail doesn't show through
+$project-notice-bg: linear-gradient(to right,
+                                    rgba($semantic-warning, 1),
+                                    rgba($semantic-warning, 0.5)),
+                    linear-gradient(to right,
+                                    rgba($brand-red, 0),
+                                    rgba($brand-red, 0.8)),
+                    $neutral-white;
 
 $project-separator-color: $gray-600;
 $project-border-color: $gray-600;
@@ -119,7 +128,7 @@ $project-body-padding: 10px;
         text-transform: uppercase;
         line-height: 25px;
         color: $project-notice-fg-color;
-        background-color: $project-notice-bg-color;
+        background: $project-notice-bg;
         z-index: 10;
       }
     }

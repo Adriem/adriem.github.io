@@ -4,9 +4,9 @@
 // Title and body side by side from this width up, stacked below it
 $text-split__double-col-width   : $width-md;
 
-$text-split__padding--single-col : 1.5rem;
+$text-split__padding--single-col : $text-padding--single-col;
 $text-split__padding--double-col : 3rem;
-$text-split__max-width--single-col : 500px;
+$text-split__max-width--single-col : $text-max-width--single-col;
 
 $text-split__collapse-time : 0.3s;
 
@@ -69,8 +69,9 @@ $text-split__collapse-time : 0.3s;
       cursor: pointer;
       @include typography__button-label;
       font-weight: 500;
-      color: $brand-red;
+      color: $neutral-black;
       margin-top: 0.5em;
+      text-decoration: underline;
     }
 
     .text-split__cta-less { display: none; }

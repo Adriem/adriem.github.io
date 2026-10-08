@@ -20,6 +20,11 @@ $content-max-width--mobile  : 400px;
 $content-max-width--tablet  : 450px;
 $content-max-width--desktop : 900px;
 
+// Single-column text below md (section titles, text-split): max width and
+// lateral padding (the container is full width below md)
+$text-max-width--single-col : 500px;
+$text-padding--single-col   : 1.5rem;
+
 
 // --- Z-INDEX -----------------------------------------------------------------
 

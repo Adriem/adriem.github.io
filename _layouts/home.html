@@ -9,7 +9,7 @@ layout: base
 <div class="parallax">
   {% include section-home-splash.html %}
 
-  <section id="about" class="section theme--default">
+  <section id="about" class="section section--padding-top-large theme--default">
     {% include section-text-statement.html
                statement=page.intro %}
   </section>
@@ -24,14 +24,14 @@ layout: base
                experience=experience %}
   </section>
 
-  <section id="skills" class="section theme--default">
+  <section id="skills" class="section section--padding-bottom-large theme--default">
     {% include section-skills.html
                title=page.skills.title
                surtitle=page.skills.surtitle
                skills=skills %}
   </section>
 
-  <section id="my-philosophy" class="section section--large-padding theme--red-lilac-light">
+  <section id="my-philosophy" class="section section--padding-y-xlarge theme--red-lilac-light">
     {% include section-text-split.html
                id='philosophy-body'
                title=page.philosophy.title
@@ -39,20 +39,20 @@ layout: base
                expand_label=page.philosophy.expand_label %}
   </section>
 
-  <section id="projects" class="section theme--default">
+  <section id="projects" class="section section--padding-top-large theme--default">
     {% include section-card-grid.html
                title=page.projects.title
                surtitle=page.projects.surtitle %}
   </section>
 
-  <section id="fun-facts" class="section theme--default">
+  <section id="fun-facts" class="section section--padding-bottom-large theme--default">
     {% include section-text-grid.html
                title=page.facts.title
                surtitle=page.facts.surtitle
                summary=page.facts.content %}
   </section>
 
-  <section id="contact" class="section section--small-padding theme--red-lilac-dark">
+  <section id="contact" class="section theme--red-lilac-dark">
     {% include section-contact.html %}
   </section>
 
