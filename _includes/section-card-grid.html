@@ -22,7 +22,7 @@
       <div class="project-media">
         <img class="project-thumbnail"
             alt="Project thumbnail"
-            src="{{ project.pic | prepend: "/assets/img/" | prepend: site.baseurl }}">
+            src="{{ project.pic | prepend: "/assets/img/" | relative_url }}">
 
         {% if project.notice %}
         <div class="notice-container">

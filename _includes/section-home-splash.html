@@ -4,7 +4,7 @@
 <section class="splash parallax__group" id="splash">
 
   <img class="splash__image parallax__layer parallax__layer--back"
-       src="{{ splash_content.image | prepend: '/assets/img/' | prepend: site.baseUrl }}">
+       src="{{ splash_content.image | prepend: '/assets/img/' | relative_url }}">
 
   <div class="splash__content parallax__layer parallax__layer--base">
     <div class="splash__title">
