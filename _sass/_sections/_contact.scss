@@ -6,4 +6,11 @@ section#contact {
   a { text-decoration: none; }
   .section-title { padding-bottom: 0; }
   .mail-text { @include typography__body-regular; }
+
+  // Email link: underlined in the same color as the link (it follows the
+  // text color, including the theme's hover color)
+  .mail-text a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
 }

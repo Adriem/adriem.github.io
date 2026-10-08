@@ -28,6 +28,7 @@ The redesign replaces the old single-page layout (header + project list + contac
 - **Timeline section**: vertical timeline on mobile, zigzag with overlapping entries from `md` up. The line and dots share a single brand gradient.
 - **Skills section**: one card per category in a 2x2 grid (single column below `md`), with a pink gradient background, a slanted highlight on the category title and the skills as an inline list separated by bullets (`bullet-list` mixin).
 - **Projects section**: bordered cards with a lilac-to-pink background, the brand gradient as a separator under the thumbnail, and the project tags as a bullet list. Cards on the same row have equal heights (flex grid), and stack centered on mobile. Projects without a URL render as non-clickable cards; an optional notice (e.g. "Coming soon!") is laid over the thumbnail.
+- **Contact section**: social links in a single row of four from `lg` up, two balanced rows of two below it. Hovering or focusing a link dims the others (a single color transition, like the navbar tabs; the links have no gaps between them so the effect doesn't flicker). The email link is underlined.
 - **Section types**: `section-text-statement`, `section-text-block`, `section-text-split`, `section-text-grid`, `section-timeline`, `section-skills`, `section-card-grid`, `section-contact`.
 - **SCSS foundation files**:
   - `_colors.scss`: palette and brand gradients, including the solid gradient endpoints shared by the timeline and the skills titles.
@@ -68,30 +69,21 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 11. **Skills section** — See how to include SEO / GEO / marketing technologies / attribution, perhaps along with soft skills such as communication, teamwork, etc.
 
-12. **Socials (contact section)**:
-    - Replace the Wizards logo with Moxfield's, and update the description.
-    - Remove the grow animation; keep fading out the other links and highlighting the current one (ensure it works properly).
-    - Add an underline to the email, making sure the colors are different enough.
-    - Fix the grid on tablet viewports.
+12. **`_data/en/social.yml`** — The Moxfield link uses Font Awesome's Wizards of the Coast logo as its icon; replace it with Moxfield's logo.
 
 13. **"Get to know me" section** — Finish it, either:
     - A) "Get to know me" + subtitle + a 3-item text grid with personality claims, or
     - B) Another text-split component with a headline and a 2-paragraph body.
 
-14. **Footer** — Simplify it: remove the Jekyll and GitHub Pages mentions unless required by their licenses.
-
-15. **Trajectory section** — Consider adding an education section.
+14. **Trajectory section** — Consider adding an education section.
 
 ## Bugs and issues
 
-### Wrong social link
+### HTTPS not enabled
 
-- **`_data/en/social.yml`** — The Instagram entry points to `https://github.com/ClockworkAdriem` (a GitHub URL), not an Instagram profile.
-
-### Outdated URLs
-
-- **`_config.yml`** — Site URL uses `http://adriem.me` instead of `https://`.
-- **`_data/en/common.yml`** — Footer "Powered by" links use `http://` for Jekyll and GitHub Pages.
+- **Hosting** — The site isn't served over HTTPS yet. Once it is, switch the site's own URLs to `https://`:
+  - **`_config.yml`** — `url: "http://adriem.me"` (used for the feed links and the `/en/` redirect).
+  - **`_data/en/portfolio.yml`** — The random map generator project links to `http://adriem.me/random-map-generator`.
 
 ### Mobile viewport height
 

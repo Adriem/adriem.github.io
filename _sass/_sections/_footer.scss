@@ -2,7 +2,6 @@
 @import "./_typography.scss";
 
 $footer-copy-color         : $neutral-white;
-$footer-copy-link-color    : $neutral-white;
 
 
 section#footer {
@@ -14,7 +13,5 @@ section#footer {
 
     padding: 1rem 3rem;
     color: $footer-copy-color;
-
-    a { color: $footer-copy-link-color }
   }
 }

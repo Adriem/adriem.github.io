@@ -8,7 +8,7 @@ links:
     desc: ...where I push the code of my projects
     splash: yes
 
-  - url: https://github.com/ClockworkAdriem
+  - url: https://www.instagram.com/adriem492/
     text: instagram
     icon: <i class="fa-brands fa-instagram"></i>
     desc: ...where I upload pics with fancy filters
@@ -23,7 +23,7 @@ links:
   - url: https://moxfield.com/users/Adriem
     text: moxfield
     icon: <i class="fa-brands fa-wizards-of-the-coast"></i>
-    desc: ...where I showcase my favourite hobby
+    desc: ...where I track and update my Magic decks
     splash: no
 
 #   - url: https://twitter.com/ClockworkAdriem
