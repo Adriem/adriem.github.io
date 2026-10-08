@@ -32,9 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Fade transition for non-anchor links
-  document.querySelectorAll('a:not([href*="#"])').forEach((link) => {
+  // Fade transition for non-anchor links that navigate away in this tab.
+  // Skipped (default behaviour) for links opening in a new tab, mailto:/tel:
+  // links (they don't leave the page) and modified / non-left clicks.
+  document.querySelectorAll(
+    'a:not([href*="#"]):not([target="_blank"]):not([href^="mailto:"]):not([href^="tel:"])'
+  ).forEach((link) => {
     link.addEventListener("click", (e) => {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault();
       document.body.classList.add("fading");
       setTimeout(() => { window.location.href = link.href; }, 300);

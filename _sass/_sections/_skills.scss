@@ -4,8 +4,9 @@
 
 $skills-grid__gap          : 1.5rem;
 $skills-card__padding      : 0.75rem 1.25rem 1.25rem;
-$skills-card__bg           : $neutral-white;
-$skills-card__border-width : 3px;
+$skills-card__bg           : linear-gradient(120deg,
+                                             rgba($brand-pink, 0),
+                                             rgba($brand-pink, 0.6));
 
 // Category title highlight, in the colours of the timeline (same 10%-90% stops)
 $skills-title__bg : linear-gradient(to right,
@@ -35,17 +36,9 @@ $skills-title__padding-end   : 2em;
   @include screen-up-to($width-md) { padding: 0 1.5rem; }
 
   // Sized to its content; cards on the same row stretch to the tallest one
-  // Gradient border in the colours of the navbar decoration (the splash
-  // gradient, at 120deg). The border is transparent and shows the gradient
-  // layers painted below it, which reach the border box; the card's own
-  // background only covers the padding box.
   .skills-grid__category {
     padding: $skills-card__padding;
-    border: $skills-card__border-width solid transparent;
-    background:
-      linear-gradient($skills-card__bg, $skills-card__bg) padding-box,
-      linear-gradient(120deg, $brand-red 10%, rgba($brand-red, 0.15) 95%) border-box,
-      linear-gradient(rgba(#00f, 0.13), rgba(#00f, 0.13)) border-box;
+    background: $skills-card__bg;
   }
 
   // Highlighted title. As an inline-block it shrinks to the (single word)
@@ -67,25 +60,8 @@ $skills-title__padding-end   : 2em;
                        0 100%);
   }
 
-  // Inline list separated by bullets. Each bullet is glued to the item before
-  // it (non-breaking space), and items don't wrap internally, so lines only
-  // break between items and never start with a bullet.
+  // Inline list separated by bullets (see the mixin)
   .skills-grid__items {
-    @include typography__body-compact;
-    font-weight: 500;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .skills-grid__item {
-    display: inline;
-    white-space: nowrap;
-
-    &:not(:last-child)::after {
-      content: "\00a0•";
-      color: rgba($neutral-black, 0.3);
-      font-weight: 700;
-    }
+    @include bullet-list;
   }
 }

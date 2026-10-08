@@ -2,6 +2,29 @@
 @import "./_layout.scss";
 @import "./_animations.scss";
 
+// Inline list separated by dimmed bullets, for a <ul>/<ol> of <li>. Each
+// bullet is glued to the item before it (non-breaking space), and items don't
+// wrap internally, so lines only break between items and never start with a
+// bullet.
+@mixin bullet-list {
+  @include typography__body-compact;
+  font-weight: 500;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    display: inline;
+    white-space: nowrap;
+
+    &:not(:last-child)::after {
+      content: "\00a0•";
+      color: rgba($neutral-black, 0.3);
+      font-weight: 700;
+    }
+  }
+}
+
 @mixin link {
     text-decoration: none;
     margin: 0 0.1em;

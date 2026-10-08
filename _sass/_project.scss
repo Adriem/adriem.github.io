@@ -11,16 +11,29 @@ $project-notice-font: 600 9pt Montserrat, sans-serif;
 $project-fg-color: $gray-600;
 $project-bg-color: $legacy_brand-taupe-light;
 $project-title-color: $gray-600;
-$project-description-color: $gray-500;
+$project-description-color: $gray-600;
+$project-tags-color: rgba($neutral-black, 0.85); // same as the skills list
 $project-notice-fg-color: $neutral-black;
 $project-notice-bg-color: $semantic-warning;
 
-$project-separator-color: lighten($project-fg-color, 0.6%);
-$project-border-color: lighten($project-fg-color, 0.6%);
+$project-separator-color: $gray-600;
+$project-border-color: $gray-600;
+// The 30% hint moves the midpoint of the lilac-to-pink transition
+$project-card-bg: linear-gradient(to right, rgba($brand-lilac, 0.2), 30%, rgba($brand-pink, 0.2));
+
+// Between the thumbnail and the body, styled as the navbar decoration
+$project-body-separator-height: 3px;
+$project-body-separator-bg: $gradient-bg__brand--splash;
+$project-body-padding: 10px;
 
 
 .project-grid, .repository-grid {
   @include grid($project-width, $project-gutter-width);
+
+  // Flex (instead of the floats from grid-element) so cards on the same row
+  // stretch to the tallest one
+  display: flex;
+  flex-wrap: wrap;
 
   .project, .repository {
     @include grid-element($project-width, $project-gutter-width);
@@ -31,8 +44,22 @@ $project-border-color: lighten($project-fg-color, 0.6%);
     text-align: center;
     color: $project-bg-color;
 
+    // Card border around the thumbnail and the body
+    border: 1px solid $project-border-color;
+    background: $project-card-bg;
+
     .project-body, .repo-body {
-        padding: 10px;
+        padding: $project-body-padding;
+    }
+
+    // Separator under the thumbnail, spanning the full card width (the
+    // negative margins cancel the body padding)
+    .project-body::before {
+      content: '';
+      display: block;
+      height: $project-body-separator-height;
+      margin: (-$project-body-padding) (-$project-body-padding) $project-body-padding;
+      background: $project-body-separator-bg;
     }
 
     .project-title, .repo-title {
@@ -40,7 +67,7 @@ $project-border-color: lighten($project-fg-color, 0.6%);
 
       color: $project-title-color;
       margin: 0;
-      padding: 10px 0 5px;
+      padding: 5px 0;
     }
 
     .project-description, .repo-description {
@@ -48,6 +75,13 @@ $project-border-color: lighten($project-fg-color, 0.6%);
 
       color: $project-description-color;
       margin: 0;
+      padding: 5px 0;
+    }
+
+    // Same inline bullet list as the skills section
+    .project-tags {
+      @include bullet-list;
+      color: $project-tags-color;
       padding: 5px 0;
     }
 
@@ -65,8 +99,18 @@ $project-border-color: lighten($project-fg-color, 0.6%);
         }
     }
 
+    // Thumbnail with the notice laid over its bottom edge. The notice is out
+    // of the flow, so the body (and its separator) always starts right where
+    // the thumbnail ends.
+    .project-media {
+      position: relative;
+    }
+
     .notice-container {
-      margin-top: -30px !important;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 5px;
 
       .notice {
         margin: 0 1px;
@@ -80,11 +124,25 @@ $project-border-color: lighten($project-fg-color, 0.6%);
       }
     }
 
+    // Fills the card inside its border, shrinking along with it on mobile
     .project-thumbnail {
+      max-width: 100%;
+    }
+
+    // Below sm the grid is full width, but the cards keep their fixed width,
+    // overflowing narrow screens. Give each its own row instead, centered and
+    // shrinking when the screen is narrower than them.
+    @include screen-xs {
+      float: none;
+      width: 100%;
       max-width: $project-width;
-      border: 1px solid $project-border-color;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
+
+  // The container is full width below sm, keep the cards off the screen edges
+  @include screen-xs { padding: 0 1.5rem; }
 
   .project { min-height: $project-height }
   .repository { min-height: $repo-height }

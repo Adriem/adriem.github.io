@@ -10,6 +10,7 @@ $neutral-black: #333;
 $brand-red: #ff104e;
 $brand-blue: #00f;
 $brand-lilac: #8191ff;
+$brand-pink: #e3bfe4;
 
 $semantic-warning: #ff6a00;
 
@@ -22,7 +23,7 @@ $gradient-bg__brand--splash: linear-gradient(to right,
 // so layered elements (e.g. dot-on-line) don't accumulate transparency.
 $gradient-bg__brand--splash-solid: linear-gradient(to right,
                                                    $brand-red 10%,
-                                                   #e3bfe4 95%);
+                                                   $brand-pink 95%);
 
 // Endpoints of the timeline gradient: brand red to a pale red-lilac. Solid
 // colours (no blue background layer), shared with the skills titles.

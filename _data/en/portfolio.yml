@@ -1,13 +1,13 @@
 projects:
   - name: Low-ink MTG playtest cards
-    pic: random-map-preview.jpg
+    pic: low-ink-mtg-press-preview.jpg
     url:
     notice: Coming soon!
     type: web application
     tags:
-      - web
-      - typescript
-      - react
+      - JavaScript
+      - React
+      - SVG
     description: Printer ink is expensive, playtest cards shouldn't be. Written in React.
 
   - name: Random map generator
@@ -16,56 +16,32 @@ projects:
     notice:
     type: web application
     tags:
-      - web
       - coffeescript
-      - pgc
-    description: Little random map generator written in Coffeescript.
+      - bootstrap
+      - jQuery
+    description: Little random map generator written in Coffeescript. Just because.
 
-  - name: OGame resource calculator
-    pic: ogame-calculator-preview.jpg
-    url: http://adriem.me/ogame-calculator
+  - name: Mi-Light Controller
+    pic: milight-controller-preview.jpg
+    url: https://github.com/Adriem/milight-controller
     notice:
     type: web application
     tags:
-      - web
-      - coffeescript
-      - angularjs
-    description: OGame resources calculator written in Coffeescript with AngularJS.
+      - Node.js
+      - HTTP
+      - CLI
+    description: An exposed HTTP and CLI interface for a Mi-Light UDP controller in Node.JS
 
-#  - name: Chatsockets
-#    pic: chatsockets-preview.jpg
-#    url: http://chat.adriem.me
-#    notice: Temporarily down :(
+#  - name: OGame resource calculator
+#    pic: ogame-calculator-preview.jpg
+#    url: http://adriem.me/ogame-calculator
+#    notice:
 #    type: web application
 #    tags:
 #      - web
-#      - websockets
 #      - coffeescript
 #      - angularjs
-#    description: Websockets demonstration project over the MEAN stack with socket.io
-
-# - name: Project Barataria
-#   pic: barataria-preview.jpg
-#   url: http://barataria.recuen.co
-#   notice: With my friends from Pistacho Soft
-#   type: web application
-#   tags:
-#     - web
-#     - leaflet
-#     - AngularJS
-#   description: Project for the NASA's International Space Apps Challenge 2016.
-
-#   - name: POIs "R" Us
-#     pic: pois-preview.jpg
-#     url: http://pois.adriem.me
-#     notice: Temporarily down :(
-#     type: web application
-#     tags:
-#       - web
-#       - google maps
-#       - AngularJS
-#       - MEAN
-#     description: POI management tool built over the MEAN stack for a classroom project.
+#    description: OGame resources calculator written in Coffeescript with AngularJS.
 
 #   - name: Agnostic Bookmarks
 #     pic: agnostic-bookmarks-preview.jpg
@@ -78,47 +54,14 @@ projects:
 #       - AngularJS
 #     description: Platform-agnostic bookmark manager built for a classroom project over MEAN.
 
-
-# repositories:
-# - name: My .vimrc
-#   url: https://github.com/Adriem/my-vimrc
-#   pic: agnostic-bookmarks-preview.jpg
-#   type: Configuration file
-#   tags:
-#     - configuration
-#   description: Just my .vimrc file, hope you find it interesting!
-
-#   - name: Vim Colorschemes
-#     url: https://github.com/Adriem/vim-colorschemes
-#     type: vim colorscheme
-#     tags:
-#       - colorscheme
-#       - vim
-#     description: My collection of custom vim colorschemes
-
-#   - name: Gentleman Colorscheme
-#     url: https://adriem.github.io/gentleman-colorscheme
-#     type: vim colorscheme
-#     tags:
-#       - colorscheme
-#       - vim
-#     description: A dark and terminal-friendly vim colorscheme, available in 5*2 flavours.
-
-# - name: My homepage
-#   url: https://github.com/adriem/adriem.github.io
-#   pic: agnostic-bookmarks-preview.jpg
-#   type: jekyll website
-#   tags:
-#     - web page
-#     - jekyll
-#   description: The source code of this website, which is built with Jekyll on gh-pages.
-
-#   - name: Shell Utilities
-#     url: https://github.com/adriem/shell-utilities
-#     type: scripts and code snippets
-#     tags:
-#       - shell
-#       - unix
-#       - script
-#     description: A bunch of scripts and snippets to make my life a little easier :D
-#
+#  - name: Chatsockets
+#    pic: chatsockets-preview.jpg
+#    url: http://chat.adriem.me
+#    notice: Temporarily down :(
+#    type: web application
+#    tags:
+#      - web
+#      - websockets
+#      - coffeescript
+#      - angularjs
+#    description: Websockets demonstration project over the MEAN stack with socket.io
