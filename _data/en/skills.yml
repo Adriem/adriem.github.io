@@ -1,0 +1,30 @@
+languages:
+  - Typescript
+  - Javascript
+  - HTML
+  - CSS & SCSS
+  - Python
+frameworks:
+  - React
+  - Node.js
+  - Next.js
+  - Express.js
+  - Tailwind CSS
+  - RxJS
+infrastructure:
+  - Vercel
+  - Cloud
+  - Git
+  - SQL
+  - Terraform
+  - Docker
+  - GitHub
+  - Stripe
+  - Paddle
+  - Pub/Sub
+engineering:
+  - Observability
+  - A/B Experimentation
+  - Domain-Driven Design
+  - Testing
+  - AI assisted development

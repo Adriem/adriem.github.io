@@ -1,0 +1,70 @@
+@import "../colors.scss";
+@import "../_mixins.scss";
+@import "../typography.scss";
+
+$skills-grid__gap          : 1.5rem;
+$skills-card__padding      : 0.75rem 1.25rem 1.25rem;
+// Layered: a pink gradient over a faint lilac base
+$skills-card__bg           : linear-gradient(120deg,
+                                             rgba($brand-pink, 0),
+                                             rgba($brand-pink, 0.6)),
+                             rgba($brand-lilac, 0.1);
+
+// Category title highlight, in the colours of the timeline (same 10%-90% stops)
+$skills-title__bg : linear-gradient(to right,
+                                    $gradient__brand-solid-start 10%,
+                                    $gradient__brand-solid-end 90%);
+$skills-title__color         : $neutral-white;
+$skills-title__slant         : 0.3em;
+$skills-title__padding-start : $skills-title__slant + 0.2em;
+$skills-title__padding-end   : 2em;
+
+// One card per skill category, with the category name in the top
+// left corner. 2x2 grid, a single column below md (like the timeline).
+.skills-grid {
+  // Same widths as the timeline
+  max-width: $content-max-width--tablet;
+  @include screen-mobile { max-width: $content-max-width--mobile; }
+  @include screen-at-least($width-md) { max-width: $content-max-width--desktop; }
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $skills-grid__gap;
+
+  @include screen-up-to($width-md) { grid-template-columns: 1fr; }
+
+  // The container is full width below md, keep the cards off the screen edges
+  @include screen-up-to($width-md) { padding: 0 1.5rem; }
+
+  // Sized to its content; cards on the same row stretch to the tallest one
+  .skills-grid__category {
+    padding: $skills-card__padding;
+    background: $skills-card__bg;
+  }
+
+  // Highlighted title. As an inline-block it shrinks to the (single word)
+  // title. The clip-path cuts both ends at a slant, like a tilted marker;
+  // the padding keeps the text clear of the cut corners, with extra room at
+  // the end so the pale end of the gradient doesn't sit under the text. The
+  // negative margin cancels the start padding, aligning the text with the list.
+  .skills-grid__category-title {
+    @include typography__title-small;
+    -webkit-text-stroke: 1px $neutral-white;
+    display: inline-block;
+    margin: 0 0 0.75rem (-$skills-title__padding-start);
+    padding: 0 $skills-title__padding-end 0 $skills-title__padding-start;
+
+    color: $skills-title__color;
+    background: $skills-title__bg;
+    clip-path: polygon($skills-title__slant 0,
+                       100% 0,
+                       calc(100% - #{$skills-title__slant}) 100%,
+                       0 100%);
+  }
+
+  // Inline list separated by bullets (see the mixin)
+  .skills-grid__items {
+    @include bullet-list;
+  }
+}

@@ -1,0 +1,22 @@
+{% assign social = site.data[page.language].social %}
+
+<div class="container">
+  <h2 class="section__title section__title--center color--accent">
+    {{ social.section_title }}
+  </h2>
+
+  <div class="social-grid">
+    {% for media_link in social.links %}
+      <a href="{{ media_link.url }}" class="social-grid__link">
+        <div class="social-grid__icon">{{ media_link.icon }}</div>
+        <span class="social-grid__caption">{{ media_link.desc }}</span>
+      </a>
+    {% endfor %}
+  </div>
+
+  <p class="mail-text align-center">
+    {{ social.email_notice }} <a href="{{ social.email | prepend: 'mailto:' }}">{{ social.email }}</a>
+  </p>
+</div>
+
+{% assign social = nil %}

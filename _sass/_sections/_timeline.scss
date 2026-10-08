@@ -1,0 +1,236 @@
+@import "../colors.scss";
+@import "../_mixins.scss";
+
+$timeline-gap            : 35px;
+$timeline-dot-size       : 14px;
+$timeline-line-thickness : 3px;
+$timeline-content-gap    : 1rem;
+
+// Number of entries in the timeline. Drives how the gradient is sliced
+// across segments and where each dot's solid colour falls along the
+// gradient. Injected from Jekyll data in assets/styles.scss; this is
+// the fallback for compiling the partial in isolation.
+$timeline-entries        : 4 !default;
+
+// Gradient definition. NOTE: Do not use transparency here, as dots overlapping
+// with the vertical line will display wrongly.
+$timeline-gradient-start      : $gradient__brand-solid-start;
+$timeline-gradient-end        : $gradient__brand-solid-end;
+$timeline-gradient-stop-start : 0.10;
+$timeline-gradient-stop-end   : 0.90;
+
+$timeline-gradient: linear-gradient(to bottom,
+                                    $timeline-gradient-start percentage($timeline-gradient-stop-start),
+                                    $timeline-gradient-end   percentage($timeline-gradient-stop-end));
+
+// Colour at fraction $p (0..1) of the timeline gradient, honouring its
+// stops. Used to give each dot/heading a solid colour that exactly
+// matches the line at its anchor.
+@function timeline-color-at($p) {
+  @if $p <= $timeline-gradient-stop-start { @return $timeline-gradient-start; }
+  @if $p >= $timeline-gradient-stop-end   { @return $timeline-gradient-end; }
+  $t: ($p - $timeline-gradient-stop-start) / ($timeline-gradient-stop-end - $timeline-gradient-stop-start);
+  @return mix($timeline-gradient-start, $timeline-gradient-end, (1 - $t) * 100%);
+}
+
+// Renders the dot + connecting line segment for a timeline item. Assumes
+// the host is a grid child with column 1 reserved for the indicator and
+// is invoked once per `> li`. Sets per-item CSS variables (--li-index,
+// --entry-color) so the dot, line slice, and any sibling consumers (e.g.
+// the year heading) stay in sync.
+@mixin timeline-item-indicator {
+  position: relative;
+
+  @for $i from 1 through $timeline-entries {
+    $p: ($i - 1) / ($timeline-entries - 1);
+    &:nth-child(#{$i}) {
+      --li-index: #{$i - 1};
+      --entry-color: #{timeline-color-at($p)};
+    }
+  }
+
+  // Timeline entry dot. Solid colour computed to exactly match the line
+  // at its anchor, aligned to the center of the grid.
+  &::before {
+    content: "";
+    z-index: 1;
+
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+
+    width: $timeline-dot-size;
+    height: $timeline-dot-size;
+    border-radius: 50%;
+
+    background: var(--entry-color);
+  }
+
+  // Line segment from this dot's center to the next item's dot center.
+  // The bg-image is scaled to (N-1)× the segment height, so showing
+  // 1/(N-1) of it per segment forms a continuous line gradient.
+  // Hidden on the last item so the line stops at the final point.
+  &::after {
+    content: "";
+    z-index: 0;
+    pointer-events: none;
+
+    // Approximate vertical center of the year heading (half its line-box).
+    // The dot is centered on this row via `align-self: center`, so the same
+    // value anchors each line segment to its dot center.
+    position: absolute;
+    top: 0.75em;
+    left: ($timeline-dot-size - $timeline-line-thickness) * 0.5;
+
+    width: $timeline-line-thickness;
+    height: calc(100% + var(--timeline-entry-spacing));
+
+    background-image: $timeline-gradient;
+    background-size: 100% percentage($timeline-entries - 1);
+    background-position: 0 calc(var(--li-index) * 100% / #{$timeline-entries - 2});
+    background-repeat: no-repeat;
+  }
+
+  &:last-child::after {
+    display: none;
+  }
+}
+
+$timeline-mobile-max-width  : $content-max-width--mobile;
+$timeline-tablet-max-width  : $content-max-width--tablet;
+$timeline-desktop-max-width : $content-max-width--desktop;
+$timeline-desktop-overlap   : 50%;
+
+.timeline {
+  // Vertical spacing between consecutive entries (the gap between this
+  // entry's bottom and the next entry's top — signed). Read by the line
+  // segment height in the mixin; mobile uses row-gap on the OL and
+  // desktop uses transform translates, so this variable just keeps the
+  // line in sync with whichever mechanism is active.
+  --timeline-entry-spacing: #{$timeline-gap};
+  max-width: $timeline-tablet-max-width;
+  @include screen-mobile { max-width: $timeline-mobile-max-width; }
+
+  list-style: none;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+
+  // Grid (not flex) so `grid-template-rows: 1fr` equalizes all entries
+  // to the tallest entry's intrinsic content. The last entry is just the
+  // start-year marker, so it gets an auto row sized to its own content
+  // (otherwise it'd take as much height as the tallest entry).
+  display: grid;
+  grid-template-rows: repeat(#{$timeline-entries - 1}, 1fr) auto;
+  grid-template-columns: 100%;
+  row-gap: $timeline-gap;
+
+  > li {
+    display: grid;
+    grid-template-columns: $timeline-dot-size 1fr;
+    // Description row absorbs the extra vertical space in shorter
+    // entries, so each entry fills its equalized cell cleanly.
+    grid-template-rows: auto auto 1fr;
+    column-gap: $timeline-content-gap;
+    align-items: start;
+    text-align: start;
+    text-wrap: pretty;
+
+    @include timeline-item-indicator;
+  }
+
+  // Explicit grid placement reorders year → title → description without
+  // touching the HTML source order (title, heading, description).
+  .timeline__heading {
+    grid-column: 2;
+    grid-row: 1;
+    color: var(--entry-color);
+    font-weight: $font-weight__bold;
+  }
+
+  .timeline__title {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+  }
+
+  .timeline__description {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  // Desktop: zigzag layout. Central vertical timeline with entries
+  // alternating sides — odd entries on the left (text-align: right),
+  // even entries on the right (text-align: left).
+  @include screen-at-least($width-md) {
+    --timeline-entry-spacing: -#{$timeline-desktop-overlap};
+
+    max-width: $timeline-desktop-max-width;
+    // 50% overlap via grid-row spans: lay out N rows of 1fr (one per
+    // overlapping entry) plus one auto row at the end for the last
+    // entry. Entries 1..N-1 each span 2 of the 1fr rows and share one
+    // row with their neighbour; the last entry sits in the auto row
+    // and sizes to its own content (the year marker) — no wasted
+    // height.
+    grid-template-rows: repeat(#{$timeline-entries}, 1fr) auto;
+    row-gap: 0;
+
+    // Default treatment for every entry. The grid-row-start reads
+    // --li-index (set by the mixin) so each entry gets a unique row
+    // start without enumerating positions. The margin-bottom provides
+    // the breathing room formerly carried by padding-bottom, and the
+    // line segment is extended by half that margin so it still reaches
+    // the next dot (margin lives outside the LI's border-box, so the
+    // line's `100%` reference doesn't grow with it).
+    > li {
+      grid-column: 1;
+      grid-row-start: calc(var(--li-index) + 1);
+      grid-row-end: span 2;
+
+      grid-template-columns: 1fr $timeline-dot-size 1fr;
+
+      margin-bottom: $timeline-gap;
+
+      &::before { grid-column: 2; }
+      &::after {
+        left: calc(50% - #{$timeline-line-thickness * 0.5});
+        height: calc(50% + #{$timeline-gap * 0.5});
+      }
+    }
+
+    // The second-to-last entry is the last "full" entry, meaning that
+    // the next entry will not have any overlap - thus we need the
+    // timeline segment to span the whole height of the timeline item.
+    > li:nth-last-child(2) {
+      &::after { height: 100%; }
+    }
+
+    // The last entry is just the start-year marker. It sits in the
+    // auto row past the previous entry's last 1fr row (no shared row,
+    // no overlap), pulled up by $timeline-gap so it sits flush against
+    // LI N-1's content instead of below its still-equalized (T+35)
+    // cell. No bottom margin either — nothing to space from.
+    > li:last-child {
+      grid-row: #{$timeline-entries + 1} / span 1;
+      margin-top: -$timeline-gap;
+      margin-bottom: 0;
+    }
+
+    > li:nth-child(odd) {
+      .timeline__heading,
+      .timeline__title,
+      .timeline__description {
+        grid-column: 1;
+        text-align: right;
+      }
+    }
+
+    > li:nth-child(even) {
+      .timeline__heading,
+      .timeline__title,
+      .timeline__description {
+        grid-column: 3;
+        text-align: left;
+      }
+    }
+  }
+}

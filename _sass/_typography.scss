@@ -1,0 +1,68 @@
+@import "_mixins";
+
+$_font-family__default: Montserrat, sans-serif;
+
+// Font weights in use. The Google Fonts request (_includes/doc-head.html)
+// loads exactly these, so keep both in sync.
+$font-weight__light   : 300;
+$font-weight__regular : 400;
+$font-weight__bold    : 700;
+
+// --- PURPOSE-SPECIFIC --------------------------------------------------------
+
+@mixin typography__splash-title {
+  @include screen-desktop { font: $font-weight__light 4.5rem $_font-family__default; }
+  @include screen-mobile  { font: $font-weight__light 4rem  $_font-family__default; }
+  @include screen-phone-landscape { font-size: 3.5rem; }
+}
+
+@mixin typography__splash-link {
+  font: $font-weight__regular .95rem $_font-family__default;
+}
+
+@mixin typography__navbar-link {
+  @include screen-desktop { font: $font-weight__regular 1rem $_font-family__default; }
+  @include screen-mobile  { font: $font-weight__light 15pt $_font-family__default; }
+}
+
+@mixin typography__button-label {
+  font: $font-weight__regular 0.9rem $_font-family__default;
+}
+
+// --- GENERAL-PURPOSE ---------------------------------------------------------
+
+@mixin typography__title-large {
+  @include screen-desktop { font: $font-weight__light 2.5rem $_font-family__default; }
+  @include screen-mobile  { font: $font-weight__light 2.5rem $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__title-medium {
+  @include screen-desktop { font: $font-weight__regular 1.8rem $_font-family__default; }
+  @include screen-mobile  { font: $font-weight__regular 1.8rem $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__title-small {
+  @include screen-desktop { font: $font-weight__regular 1.5rem $_font-family__default; }
+  @include screen-mobile  { font: $font-weight__regular 1.5rem $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__body-regular {
+  @include screen-desktop { font: $font-weight__light 1.25rem $_font-family__default; & strong { font-weight: $font-weight__bold; }}
+  @include screen-mobile  { font: $font-weight__light 1.15rem $_font-family__default; & strong { font-weight: $font-weight__bold; }}
+  text-wrap: balance;
+}
+
+@mixin typography__body-compact {
+  @include screen-desktop { font: $font-weight__light 1rem/1.25 $_font-family__default; }
+  @include screen-mobile  { font: $font-weight__light 1rem/1.25 $_font-family__default; }
+  text-wrap: balance;
+}
+
+@mixin typography__caption-regular {
+  @include screen-desktop { font: $font-weight__light 0.85rem $_font-family__default; }
+  @include screen-mobile  { font: $font-weight__light 0.85rem $_font-family__default; }
+  text-wrap: balance;
+}

@@ -1,0 +1,17 @@
+@import "./_mixins.scss";
+@import "./_typography.scss";
+
+$footer-copy-color         : $neutral-white;
+
+
+section#footer {
+  background: $gradient-bg__brand--footer;
+  text-align: center;
+
+  .copyright-notice {
+    @include typography__caption-regular;
+
+    padding: 1rem 3rem;
+    color: $footer-copy-color;
+  }
+}

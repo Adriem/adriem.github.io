@@ -1,0 +1,51 @@
+{% assign splash_content = site.data[page.language].common.splash %}
+{% assign splash_social  = site.data[page.language].social.links %}
+
+<section class="splash parallax__group" id="splash">
+
+  <img class="splash__image parallax__layer parallax__layer--back"
+       src="{{ splash_content.image | prepend: '/assets/img/' | relative_url }}">
+
+  <div class="splash__content parallax__layer parallax__layer--base">
+    <div class="splash__title">
+      <div class="container">
+        <h2 class="splash__text">
+          <span class="splash__highlight-group">
+            <span class="splash__kicker">
+              <span class="splash__highlight">{{ splash_content.kicker }}</span>
+            </span>
+            <span class="splash__headline">
+              <span class="splash__highlight">{{ splash_content.headline }}</span>
+            </span>
+          </span>
+        </h2>
+      </div>
+    </div>
+    <div class="splash__social">
+      <div class="container">
+        <div class="splash__social-links">
+          {% for link in splash_social %}
+          {% if link.splash %}
+          <a class="splash__social-link" href="{{ link.url }}">
+              {{ link.text }}
+          </a>
+          {% endif %}
+          {% endfor %}
+          <a class="splash__social-link" href="#contact">
+              {{ site.data[page.language].social.splash_expand_label }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} Scrolls to the next section, like the navbar's "about" tab {% endcomment %}
+    <a class="splash__scroll-arrow"
+       href="{{ site.data[page.language].navigation.about.anchor }}"
+       aria-label="Scroll to the next section">
+      <i class="fa fa-lg fa-angle-down" aria-hidden="true"></i>
+    </a>
+  </div>
+</section>
+
+{% assign splash_content = nil %}
+{% assign splash_social  = nil %}

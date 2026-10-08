@@ -1,0 +1,45 @@
+{% assign nav_sections = site.data[page.language].navigation %}
+{% assign nav_content = site.data[page.language].common.navbar %}
+
+<div class="navbar navbar--expanded" id="navbar">
+  <div class="container">
+
+    <div class="navbar__brand">
+        <h2 class="navbar__title">
+          <span class="navbar--collapsed-only">{{ nav_content.title }}</span>
+        </h2>
+    </div>
+
+    <nav class="navbar__tabs">
+      {% for section in nav_sections %}
+        <a class="navbar__tab" href="{{ section[1].anchor }}">
+          {{ section[1].label }}
+        </a>
+
+        <!-- same link for the mobile menu, rendered after the navbar -->
+        {% capture menu_links %}{{ menu_links }}
+        <a class="navbar-menu__link" href="{{ section[1].anchor }}">
+          {{ section[1].label }}
+        </a>{% endcapture %}
+      {% endfor %}
+
+      <!-- TODO: placeholder icon -->
+      <button class="navbar__toggle" type="button"
+              aria-label="Menu" aria-controls="navbar-menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </nav>
+  </div>
+</div>
+
+<div class="navbar-menu" id="navbar-menu">
+  <div class="navbar-menu__backdrop"></div>
+  <nav class="navbar-menu__panel">
+    {{ menu_links }}
+  </nav>
+</div>
+
+{% assign menu_links = nil %}
+
+{% assign nav_sections = nil %}
+{% assign nav_content = nil %}

@@ -58,3 +58,6 @@ adriems-workshop.iml
 #NodeJS files
 node_modules
 dist
+
+# Claude Code local settings
+.claude/settings.local.json

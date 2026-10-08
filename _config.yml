@@ -1,10 +1,9 @@
 title: Adrián Moreno
-sub_title: Software development and coding stuff
-meta_title: Adrian Moreno | Homepage
-description: Software development and coding stuff
+sub_title: Passionate about building quality software
+meta_title: Adrián Moreno | Homepage
+description: Building quality software
 baseurl: ""             # the subpath of your site, e.g. /blog
-url: "http://adriem.me" # the base hostname & protocol for your site
-copyright: '&copy; 2016-2017 Adrián Moreno'
+url: "https://adriem.me" # the base hostname & protocol for your site
 
 defaults:
   - scope:
@@ -18,5 +17,9 @@ markdown: kramdown
 sass:
   style: compressed
 plugins:
-  - jekyll-coffeescript
   - jekyll-redirect-from
+
+# Project docs, not part of the site (added to Jekyll's default exclusions)
+exclude:
+  - README.md
+  - REDESIGN.md

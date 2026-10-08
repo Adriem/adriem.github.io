@@ -1,0 +1,34 @@
+{% assign title    = include.title %}
+{% assign surtitle = include.surtitle %}
+{% assign skills   = include.skills %}
+
+<div class="container">
+  {% include _components/section-title.html
+             title=title
+             surtitle=surtitle %}
+  <div class="skills-grid">
+    {% for category in skills %}
+      {% assign skillCategory = category[0] %}
+      {% assign skillsInCategory = category[1] %}
+
+      <div class="skills-grid__category">
+        <h3 class="skills-grid__category-title">
+          {{ skillCategory }}
+        </h3>
+
+        <ul class="skills-grid__items">
+          {% for skill in skillsInCategory %}
+            <li class="skills-grid__item">{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {% assign skillCategory  = nil %}
+      {% assign skillsInCategory = nil %}
+    {% endfor %}
+  </div>
+</div>
+
+{% assign title    = nil %}
+{% assign surtitle = nil %}
+{% assign skills   = nil %}

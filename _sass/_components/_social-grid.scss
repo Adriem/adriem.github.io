@@ -1,0 +1,56 @@
+@import "./_mixins.scss";
+@import "./_typography.scss";
+
+
+.social-grid {
+  $social-grid-icon__size : 1.75rem;
+  $social-grid__item-width : 200px;
+  $social-grid__gutter     : 40px;
+  $social-grid__row-gap    : 2rem;
+  $social-grid__dim-color  : rgba($neutral-white, 0.35);
+
+  @include grid($social-grid__item-width, $social-grid__gutter, 4);
+
+  // Below lg, two balanced rows of two (md would otherwise fit three plus one)
+  @include screen-md { width: 2 * ($social-grid__item-width + $social-grid__gutter); }
+
+  margin: 3rem auto 4rem;
+  text-align: center;
+
+  // Same approach as the navbar tabs: while hovering the grid, dim the links
+  // that aren't hovered (the hovered one gets the theme's link hover color).
+  // The links have no gaps between them (see below), so hovering the grid
+  // always means hovering a link. A single color transition drives both.
+  &:hover, &:focus-within {
+    .social-grid__link:not(:hover):not(:focus-visible) {
+      color: $social-grid__dim-color;
+    }
+  }
+
+  // The gutter and the row gap are padding inside each link rather than
+  // margin between them, so the links are contiguous and there's no gap to
+  // hover in between
+  .social-grid__link {
+    @include grid-element($social-grid__item-width + $social-grid__gutter, 0);
+    padding: ($social-grid__row-gap * 0.5) ($social-grid__gutter * 0.5);
+
+    // The grid is full width below sm: two per row as well
+    @include screen-xs { width: 50%; }
+
+    border: none;
+    transition: color $link-transition-time ease-in-out;
+
+    .social-grid__icon {
+      font-size: $social-grid-icon__size;
+      display: block;
+    }
+
+    .social-grid__caption {
+      @include typography__body-compact;
+
+      display: block;
+      margin-top: 1rem;
+      text-decoration: none;
+    }
+  }
+}

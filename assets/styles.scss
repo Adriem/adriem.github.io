@@ -1,11 +1,31 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+
+// Global variables from content
+$timeline-entries: {{ site.data.en.experience.timeline_highlights | size | plus: 1 }};
+
 @charset "utf-8";
 
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        /* "syntax-highlighting", */
-        "header",
-        "project";
+@import "reset";
+
+@import "parallax";
+
+@import "colors";
+@import "typography";
+@import "themes";
+
+@import "section";
+@import "project";
+
+@import "_components/navbar";
+@import "_components/text-block";
+@import "_components/text-statement";
+@import "_components/text-split";
+@import "_components/social-grid";
+
+@import "_sections/splash";
+@import "_sections/contact";
+@import "_sections/footer";
+@import "_sections/timeline";
+@import "_sections/skills";

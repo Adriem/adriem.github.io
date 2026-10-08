@@ -1,0 +1,12 @@
+{% assign footer_data = site.data[page.language].common.footer %}
+
+<section class= "footer" id="footer">
+  <div class="container">
+    <div class="copyright-notice" id="copyright-notice">
+      {{ footer_data.copyright_notice }}
+    </div>
+
+  </div>
+</section>
+
+{% assign footer_data = nil %}

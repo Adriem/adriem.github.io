@@ -1,0 +1,64 @@
+@import "./_typography.scss";
+
+// Vertical section paddings
+$padding-regular : 2.5rem;
+$padding-large   : 5rem;
+$padding-xlarge  : 7.5rem;
+
+.section {
+  position: relative;  // Necessary for parallax efect
+
+  width: 100%;
+  margin: 0;
+  padding: $padding-regular 0;
+
+  @include typography__body-compact;
+  letter-spacing: 0.01em;
+
+  // Vertical padding modifiers. The top/bottom ones come after the vertical
+  // ones so they can override a side.
+  &.section--padding-y-none { padding-top: 0; padding-bottom: 0 }
+  &.section--padding-y-regular { padding-top: $padding-regular; padding-bottom: $padding-regular }
+  &.section--padding-y-large   { padding-top: $padding-large; padding-bottom: $padding-large }
+  &.section--padding-y-xlarge  { padding-top: $padding-xlarge; padding-bottom: $padding-xlarge }
+
+  &.section--padding-top-none { padding-top: 0 }
+  &.section--padding-top-regular { padding-top: $padding-regular }
+  &.section--padding-top-large   { padding-top: $padding-large }
+  &.section--padding-top-xlarge  { padding-top: $padding-xlarge }
+
+  &.section--padding-bottom-none { padding-bottom: 0 }
+  &.section--padding-bottom-regular { padding-bottom: $padding-regular }
+  &.section--padding-bottom-large   { padding-bottom: $padding-large }
+  &.section--padding-bottom-xlarge  { padding-bottom: $padding-xlarge }
+
+  .section__title {
+    @include typography__title-large;
+
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 1em;
+    padding: 0;
+
+    // Same width limit and padding as single-column text below md, centered
+    @include screen-up-to($width-md) {
+      max-width: $text-max-width--single-col;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 $text-padding--single-col;
+    }
+
+    &.section__title--center { text-align: center }
+    &.section__title--left   { text-align: left   }
+    &.section__title--right  { text-align: right  }
+
+    .section__surtitle {
+      @include typography__body-compact;
+
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0.25em 0 0;
+    }
+  }
+}

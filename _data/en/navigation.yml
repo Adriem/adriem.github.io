@@ -1,22 +1,15 @@
 home:
-  label: projects
-  url: /en/
-  anchor: '#projects'
-  align: left
-  header: true
-  footer: true
+  label: home
+  anchor: '#splash'
 
 about:
-  label: about me
-  url: /en/about/
-  anchor: '#who-am-i'
-  align: left
-  header: true
-  footer: true
+  label: about
+  anchor: '#about'
+
+projects:
+  label: projects
+  anchor: '#projects'
 
 contact:
   label: contact
   anchor: '#contact'
-  align: right
-  header: true
-  footer: false

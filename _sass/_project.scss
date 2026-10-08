@@ -1,111 +1,177 @@
-/* FONTS */
-$title-font: 700 15pt Questrial, Josefin Sans, sans-serif;
-$description-font: 14pt Questrial, Josefin Sans, sans-serif;
-$type-font: 10pt Questrial, Josefin Sans, sans-serif;
-$notice-font: 600 9pt Questrial, Josefin Sans, sans-serif;
+@import "_typography";
 
-/* COLORS */
-$project-light: #9a918d;
-$project-dark: #48433d;
-$notice-foreground: $project-dark;
-/* $notice-background: #f4b272; */
-/* $notice-background: #e49272; */
-/* $notice-background: #c48262; */
-/* $notice-background: #daaa8c; */
-$notice-background: #d79a7c;
-/* $notice-background: #c29e8d; */
+$project-width: 372px;
+$project-gutter-width: 10px;
 
-.project {
+$project-height: 340px;
+$repo-height: 120px;
 
-    @media(min-width:768px) { padding: 10px 5px; }
-    @media(max-width:767px) { padding: 10px 0; }
+$project-notice-font: $font-weight__bold 9pt $_font-family__default;
 
-    .project-content {
+$project-fg-color: $gray-600;
+$project-bg-color: $legacy_brand-taupe-light;
+$project-title-color: $gray-600;
+$project-description-color: $gray-600;
+$project-notice-fg-color: $neutral-black;
+// Layered (top to bottom): a warning gradient fading out towards the right,
+// a brand red one fading in towards the right, and a solid white base so the
+// thumbnail doesn't show through
+$project-notice-bg: linear-gradient(to right,
+                                    rgba($semantic-warning, 1),
+                                    rgba($semantic-warning, 0.5)),
+                    linear-gradient(to right,
+                                    rgba($brand-red, 0),
+                                    rgba($brand-red, 0.8)),
+                    $neutral-white;
 
-        text-decoration: none !important;
+$project-separator-color: $gray-600;
+$project-border-color: $gray-600;
+// The 30% hint moves the midpoint of the lilac-to-pink transition
+$project-card-bg: linear-gradient(to right, rgba($brand-lilac, 0.2), 30%, rgba($brand-pink, 0.2));
 
-        img {
-            border: 1px solid $project-dark;
-            border-bottom: 0;
-            z-index: -1;
-        }
+// Between the thumbnail and the body: the navbar decoration's gradient, but
+// starting from lilac instead of red
+$project-body-separator-height: 3px;
+$project-body-separator-bg: linear-gradient(to right,
+                                            $brand-lilac 10%,
+                                            rgba($brand-red, 0.15) 95%),
+                            rgba(#00f, 0.13);
+$project-body-padding: 10px;
 
-        div {
-            border: { width: 0 1px; style: solid; color: $project-dark; }
-            margin: 0 auto;
-            max-width: 372px;
-        }
 
-        .project-body {
-            &.bordered-top { border-width: 1px 1px 0 !important; }
-            min-height: 119px;
-            @media (max-width: 1199px) and (min-width: 992px) { min-height: 144px; }
-            padding: 15px;
-            color: $project-dark;
-            background-color: $project-light;
+.project-grid, .repository-grid {
+  @include grid($project-width, $project-gutter-width);
 
-            .project-title {
-                font: $title-font;
-                margin: 5px 0;
-            }
+  // Flex (instead of the floats from grid-element) so cards on the same row
+  // stretch to the tallest one
+  display: flex;
+  flex-wrap: wrap;
 
-            .project-separator {
-                margin: 10px 70px;
-                border: {
-                    width: 1px 0 0;
-                    style: solid;
-                    color: darken($project-light, 15%);
-                }
-            }
+  .project, .repository {
+    @include grid-element($project-width, $project-gutter-width);
 
-            .project-description {
-                font: $description-font;
-                margin: 5px 0;
-            }
-            
-        }
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+    color: $project-bg-color;
 
-        .project-type {
-            font: $type-font;
-            text-transform: lowercase;
-            padding: 3px;
-            color: #FFFFFF;
-            background-color: $project-dark;
-        }
+    // Card border around the thumbnail and the body
+    border: 1px solid $project-border-color;
+    background: $project-card-bg;
 
-        .notice-container {
-            margin-top: -21px !important;
-        }
-        .notice {
-            margin: 0;
-            position: relative;
-            font: $notice-font;
-            text-transform: uppercase;
-            padding: 4px;
-            color: $notice-foreground;
-            background-color: $notice-background;
-            z-index: 10;
-        }
-
+    .project-body, .repo-body {
+        padding: $project-body-padding;
     }
+
+    // Separator under the thumbnail, spanning the full card width (the
+    // negative margins cancel the body padding)
+    .project-body::before {
+      content: '';
+      display: block;
+      height: $project-body-separator-height;
+      margin: (-$project-body-padding) (-$project-body-padding) $project-body-padding;
+      background: $project-body-separator-bg;
+    }
+
+
+    .project-title, .repo-title {
+      @include typography__title-small;
+
+      color: $project-title-color;
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    .project-description, .repo-description {
+      @include typography__body-compact;
+
+      color: $project-description-color;
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    // Same inline bullet list as the skills section
+    .project-tags {
+      @include bullet-list;
+      padding: 5px 0;
+    }
+
+    .project-type, .repo-type {
+        display: none;
+    }
+
+    .project-separator {
+        display: none;
+        margin: 10px 70px;
+        border: {
+            width: 1px 0 0;
+            style: solid;
+            color: $project-separator-color;
+        }
+    }
+
+    // Thumbnail with the notice laid over its bottom edge. The notice is out
+    // of the flow, so the body (and its separator) always starts right where
+    // the thumbnail ends.
+    .project-media {
+      position: relative;
+    }
+
+    .notice-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 5px;
+
+      .notice {
+        margin: 0 1px;
+        position: relative;
+        font: $project-notice-font;
+        text-transform: uppercase;
+        line-height: 25px;
+        color: $project-notice-fg-color;
+        background: $project-notice-bg;
+        z-index: 10;
+      }
+    }
+
+    // Fills the card inside its border, shrinking along with it on mobile
+    .project-thumbnail {
+      max-width: 100%;
+    }
+
+    // Below sm the grid is full width, but the cards keep their fixed width,
+    // overflowing narrow screens. Give each its own row instead, centered and
+    // shrinking when the screen is narrower than them.
+    @include screen-xs {
+      float: none;
+      width: 100%;
+      max-width: $project-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  // The container is full width below sm, keep the cards off the screen edges
+  @include screen-xs { padding: 0 1.5rem; }
+
+  .project { min-height: $project-height }
+  .repository { min-height: $repo-height }
+  .repository {
+    // border-top: 1px solid $project-border-color;
+    // border-bottom: 1px solid $project-border-color;
+    // border-right: 1px solid linear-gradient(to bottom, $project-border-color, rgba(0,0,0,0));
+    // border-left: 1px solid linear-gradient(to bottom, $project-border-color, rgba(0,0,0,0));
+
+    .repo-separator {
+        margin: 10px 70px;
+        border: {
+            width: 1px 0 0;
+            style: solid;
+            color: $project-separator-color;
+        }
+    }
+  }
 }
 
-/* $brownLight: #957E6A; */
-/* $brownDark: #52453A; */
-/* $neutralLight: #9a918d; */
-/* $neutralDark: #48433d; */
-/* $blueLight: #8897B9; */
-/* $blueDark: #41475A; */
-/* $blackLight: #888888; */
-/* $blackDark: #444444; */
-/* $redLight: #A25452; */
-/* $redDark: #692A29; */
-/* $greenLight: #598C70; */
-/* $greenDark: #304E3E; */
-/* [> $titleColor: #8E7763; <] */
-/* $noticeBgColor: #f4b272; */
-/* $noticeFgColor: $brownDark; */
-
-/* $title-font: Questrial, Josefin Sans, sans-serif; */
-/* $description-font: Questrial, Josefin Sans, sans-serif; */
-/* $title-color: #877; */

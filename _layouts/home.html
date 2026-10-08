@@ -1,46 +1,61 @@
 ---
-layout: default
+# Defines the structure of the landing page. Each localisation creates a page that
+# uses this layout and sets `language` to load the matching data from _data/<lang>/.
+
+layout: base
 ---
-{% assign portfolio = site.data[page.language].portfolio %}
+{% include section-navbar.html %}
 
-<div class="text-center col-xs-12 section">
+<div class="parallax">
+  {% include section-home-splash.html %}
 
-  <div class="jumbotron project-jumbo">
-    <div class="row">
-      <div class="col-lg-9 col-md-10 col-sm-9 col-xs-12">
+  <section id="about" class="section section--padding-top-large theme--default">
+    {% include section-text-statement.html
+               statement=page.intro %}
+  </section>
 
-        <p class="lead">{{ page.contents.jumbo.title }}</p>
-        <div class="visible-xs-block">
-            <img class="img-responsive img-circle avatar"
-                 src="/assets/img/avatar-squared.jpg"></img>
-        </div>
-        <p>{{ page.contents.jumbo.body }}</p>
+  {% assign experience = site.data[page.language].experience %}
+  {% assign skills     = site.data[page.language].skills %}
 
-      </div>
-    </div>
-  </div>
+  <section id="trajectory" class="section theme--default">
+    {% include section-timeline.html
+               title=page.trajectory.title
+               surtitle=page.trajectory.surtitle
+               experience=experience %}
+  </section>
+
+  <section id="skills" class="section section--padding-bottom-large theme--default">
+    {% include section-skills.html
+               title=page.skills.title
+               surtitle=page.skills.surtitle
+               skills=skills %}
+  </section>
+
+  <section id="ai-stance" class="section section--padding-y-xlarge theme--red-lilac-light">
+    {% include section-text-split.html
+               id='ai-stance'
+               title=page.ai_stance.title
+               body=page.ai_stance.body
+               expand_label=page.ai_stance.expand_label %}
+  </section>
+
+  <section id="projects" class="section section--padding-top-large theme--default">
+    {% include section-card-grid.html
+               title=page.projects.title
+               surtitle=page.projects.surtitle %}
+  </section>
+
+  <section id="work-ethics" class="section section--padding-bottom-large theme--default">
+    {% include section-text-grid.html
+               id='work-ethics'
+               title=page.work_ethics.title
+               surtitle=page.work_ethics.surtitle
+               summary=page.work_ethics.content %}
+  </section>
+
+  <section id="contact" class="section theme--red-lilac-dark">
+    {% include section-contact.html %}
+  </section>
+
+  {% include section-footer.html %}
 </div>
-
-<div class="text-center col-xs-12 section" id="projects">
-    <h2 class="section-header">{{ page.contents.projects.title }}</h2>
-    <p class="col-sm-8 col-sm-offset-2 main-paragraph">
-      {{ page.contents.projects.sub_title }}
-    </p>
-
-    {% for item in portfolio.projects %}
-        {% include _components/project.html project=item %}
-    {% endfor %}
-</div>
-
-<div class="text-center col-xs-12 section">
-    <h2 class="section-header">{{ page.contents.repos.title }}</h2>
-    <p class="col-sm-8 col-sm-offset-2 main-paragraph">
-      {{ page.contents.repos.sub_title }}
-    </p>
-
-    {% for item in portfolio.repositories %}
-        {% include _components/repository.html project=item %}
-    {% endfor %}
-</div>
-
-{% assign portfolio = nil %}

@@ -1,0 +1,56 @@
+@import "_mixins";
+@import "_typography";
+
+$text-block__padding--wide      : 3rem;   // same as the double-column text split
+$text-block__list-item-spacing  : 0.5rem;
+$text-block__list-intro-spacing : 1rem;   // between a paragraph and the list it introduces
+$text-block__list-indent        : 2em;
+
+.text-block {
+  width: 100%;
+  margin: 0 auto;
+
+  // Lateral padding. Below md the container is full width, so the text is also
+  // capped like single-column text split (and kept off the screen edges).
+  padding: 0 $text-block__padding--wide;
+  @include screen-up-to($width-md) {
+    max-width: $text-max-width--single-col;
+    padding: 0 $text-padding--single-col;
+  }
+
+  .text-block__title {
+    @include typography__title-medium;
+
+    padding: 0;
+    margin: 0 0 0.5em 0;
+    text-align: center;
+  }
+
+  .text-block__paragraph {
+    @include paragraph(50rem, 0rem);
+    @include body-paragraph;
+
+    &:last-child { margin-top: 0; }
+
+    // A paragraph introducing a list sits closer to it
+    &:has(+ .text-block__list) { margin-bottom: $text-block__list-intro-spacing; }
+  }
+
+  // Bullet list between paragraphs: same width, spacing and alignment
+  .text-block__list {
+    @include paragraph(50rem, $body-paragraph-spacing);
+
+    padding-left: $text-block__list-indent;
+    text-align: left;
+
+    &:last-child { margin-bottom: 0; }
+
+    li + li { margin-top: $text-block__list-item-spacing; }
+    strong { font-weight: $font-weight__bold; }
+  }
+
+  // Paragraphs after the first one collapse in the single column, like the
+  // text split
+  @include collapsible('.text-block__toggle', '.text-block__more', '.text-block__cta',
+                       $width-md);
+}

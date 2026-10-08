@@ -1,0 +1,10 @@
+navbar:
+  title: Adrián&nbsp;Moreno
+
+splash:
+  image: avatar_gradient.jpg
+  kicker: Hello there!
+  headline: I'm&nbsp;Adrián, engineer.
+
+footer:
+  copyright_notice: '&copy; 2016-2026 Adrián Moreno'

@@ -1,0 +1,115 @@
+@import "./_colors.scss";
+@import "./_layout.scss";
+@import "./_animations.scss";
+
+// Inline list separated by dimmed bullets, for a <ul>/<ol> of <li>. Each
+// bullet is glued to the item before it (non-breaking space), and items don't
+// wrap internally, so lines only break between items and never start with a
+// bullet.
+@mixin bullet-list {
+  @include typography__body-compact;
+  font-weight: $font-weight__regular;
+  color: $neutral-black;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    display: inline;
+    white-space: nowrap;
+
+    &:not(:last-child)::after {
+      content: "\00a0•";
+      color: rgba($neutral-black, 0.3);
+      font-weight: $font-weight__bold;
+    }
+  }
+}
+
+// Body text paragraphs (text block, text split): spaced apart, justified, and
+// left-aligned in the narrow single column below md, where justified text
+// looks odd. The spacing is in rem so other elements can match it regardless
+// of their font size.
+$body-paragraph-spacing: 1.5rem;
+
+@mixin body-paragraph {
+  margin-bottom: $body-paragraph-spacing;
+  text-align: justify;
+  text-wrap: pretty;
+
+  &:last-child { margin-bottom: 0; }
+
+  @include screen-up-to($width-md) { text-align: left; }
+
+  // The default `bolder` only takes the light body text (300) up to 400
+  strong { font-weight: $font-weight__bold; }
+}
+
+// Collapsible content with a "read more / show less" button, below $breakpoint.
+// CSS only: a hidden checkbox ($toggle) placed before the content and a label
+// ($cta) for it, containing `#{$cta}-more`, `#{$cta}-less` and `#{$cta}-icon`
+// (a chevron) elements. The button is hidden from $breakpoint up.
+@mixin collapsible($toggle, $content, $cta, $breakpoint, $time: 0.3s) {
+  #{$cta} { display: none; }
+
+  @include screen-up-to($breakpoint) {
+    #{$content} {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height $time ease-in-out;
+    }
+
+    #{$cta} {
+      display: inline-block;
+      cursor: pointer;
+      @include typography__button-label;
+      font-weight: $font-weight__bold;
+      color: $neutral-black;
+      margin-top: 0;
+      text-decoration: underline;
+      transition: margin-top $time ease-in-out;
+    }
+
+    #{$cta}-less { display: none; }
+    #{$cta}-more { display: inline; }
+
+    // Points down when collapsed, flips up as the content expands
+    #{$cta}-icon {
+      display: inline-block;
+      margin-left: 0.35em;
+      font-size: 0.75em;
+      transition: transform $time ease-in-out;
+    }
+
+    #{$toggle}:checked ~ #{$content} {
+      max-height: 50rem;
+    }
+
+    // Spaced from the content like the paragraphs, only when expanded
+    // (collapsed, the content has no height and whatever precedes it already
+    // spaces the button)
+    #{$toggle}:checked ~ #{$cta} {
+      margin-top: $body-paragraph-spacing;
+    }
+
+    #{$toggle}:checked ~ #{$cta} #{$cta}-more { display: none; }
+    #{$toggle}:checked ~ #{$cta} #{$cta}-less { display: inline; }
+    #{$toggle}:checked ~ #{$cta} #{$cta}-icon { transform: rotate(180deg); }
+  }
+}
+
+@mixin link {
+    text-decoration: none;
+    margin: 0 0.1em;
+    padding: 0 0.5em;
+    display: inline-block;
+    transition: color $link-transition-time ease-in-out;
+}
+
+@mixin paragraph($width, $margin-bottom) {
+    max-width: $width;
+    text-align: justify;
+    margin-bottom: $margin-bottom;
+    margin-left: auto;
+    margin-right: auto;
+}

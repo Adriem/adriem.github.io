@@ -1,0 +1,57 @@
+{% assign title     = include.title %}
+{% assign surtitle  = include.surtitle %}
+{% assign portfolio = site.data[page.language].portfolio %}
+
+<div class="container">
+  {% include _components/section-title.html
+             title=title
+             surtitle=surtitle %}
+
+  <div class="project-grid">
+    {% for project in portfolio.projects %}
+    {% comment %} Projects without a URL render as a plain, non-clickable card {% endcomment %}
+    {% if project.url %}
+      {% assign project_tag = 'a' %}
+    {% else %}
+      {% assign project_tag = 'div' %}
+    {% endif %}
+
+    <{{ project_tag }} class="project"
+      {% if project.url %}href="{{ project.url }}" target="_blank"{% endif %}>
+
+      <div class="project-media">
+        <img class="project-thumbnail"
+            alt="Project thumbnail"
+            src="{{ project.pic | prepend: "/assets/img/" | relative_url }}">
+
+        {% if project.notice %}
+        <div class="notice-container">
+            <p class="notice">{{ project.notice }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+        <div class="project-body">
+            <p class="project-title">{{ project.name }}</p>
+            <div class="project-separator"></div>
+            <p class="project-description">{{ project.description }}</p>
+            {% if project.tags %}
+            <ul class="project-tags">
+              {% for tag in project.tags %}
+              <li>{{ tag }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <div><p class="project-type">{{ project.type }}</p></div>
+
+    </{{ project_tag }}>
+    {% endfor %}
+  </div>
+</div>
+
+{% assign title     = nil %}
+{% assign surtitle  = nil %}
+{% assign portfolio = nil %}
+{% assign project_tag = nil %}
