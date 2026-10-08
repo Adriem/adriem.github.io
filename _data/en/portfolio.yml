@@ -1,4 +1,15 @@
 projects:
+  - name: Low-ink MTG playtest cards
+    pic: random-map-preview.jpg
+    url:
+    notice: Coming soon!
+    type: web application
+    tags:
+      - web
+      - typescript
+      - react
+    description: Printer ink is expensive, playtest cards shouldn't be. Written in React.
+
   - name: Random map generator
     pic: random-map-preview.jpg
     url: http://adriem.me/random-map-generator
@@ -9,18 +20,6 @@ projects:
       - coffeescript
       - pgc
     description: Little random map generator written in Coffeescript.
-
-  - name: Chatsockets
-    pic: chatsockets-preview.jpg
-    url: http://chat.adriem.me
-    notice: Temporarily down :(
-    type: web application
-    tags:
-      - web
-      - websockets
-      - coffeescript
-      - angularjs
-    description: Websockets demonstration project over the MEAN stack with socket.io
 
   - name: OGame resource calculator
     pic: ogame-calculator-preview.jpg
@@ -33,81 +32,93 @@ projects:
       - angularjs
     description: OGame resources calculator written in Coffeescript with AngularJS.
 
-  # - name: Project Barataria
-  #   pic: barataria-preview.jpg
-  #   url: http://barataria.recuen.co
-  #   notice: With my friends from Pistacho Soft
-  #   type: web application
-  #   tags:
-  #     - web
-  #     - leaflet
-  #     - AngularJS
-  #   description: Project for the NASA's International Space Apps Challenge 2016.
+#  - name: Chatsockets
+#    pic: chatsockets-preview.jpg
+#    url: http://chat.adriem.me
+#    notice: Temporarily down :(
+#    type: web application
+#    tags:
+#      - web
+#      - websockets
+#      - coffeescript
+#      - angularjs
+#    description: Websockets demonstration project over the MEAN stack with socket.io
 
-    #   - name: POIs "R" Us
-    #     pic: pois-preview.jpg
-    #     url: http://pois.adriem.me
-    #     notice: Temporarily down :(
-    #     type: web application
-    #     tags:
-    #       - web
-    #       - google maps
-    #       - AngularJS
-    #       - MEAN
-    #     description: POI management tool built over the MEAN stack for a classroom project.
+# - name: Project Barataria
+#   pic: barataria-preview.jpg
+#   url: http://barataria.recuen.co
+#   notice: With my friends from Pistacho Soft
+#   type: web application
+#   tags:
+#     - web
+#     - leaflet
+#     - AngularJS
+#   description: Project for the NASA's International Space Apps Challenge 2016.
 
-    #   - name: Agnostic Bookmarks
-    #     pic: agnostic-bookmarks-preview.jpg
-    #     url: http://bookmarks.adriem.me
-    #     notice: Temporarily down :(
-    #     type: web application
-    #     tags:
-    #       - web
-    #       - leaflet
-    #       - AngularJS
-    #     description: Platform-agnostic bookmark manager built for a classroom project over MEAN.
+#   - name: POIs "R" Us
+#     pic: pois-preview.jpg
+#     url: http://pois.adriem.me
+#     notice: Temporarily down :(
+#     type: web application
+#     tags:
+#       - web
+#       - google maps
+#       - AngularJS
+#       - MEAN
+#     description: POI management tool built over the MEAN stack for a classroom project.
+
+#   - name: Agnostic Bookmarks
+#     pic: agnostic-bookmarks-preview.jpg
+#     url: http://bookmarks.adriem.me
+#     notice: Temporarily down :(
+#     type: web application
+#     tags:
+#       - web
+#       - leaflet
+#       - AngularJS
+#     description: Platform-agnostic bookmark manager built for a classroom project over MEAN.
 
 
-    # repositories:
-  # - name: My .vimrc
-  #   url: https://github.com/Adriem/my-vimrc
-  #   pic: agnostic-bookmarks-preview.jpg
-  #   type: Configuration file
-  #   tags:
-  #     - configuration
-  #   description: Just my .vimrc file, hope you find it interesting!
+# repositories:
+# - name: My .vimrc
+#   url: https://github.com/Adriem/my-vimrc
+#   pic: agnostic-bookmarks-preview.jpg
+#   type: Configuration file
+#   tags:
+#     - configuration
+#   description: Just my .vimrc file, hope you find it interesting!
 
-    #   - name: Vim Colorschemes
-    #     url: https://github.com/Adriem/vim-colorschemes
-    #     type: vim colorscheme
-    #     tags:
-    #       - colorscheme
-    #       - vim
-    #     description: My collection of custom vim colorschemes
+#   - name: Vim Colorschemes
+#     url: https://github.com/Adriem/vim-colorschemes
+#     type: vim colorscheme
+#     tags:
+#       - colorscheme
+#       - vim
+#     description: My collection of custom vim colorschemes
 
-    #   - name: Gentleman Colorscheme
-    #     url: https://adriem.github.io/gentleman-colorscheme
-    #     type: vim colorscheme
-    #     tags:
-    #       - colorscheme
-    #       - vim
-    #     description: A dark and terminal-friendly vim colorscheme, available in 5*2 flavours.
+#   - name: Gentleman Colorscheme
+#     url: https://adriem.github.io/gentleman-colorscheme
+#     type: vim colorscheme
+#     tags:
+#       - colorscheme
+#       - vim
+#     description: A dark and terminal-friendly vim colorscheme, available in 5*2 flavours.
 
-  # - name: My homepage
-  #   url: https://github.com/adriem/adriem.github.io
-  #   pic: agnostic-bookmarks-preview.jpg
-  #   type: jekyll website
-  #   tags:
-  #     - web page
-  #     - jekyll
-  #   description: The source code of this website, which is built with Jekyll on gh-pages.
+# - name: My homepage
+#   url: https://github.com/adriem/adriem.github.io
+#   pic: agnostic-bookmarks-preview.jpg
+#   type: jekyll website
+#   tags:
+#     - web page
+#     - jekyll
+#   description: The source code of this website, which is built with Jekyll on gh-pages.
 
-    #   - name: Shell Utilities
-    #     url: https://github.com/adriem/shell-utilities
-    #     type: scripts and code snippets
-    #     tags:
-    #       - shell
-    #       - unix
-    #       - script
-    #     description: A bunch of scripts and snippets to make my life a little easier :D
-    #
+#   - name: Shell Utilities
+#     url: https://github.com/adriem/shell-utilities
+#     type: scripts and code snippets
+#     tags:
+#       - shell
+#       - unix
+#       - script
+#     description: A bunch of scripts and snippets to make my life a little easier :D
+#

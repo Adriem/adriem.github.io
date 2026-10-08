@@ -59,6 +59,35 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 9. **`_data/en/social.yml`** — Commented-out Twitter and email link entries.
 
+### Layout
+
+10. **Sections** — Fix the vertical padding between consecutive sections that share the same color.
+
+### Content
+
+11. **Skills section** — See how to include SEO / GEO / marketing technologies / attribution, perhaps along with soft skills such as communication, teamwork, etc.
+
+12. **Projects section** — Update the projects list:
+    - Include the MTG proxy generator, with a "Coming soon" notice.
+    - Include the Milight bridge repo.
+    - Exclude ChatSockets and the OGame calculator.
+    - Check other repos worth including.
+    - Fix the project grid on mobile, and improve the cards rendering.
+
+13. **Socials (contact section)**:
+    - Replace the Wizards logo with Moxfield's, and update the description.
+    - Remove the grow animation; keep fading out the other links and highlighting the current one (ensure it works properly).
+    - Add an underline to the email, making sure the colors are different enough.
+    - Fix the grid on tablet viewports.
+
+14. **"Get to know me" section** — Finish it, either:
+    - A) "Get to know me" + subtitle + a 3-item text grid with personality claims, or
+    - B) Another text-split component with a headline and a 2-paragraph body.
+
+15. **Footer** — Simplify it: remove the Jekyll and GitHub Pages mentions unless required by their licenses.
+
+16. **Trajectory section** — Consider adding an education section.
+
 ## Bugs and issues
 
 ### Wrong social link
