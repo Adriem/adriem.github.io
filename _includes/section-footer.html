@@ -1,44 +1,7 @@
-{% assign sections    = site.data[page.language].navigation %}
 {% assign footer_data = site.data[page.language].common.footer %}
 
 <section class= "footer" id="footer">
   <div class="container">
-    {%comment%}
-    <div class="navbar-tabs">
-      <a class="tab" href="#header">{{ footer_data.back_to_top }}</a>
-    </div>
-
-    <div class="brand">
-      <h2 class="brand-title">{{ site.title }}</h2>
-    </div>
-
-    <nav class="navbar-tabs">
-      {% for section in sections %}
-        {% if section[1].footer %}
-
-          <!-- calculate element class -->
-          {% if section[1].url and page.url == section[1].url %}
-            {% assign elem_class = 'active' %}
-          {% endif %}
-
-          <!-- calculate element url -->
-          {% if section[1].url and page.url != section[1].url %}
-            {% assign elem_url = section[1].url | prepend: site.github.url %}
-          {% else %}
-            {% assign elem_url = section[1].anchor %}
-          {% endif %}
-
-          <a class="tab {{ elem_class }}" href="{{ elem_url }}">
-            {{ section[1].label }}
-          </a>
-
-          {% assign elem_class = nil %}
-          {% assign elem_url = nil %}
-        {% endif %}
-      {% endfor %}
-    </nav>
-    {%endcomment%}
-
     <div class="copyright-notice" id="copyright-notice">
       {{ footer_data.copyright_notice }}
     </div>
@@ -46,5 +9,4 @@
   </div>
 </section>
 
-{% assign sections    = nil %}
 {% assign footer_data = nil %}

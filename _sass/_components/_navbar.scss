@@ -146,7 +146,7 @@ $navbar-tabs__bg-padding     : 1.5em;
     padding: 0;
     transition: padding $navbar__collapse-time ease-in-out;
 
-    &:hover .navbar__tab:not(:hover):not(.active) {
+    &:hover .navbar__tab:not(:hover) {
       color: $navbar-tab__dim-color;
     }
 
@@ -164,8 +164,6 @@ $navbar-tabs__bg-padding     : 1.5em;
       z-index: $navbar-tab__z-index;
       color: $navbar-tab__color;
 
-      &.active { color: $navbar-tab__active-color; }
-
       &:after {
         content: '';
         width: 0px;
@@ -178,8 +176,7 @@ $navbar-tabs__bg-padding     : 1.5em;
                     background-color 0.25s ease-in-out;
       }
 
-      &.active:after,
-      &:not(.active):hover:after {
+      &:hover:after {
         background-color: $navbar-tab__active-color;
       }
 

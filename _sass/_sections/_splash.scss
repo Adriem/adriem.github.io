@@ -215,7 +215,6 @@
 
           color: $splash-social__fg-color;
           &:hover { color: $navbar-tab__hover-color; }
-          &.active { color: $navbar-tab__active-color; }
 
           @include typography__splash-link;
           text-transform: lowercase;

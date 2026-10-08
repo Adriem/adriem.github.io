@@ -23,11 +23,11 @@ The redesign replaces the old single-page layout (header + project list + contac
   - The title gets a marker-style highlight: a single box around both lines while the kicker is shown, one highlight per line otherwise.
   - Landscape phones (`screen-phone-landscape`) get a reduced splash: smaller single-line headline, and the social bar becomes a decorative line without links.
   - Social links are kept to a single line; links that don't fit are hidden.
-- **Collapsing navbar**: fixed navbar that collapses on scroll (controlled via `IntersectionObserver` in `script.js`), with slide-in animation.
+- **Collapsing navbar**: fixed navbar that collapses on scroll (controlled via `IntersectionObserver` in `script.js`), with slide-in animation. Its tabs (and the mobile menu links) are anchor links to the page sections, defined in `_data/en/navigation.yml` (`label` + `anchor` per entry).
 - **Mobile menu**: below `$width-navbar-collapse` (700px) the navbar tabs collapse into a hamburger toggle. The menu slides down from the top like a sheet of paper, with the navbar hanging from it as a pull tab, over a fading gray backdrop. It closes on toggle, outside click or navigation, and when it stops being rendered (`ResizeObserver` in `script.js`, e.g. after rotating the device).
 - **Timeline section**: vertical timeline on mobile, zigzag with overlapping entries from `md` up. The line and dots share a single brand gradient.
 - **Skills section**: one card per category in a 2x2 grid (single column below `md`), with a pink gradient background, a slanted highlight on the category title and the skills as an inline list separated by bullets (`bullet-list` mixin).
-- **Projects section**: bordered cards with a lilac-to-pink background, the brand gradient as a separator under the thumbnail, and the project tags as a bullet list. Cards on the same row have equal heights (flex grid), and stack centered on mobile. Projects without a URL render as non-clickable cards; an optional notice (e.g. "Coming soon!") is laid over the thumbnail.
+- **Projects section**: bordered cards with a lilac-to-pink background, a gradient separator under the thumbnail, and the project tags as a bullet list. Cards on the same row have equal heights (flex grid), and stack centered on mobile. Projects without a URL render as non-clickable cards; an optional notice (e.g. "Coming soon!") is laid over the thumbnail.
 - **Contact section**: social links in a single row of four from `lg` up, two balanced rows of two below it. Hovering or focusing a link dims the others (a single color transition, like the navbar tabs; the links have no gaps between them so the effect doesn't flicker). The email link is underlined.
 - **AI stance section** (`#ai-stance`, front matter `ai_stance`, formerly "my philosophy"): text split with a headline and a two-paragraph body.
 - **Work ethics section** (`#work-ethics`, front matter `work_ethics`, "How I work", formerly "fun facts" / "Get to know me"): text grid whose body mixes paragraphs and a bullet list (`list:` items in the page front matter).
@@ -39,7 +39,7 @@ The redesign replaces the old single-page layout (header + project list + contac
   - `_layout.scss`: breakpoints, z-index, grid, container, and the responsive mixins. Breakpoint ranges have exclusive upper bounds, so adjacent ranges don't overlap. Also defines the navbar collapse width, aspect-ratio mixins (`screen-ratio-*`), `screen-phone-landscape`, the shared max widths for narrow content blocks (`$content-max-width--*`) and the width limit and padding of single-column text (`$text-*--single-col`, used by section titles and the text split).
   - `_animations.scss` (transition times, keyframe mixins), `_typography.scss` (typography mixins, font family and the three font weights in use: `$font-weight__light` / `__regular` / `__bold`, i.e. 300 / 400 / 700), `_mixins.scss` (link, paragraph, bullet list), `_themes.scss` (section color themes).
   - `_section.scss`: base section styles. Sections have a `regular` vertical padding by default, adjustable per section with `section--padding-{y,top,bottom}-{none,regular,large,xlarge}` modifiers (used in `home.html` to keep consistent spacing between consecutive sections that share a color).
-- **Consolidated data**: `common.yml` centralises navbar, splash, and footer strings. Social/contact data lives in `_data/en/social.yml`. Section content lives in page front matter.
+- **Consolidated data**: `common.yml` centralises navbar, splash, and footer strings (the footer is just the copyright notice). Social/contact data lives in `_data/en/social.yml`. Section content lives in page front matter.
 - **Removed**: `_layouts/about.html`, `pages/about-en.html`, `_includes/_sections/header.html`, old component files (inlined into sections), `_variables.scss`, `_base.scss`, `_nav/` directory, `_syntax-highlighting.scss`.
 
 ## TODOs
@@ -50,36 +50,20 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 2. **`_includes/doc-head.html`** — Font Awesome is loaded from cdnjs; replace it with a personalised Font Awesome kit.
 
-### Commented-out code blocks
-
-3. **`_includes/section-navbar.html:8-10`** — Commented-out avatar image in the navbar.
-
-4. **`_includes/section-navbar.html:65-85`** — Old splash section HTML left inside a `{% comment %}` block.
-
-5. **`_includes/section-footer.html:6-40`** — Old footer navigation (back-to-top link, nav tabs) wrapped in `{%comment%}`.
-
-6. **`_includes/doc-head.html`** — Commented-out blocks: dynamic CSS file loop, RSS XML link.
-
-7. **`_data/en/portfolio.yml`** — Three excluded projects (OGame calculator, Agnostic Bookmarks, ChatSockets) are left commented out.
-
-8. **`_data/en/navigation.yml`** — The `url` field is commented out on all nav items. Navigation currently works via anchor links only.
-
-9. **`_data/en/social.yml`** — Commented-out Twitter and email link entries.
-
 ### Content
 
-10. **Skills section** — See how to include SEO / GEO / marketing technologies / attribution, perhaps along with soft skills such as communication, teamwork, etc.
+3. **Skills section** — See how to include SEO / GEO / marketing technologies / attribution, perhaps along with soft skills such as communication, teamwork, etc.
 
-11. **`_data/en/social.yml`** — The Moxfield link uses Font Awesome's Wizards of the Coast logo as its icon; replace it with Moxfield's logo.
+4. **`_data/en/social.yml`** — The Moxfield link uses Font Awesome's Wizards of the Coast logo as its icon; replace it with Moxfield's logo.
 
-12. **Trajectory section** — Consider adding an education section.
+5. **Trajectory section** — Consider adding an education section.
 
 ## Bugs and issues
 
 ### HTTPS not enabled
 
 - **Hosting** — The site isn't served over HTTPS yet. Once it is, switch the site's own URLs to `https://`:
-  - **`_config.yml`** — `url: "http://adriem.me"` (used for the feed links and the `/en/` redirect).
+  - **`_config.yml`** — `url: "http://adriem.me"` (used for the `/en/` redirect).
   - **`_data/en/portfolio.yml`** — The random map generator project links to `http://adriem.me/random-map-generator`.
 
 ### Mobile viewport height

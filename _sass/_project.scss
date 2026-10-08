@@ -29,9 +29,13 @@ $project-border-color: $gray-600;
 // The 30% hint moves the midpoint of the lilac-to-pink transition
 $project-card-bg: linear-gradient(to right, rgba($brand-lilac, 0.2), 30%, rgba($brand-pink, 0.2));
 
-// Between the thumbnail and the body, styled as the navbar decoration
+// Between the thumbnail and the body: the navbar decoration's gradient, but
+// starting from lilac instead of red
 $project-body-separator-height: 3px;
-$project-body-separator-bg: $gradient-bg__brand--splash;
+$project-body-separator-bg: linear-gradient(to right,
+                                            $brand-lilac 10%,
+                                            rgba($brand-red, 0.15) 95%),
+                            rgba(#00f, 0.13);
 $project-body-padding: 10px;
 
 
@@ -69,6 +73,7 @@ $project-body-padding: 10px;
       margin: (-$project-body-padding) (-$project-body-padding) $project-body-padding;
       background: $project-body-separator-bg;
     }
+
 
     .project-title, .repo-title {
       @include typography__title-small;

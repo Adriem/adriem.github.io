@@ -19,3 +19,8 @@ sass:
   style: compressed
 plugins:
   - jekyll-redirect-from
+
+# Project docs, not part of the site (added to Jekyll's default exclusions)
+exclude:
+  - README.md
+  - REDESIGN.md

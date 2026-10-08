@@ -4,9 +4,11 @@
 
 $skills-grid__gap          : 1.5rem;
 $skills-card__padding      : 0.75rem 1.25rem 1.25rem;
+// Layered: a pink gradient over a faint lilac base
 $skills-card__bg           : linear-gradient(120deg,
                                              rgba($brand-pink, 0),
-                                             rgba($brand-pink, 0.6));
+                                             rgba($brand-pink, 0.6)),
+                             rgba($brand-lilac, 0.1);
 
 // Category title highlight, in the colours of the timeline (same 10%-90% stops)
 $skills-title__bg : linear-gradient(to right,
@@ -48,6 +50,7 @@ $skills-title__padding-end   : 2em;
   // negative margin cancels the start padding, aligning the text with the list.
   .skills-grid__category-title {
     @include typography__title-small;
+    -webkit-text-stroke: 1px $neutral-white;
     display: inline-block;
     margin: 0 0 0.75rem (-$skills-title__padding-start);
     padding: 0 $skills-title__padding-end 0 $skills-title__padding-start;
