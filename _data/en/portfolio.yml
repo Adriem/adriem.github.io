@@ -3,7 +3,6 @@ projects:
     pic: low-ink-mtg-press-preview.jpg
     url:
     notice: Coming soon!
-    type: web application
     tags:
       - JavaScript
       - React
@@ -14,7 +13,6 @@ projects:
     pic: random-map-preview.jpg
     url: http://adriem.me/random-map-generator
     notice:
-    type: web application
     tags:
       - coffeescript
       - bootstrap
@@ -25,7 +23,6 @@ projects:
     pic: milight-controller-preview.jpg
     url: https://github.com/Adriem/milight-controller
     notice:
-    type: web application
     tags:
       - Node.js
       - HTTP

@@ -4,11 +4,9 @@ $project-width: 372px;
 $project-gutter-width: 10px;
 
 $project-height: 340px;
-$repo-height: 120px;
 
 $project-notice-font: $font-weight__bold 9pt $_font-family__default;
 
-$project-fg-color: $gray-600;
 $project-bg-color: $legacy_brand-taupe-light;
 $project-title-color: $gray-600;
 $project-description-color: $gray-600;
@@ -24,7 +22,6 @@ $project-notice-bg: linear-gradient(to right,
                                     rgba($brand-red, 0.8)),
                     $neutral-white;
 
-$project-separator-color: $gray-600;
 $project-border-color: $gray-600;
 // The 30% hint moves the midpoint of the lilac-to-pink transition
 $project-card-bg: linear-gradient(to right, rgba($brand-lilac, 0.2), 30%, rgba($brand-pink, 0.2));
@@ -39,7 +36,7 @@ $project-body-separator-bg: linear-gradient(to right,
 $project-body-padding: 10px;
 
 
-.project-grid, .repository-grid {
+.project-grid {
   @include grid($project-width, $project-gutter-width);
 
   // Flex (instead of the floats from grid-element) so cards on the same row
@@ -47,7 +44,7 @@ $project-body-padding: 10px;
   display: flex;
   flex-wrap: wrap;
 
-  .project, .repository {
+  .project {
     @include grid-element($project-width, $project-gutter-width);
 
     margin-top: 10px;
@@ -60,7 +57,7 @@ $project-body-padding: 10px;
     border: 1px solid $project-border-color;
     background: $project-card-bg;
 
-    .project-body, .repo-body {
+    .project-body {
         padding: $project-body-padding;
     }
 
@@ -75,7 +72,7 @@ $project-body-padding: 10px;
     }
 
 
-    .project-title, .repo-title {
+    .project-title {
       @include typography__title-small;
 
       color: $project-title-color;
@@ -83,7 +80,7 @@ $project-body-padding: 10px;
       padding: 5px 0;
     }
 
-    .project-description, .repo-description {
+    .project-description {
       @include typography__body-compact;
 
       color: $project-description-color;
@@ -95,20 +92,6 @@ $project-body-padding: 10px;
     .project-tags {
       @include bullet-list;
       padding: 5px 0;
-    }
-
-    .project-type, .repo-type {
-        display: none;
-    }
-
-    .project-separator {
-        display: none;
-        margin: 10px 70px;
-        border: {
-            width: 1px 0 0;
-            style: solid;
-            color: $project-separator-color;
-        }
     }
 
     // Thumbnail with the notice laid over its bottom edge. The notice is out
@@ -157,21 +140,5 @@ $project-body-padding: 10px;
   @include screen-xs { padding: 0 1.5rem; }
 
   .project { min-height: $project-height }
-  .repository { min-height: $repo-height }
-  .repository {
-    // border-top: 1px solid $project-border-color;
-    // border-bottom: 1px solid $project-border-color;
-    // border-right: 1px solid linear-gradient(to bottom, $project-border-color, rgba(0,0,0,0));
-    // border-left: 1px solid linear-gradient(to bottom, $project-border-color, rgba(0,0,0,0));
-
-    .repo-separator {
-        margin: 10px 70px;
-        border: {
-            width: 1px 0 0;
-            style: solid;
-            color: $project-separator-color;
-        }
-    }
-  }
 }
 

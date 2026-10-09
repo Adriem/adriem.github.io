@@ -33,7 +33,6 @@
 
         <div class="project-body">
             <p class="project-title">{{ project.name }}</p>
-            <div class="project-separator"></div>
             <p class="project-description">{{ project.description }}</p>
             {% if project.tags %}
             <ul class="project-tags">
@@ -43,8 +42,6 @@
             </ul>
             {% endif %}
         </div>
-
-        <div><p class="project-type">{{ project.type }}</p></div>
 
     </{{ project_tag }}>
     {% endfor %}

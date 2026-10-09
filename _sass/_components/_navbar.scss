@@ -38,15 +38,10 @@ $navbar-tabs__bg-padding     : 1.5em;
   .navbar--collapsed-only {
     transition: opacity $navbar__collapse-time ease-in-out;
   }
-  .navbar--expanded-only {
-    transition: opacity $navbar__collapse-time ease-in-out;
-  }
 
   &--expanded .navbar--collapsed-only { opacity: 0; transition-delay: 0s; }
-  &--expanded .navbar--expanded-only  { opacity: 1; transition-delay: $navbar__collapse-time; }
 
   &--collapsed .navbar--collapsed-only { opacity: 1; transition-delay: $navbar__collapse-time; }
-  &--collapsed .navbar--expanded-only  { opacity: 0; transition-delay: 0s; }
 
 
   &::before {

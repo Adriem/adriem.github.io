@@ -4,7 +4,6 @@ section#contact {
   text-align: center;
 
   a { text-decoration: none; }
-  .section-title { padding-bottom: 0; }
   .mail-text { @include typography__body-regular; }
 
   // Email link: underlined in the same color as the link (it follows the
