@@ -1,5 +1,6 @@
 {% assign id         = include.id | default: 'text-block' %}
 {% assign paragraphs = include.data.paragraphs %}
+{% assign visible    = include.data.visible | default: 1 %}
 
 <div class="text-block">
 
@@ -9,13 +10,16 @@
     </p>
     {% endif %}
 
-    {% include _components/text-block-item.html item=paragraphs.first %}
+    {% comment %} The first `visible` items are always shown {% endcomment %}
+    {% for paragraph in paragraphs limit:visible %}
+    {% include _components/text-block-item.html item=paragraph %}
+    {% endfor %}
 
     {% comment %} The rest of the items collapse on narrow screens {% endcomment %}
-    {% if paragraphs.size > 1 %}
+    {% if paragraphs.size > visible %}
     <input type="checkbox" id="text-block-toggle-{{ id }}" class="text-block__toggle" hidden>
     <div class="text-block__more">
-      {% for paragraph in paragraphs offset:1 %}
+      {% for paragraph in paragraphs offset:visible %}
       {% include _components/text-block-item.html item=paragraph %}
       {% endfor %}
     </div>
@@ -30,3 +34,4 @@
 
 {% assign id         = nil %}
 {% assign paragraphs = nil %}
+{% assign visible    = nil %}
