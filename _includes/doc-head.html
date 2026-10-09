@@ -12,12 +12,24 @@
     {% endif %}
   </title>
 
-  <meta name="description"
-        content="{% if page.excerpt %}
-                   {{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}
-                 {% else %}
-                   {{ site.description }}
-                 {% endif %}">
+  {% capture meta_title %}{{ page.meta_title | default: site.meta_title | escape }}{% endcapture %}
+  {% capture meta_description %}{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+  {% assign meta_description = meta_description | strip | escape %}
+
+  <meta name="description" content="{{ meta_description }}">
+
+  <!-- Link previews (Open Graph / Twitter). The card image is generated with
+       _tools/og_card.py -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:title" content="{{ meta_title }}">
+  <meta property="og:description" content="{{ meta_description }}">
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
+  <meta property="og:image" content="{{ '/assets/img/og-card.jpg' | absolute_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Adrián Moreno, Software Engineer">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="shortcut icon"
         href="{{ "/assets/img/favicon.png?ver2" | relative_url }}">
