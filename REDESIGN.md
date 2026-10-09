@@ -32,7 +32,7 @@ The redesign replaces the old single-page layout (header + project list + contac
 - **AI stance section** (`#ai-stance`, front matter `ai_stance`, formerly "my philosophy"): text split with a headline and a two-paragraph body.
 - **Work ethics section** (`#work-ethics`, front matter `work_ethics`, "How I work", formerly "fun facts" / "Get to know me"): text grid whose body mixes paragraphs and a bullet list (`list:` items in the page front matter).
 - **Collapsible text**: on single-column viewports (below `md`), the text split body and everything after the first paragraph of a text block collapse behind a "read more / show less" button with an animated chevron (`collapsible` mixin, CSS only). Body paragraphs share the `body-paragraph` mixin: same spacing, pretty wrapping, justified (left-aligned below `md`).
-- **Hosting and URLs**: served by GitHub Pages at `https://adriem.me` (HTTPS enforced; `url` in `_config.yml` is `https://`). Local assets are linked with `relative_url` (root-relative, protocol-independent, so they can't become blocked mixed content) and the canonical link with `absolute_url`; nothing depends on the build-time `site.github.url` anymore. Project docs (`README.md`, `REDESIGN.md`) are excluded from the build.
+- **Hosting and URLs**: served by GitHub Pages at `https://adriem.me` (`url` in `_config.yml` is `https://`), built and deployed by a GitHub Actions workflow (`.github/workflows/pages.yml`) on every push to `master`. It uses the same toolchain as local development (Jekyll 4 and Dart Sass from the `Gemfile`, Ruby from `.ruby-version`); GitHub's classic branch builds use Jekyll 3 and LibSass, which order the compiled CSS rules differently. Local assets are linked with `relative_url` (root-relative, protocol-independent, so they can't become blocked mixed content) and the canonical link with `absolute_url`; nothing depends on the build-time `site.github.url` anymore. Project docs (`README.md`, `REDESIGN.md`) are excluded from the build.
 - **Fonts**: a single family (Montserrat) in three weights (300, 400, 700), loaded with the Google Fonts `css2` API (`display=swap`, with `preconnect`) in `doc-head.html`. Italics are synthesized by the browser.
 - **Section types**: `section-text-statement`, `section-text-block`, `section-text-split`, `section-text-grid`, `section-timeline`, `section-skills`, `section-card-grid`, `section-contact`.
 - **SCSS foundation files**:
@@ -59,10 +59,13 @@ The redesign replaces the old single-page layout (header + project list + contac
 
 5. **Trajectory section** — Consider adding an education section.
 
+6. **"Download full CV" CTA** — Once there's a proper CV export (brand colours, sensitive information such as the phone number redacted), add a download button under the trajectory or skills section. The site itself stays a concise, generalist overview rather than a full CV.
+
 ## Bugs and issues
 
 ### HTTPS on secondary domains
 
+- **Enforce HTTPS** — Currently off: GitHub refuses to enable it while a certificate is still being issued, so plain `http://adriem.me` doesn't redirect to HTTPS. Tick "Enforce HTTPS" in the repo's Pages settings once it becomes available again.
 - **`www.adriem.me`** — The certificate GitHub issued only covers `adriem.me`, so `https://www.adriem.me` fails with a certificate error (`http://www.adriem.me` redirects fine). The `www` CNAME now points to `adriem.github.io`; if GitHub doesn't add `www` to the certificate by itself, remove and re-add the custom domain in the repo's Pages settings.
 - **`map-generator.adriem.me`** — Still points to GitHub's legacy IPs (`192.30.252.153/154`), so it can't get a certificate. Replace its A records with a CNAME to `adriem.github.io`, enforce HTTPS in the `random-map-generator` repo's Pages settings, then point the project link in `_data/en/portfolio.yml` directly to `https://map-generator.adriem.me` (it currently goes through `http://adriem.me/random-map-generator`, which redirects to the subdomain over HTTP).
 

@@ -4,19 +4,19 @@ timeline_highlights:
     end: 2026
     company: Paired
     title: Senior Software Engineer
-    description: Full stack senior engineer in charge of maintaining, growing and integrating the company's web ecosystem, marketing technologies and backend infrastructure.
+    description: Full stack senior engineer in charge of maintaining, growing and integrating the company's web ecosystem (from CMS to web payments), marketing technologies, user referral programs and backend infrastructure.
   - start: 2022
     end: 2022
     company: Pixsy
-    title: Senior Full-stack Engineer
+    title: Senior Full-stack Developer
     description: Worked on improving different aspects of the existing infrastructure across the whole project's stack. Developed some experimental tools for image recognition on 3rd party websites.
   - start: 2020
     end: 2022
     company: Lendismart S.L.
-    title: Freelance Software Engineer
+    title: Freelance Software Developer
     description: Developed and maintained an autonomous experimental system for high-complexity integrations with legacy banking systems.
   - start: 2018
     end: 2020
     company: adidas
-    title: Full Stack Engineer
+    title: Software Developer
     description: Worked in both internal tools and delivery infrastructure at scale for the company's e-commerce content ecosystem.

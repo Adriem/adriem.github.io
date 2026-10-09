@@ -4,12 +4,16 @@ languages:
   - HTML
   - CSS & SCSS
   - Python
+  - GraphQL
 frameworks:
   - React
+  - Redux
   - Node.js
   - Next.js
   - Express.js
+  - Apollo
   - Tailwind CSS
+  - Material UI
   - RxJS
 infrastructure:
   - Vercel

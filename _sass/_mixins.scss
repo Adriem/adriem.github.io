@@ -82,7 +82,7 @@ $body-paragraph-spacing: 1.5rem;
     }
 
     #{$toggle}:checked ~ #{$content} {
-      max-height: 50rem;
+      max-height: 80rem;
     }
 
     // Spaced from the content like the paragraphs, only when expanded
